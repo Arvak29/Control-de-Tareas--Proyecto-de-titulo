@@ -1,0 +1,44 @@
+<app-nav-flujo-de-tareas></app-nav-flujo-de-tareas>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        
+        <div class="col-lg-5">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header">
+                    <h3 class="text-center text-dark font-weight-light my-1">Crear flujo de tareas</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="inputNombre" type="text" placeholder="name@example.com" />
+                            <label for="inputEmail">Nombre</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Descripción</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-header mt-3">
+                    <h3 class="text-center text-dark font-weight-light my-1">Tarea subordinada</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect2">Roles asignados (Cantidad de roles)</label>
+                        <select multiple class="form-control" id="exampleFormControlSelect2">
+                            <option>Nombre de la tarea</option>
+                            <option>Nombre de la tarea</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-1 border-0 rounded-lg">
+            <div class="form-floating mt-5">
+                <a class="btn btn-primary col-12 py-3" href="./flujo_de_tareas">Crear</a>
+            </div>
+        </div>
+                
+    </div>
+</div>
