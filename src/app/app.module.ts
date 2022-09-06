@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
+
 import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+
+//componentes
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { UsuariosComponent } from './home/usuarios/usuarios.component';
 import { CrearUsuariosComponent } from './home/usuarios/crear-usuarios/crear-usuarios.component';
 import { NavComponent } from './home/usuarios/nav/nav.component';
@@ -15,6 +19,9 @@ import { FlujoDeTareasComponent } from './home/flujo-de-tareas/flujo-de-tareas.c
 import { CrearFlujoDeTareasComponent } from './home/flujo-de-tareas/crear-flujo-de-tareas/crear-flujo-de-tareas.component';
 import { VerFlujoDeTareasComponent } from './home/flujo-de-tareas/ver-flujo-de-tareas/ver-flujo-de-tareas.component';
 import { NavFlujoDeTareasComponent } from './home/flujo-de-tareas/nav-flujo-de-tareas/nav-flujo-de-tareas.component';
+import { TareasComponent } from './home/tareas/tareas.component';
+import { CrearTareaComponent } from './home/tareas/crear-tarea/crear-tarea.component';
+import { NavTareaComponent } from './home/tareas/nav-tarea/nav-tarea.component';
 
 const appRoutes:Routes=[
 
@@ -29,6 +36,11 @@ const appRoutes:Routes=[
   {path:'flujo_de_tareas', component:FlujoDeTareasComponent},
   {path:'crear_flujo_de_tareas', component:CrearFlujoDeTareasComponent},
   {path:'ver_flujo_de_tareas', component:VerFlujoDeTareasComponent},
+  {path:'tareas', component:TareasComponent},
+  {path:'crear_tarea', component:CrearTareaComponent},
+  {path:'nav_tarea', component:NavTareaComponent},
+  {path:'**', redirectTo: '', pathMatch: 'full'},
+
 ];
 
 @NgModule({
@@ -47,10 +59,14 @@ const appRoutes:Routes=[
     CrearFlujoDeTareasComponent,
     VerFlujoDeTareasComponent,
     NavFlujoDeTareasComponent,
+    TareasComponent,
+    CrearTareaComponent,
+    NavTareaComponent,
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

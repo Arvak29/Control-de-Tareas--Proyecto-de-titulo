@@ -1,4 +1,3 @@
-<app-nav-flujo-de-tareas></app-nav-flujo-de-tareas>
 <div class="container-fluid">
     <div class="row justify-content-center">
         
@@ -9,12 +8,12 @@
                 </div>
                 <div class="card-body">
 
-                    <form [formGroup]="Crear_Flujo_de_tareas_Grupo" (ngSubmit)="crear_flujo_de_tareas()">
+                    <form [formGroup]="Tarea_formulario" (ngSubmit)="crear_tarea()">
 
                         <div class="form-floating mb-3">
                             <input class="form-control" id="inputNombre" type="text" formControlName="nombre"
                             placeholder="name@example.com" 
-                            [class.is-invalid]="Crear_Flujo_de_tareas_Grupo.get('nombre')?.touched && Crear_Flujo_de_tareas_Grupo.get('nombre')?.invalid"/>
+                            [class.is-invalid]="Tarea_formulario.get('nombre')?.touched && Tarea_formulario.get('nombre')?.invalid"/>
                             <label for="inputEmail">Nombre</label>
                         </div>
 
@@ -45,8 +44,8 @@
 
         <div class="col-lg-1 border-0 rounded-lg">
             <div class="form-floating mt-5">
-                <form [formGroup]="Crear_Flujo_de_tareas_Grupo" (ngSubmit)="crear_flujo_de_tareas()">
-                    <button type="submit" class="btn btn-primary col-12 p-3" [disabled]="Crear_Flujo_de_tareas_Grupo.invalid">Crear</button>
+                <form [formGroup]="Tarea_formulario" (ngSubmit)="crear_tarea()">
+                    <button type="submit" class="btn btn-primary col-12 p-3" [disabled]="Tarea_formulario.invalid">Crear</button>
                 </form>
             </div>
         </div>

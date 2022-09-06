@@ -7,11 +7,16 @@
                     <h3 class="text-center text-dark font-weight-light my-1">Crear unidad interna</h3>
                 </div>
                 <div class="card-body">
-                    <form>
+                    
+                    <form [formGroup]="Rol_Grupo" (ngSubmit)="crear_rol()">
+
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="inputNombre" type="text" placeholder="name@example.com" />
+                            <input class="form-control" type="text" formControlName="nombre"
+                            placeholder="name@example.com" 
+                            [class.is-invalid]="Rol_Grupo.get('nombre')?.touched && Rol_Grupo.get('nombre')?.invalid"/>
                             <label for="inputEmail">Nombre</label>
                         </div>
+
                         <div class="form-group">
                             <label for="cosa">Asignar rol a la unidad interna</label>
                             <select multiple class="form-control" id="cosa">
@@ -25,9 +30,7 @@
                             </select>
                         </div>
                         <br>
-                        <div class="form-floating">
-                            <a class="btn btn-primary col-12 p-3" href="./roles">Crear rol</a>
-                        </div>
+                        <button type="submit" class="btn btn-primary col-12 p-3" [disabled]="Rol_Grupo.invalid">Crear Rol</button>
                     </form>
                 </div>
             </div>
