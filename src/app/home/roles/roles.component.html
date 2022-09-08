@@ -1,3 +1,4 @@
+<app-nav></app-nav>
 <div class="container-fluid">
     <div class="row justify-content-center">
         
@@ -11,25 +12,12 @@
                     <form [formGroup]="Rol_Grupo" (ngSubmit)="crear_rol()">
 
                         <div class="form-floating mb-3">
-                            <input class="form-control" type="text" formControlName="nombre"
-                            placeholder="name@example.com" 
+                            <input class="form-control" 
+                            type="text" formControlName="nombre"
+                            placeholder="nombre" 
                             [class.is-invalid]="Rol_Grupo.get('nombre')?.touched && Rol_Grupo.get('nombre')?.invalid"/>
-                            <label for="inputEmail">Nombre</label>
+                            <label  for="inputNombre">Nombre</label>
                         </div>
-
-                        <div class="form-group">
-                            <label for="cosa">Asignar rol a la unidad interna</label>
-                            <select multiple class="form-control" id="cosa">
-                                <option>Nombre de la unidad interna</option>
-                                <option>Nombre de la unidad interna</option>
-                                <option>Nombre de la unidad interna</option>
-                                <option>Nombre de la unidad interna</option>
-                                <option>Nombre de la unidad interna</option>
-                                <option>Nombre de la unidad interna</option>
-                                <option>Nombre de la unidad interna</option>
-                            </select>
-                        </div>
-                        <br>
                         <button type="submit" class="btn btn-primary col-12 p-3" [disabled]="Rol_Grupo.invalid">Crear Rol</button>
                     </form>
                 </div>
@@ -56,16 +44,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">#001</th>
-                            <td>unidad 1</td>
-                            <td></td>
+                        <tr *ngFor="let rol of ListarRol">
+                            <th scope="row">{{ rol.id_rol }}</th>
+                            <td>{{ rol.nombre }}</td>
+                            <td>
+                                <button (click)="eliminar(rol.id_rol)" type="button" class="btn btn-danger">Eliminar</button>
+                                <button (click)="modificar(rol.id_rol)" type="button" class="btn btn-success">Modificar</button>
+                            </td>
     
-                        </tr>
-                        <tr>
-                            <th scope="row">#002</th>
-                            <td>unidad 2</td>
-                            <td></td>
                         </tr>
                     </tbody>
                 </table>
