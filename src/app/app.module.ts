@@ -23,6 +23,7 @@ import { NavFlujoDeTareasComponent } from './home/flujo-de-tareas/nav-flujo-de-t
 import { TareasComponent } from './home/tareas/tareas.component';
 import { CrearTareaComponent } from './home/tareas/crear-tarea/crear-tarea.component';
 import { NavTareaComponent } from './home/tareas/nav-tarea/nav-tarea.component';
+import { BarraComponent } from './home/barra/barra.component';
 
 const appRoutes:Routes=[
 
@@ -63,6 +64,7 @@ const appRoutes:Routes=[
     TareasComponent,
     CrearTareaComponent,
     NavTareaComponent,
+    BarraComponent,
   ],
   imports: [
     BrowserModule,

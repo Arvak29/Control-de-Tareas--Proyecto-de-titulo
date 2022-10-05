@@ -1,0 +1,61 @@
+<nav class="sb-topnav color-fondo1 navbar navbar-expand">
+    <a class="navbar-brand ps-3 " href="index.html"><h2 class="color1">Process S.A.</h2></a>
+    
+    <button class="btn btn-nav btn-sm me-auto" id="sidebar"href="#!">
+        <i><img  src="../assets/img/sidebar.svg" alt=""></i>
+    </button>
+    
+    <a class="navbar-brand me-auto pc-4" routerLink="/home"><h1  class="color1">Control de tareas</h1></a>
+
+    <button class="btn btn-nav form-inline " id="notificacion" href="#!">
+        <i><img class="tamano" src="../assets/img/campana.svg" alt=""></i>
+    </button>
+
+    <button class="btn btn-nav form-inline m-3" id="usuario" href="#!">
+        <i><img src="../assets/img/user.svg" alt=""></i>
+    </button>
+</nav>
+
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <a class="nav-link" href="index.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Prueba
+                    </a>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Panel de control
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="layout-static.html">Tareas</a>
+                            <a class="nav-link" href="layout-sidenav-light.html">Historial de tareas</a>
+                        </nav>
+                    </div>
+                    
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapse" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Gestion de usuarios
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapse" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="layout-static.html">usuarios</a>
+                            <a class="nav-link" href="layout-sidenav-light.html">Roles</a>
+                            <a class="nav-link" href="layout-sidenav-light.html">Unidades internas</a>
+                            <a class="nav-link" href="layout-sidenav-light.html">Fluejo de trabajo</a>
+                        </nav>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="layoutSidenav_content">
+        <router-outlet></router-outlet>
+    </div>
+</div>
