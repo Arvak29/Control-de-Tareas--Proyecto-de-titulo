@@ -21,21 +21,43 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="color-fondo1 sb-sidenav-menu">
                 <div class="nav">
+                    <a class="nav-link" routerLink="/">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Panel de control
+                    </a>
                     <a class="nav-link" routerLink="/tareas">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Tareas
                     </a>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Gestion de usuarios
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    <a class="nav-link" routerLink="/usuarios">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Usuarios
                     </a>
-                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" routerLink="/usuarios">Usuario</a>
-                            <a class="nav-link" routerLink="/crear_usuario">Crear usuarios</a>
-                        </nav>
-                    </div>
+                    <a class="nav-link" routerLink="/roles">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Roles
+                    </a>
+                    <a class="nav-link" routerLink="/flujo_de_tareas">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Flujos de trabajos
+                    </a>
+                    <a class="nav-link" routerLink="/unidades_internas">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Unidades internas
+                    </a>
+                    <!-- Por si se necesitan pestañas con sub pestañas
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Usuarios
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" routerLink="/usuarios">Usuario</a>
+                                <a class="nav-link" routerLink="/crear_usuario">Crear usuarios</a>
+                            </nav>
+                        </div>
+                    -->
                 </div>
             </div>
         </nav>

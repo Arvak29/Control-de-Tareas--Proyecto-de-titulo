@@ -3,9 +3,7 @@
 }
 
 body{
-    background: #ad5389;
-    background: -webkit-linear-gradient(to right, #3c1053, #ad5389);
-    background: linear-gradient(to right, #3c1053, #ad5389);
+    background: #0F121E !important;;
     overflow: overlay; /*necesario para el scrollbar*/
 }
 
@@ -21,10 +19,11 @@ a{ font-size: 0.694rem;}
 .color-fondo1{background-color: #252936;}
 .color-fondo2{background-color: #0F121E;}
 .color1{color: #F2F2F2;}
-.color2{color: #F86D66;}
 .color2{color: #0C8CE9;}
-.color3{color: #40ED9A;}
-.color4{color: #FEBD01;}
+.color3{color: #F86D66;}
+.color4{color: #40ED9A;}
+.color5{color: #FEBD01;}
+.color6{color: #7b7b7b;}
 .gradiante{
     background: #305EFF;
     background: -webkit-linear-gradient(to right, #305EFF, #C740E9, #F0815E); 
