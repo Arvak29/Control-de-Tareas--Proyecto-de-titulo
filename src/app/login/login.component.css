@@ -1,0 +1,53 @@
+.card-header {
+  position: relative;
+}
+
+.borde {
+  position: absolute;
+  width: 10px;
+  left: 0px;
+  top: 0%;
+  bottom: 0%;
+
+  background: #40ed9a;
+  border-radius: 8px 0px 0px 0px;
+}
+.linea {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 0%;
+
+  border-bottom: 1px solid #40ed9a;
+}
+
+/* Formulario */
+.form-floating {
+  color: #febd01;
+  overflow: hidden;
+}
+.form-control {
+  background-color: transparent;
+  border-color: #febd01;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-bottom: 1px solid;
+  border-radius: 0%;
+  color: #febd01;
+}
+
+.btn-primary {
+  background-color: #0c8ce9;
+  border-color: #0c8ce9;
+  overflow: hidden;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+  background-color: #274cd0;
+  border-color: #274cd0;
+  box-shadow: none;
+}

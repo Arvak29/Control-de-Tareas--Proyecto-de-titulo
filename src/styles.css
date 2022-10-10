@@ -1,45 +1,81 @@
-*{
-    font-family: 'Blinker', sans-serif;
+* {
+  font-family: "Blinker", sans-serif;
 }
 
-body{
-    background: #0F121E !important;;
-    overflow: overlay; /*necesario para el scrollbar*/
+body {
+  background: #0f121e !important;
+  overflow: overlay; /*necesario para el scrollbar*/
 }
 
-h1{ font-size: 2.986rem;}
-h2{ font-size: 2.488rem;}
-h3{ font-size: 2.074rem;}
-h4{ font-size: 1.728rem;}
-h5{ font-size: 1.440rem;}
-h6{ font-size: 1.200rem;}
-p{ font-size: 0.833rem;}
-a{ font-size: 0.694rem;}
-
-.color-fondo1{background-color: #252936;}
-.color-fondo2{background-color: #0F121E;}
-.color1{color: #F2F2F2;}
-.color2{color: #0C8CE9;}
-.color3{color: #F86D66;}
-.color4{color: #40ED9A;}
-.color5{color: #FEBD01;}
-.color6{color: #7b7b7b;}
-.gradiante{
-    background: #305EFF;
-    background: -webkit-linear-gradient(to right, #305EFF, #C740E9, #F0815E); 
-    background: linear-gradient(to right, #305EFF, #C740E9, #F0815E);
+h1 {
+  font-size: 2.986rem;
+}
+h2 {
+  font-size: 2.488rem;
+}
+h3 {
+  font-size: 2.074rem;
+}
+h4 {
+  font-size: 1.728rem;
+}
+h5 {
+  font-size: 1.44rem;
+}
+h6 {
+  font-size: 1.2rem;
+}
+p {
+  font-size: 0.833rem;
+}
+a {
+  font-size: 0.694rem;
 }
 
-.tamano { width: 24px; height: 24px; }
+.color-fondo1 {
+  background-color: #252936;
+}
+.color-fondo2 {
+  background-color: #0f121e;
+}
+.color1 {
+  color: #f2f2f2;
+}
+.color2 {
+  color: #0c8ce9;
+}
+.color3 {
+  color: #f86d66;
+}
+.color4 {
+  color: #40ed9a;
+}
+.color5 {
+  color: #febd01;
+}
+.color6 {
+  color: #7b7b7b;
+}
+.gradiante {
+  background: #305eff;
+  background: -webkit-linear-gradient(to right, #305eff, #c740e9, #f0815e);
+  background: linear-gradient(to right, #305eff, #c740e9, #f0815e);
+}
 
-::-webkit-scrollbar{
-    background: transparent;
-    width: 12px;
+.tamano {
+  width: 24px;
+  height: 24px;
 }
-::-webkit-scrollbar-thumb{
-    background: #0C8CE9;
-    border-radius: 10px;
+
+::-webkit-scrollbar {
+  background: transparent;
+  width: 12px;
 }
-::-webkit-scrollbar-corner{ /*NO ESTOY SEGURO SI FUNCIONA*/
-    border-radius: 10px;
+::-webkit-scrollbar-thumb {
+  background: #0c8ce9;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-corner {
+  /*NO ESTOY SEGURO SI FUNCIONA*/
+  border-radius: 10px;
 }
