@@ -5,6 +5,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+//Barra de progreso circular
+import { NgCircleProgressModule } from 'ng-circle-progress';
+
 //componentes
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -24,25 +27,27 @@ import { TareasComponent } from './home/tareas/tareas.component';
 import { CrearTareaComponent } from './home/tareas/crear-tarea/crear-tarea.component';
 import { NavTareaComponent } from './home/tareas/nav-tarea/nav-tarea.component';
 import { BarraComponent } from './home/barra/barra.component';
+import { ComponentesDisenoComponent } from './home/componentes-diseno/componentes-diseno.component';
+import { CardHeaderComponent } from './home/componentes-diseno/card-header/card-header.component';
+import { BarTareaComponent } from './home/componentes-diseno/bar-tarea/bar-tarea.component';
 
-const appRoutes:Routes=[
-
-  {path:'', component:LoginComponent},
-  {path:'home', component:HomeComponent},
-  {path:'usuarios', component:UsuariosComponent},
-  {path:'crear_usuario', component:CrearUsuariosComponent},
-  {path:'unidades_internas', component:UnidadesInternasComponent},
-  {path:'crear_unidad_interna', component:CrearUnidadInternaComponent},
-  {path:'editar_unidad_interna', component:EditarUnidadInternaComponent},
-  {path:'roles', component:RolesComponent},
-  {path:'flujo_de_tareas', component:FlujoDeTareasComponent},
-  {path:'crear_flujo_de_tareas', component:CrearFlujoDeTareasComponent},
-  {path:'ver_flujo_de_tareas', component:VerFlujoDeTareasComponent},
-  {path:'tareas', component:TareasComponent},
-  {path:'crear_tarea', component:CrearTareaComponent},
-  {path:'nav_tarea', component:NavTareaComponent},
-  {path:'**', redirectTo: '', pathMatch: 'full'},
-
+const appRoutes: Routes = [
+  { path: '', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'usuarios', component: UsuariosComponent },
+  { path: 'crear_usuario', component: CrearUsuariosComponent },
+  { path: 'unidades_internas', component: UnidadesInternasComponent },
+  { path: 'crear_unidad_interna', component: CrearUnidadInternaComponent },
+  { path: 'editar_unidad_interna', component: EditarUnidadInternaComponent },
+  { path: 'roles', component: RolesComponent },
+  { path: 'flujo_de_tareas', component: FlujoDeTareasComponent },
+  { path: 'crear_flujo_de_tareas', component: CrearFlujoDeTareasComponent },
+  { path: 'ver_flujo_de_tareas', component: VerFlujoDeTareasComponent },
+  { path: 'tareas', component: TareasComponent },
+  { path: 'crear_tarea', component: CrearTareaComponent },
+  { path: 'nav_tarea', component: NavTareaComponent },
+  { path: 'p', component: BarTareaComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
@@ -65,15 +70,51 @@ const appRoutes:Routes=[
     CrearTareaComponent,
     NavTareaComponent,
     BarraComponent,
+    ComponentesDisenoComponent,
+    CardHeaderComponent,
+    BarTareaComponent,
   ],
   imports: [
     BrowserModule,
+    NgCircleProgressModule.forRoot({
+      radius: 48,
+      title: '100',
+      titleFontSize: '32',
+      titleColor: '#ffffff',
+      showTitle: true,
+      showUnits: true,
+      unitsColor: '#ffffff',
+      unitsFontSize: '32',
+      outerStrokeWidth: 10,
+      outerStrokeColor: '#f86d66',
+      outerStrokeGradientStopColor: '#53a9ff',
+      backgroundColor: '#000000',
+      backgroundGradientStopColor: '#000000',
+      backgroundStroke: '#000000',
+      backgroundStrokeWidth: 0,
+      backgroundPadding: 0,
+      space: -10,
+      maxPercent: 100,
+      unitsFontWeight: '100',
+      innerStrokeColor: '#9d9d9d',
+      innerStrokeWidth: 10,
+      titleFontWeight: '100',
+      imageHeight: 20,
+      imageWidth: 20,
+      animateTitle: false,
+      animationDuration: 1000,
+      showSubtitle: false,
+      clockwise: false,
+      responsive: false,
+      startFromZero: false,
+      lazy: true,
+    }),
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

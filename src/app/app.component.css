@@ -64,8 +64,8 @@
 .sb-sidenav .sb-sidenav-menu .nav .nav-link {
   display: flex;
   align-items: center;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-top: 8px;
+  padding-bottom: 8px;
   position: relative;
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link {

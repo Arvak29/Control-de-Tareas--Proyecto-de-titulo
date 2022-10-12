@@ -69,7 +69,7 @@ a {
 
 ::-webkit-scrollbar {
   background: transparent;
-  width: 12px;
+  width: 6px;
 }
 ::-webkit-scrollbar-thumb {
   background: #0c8ce9;

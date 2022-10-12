@@ -1,29 +1,30 @@
 <app-nav-tarea></app-nav-tarea>
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-lg-6">
-
-            <form class="form col-lg-5">
-                <button>
-                    <img src="../assets/img/search.svg" alt="">
-                </button>
-                <input class="input" placeholder="Buscar" required="" type="text">
-            </form>
-
-            <div class="row">
-                <div class="col-12 mt-1">
-                    <a class="text-start btn btn-primary col-12" href="/home">Flujo de tareas</a>
-                </div>
-                <div class="col-12 mt-1">
-                    <a class="text-start btn btn-primary col-12" href="/home">Flujo de tareas</a>
-                </div>
-                <div class="col-12 mt-1">
-                    <a class="text-start btn btn-primary col-12" href="/home">Flujo de tareas</a>
-                </div>
-                <div class="col-12 mt-1">
-                    <a class="text-start btn btn-primary col-12" href="/home">Flujo de tareas</a>
-                </div>
-            </div>
-        </div>
+<div class="container-fluid col-lg-6">
+  <div class="row justify-content-between">
+    <div class="col-8 text-start">
+      <form class="form text-start">
+        <button>
+          <img src="../assets/img/search.svg" alt="" />
+        </button>
+        <input class="input" placeholder="Buscar" required="" type="text" />
+      </form>
     </div>
+
+    <div class="col text-end">
+      <button class="btn btn-nav">
+        <i><img src="../assets/img/printer.svg" alt="" /></i>
+      </button>
+    </div>
+
+    <div class="col-12 my-1">
+      <app-bar-tarea></app-bar-tarea>
+      <app-bar-tarea></app-bar-tarea>
+      <app-bar-tarea></app-bar-tarea>
+      <app-bar-tarea></app-bar-tarea>
+      <app-bar-tarea></app-bar-tarea>
+      <app-bar-tarea></app-bar-tarea>
+      <app-bar-tarea></app-bar-tarea>
+      <app-bar-tarea></app-bar-tarea>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,50 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  align-items: center;
+}
+.bar-tarea {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+.borde {
+  position: absolute;
+  width: 10px;
+  left: 0px;
+  top: 0%;
+  bottom: 0%;
+  background: #305eff;
+}
+.btn {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  height: 48px;
+  padding: 0;
+  background-color: #252936;
+  color: #ffffff;
+  border-radius: 0%;
+}
+
+.btn:hover {
+  background-color: #151821;
+  border: transparent;
+}
+
+.text-start {
+  margin-left: 10px;
+}
+.text-end {
+  display: flex;
+  justify-content: end;
+  align-content: center;
+}
+img {
+  height: 16px;
+}
+.barra-circular {
+  padding-right: 5px;
+  padding-left: 5px;
+}

@@ -2,11 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-lg-5">
       <div class="card text-white bg-dark shadow-lg border-0 rounded-lg mt-5">
-        <div class="card-header">
-          <h3 class="text-center my-1">Iniciar sesión</h3>
-          <span class="borde"></span>
-          <span class="linea"></span>
-        </div>
+        <app-card-header [titulo]="'Iniciar sesión'"></app-card-header>
         <div class="card-body">
           <form
             [formGroup]="iniciar_formulario_Grupo"
@@ -48,9 +44,11 @@
             </button>
           </form>
 
-          <div class="text-center mt-3 mb-2">
-            <a class="small" routerLink="/">¿olvidaste la contraseña?</a>
-          </div>
+          <!-- OLVIDASTE LA CONTRASELÑA
+            <div class="text-center mt-3 mb-2">
+              <a class="small" routerLink="/">¿olvidaste la contraseña?</a>
+            </div>
+          -->
         </div>
       </div>
     </div>

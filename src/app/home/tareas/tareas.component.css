@@ -1,59 +1,83 @@
 .form button {
-    border: none;
-    background: none;
+  border: none;
+  background: none;
 }
 .form {
-    --timing: 0.3s;
-    --height-of-input: 40px;
-    --border-height: 3px;
-    --border-color: #FEBD01;
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding-inline: 0.8em;
-    border-radius: var(--border-radius);
-    transition: border-radius 0.5s ease;
+  --timing: 0.3s;
+  --height-of-input: 40px;
+  --border-height: 3px;
+  --border-color: #febd01;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  transition: border-radius 0.5s ease;
 }
 .input {
-    font-size: 1.200rem;
-    background-color: transparent;
-    width: 100%;
-    height: 100%;
-    padding-inline: 0.5em;
-    padding-block: 0.7em;
-    border: none;
-    color: white;
+  font-size: 1.2rem;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  padding-inline: 0.5em;
+  padding-block: 0.7em;
+  border: none;
+  color: white;
 }
 .form:before {
-    content: "";
-    position: absolute;
-    background: var(--border-color);
-    transform: scaleX(0);
-    transform-origin: center;
-    width: 100%;
-    height: var(--border-height);
-    left: 0;
-    bottom: 0;
-    transition: transform var(--timing) ease;
+  content: "";
+  position: absolute;
+  background: var(--border-color);
+  transform: scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: var(--border-height);
+  left: 0;
+  bottom: 0;
+  transition: transform var(--timing) ease;
 }
 input:focus {
-    outline: none;
-    color: white;
+  outline: none;
+  color: white;
 }
 .form:focus-within:before {
-    transform: scale(1);
+  display: flex;
+  transform: scale(1);
 }
 .reset {
-    border: none;
-    background: none;
-    opacity: 0;
-    visibility: hidden;
+  border: none;
+  background: none;
+  opacity: 0;
+  visibility: hidden;
 }
 input:not(:placeholder-shown) ~ .reset {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
-  /* sizing svg icons */
 .form img {
-    width: 1.200rem;
+  width: 1.2rem;
+}
+
+/* Boton imprimir */
+.btn-nav {
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+  color: #0d6efd;
+  border: transparent;
+}
+.btn-nav::before {
+  content: "";
+  width: 0;
+  height: 300%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: #0d6efd;
+  transition: 0.5s ease;
+  display: block;
+  z-index: -1;
+}
+.btn-nav:hover::before {
+  width: 125%;
 }

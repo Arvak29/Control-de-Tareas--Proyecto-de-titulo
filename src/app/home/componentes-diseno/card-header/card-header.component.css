@@ -1,0 +1,20 @@
+.card-header {
+  position: relative;
+  color: #ffffff;
+}
+.borde {
+  position: absolute;
+  width: 10px;
+  left: 0px;
+  top: 0%;
+  bottom: 0%;
+  background: #40ed9a;
+  border-radius: 8px 0px 0px 0px;
+}
+.linea {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 0%;
+  border-bottom: 1px solid #40ed9a;
+}

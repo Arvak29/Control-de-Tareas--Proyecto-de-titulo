@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-3">
+      <div class="card text-white bg-dark shadow-lg border-0 rounded-lg mt-5">
+        <app-card-header [titulo]="'Global'"></app-card-header>
+        <div class="card-body">
+          <div align="center">
+            <circle-progress [percent]="70"></circle-progress>
+          </div>
+        </div>
+      </div>
+    </div>
+    <rb></rb>
+    <div class="col-lg-8">
+      <div class="card text-white bg-dark shadow-lg border-0 rounded-lg mt-3">
+        <app-card-header [titulo]="'Resumen de tareas'"></app-card-header>
+        <div class="card-body">
+          <app-bar-tarea></app-bar-tarea>
+          <app-bar-tarea></app-bar-tarea>
+          <app-bar-tarea></app-bar-tarea>
+          <app-bar-tarea></app-bar-tarea>
+          <app-bar-tarea></app-bar-tarea>
+          <app-bar-tarea></app-bar-tarea>
+          <app-bar-tarea></app-bar-tarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
