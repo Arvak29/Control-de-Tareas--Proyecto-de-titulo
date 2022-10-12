@@ -1,54 +1,91 @@
-<app-nav></app-nav>
+<app-nav-tarea></app-nav-tarea>
 
 <div class="container-fluid">
-    <div class="row justify-content-center">
-        
-        <div class="col-lg-5">
-            <div class="card shadow-lg border-0 rounded-lg mt-5">
-                <div class="card-header">
-                    <h3 class="text-center text-dark font-weight-light my-1">Crear flujo de tareas</h3>
-                </div>
-                <div class="card-body">
-
-                    <form [formGroup]="Tarea_formulario" (ngSubmit)="crear_tarea()">
-
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="inputNombre" type="text" formControlName="nombre"
-                            placeholder="name@example.com" 
-                            [class.is-invalid]="Tarea_formulario.get('nombre')?.touched && Tarea_formulario.get('nombre')?.invalid"/>
-                            <label for="inputEmail">Nombre</label>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="inputEmail">Descripción</label>
-                            <textarea class="form-control" id="inputEmail" rows="3" formControlName="descripcion"></textarea>
-                        </div>
-                        
-                        <div class="card-header mt-3">
-                            <h3 class="text-center text-dark font-weight-light my-1">Tarea subordinada</h3>
-                        </div>
-    
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect2">Roles asignados (Cantidad de roles)</label>
-                                <select multiple class="form-control" id="exampleFormControlSelect2">
-                                    <option>Nombre de la tarea</option>
-                                    <option>Nombre de la tarea</option>
-                                </select>
-                            </div>
-                        </div>
-
-                    </form>
-
-                </div>
-            </div>    
-        </div>
-
-        <div class="col-lg-1 border-0 rounded-lg">
-            <div class="form-floating mt-5">
-                <form [formGroup]="Tarea_formulario" (ngSubmit)="crear_tarea()">
-                    <button type="submit" class="btn btn-primary col-12 p-3" [disabled]="Tarea_formulario.invalid">Crear</button>
-                </form>
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <div class="card text-white bg shadow-lg border-0 rounded-lg">
+        <app-card-header [titulo]="'Crear tarea'"></app-card-header>
+        <div class="card-body">
+          <form [formGroup]="Tarea_formulario" (ngSubmit)="crear_tarea()">
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                id="inputNombre"
+                type="text"
+                formControlName="nombre"
+                placeholder="name@example.com"
+                [class.is-invalid]="
+                  Tarea_formulario.get('nombre')?.touched &&
+                  Tarea_formulario.get('nombre')?.invalid
+                "
+              />
+              <label for="name">Nombre</label>
             </div>
+
+            <div class="form-group">
+              <label for="descripcion">Descripción</label>
+              <textarea
+                class="form-control"
+                id="inputDescripcion"
+                rows="3"
+                formControlName="descripcion"
+              ></textarea>
+            </div>
+
+            <div class="row">
+              <div class="form-floating mb-3 col-6">
+                <input
+                  class="form-control"
+                  id="inputNombre"
+                  type="text"
+                  formControlName="fecha_inicio"
+                  placeholder="name@example.com"
+                  [class.is-invalid]="
+                    Tarea_formulario.get('fecha_inicio')?.touched &&
+                    Tarea_formulario.get('fecha_inicio')?.invalid
+                  "
+                />
+                <label for="fecha_inicio">fecha_inicio</label>
+              </div>
+
+              <div class="form-floating mb-3 col-6">
+                <input
+                  class="form-control"
+                  id="inputNombre"
+                  type="text"
+                  formControlName="fecha_termino"
+                  placeholder="name@example.com"
+                  [class.is-invalid]="
+                    Tarea_formulario.get('fecha_termino')?.touched &&
+                    Tarea_formulario.get('fecha_termino')?.invalid
+                  "
+                />
+                <label for="fecha_termino">fecha_termino</label>
+              </div>
+            </div>
+            <app-card-body [titulo]="'Asignar responsable'"></app-card-body>
+          </form>
+
+          <div class="row">
+            <app-buscador class="col-8"></app-buscador>
+            <button class="btn btn-primary col"><h5>Asignar</h5></button>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <div class="col-lg-1 border-0 rounded-lg">
+      <div class="form-floating">
+        <form [formGroup]="Tarea_formulario" (ngSubmit)="crear_tarea()">
+          <button
+            type="submit"
+            class="btn btn-primary col-12 p-3"
+            [disabled]="Tarea_formulario.invalid"
+          >
+            Crear
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

@@ -2,12 +2,7 @@
 <div class="container-fluid col-lg-6">
   <div class="row justify-content-between">
     <div class="col-8 text-start">
-      <form class="form text-start">
-        <button>
-          <img src="../assets/img/search.svg" alt="" />
-        </button>
-        <input class="input" placeholder="Buscar" required="" type="text" />
-      </form>
+      <app-buscador></app-buscador>
     </div>
 
     <div class="col text-end">
@@ -17,14 +12,18 @@
     </div>
 
     <div class="col-12 my-1">
-      <app-bar-tarea></app-bar-tarea>
-      <app-bar-tarea></app-bar-tarea>
-      <app-bar-tarea></app-bar-tarea>
-      <app-bar-tarea></app-bar-tarea>
-      <app-bar-tarea></app-bar-tarea>
-      <app-bar-tarea></app-bar-tarea>
-      <app-bar-tarea></app-bar-tarea>
-      <app-bar-tarea></app-bar-tarea>
+      <div class="card text-white bg shadow-lg border-0 rounded-lg">
+        <app-card-header [titulo]="'Tareas'"></app-card-header>
+        <div class="card-body">
+          <app-bar-tarea></app-bar-tarea>
+          <app-bar-tarea></app-bar-tarea>
+          <app-bar-tarea></app-bar-tarea>
+          <app-bar-tarea></app-bar-tarea>
+          <app-bar-tarea></app-bar-tarea>
+          <app-bar-tarea></app-bar-tarea>
+          <app-bar-tarea></app-bar-tarea>
+        </div>
+      </div>
     </div>
   </div>
 </div>

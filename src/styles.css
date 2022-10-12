@@ -42,7 +42,7 @@ a {
   color: #f2f2f2;
 }
 .color2 {
-  color: #0c8ce9;
+  color: #0c8ce9 !important;
 }
 .color3 {
   color: #f86d66;
@@ -56,6 +56,11 @@ a {
 .color6 {
   color: #7b7b7b;
 }
+
+.btn-primary {
+  background-color: #0c8ce9 !important;
+}
+
 .gradiante {
   background: #305eff;
   background: -webkit-linear-gradient(to right, #305eff, #c740e9, #f0815e);
@@ -78,4 +83,12 @@ a {
 ::-webkit-scrollbar-corner {
   /*NO ESTOY SEGURO SI FUNCIONA*/
   border-radius: 10px;
+}
+
+.bg {
+  background-color: #252936 !important;
+}
+
+.btn {
+  box-shadow: none !important;
 }

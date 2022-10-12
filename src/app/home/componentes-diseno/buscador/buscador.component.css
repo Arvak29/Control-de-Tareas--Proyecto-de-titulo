@@ -1,0 +1,60 @@
+/* Buscador */
+
+.form button {
+  border: none;
+  background: none;
+}
+.form {
+  --timing: 0.3s;
+  --height-of-input: 40px;
+  --border-height: 1px;
+  --border-color: #febd01;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  transition: border-radius 0.5s ease;
+}
+.input {
+  font-size: 1.2rem;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  padding-inline: 0.5em;
+  padding-block: 0.5em;
+  border: none;
+  color: white;
+}
+.form:before {
+  content: "";
+  position: absolute;
+  background: var(--border-color);
+  transform: scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: var(--border-height);
+  left: 0;
+  bottom: 0;
+  transition: transform var(--timing) ease;
+}
+input:focus {
+  outline: none;
+  color: white;
+}
+.form:focus-within:before {
+  display: flex;
+  transform: scale(1);
+}
+.reset {
+  border: none;
+  background: none;
+  opacity: 0;
+  visibility: hidden;
+}
+input:not(:placeholder-shown) ~ .reset {
+  opacity: 1;
+  visibility: visible;
+}
+.form img {
+  width: 1.2rem;
+}
