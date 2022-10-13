@@ -1,62 +1,85 @@
-<app-nav></app-nav>
 <div class="container-fluid">
-    <div class="row justify-content-center">
-        
-        <div class="col-lg-6">
-            <div class="card shadow-lg border-0 rounded-lg mt-5">
-                <div class="card-header">
-                    <h3 class="text-center text-dark font-weight-light my-1">Crear unidad interna</h3>
-                </div>
-                <div class="card-body">
-                    
-                    <form [formGroup]="Rol_Grupo" (ngSubmit)="crear_rol()">
-
-                        <div class="form-floating mb-3">
-                            <input class="form-control" 
-                            type="text" formControlName="nombre"
-                            placeholder="nombre" 
-                            [class.is-invalid]="Rol_Grupo.get('nombre')?.touched && Rol_Grupo.get('nombre')?.invalid"/>
-                            <label  for="inputNombre">Nombre</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary col-12 p-3" [disabled]="Rol_Grupo.invalid">Crear Rol</button>
-                    </form>
-                </div>
-            </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card shadow-lg border-0 rounded-lg mt-5">
+        <div class="card-header">
+          <h3 class="text-center font-weight-light my-1">
+            Crear unidad interna
+          </h3>
         </div>
+        <div class="card-body">
+          <form [formGroup]="Rol_Grupo" (ngSubmit)="crear_rol()">
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                type="text"
+                formControlName="nombre"
+                placeholder="nombre"
+                [class.is-invalid]="
+                  Rol_Grupo.get('nombre')?.touched &&
+                  Rol_Grupo.get('nombre')?.invalid
+                "
+              />
+              <label for="inputNombre">Nombre</label>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary col-12 p-3"
+              [disabled]="Rol_Grupo.invalid"
+            >
+              Crear Rol
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
-<br>
+<br />
 <div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-lg-6 border-0 rounded-lg">
-            <div class="card shadow-lg border-0 rounded-lg">
-                <div class="card-header">
-                    <h3 class="text-center text-dark font-weight-light my-1">Listar roles</h3>
-                </div>
-                
-                <table class="table table-striped table-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">unidad interna</th>
-                            <th scope="col">accion</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let rol of ListarRol">
-                            <th scope="row">{{ rol.id_rol }}</th>
-                            <td>{{ rol.nombre }}</td>
-                            <td>
-                                <button (click)="eliminar(rol.id_rol)" type="button" class="btn btn-danger">Eliminar</button>
-                                <button (click)="modificar(rol.id_rol)" type="button" class="btn btn-success">Modificar</button>
-                            </td>
-    
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-6 border-0 rounded-lg">
+      <div class="card shadow-lg border-0 rounded-lg">
+        <div class="card-header">
+          <h3 class="text-center text-dark font-weight-light my-1">
+            Listar roles
+          </h3>
         </div>
+
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">unidad interna</th>
+              <th scope="col">accion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rol of ListarRol">
+              <th scope="row">{{ rol.id_rol }}</th>
+              <td>{{ rol.nombre }}</td>
+              <td>
+                <button
+                  (click)="eliminar(rol.id_rol)"
+                  type="button"
+                  class="btn btn-danger"
+                >
+                  Eliminar
+                </button>
+                <button
+                  (click)="modificar(rol.id_rol)"
+                  type="button"
+                  class="btn btn-success"
+                >
+                  Modificar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 </div>
-<br>
+<br />

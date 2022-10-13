@@ -32,6 +32,8 @@ import { CardHeaderComponent } from './home/componentes-diseno/card-header/card-
 import { BarTareaComponent } from './home/componentes-diseno/bar-tarea/bar-tarea.component';
 import { CardBodyComponent } from './home/componentes-diseno/card-body/card-body.component';
 import { BuscadorComponent } from './home/componentes-diseno/buscador/buscador.component';
+import { BarUsuarioComponent } from './home/componentes-diseno/bar-usuario/bar-usuario.component';
+import { BarSubtareaComponent } from './home/componentes-diseno/bar-subtarea/bar-subtarea.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -77,6 +79,8 @@ const appRoutes: Routes = [
     BarTareaComponent,
     CardBodyComponent,
     BuscadorComponent,
+    BarUsuarioComponent,
+    BarSubtareaComponent,
   ],
   imports: [
     BrowserModule,
