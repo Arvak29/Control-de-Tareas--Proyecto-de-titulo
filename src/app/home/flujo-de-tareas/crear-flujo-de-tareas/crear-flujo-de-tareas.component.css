@@ -1,0 +1,25 @@
+/* Formulario */
+.form-floating {
+  overflow: hidden;
+  text-align: center;
+}
+.form-control#inputNombre {
+  background-color: transparent;
+  border-color: #febd01;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-bottom: 1px solid #febd01;
+  border-radius: 0%;
+  color: #ffffff;
+}
+.form-group {
+  text-align: center;
+}
+.form-control {
+  background-color: transparent;
+  border-color: #febd01;
+  color: #ffffff;
+  box-shadow: none;
+  border-radius: 8px;
+}

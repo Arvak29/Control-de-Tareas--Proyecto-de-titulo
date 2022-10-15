@@ -1,0 +1,27 @@
+/* Boton imprimir */
+.btn-nav {
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+  color: #0d6efd;
+  border: transparent;
+}
+.btn-nav::before {
+  content: "";
+  width: 0;
+  height: 300%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: #0d6efd;
+  transition: 0.5s ease;
+  display: block;
+}
+.btn-nav:hover::before {
+  width: 125%;
+}
+img {
+  position: relative;
+  z-index: 2;
+}

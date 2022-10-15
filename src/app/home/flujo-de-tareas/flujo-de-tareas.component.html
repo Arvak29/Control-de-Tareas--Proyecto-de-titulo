@@ -1,23 +1,23 @@
-<app-nav></app-nav>
-
-
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-lg-6">
-            <div class="row">
-                <div class="col-12 mt-1">
-                    <a class="text-start btn btn-primary col-12" href="/home">Flujo de tareas</a>
-                </div>
-                <div class="col-12 mt-1">
-                    <a class="text-start btn btn-primary col-12" href="/home">Flujo de tareas</a>
-                </div>
-                <div class="col-12 mt-1">
-                    <a class="text-start btn btn-primary col-12" href="/home">Flujo de tareas</a>
-                </div>
-                <div class="col-12 mt-1">
-                    <a class="text-start btn btn-primary col-12" href="/home">Flujo de tareas</a>
-                </div>
-            </div>
+<app-nav-flujo-de-tareas></app-nav-flujo-de-tareas>
+<div class="container-fluid col-lg-6">
+  <div class="col-12 my-1">
+    <div class="card text-white bg shadow-lg border-0 rounded-lg">
+      <app-card-header [titulo]="'Tareas'"></app-card-header>
+      <br />
+      <div class="row justify-content-between px-3">
+        <div class="text-start">
+          <app-buscador></app-buscador>
         </div>
+      </div>
+      <div class="card-body">
+        <app-bar-tarea></app-bar-tarea>
+        <app-bar-tarea></app-bar-tarea>
+        <app-bar-tarea></app-bar-tarea>
+        <app-bar-tarea></app-bar-tarea>
+        <app-bar-tarea></app-bar-tarea>
+        <app-bar-tarea></app-bar-tarea>
+        <app-bar-tarea></app-bar-tarea>
+      </div>
     </div>
+  </div>
 </div>

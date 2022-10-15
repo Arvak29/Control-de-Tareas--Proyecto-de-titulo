@@ -1,59 +1,69 @@
-<app-nav></app-nav>
-
+<br />
 <div class="container-fluid">
-    <div class="row justify-content-center">
-        
-        <div class="col-lg-5">
-            <div class="card shadow-lg border-0 rounded-lg mt-5">
-                <div class="card-header">
-                    <h3 class="text-center text-dark font-weight-light my-1">Crear unidad interna</h3>
-                </div>
-                <div class="card-body">
-
-                    <form [formGroup]="unidad_interna_formulario_Grupo" (ngSubmit)="unidad_interna()">
-
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="inputNombre" type="text" formControlName="nombre"
-                            placeholder="name@example.com" 
-                            [class.is-invalid]="unidad_interna_formulario_Grupo.get('nombre')?.touched && unidad_interna_formulario_Grupo.get('nombre')?.invalid"/>
-                            <label for="inputEmail">Nombre</label>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="inputEmail">Descripción</label>
-                            <textarea class="form-control" id="inputEmail" rows="3" formControlName="descripcion"></textarea>
-                        </div>
-
-                    </form>
-
-                </div>
-                <div class="card-header mt-3">
-                    <h3 class="text-center text-dark font-weight-light my-1">Asignar roles</h3>
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">Roles asignados (Cantidad de roles)</label>
-                        <select multiple class="form-control" id="exampleFormControlSelect2">
-                            <option>Nombre del rol</option>
-                            <option>Nombre del rol</option>
-                            <option>Nombre del rol</option>
-                            <option>Nombre del rol</option>
-                            <option>Nombre del rol</option>
-                            <option>Nombre del rol</option>
-                            <option>Nombre del rol</option>
-                        </select>
-                    </div>
-                </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <div class="card text-white bg shadow-lg border-0 rounded-lg">
+        <app-card-header [titulo]="'Crear unidad interna'"></app-card-header>
+        <div class="card-body">
+          <form
+            [formGroup]="unidad_interna_formulario_Grupo"
+            (ngSubmit)="unidad_interna()"
+          >
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                id="inputNombre"
+                type="text"
+                formControlName="nombre"
+                placeholder="name@example.com"
+                [class.is-invalid]="
+                  unidad_interna_formulario_Grupo.get('nombre')?.touched &&
+                  unidad_interna_formulario_Grupo.get('nombre')?.invalid
+                "
+              />
+              <label for="inputEmail">Nombre</label>
             </div>
-        </div>
-        
-        <div class="col-lg-1 border-0 rounded-lg">
-            <div class="form-floating mt-5">
-                <form [formGroup]="unidad_interna_formulario_Grupo" (ngSubmit)="unidad_interna()">
-                    <button type="submit" class="btn btn-primary col-12 p-3" [disabled]="unidad_interna_formulario_Grupo.invalid">Crear</button>
-                </form>
+
+            <div class="form-group">
+              <label for="inputEmail">Descripción</label>
+              <textarea
+                class="form-control"
+                id="inputEmail"
+                rows="3"
+                formControlName="descripcion"
+              ></textarea>
             </div>
+          </form>
         </div>
-                
+        <app-card-body [titulo]="'Asignar roles'"></app-card-body>
+
+        <div class="card-body">
+          <br />
+          <div class="row">
+            <app-buscador class="col-8"></app-buscador>
+            <button class="btn btn-primary col">Asignar</button>
+          </div>
+          <br />
+          <app-bar-rol></app-bar-rol>
+        </div>
+      </div>
     </div>
+
+    <div class="col-lg-1 border-0 rounded-lg">
+      <div class="form-floating">
+        <form
+          [formGroup]="unidad_interna_formulario_Grupo"
+          (ngSubmit)="unidad_interna()"
+        >
+          <button
+            type="submit"
+            class="btn btn-primary col-12 p-3"
+            [disabled]="unidad_interna_formulario_Grupo.invalid"
+          >
+            Crear
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

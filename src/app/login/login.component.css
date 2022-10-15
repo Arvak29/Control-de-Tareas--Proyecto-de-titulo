@@ -23,8 +23,8 @@
 
 /* Formulario */
 .form-floating {
-  color: #febd01;
   overflow: hidden;
+  text-align: center;
 }
 .form-control {
   background-color: transparent;
@@ -32,22 +32,16 @@
   border-top: transparent;
   border-left: transparent;
   border-right: transparent;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #febd01;
   border-radius: 0%;
-  color: #febd01;
+  color: #ffffff;
 }
-
-.btn-primary {
-  background-color: #0c8ce9;
-  border-color: #0c8ce9;
-  overflow: hidden;
+.form-group {
+  text-align: center;
 }
-
-.btn-primary:hover,
-.btn-primary:active,
-.btn-primary:visited,
-.btn-primary:focus {
-  background-color: #274cd0;
-  border-color: #274cd0;
+.form-control {
+  background-color: transparent;
+  border-color: #febd01;
+  color: #ffffff;
   box-shadow: none;
 }
