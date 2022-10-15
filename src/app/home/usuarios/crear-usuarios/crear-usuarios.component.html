@@ -1,24 +1,32 @@
 <app-nav></app-nav>
 <div class="container-fluid">
   <div class="row justify-content-center">
-    <div class="col-lg-2 border-0 rounded-lg pb-1">
-      <div class="card text-white bg shadow-lg border-0 rounded-lg">
+    <div class="col-lg-2 col-md-4 col-8 border-0 rounded-lg pb-1">
+      <div class="card bg shadow-lg border-0 rounded-lg">
         <div class="card-body">
-          <img
-            src="/assets/img/Perfil.png"
-            class="img-circle"
-            alt="Cinque Terre"
-          />
+          <div id="perfil">
+            <img
+              src="/assets/img/Perfil.png"
+              class="img-circle"
+              alt="Cinque Terre"
+            />
+          </div>
 
           <div class="form-floating mt-3">
-            <a class="btn btn-primary col-12 p-3" href="./usuarios"
+            <a
+              type="button"
+              class="btn btn-primary col-12 p-3"
+              href="./usuarios"
               >Subir imagen</a
             >
+            <button type="button" class="btn btn-primary btn-lg">
+              Subir imagen
+            </button>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-4 col-md-12">
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Detalle'"></app-card-header>
         <div class="card-body">

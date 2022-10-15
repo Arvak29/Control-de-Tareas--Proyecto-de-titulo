@@ -1,12 +1,13 @@
 .card-header {
+  background-color: #252936;
   position: relative;
   color: #ffffff;
 }
 
 .linea {
   position: absolute;
-  left: 10px;
-  right: 10px;
+  left: 1px;
+  right: 1px;
   bottom: 0%;
   border-bottom: 1px solid #40ed9a;
 }
