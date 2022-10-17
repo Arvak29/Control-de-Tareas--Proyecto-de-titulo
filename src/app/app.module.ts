@@ -35,6 +35,7 @@ import { BuscadorComponent } from './home/componentes-diseno/buscador/buscador.c
 import { BarUsuarioComponent } from './home/componentes-diseno/bar-usuario/bar-usuario.component';
 import { BarSubtareaComponent } from './home/componentes-diseno/bar-subtarea/bar-subtarea.component';
 import { BarRolComponent } from './home/componentes-diseno/bar-rol/bar-rol.component';
+import { TareaComponent } from './home/tareas/tarea/tarea.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
   { path: 'crear_flujo_de_tareas', component: CrearFlujoDeTareasComponent },
   { path: 'ver_flujo_de_tareas', component: VerFlujoDeTareasComponent },
   { path: 'tareas', component: TareasComponent },
+  { path: 'tarea', component: TareaComponent },
   { path: 'crear_tarea', component: CrearTareaComponent },
   { path: 'nav_tarea', component: NavTareaComponent },
   { path: 'p', component: BarTareaComponent },
@@ -72,6 +74,7 @@ const appRoutes: Routes = [
     VerFlujoDeTareasComponent,
     NavFlujoDeTareasComponent,
     TareasComponent,
+    TareaComponent,
     CrearTareaComponent,
     NavTareaComponent,
     BarraComponent,

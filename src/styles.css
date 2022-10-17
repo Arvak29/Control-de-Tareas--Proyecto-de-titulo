@@ -92,3 +92,7 @@ a {
 .btn {
   box-shadow: none !important;
 }
+
+.progress {
+  height: 10px !important;
+}
