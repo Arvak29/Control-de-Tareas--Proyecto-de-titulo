@@ -1,4 +1,4 @@
-<br />
+<app-nav-unidad></app-nav-unidad>
 <div class="container-fluid col-lg-6">
   <div class="col-12 my-1">
     <div class="card text-white bg shadow-lg border-0 rounded-lg">
@@ -6,19 +6,13 @@
         [titulo]="'Lista de unidades internas'"
       ></app-card-header>
       <br />
-      <div class="row justify-content-between px-3">
-        <div class="col-8 text-start">
+      <div class="row justify-content-between">
+        <div class="col-12 text-start">
           <app-buscador></app-buscador>
-        </div>
-
-        <div class="col text-end">
-          <button class="btn btn-nav a" routerLink="/crear_unidad_interna/">
-            <i><img src="../assets/img/agregar.svg" alt="" /></i>
-          </button>
         </div>
       </div>
       <div class="card-body">
-        <table class="table table-striped table-dark">
+        <table class="table">
           <thead>
             <tr>
               <th scope="col">ID</th>
@@ -30,12 +24,38 @@
             <tr>
               <th scope="row">#001</th>
               <td>unidad 1</td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">#002</th>
-              <td>unidad 2</td>
-              <td></td>
+              <td>
+                <div class="text-end">
+                  <button class="btn btn-nav a">
+                    <i
+                      ><img
+                        alt=""
+                        src="../assets/img/edit.svg"
+                        routerLink="/editar_unidad_interna"
+                    /></i>
+                  </button>
+                  <button class="btn btn-nav a">
+                    <i><img alt="" src="../assets/img/x.svg" /></i>
+                  </button>
+                </div>
+                <!--
+                  <button
+                    >(click)="eliminar(rol.id_rol)"
+                    type="button"
+                    class="btn btn-danger"
+                  >
+                    Eliminar
+                  </button>
+                  <button
+                    (click)="modificar(rol.id_rol)"
+                    type="button"
+                    class="btn btn-success"
+                  >
+                    Modificar
+                  </button>
+
+                -->
+              </td>
             </tr>
           </tbody>
         </table>

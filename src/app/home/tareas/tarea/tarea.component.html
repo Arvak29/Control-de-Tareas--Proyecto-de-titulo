@@ -1,7 +1,7 @@
 <app-nav-tarea></app-nav-tarea>
 <div class="container-fluid">
   <div class="row justify-content-center">
-    <div class="col-lg-4">
+    <div class="col-xs-12 col-sm-11 col-md-7 col-lf-4 col-xl-4 col-xxl-5">
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Nombre de la tarea'"></app-card-header>
         <div class="card-body text-center">
@@ -57,7 +57,7 @@
           </div>
 
           <div class="col text-end">
-            <button class="btn btn-nav a" routerLink="/crear_unidad_interna/">
+            <button class="btn btn-nav a" routerLink="/crear_subordinada">
               <i><img src="../assets/img/agregar.svg" alt="" /></i>
             </button>
           </div>
@@ -101,7 +101,7 @@
       </div>
       <br />
     </div>
-    <div class="col-lg-2 col-12">
+    <div class="col-xs-12 col-sm-11 col-md-3 col-lf-2 col-xl-2 col-xxl-1">
       <div class="container col-lg-12 col-6">
         <div class="row text-center">
           <button type="button" class="btn btn-primary">Terminar</button>
@@ -112,7 +112,13 @@
         </div>
         <br />
         <div class="row text-center">
-          <button type="button" class="btn btn-primary">Reportar</button>
+          <button
+            type="button"
+            routerLink="/reportar_tarea"
+            class="btn btn-primary"
+          >
+            Reportar
+          </button>
         </div>
         <br />
         <div class="row text-center">
@@ -125,4 +131,5 @@
       </div>
     </div>
   </div>
+  <br />
 </div>

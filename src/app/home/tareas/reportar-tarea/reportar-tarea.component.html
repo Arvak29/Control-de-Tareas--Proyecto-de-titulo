@@ -1,0 +1,50 @@
+<app-nav-tarea></app-nav-tarea>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-11 col-md-7 col-lf-4 col-xl-4 col-xxl-5">
+      <div class="card text-white bg shadow-lg border-0 rounded-lg">
+        <app-card-header [titulo]="'Reporte'"></app-card-header>
+        <div class="card-body">
+          <div class="form-group">
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                id="inputNombre"
+                type="text"
+                placeholder="Default input"
+              />
+              <label for="name">Motivo del reporte</label>
+            </div>
+            <br />
+            <label for="exampleFormControlTextarea1">Mensaje</label>
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea2"
+              rows="3"
+            ></textarea>
+            <br />
+            <label for="exampleFormControlTextarea1"
+              >¿Donde esta el problema?</label
+            >
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea3"
+              rows="3"
+            ></textarea>
+            <br />
+          </div>
+        </div>
+      </div>
+      <br />
+    </div>
+    <div class="col-xs-12 col-sm-11 col-md-3 col-lf-2 col-xl-2 col-xxl-1">
+      <div class="container col-lg-12 col-6">
+        <div class="row text-center">
+          <button type="button" class="btn btn-primary">Enviar</button>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<app-nav-tarea></app-nav-tarea>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-11 col-md-7 col-lf-4 col-xl-4 col-xxl-5">
+      <div class="card text-white bg shadow-lg border-0 rounded-lg">
+        <app-card-header [titulo]="'Crear tarea subordinada'"></app-card-header>
+        <div class="card-body">
+          <form [formGroup]="Tarea_formulario" (ngSubmit)="crear_tarea()">
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                id="inputNombre"
+                type="text"
+                formControlName="nombre"
+                placeholder="name@example.com"
+                [class.is-invalid]="
+                  Tarea_formulario.get('nombre')?.touched &&
+                  Tarea_formulario.get('nombre')?.invalid
+                "
+              />
+              <label for="name">Nombre</label>
+            </div>
+
+            <div class="form-group">
+              <label for="descripcion">Descripción</label>
+              <textarea
+                class="form-control"
+                id="inputDescripcion"
+                rows="3"
+                formControlName="descripcion"
+              ></textarea>
+            </div>
+
+            <div class="row">
+              <div class="form-floating mb-3 col-6">
+                <input
+                  class="form-control"
+                  id="inputNombre"
+                  type="text"
+                  formControlName="fecha_inicio"
+                  placeholder="name@example.com"
+                  [class.is-invalid]="
+                    Tarea_formulario.get('fecha_inicio')?.touched &&
+                    Tarea_formulario.get('fecha_inicio')?.invalid
+                  "
+                />
+                <label for="fecha_inicio">fecha_inicio</label>
+              </div>
+
+              <div class="form-floating mb-3 col-6">
+                <input
+                  class="form-control"
+                  id="inputNombre"
+                  type="text"
+                  formControlName="fecha_termino"
+                  placeholder="name@example.com"
+                  [class.is-invalid]="
+                    Tarea_formulario.get('fecha_termino')?.touched &&
+                    Tarea_formulario.get('fecha_termino')?.invalid
+                  "
+                />
+                <label for="fecha_termino">fecha_termino</label>
+              </div>
+            </div>
+          </form>
+          <app-card-body [titulo]="'Asignar responsable'"></app-card-body>
+          <br />
+          <div class="row">
+            <app-buscador class="col-8"></app-buscador>
+            <div class="col text-end">
+              <button
+                class="btn btn-nav a"
+                routerLink="/crear_tarea_subordinada/"
+              >
+                <i><img src="../assets/img/agregar.svg" alt="" /></i>
+              </button>
+            </div>
+            <br />
+            <app-bar-usuario></app-bar-usuario>
+            <br />
+          </div>
+        </div>
+        <br />
+      </div>
+      <br />
+    </div>
+    <div class="col-xs-12 col-sm-11 col-md-3 col-lf-2 col-xl-2 col-xxl-1">
+      <div class="container col-lg-12 col-6">
+        <div class="row text-center">
+          <button type="button" class="btn btn-primary">Crear</button>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>

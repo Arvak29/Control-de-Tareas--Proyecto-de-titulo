@@ -1,11 +1,8 @@
 export class Unidad_Interna {
-    _id?: number;
-    nombre:string;
-    descripcion:string;
-    //Asignar rol?
+  _id?: number;
+  nombre: string;
 
-    constructor(nombre:string,descripcion:string){
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-    }
+  constructor(nombre: string, descripcion: string) {
+    this.nombre = nombre;
+  }
 }

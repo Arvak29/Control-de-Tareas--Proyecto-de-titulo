@@ -38,6 +38,9 @@ a {
 .color-fondo2 {
   background-color: #0f121e;
 }
+.color-fondo3 {
+  background-color: #1d2238;
+}
 .color1 {
   color: #f2f2f2;
 }
@@ -95,4 +98,24 @@ a {
 
 .progress {
   height: 10px !important;
+  background-color: #0f121e !important;
+}
+
+table {
+  color: #ffffff !important;
+  text-align: center;
+  border-color: transparent !important;
+}
+thead tr {
+  background-color: #0f121e !important;
+}
+tr:nth-child(odd) {
+  vertical-align: baseline;
+  background-color: #252936;
+}
+tr:nth-child(even) {
+  background-color: #1a1d26;
+}
+tr:hover {
+  background-color: #090b13;
 }

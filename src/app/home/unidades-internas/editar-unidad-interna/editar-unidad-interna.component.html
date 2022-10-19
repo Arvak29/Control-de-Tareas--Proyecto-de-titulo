@@ -1,2 +1,59 @@
-<p>editar-unidad-interna works!</p>
-<h1>Aun no programado</h1>
+<br />
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-11 col-md-7 col-lf-4 col-xl-4 col-xxl-5">
+      <div class="card text-white bg shadow-lg border-0 rounded-lg">
+        <app-card-header [titulo]="'Crear unidad interna'"></app-card-header>
+        <div class="card-body">
+          <form
+            [formGroup]="unidad_interna_formulario_Grupo"
+            (ngSubmit)="unidad_interna()"
+          >
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                id="inputNombre"
+                type="text"
+                formControlName="nombre"
+                placeholder="name@example.com"
+                [class.is-invalid]="
+                  unidad_interna_formulario_Grupo.get('nombre')?.touched &&
+                  unidad_interna_formulario_Grupo.get('nombre')?.invalid
+                "
+              />
+              <label for="inputEmail">Nombre</label>
+            </div>
+          </form>
+          <app-card-body [titulo]="'Asignar roles'"></app-card-body>
+
+          <div class="card-body">
+            <br />
+            <div class="row">
+              <app-buscador class="col-8"></app-buscador>
+              <button class="btn btn-primary col">Asignar</button>
+            </div>
+          </div>
+          <app-bar-rol></app-bar-rol>
+        </div>
+      </div>
+      <br />
+    </div>
+
+    <div class="col-xs-12 col-sm-11 col-md-3 col-lf-2 col-xl-2 col-xxl-1">
+      <div class="form-floating">
+        <form
+          [formGroup]="unidad_interna_formulario_Grupo"
+          (ngSubmit)="unidad_interna()"
+        >
+          <button
+            type="submit"
+            class="btn btn-primary col-12 p-3"
+            [disabled]="unidad_interna_formulario_Grupo.invalid"
+          >
+            Crear
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

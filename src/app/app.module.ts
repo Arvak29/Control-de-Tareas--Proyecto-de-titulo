@@ -36,11 +36,20 @@ import { BarUsuarioComponent } from './home/componentes-diseno/bar-usuario/bar-u
 import { BarSubtareaComponent } from './home/componentes-diseno/bar-subtarea/bar-subtarea.component';
 import { BarRolComponent } from './home/componentes-diseno/bar-rol/bar-rol.component';
 import { TareaComponent } from './home/tareas/tarea/tarea.component';
+import { UsuarioComponent } from './home/usuarios/usuario/usuario.component';
+import { BarFlujoComponent } from './home/componentes-diseno/bar-flujo/bar-flujo.component';
+import { NavUnidadComponent } from './home/unidades-internas/nav-unidad/nav-unidad.component';
+import { TareaSubordinadaComponent } from './home/tareas/tarea-subordinada/tarea-subordinada.component';
+import { ReportarTareaComponent } from './home/tareas/reportar-tarea/reportar-tarea.component';
+import { AddUsuarioComponent } from './home/usuarios/add-usuario/add-usuario.component';
+import { CrearTareaSubordinadaComponent } from './home/tareas/crear-tarea-subordinada/crear-tarea-subordinada.component';
+import { HistorialComponent } from './home/tareas/historial/historial.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'usuarios', component: UsuariosComponent },
+  { path: 'usuario', component: UsuarioComponent },
   { path: 'crear_usuario', component: CrearUsuariosComponent },
   { path: 'unidades_internas', component: UnidadesInternasComponent },
   { path: 'crear_unidad_interna', component: CrearUnidadInternaComponent },
@@ -51,6 +60,13 @@ const appRoutes: Routes = [
   { path: 'ver_flujo_de_tareas', component: VerFlujoDeTareasComponent },
   { path: 'tareas', component: TareasComponent },
   { path: 'tarea', component: TareaComponent },
+  { path: 'tarea_subordinada', component: TareaSubordinadaComponent },
+  { path: 'historial', component: HistorialComponent },
+  {
+    path: 'crear_subordinada',
+    component: CrearTareaSubordinadaComponent,
+  },
+  { path: 'reportar_tarea', component: ReportarTareaComponent },
   { path: 'crear_tarea', component: CrearTareaComponent },
   { path: 'nav_tarea', component: NavTareaComponent },
   { path: 'p', component: BarTareaComponent },
@@ -63,6 +79,7 @@ const appRoutes: Routes = [
     LoginComponent,
     HomeComponent,
     UsuariosComponent,
+    UsuarioComponent,
     CrearUsuariosComponent,
     NavComponent,
     UnidadesInternasComponent,
@@ -86,6 +103,13 @@ const appRoutes: Routes = [
     BarUsuarioComponent,
     BarSubtareaComponent,
     BarRolComponent,
+    BarFlujoComponent,
+    NavUnidadComponent,
+    TareaSubordinadaComponent,
+    ReportarTareaComponent,
+    AddUsuarioComponent,
+    CrearTareaSubordinadaComponent,
+    HistorialComponent,
   ],
   imports: [
     BrowserModule,

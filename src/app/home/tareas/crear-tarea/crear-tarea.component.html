@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
   <div class="row justify-content-center">
-    <div class="col-lg-5">
+    <div class="col-xs-12 col-sm-11 col-md-7 col-lf-4 col-xl-4 col-xxl-5">
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Crear tarea'"></app-card-header>
         <div class="card-body">
@@ -68,33 +68,56 @@
           <br />
           <div class="row">
             <app-buscador class="col-8"></app-buscador>
-            <button class="btn btn-primary col mx-3">Asignar</button>
+            <div class="col text-end">
+              <button
+                class="btn btn-nav a"
+                routerLink="/crear_tarea_subordinada/"
+              >
+                <i><img src="../assets/img/agregar.svg" alt="" /></i>
+              </button>
+            </div>
+            <br />
+            <app-bar-usuario></app-bar-usuario>
+            <br />
           </div>
-          <br />
-          <app-bar-usuario></app-bar-usuario>
-          <app-card-body [titulo]="'Enlazar tarea'"></app-card-body>
+          <app-card-body [titulo]="'Tarea subordinada'"></app-card-body>
           <br />
           <div class="row">
             <app-buscador class="col-8"></app-buscador>
-            <button class="btn btn-primary col mx-3">Asignar</button>
+            <div class="col text-end">
+              <button class="btn btn-nav a" routerLink="/crear_subordinada">
+                <i><img src="../assets/img/agregar.svg" alt="" /></i>
+              </button>
+            </div>
+            <app-bar-subtarea></app-bar-subtarea>
           </div>
-          <br />
-          <app-bar-subtarea></app-bar-subtarea>
+        </div>
+        <br />
+      </div>
+
+      <!--
+      <div class="col-xs-12 col-sm-11 col-md-3 col-lf-2 col-xl-2 col-xxl-1">
+        <div class="form-floating">
+          <form [formGroup]="Tarea_formulario" (ngSubmit)="crear_tarea()">
+            <button
+              type="submit"
+              class="btn btn-primary col-12 p-3"
+              [disabled]="Tarea_formulario.invalid"
+            >
+              Crear
+            </button>
+          </form>
         </div>
       </div>
+    -->
+      <br />
     </div>
-
-    <div class="col-lg-1 border-0 rounded-lg">
-      <div class="form-floating">
-        <form [formGroup]="Tarea_formulario" (ngSubmit)="crear_tarea()">
-          <button
-            type="submit"
-            class="btn btn-primary col-12 p-3"
-            [disabled]="Tarea_formulario.invalid"
-          >
-            Crear
-          </button>
-        </form>
+    <div class="col-xs-12 col-sm-11 col-md-3 col-lf-2 col-xl-2 col-xxl-1">
+      <div class="container col-lg-12 col-6">
+        <div class="row text-center">
+          <button type="button" class="btn btn-primary">Crear</button>
+        </div>
+        <br />
       </div>
     </div>
   </div>

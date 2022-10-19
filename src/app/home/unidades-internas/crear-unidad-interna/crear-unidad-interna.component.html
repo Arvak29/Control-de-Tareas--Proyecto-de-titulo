@@ -1,7 +1,7 @@
-<br />
+<app-nav-unidad></app-nav-unidad>
 <div class="container-fluid">
   <div class="row justify-content-center">
-    <div class="col-lg-5">
+    <div class="col-xs-12 col-sm-11 col-md-7 col-lf-4 col-xl-4 col-xxl-5">
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Crear unidad interna'"></app-card-header>
         <div class="card-body">
@@ -23,33 +23,23 @@
               />
               <label for="inputEmail">Nombre</label>
             </div>
-
-            <div class="form-group">
-              <label for="inputEmail">Descripción</label>
-              <textarea
-                class="form-control"
-                id="inputEmail"
-                rows="3"
-                formControlName="descripcion"
-              ></textarea>
-            </div>
           </form>
-        </div>
-        <app-card-body [titulo]="'Asignar roles'"></app-card-body>
+          <app-card-body [titulo]="'Asignar roles'"></app-card-body>
 
-        <div class="card-body">
-          <br />
-          <div class="row">
-            <app-buscador class="col-8"></app-buscador>
-            <button class="btn btn-primary col">Asignar</button>
+          <div class="card-body">
+            <br />
+            <div class="row">
+              <app-buscador class="col-8"></app-buscador>
+              <button class="btn btn-primary col">Asignar</button>
+            </div>
           </div>
-          <br />
           <app-bar-rol></app-bar-rol>
         </div>
       </div>
+      <br />
     </div>
 
-    <div class="col-lg-1 border-0 rounded-lg">
+    <div class="col-xs-12 col-sm-11 col-md-3 col-lf-2 col-xl-2 col-xxl-1">
       <div class="form-floating">
         <form
           [formGroup]="unidad_interna_formulario_Grupo"

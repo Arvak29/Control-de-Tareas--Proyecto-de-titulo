@@ -1,21 +1,10 @@
 * {
-  margin: 0%;
-  padding: 0%;
-  align-items: center;
   border-radius: 8px !important;
 }
 .bar-tarea {
   position: relative;
-  margin: 0;
-  padding: 0;
 }
 .btn {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
-  height: 48px;
-  padding: 0;
   background-color: #252936;
   color: #ffffff;
   border-radius: 0%;
@@ -36,4 +25,36 @@
   background-size: cover;
   border-radius: 50%;
   margin-left: 10px;
+}
+
+/* Boton imprimir */
+#boton {
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+  color: #0d6efd;
+  border: transparent;
+}
+#boton::before {
+  content: "";
+  width: 0;
+  height: 300%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: #0f121e;
+  transition: 0.5s ease;
+  display: block;
+}
+#boton:hover::before {
+  width: 125%;
+}
+img {
+  position: relative;
+  z-index: 2;
+}
+
+h6 {
+  align-self: center;
 }
