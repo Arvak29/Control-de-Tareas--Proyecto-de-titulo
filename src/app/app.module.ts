@@ -59,7 +59,7 @@ const appRoutes: Routes = [
   { path: 'crear_flujo_de_tareas', component: CrearFlujoDeTareasComponent },
   { path: 'ver_flujo_de_tareas', component: VerFlujoDeTareasComponent },
   { path: 'tareas', component: TareasComponent },
-  { path: 'tarea', component: TareaComponent },
+  { path: 'tarea/:id', component: TareaComponent },
   { path: 'tarea_subordinada', component: TareaSubordinadaComponent },
   { path: 'historial', component: HistorialComponent },
   {

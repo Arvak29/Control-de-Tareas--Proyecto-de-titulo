@@ -12,11 +12,11 @@
                 class="form-control"
                 id="inputNombre"
                 type="text"
-                formControlName="nombre"
-                placeholder="name@example.com"
+                formControlName="nombre_tarea"
+                placeholder="nombre_tarea"
                 [class.is-invalid]="
-                  Tarea_formulario.get('nombre')?.touched &&
-                  Tarea_formulario.get('nombre')?.invalid
+                  Tarea_formulario.get('nombre_tarea')?.touched &&
+                  Tarea_formulario.get('nombre_tarea')?.invalid
                 "
               />
               <label for="name">Nombre</label>
@@ -29,6 +29,11 @@
                 id="inputDescripcion"
                 rows="3"
                 formControlName="descripcion"
+                placeholder="descripcion"
+                [class.is-invalid]="
+                  Tarea_formulario.get('descripcion')?.touched &&
+                  Tarea_formulario.get('descripcion')?.invalid
+                "
               ></textarea>
             </div>
 
@@ -39,7 +44,7 @@
                   id="inputNombre"
                   type="text"
                   formControlName="fecha_inicio"
-                  placeholder="name@example.com"
+                  placeholder="fecha_inicio"
                   [class.is-invalid]="
                     Tarea_formulario.get('fecha_inicio')?.touched &&
                     Tarea_formulario.get('fecha_inicio')?.invalid
@@ -54,7 +59,7 @@
                   id="inputNombre"
                   type="text"
                   formControlName="fecha_termino"
-                  placeholder="name@example.com"
+                  placeholder="fecha_termino"
                   [class.is-invalid]="
                     Tarea_formulario.get('fecha_termino')?.touched &&
                     Tarea_formulario.get('fecha_termino')?.invalid
@@ -94,31 +99,19 @@
         </div>
         <br />
       </div>
-
-      <!--
-      <div class="col-xs-12 col-sm-11 col-md-3 col-lf-2 col-xl-2 col-xxl-1">
-        <div class="form-floating">
-          <form [formGroup]="Tarea_formulario" (ngSubmit)="crear_tarea()">
-            <button
-              type="submit"
-              class="btn btn-primary col-12 p-3"
-              [disabled]="Tarea_formulario.invalid"
-            >
-              Crear
-            </button>
-          </form>
-        </div>
-      </div>
-    -->
       <br />
     </div>
     <div class="col-xs-12 col-sm-11 col-md-3 col-lf-2 col-xl-2 col-xxl-1">
-      <div class="container col-lg-12 col-6">
-        <div class="row text-center">
-          <button type="button" class="btn btn-primary">Crear</button>
-        </div>
-        <br />
-      </div>
+      <form [formGroup]="Tarea_formulario" (ngSubmit)="crear_tarea()">
+        <button
+          type="submit"
+          class="btn btn-primary col-12 p-3"
+          [disabled]="Tarea_formulario.invalid"
+        >
+          Crear
+        </button>
+      </form>
+      <br />
     </div>
   </div>
 </div>

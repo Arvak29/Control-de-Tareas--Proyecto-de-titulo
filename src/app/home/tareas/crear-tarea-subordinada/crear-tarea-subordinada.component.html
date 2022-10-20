@@ -6,7 +6,8 @@
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Crear tarea subordinada'"></app-card-header>
         <div class="card-body">
-          <form [formGroup]="Tarea_formulario" (ngSubmit)="crear_tarea()">
+          <form>
+            <!--aqui-->
             <div class="form-floating mb-3">
               <input
                 class="form-control"
@@ -14,11 +15,7 @@
                 type="text"
                 formControlName="nombre"
                 placeholder="name@example.com"
-                [class.is-invalid]="
-                  Tarea_formulario.get('nombre')?.touched &&
-                  Tarea_formulario.get('nombre')?.invalid
-                "
-              />
+              /><!--aqui-->
               <label for="name">Nombre</label>
             </div>
 
@@ -40,11 +37,7 @@
                   type="text"
                   formControlName="fecha_inicio"
                   placeholder="name@example.com"
-                  [class.is-invalid]="
-                    Tarea_formulario.get('fecha_inicio')?.touched &&
-                    Tarea_formulario.get('fecha_inicio')?.invalid
-                  "
-                />
+                /><!--aqui-->
                 <label for="fecha_inicio">fecha_inicio</label>
               </div>
 
@@ -55,11 +48,8 @@
                   type="text"
                   formControlName="fecha_termino"
                   placeholder="name@example.com"
-                  [class.is-invalid]="
-                    Tarea_formulario.get('fecha_termino')?.touched &&
-                    Tarea_formulario.get('fecha_termino')?.invalid
-                  "
                 />
+                <!--aqui-->
                 <label for="fecha_termino">fecha_termino</label>
               </div>
             </div>
