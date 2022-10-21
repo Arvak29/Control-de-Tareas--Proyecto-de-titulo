@@ -1,0 +1,36 @@
+<app-nav-rol></app-nav-rol>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card text-white bg shadow-lg border-0 rounded-lg">
+        <app-card-header [titulo]="'Crear rol'"></app-card-header>
+        <div class="card-body">
+          <form [formGroup]="Rol_Grupo" (ngSubmit)="crear_rol()">
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                type="text"
+                formControlName="nombre"
+                placeholder="nombre"
+                [class.is-invalid]="
+                  Rol_Grupo.get('nombre')?.touched &&
+                  Rol_Grupo.get('nombre')?.invalid
+                "
+              />
+              <label for="inputNombre">Nombre</label>
+            </div>
+            <div class="row justify-content-center">
+              <button
+                type="submit"
+                class="btn btn-primary col-6"
+                [disabled]="Rol_Grupo.invalid"
+              >
+                Crear Rol
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

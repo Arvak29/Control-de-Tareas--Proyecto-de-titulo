@@ -19,6 +19,7 @@ import { UnidadesInternasComponent } from './home/unidades-internas/unidades-int
 import { CrearUnidadInternaComponent } from './home/unidades-internas/crear-unidad-interna/crear-unidad-interna.component';
 import { EditarUnidadInternaComponent } from './home/unidades-internas/editar-unidad-interna/editar-unidad-interna.component';
 import { RolesComponent } from './home/roles/roles.component';
+import { RolComponent } from './home/roles/rol/rol.component';
 import { FlujoDeTareasComponent } from './home/flujo-de-tareas/flujo-de-tareas.component';
 import { CrearFlujoDeTareasComponent } from './home/flujo-de-tareas/crear-flujo-de-tareas/crear-flujo-de-tareas.component';
 import { VerFlujoDeTareasComponent } from './home/flujo-de-tareas/ver-flujo-de-tareas/ver-flujo-de-tareas.component';
@@ -27,7 +28,6 @@ import { TareasComponent } from './home/tareas/tareas.component';
 import { CrearTareaComponent } from './home/tareas/crear-tarea/crear-tarea.component';
 import { NavTareaComponent } from './home/tareas/nav-tarea/nav-tarea.component';
 import { BarraComponent } from './home/barra/barra.component';
-import { ComponentesDisenoComponent } from './home/componentes-diseno/componentes-diseno.component';
 import { CardHeaderComponent } from './home/componentes-diseno/card-header/card-header.component';
 import { BarTareaComponent } from './home/componentes-diseno/bar-tarea/bar-tarea.component';
 import { CardBodyComponent } from './home/componentes-diseno/card-body/card-body.component';
@@ -50,6 +50,9 @@ import { FiltroPipe } from './pipes/filtro-Tarea.pipe';
 import { FiltrousuarioPipe } from './pipes/filtro-Usuario.pipe';
 import { FiltroRolPipe } from './pipes/filtro-Rol.pipe';
 import { BarResponsableComponent } from './home/componentes-diseno/bar-responsable/bar-responsable.component';
+import { BarListaRolesComponent } from './home/componentes-diseno/bar-lista-roles/bar-lista-roles.component';
+import { NavRolComponent } from './home/roles/nav-rol/nav-rol.component';
+import { CrearRolComponent } from './home/roles/crear-rol/crear-rol.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -61,6 +64,8 @@ const appRoutes: Routes = [
   { path: 'crear_unidad_interna', component: CrearUnidadInternaComponent },
   { path: 'editar_unidad_interna', component: EditarUnidadInternaComponent },
   { path: 'roles', component: RolesComponent },
+  { path: 'crear_rol', component: CrearRolComponent },
+  { path: 'rol/:id', component: RolComponent },
   { path: 'flujo_de_tareas', component: FlujoDeTareasComponent },
   { path: 'crear_flujo_de_tareas', component: CrearFlujoDeTareasComponent },
   { path: 'ver_flujo_de_tareas', component: VerFlujoDeTareasComponent },
@@ -101,7 +106,6 @@ const appRoutes: Routes = [
     CrearTareaComponent,
     NavTareaComponent,
     BarraComponent,
-    ComponentesDisenoComponent,
     CardHeaderComponent,
     BarTareaComponent,
     CardBodyComponent,
@@ -120,6 +124,10 @@ const appRoutes: Routes = [
     FiltroRolPipe,
     FiltrousuarioPipe,
     BarResponsableComponent,
+    BarListaRolesComponent,
+    RolComponent,
+    NavRolComponent,
+    CrearRolComponent,
   ],
   imports: [
     BrowserModule,

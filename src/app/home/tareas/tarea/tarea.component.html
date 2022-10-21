@@ -111,7 +111,19 @@
         <br />
         <div class="row justify-content-between px-3">
           <div class="col-8 text-start">
-            <app-buscador></app-buscador>
+            <form class="form text-start mb-1">
+              <button>
+                <img src="../assets/img/search.svg" alt="" />
+              </button>
+              <input
+                class="input"
+                placeholder="Buscar..."
+                required=""
+                type="text"
+                name="filtroTarea"
+                [(ngModel)]="filtroUsuario"
+              />
+            </form>
           </div>
           <div class="col text-end">
             <button class="btn btn-nav a" routerLink="/crear_unidad_interna/">
@@ -120,7 +132,11 @@
           </div>
         </div>
         <div class="card-body">
-          <app-bar-responsable></app-bar-responsable>
+          <app-bar-responsable
+            *ngFor="let usuario of ListarUsuario | filtroUsuario: filtroUsuario"
+            [nombre]="usuario.nombre_usuario"
+            [id]="usuario.id_usuario"
+          ></app-bar-responsable>
         </div>
       </div>
       <br />

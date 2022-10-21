@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tareas } from 'src/app/models/tarea';
+import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
 import {
   AgregarTarea,
   Tarea,
@@ -12,9 +13,12 @@ import {
   selector: 'app-tarea',
   templateUrl: './tarea.component.html',
   styleUrls: ['./tarea.component.css'],
-  providers: [TareaService],
+  providers: [TareaService, UsuarioService],
 })
 export class TareaComponent implements OnInit {
+  ListarUsuario: Usuario[] = [];
+  filtroUsuario = '';
+
   tarea: Tarea = {
     id_tarea: '',
     nombre_tarea: '',
@@ -27,10 +31,13 @@ export class TareaComponent implements OnInit {
   constructor(
     private TareaService: TareaService,
     private router: Router,
-    private activeRouter: ActivatedRoute
+    private activeRouter: ActivatedRoute,
+    private UsuarioService: UsuarioService
   ) {}
 
   ngOnInit(): void {
+    this.listarUsuario();
+
     const id_entrada = this.activeRouter.snapshot.params['id'];
     console.log(id_entrada);
 
@@ -43,6 +50,16 @@ export class TareaComponent implements OnInit {
         error: (err) => console.log(err),
       });
     }
+  }
+
+  listarUsuario() {
+    this.UsuarioService.getUsuarios().subscribe(
+      (res) => {
+        console.log(res);
+        this.ListarUsuario = <any>res;
+      },
+      (err) => console.log(err)
+    );
   }
 
   eliminar() {
