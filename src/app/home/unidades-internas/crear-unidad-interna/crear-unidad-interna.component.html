@@ -7,18 +7,20 @@
         <div class="card-body">
           <form
             [formGroup]="unidad_interna_formulario_Grupo"
-            (ngSubmit)="unidad_interna()"
+            (ngSubmit)="crear_unidad()"
           >
             <div class="form-floating mb-3">
               <input
                 class="form-control"
                 id="inputNombre"
                 type="text"
-                formControlName="nombre"
-                placeholder="name@example.com"
+                formControlName="nombre_unidad_i"
+                placeholder="nombre_unidad_i"
                 [class.is-invalid]="
-                  unidad_interna_formulario_Grupo.get('nombre')?.touched &&
-                  unidad_interna_formulario_Grupo.get('nombre')?.invalid
+                  unidad_interna_formulario_Grupo.get('nombre_unidad_i')
+                    ?.touched &&
+                  unidad_interna_formulario_Grupo.get('nombre_unidad_i')
+                    ?.invalid
                 "
               />
               <label for="inputEmail">Nombre</label>
@@ -43,7 +45,7 @@
       <div class="form-floating">
         <form
           [formGroup]="unidad_interna_formulario_Grupo"
-          (ngSubmit)="unidad_interna()"
+          (ngSubmit)="crear_unidad()"
         >
           <button
             type="submit"

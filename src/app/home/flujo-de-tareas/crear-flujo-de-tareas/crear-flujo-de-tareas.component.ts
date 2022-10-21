@@ -18,8 +18,10 @@ export class CrearFlujoDeTareasComponent implements OnInit {
     private FlujoService: FlujoService
   ) {
     this.Crear_Flujo_de_tareas_Grupo = this.fb.group({
-      nombre: ['', Validators.required],
-      descripcion: ['', Validators.required],
+      nombre_flujo: ['', Validators.required],
+      descripcion_flujo: ['', Validators.required],
+      fecha_comienzo: ['', Validators.required],
+      fecha_entrega: ['', Validators.required],
     });
   }
 
@@ -30,6 +32,10 @@ export class CrearFlujoDeTareasComponent implements OnInit {
       nombre_flujo: this.Crear_Flujo_de_tareas_Grupo.get('nombre_flujo')?.value,
       descripcion_flujo:
         this.Crear_Flujo_de_tareas_Grupo.get('descripcion_flujo')?.value,
+      fecha_comienzo:
+        this.Crear_Flujo_de_tareas_Grupo.get('fecha_comienzo')?.value,
+      fecha_entrega:
+        this.Crear_Flujo_de_tareas_Grupo.get('fecha_entrega')?.value,
     };
     this.FlujoService.addFlujo(FLUJO).subscribe();
 

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Unidad_Interna } from 'src/app/models/unidad_interna';
 import {
   AgregarUnidad,
+  Unidad,
   UnidadInternaService,
 } from 'src/app/services/unidad-interna.service';
 
@@ -14,28 +15,54 @@ import {
   providers: [UnidadInternaService],
 })
 export class EditarUnidadInternaComponent implements OnInit {
-  unidad_interna_formulario_Grupo: FormGroup;
+  unidad: Unidad = {
+    id_unidad_i: '',
+    nombre_unidad_i: '',
+  };
 
   constructor(
-    private fb: FormBuilder,
+    private UnidadInternaService: UnidadInternaService,
     private router: Router,
-    private UnidadInternaService: UnidadInternaService
-  ) {
-    this.unidad_interna_formulario_Grupo = this.fb.group({
-      nombre: ['', Validators.required],
-    });
+    private activeRouter: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    const id_entrada = this.activeRouter.snapshot.params['id'];
+    console.log(id_entrada);
+
+    if (id_entrada) {
+      this.UnidadInternaService.getUnidad(id_entrada).subscribe({
+        next: (res: any) => {
+          this.unidad = <any>res[0];
+          console.log(res);
+        },
+        error: (err) => console.log(err),
+      });
+    }
   }
 
-  ngOnInit(): void {}
+  eliminar() {
+    this.UnidadInternaService.deleteUnidad(
+      <any>this.unidad.id_unidad_i
+    ).subscribe(
+      (res) => {
+        console.log('rol eliminado');
+        this.router.navigate(['/unidades_internas']);
+      },
+      (err) => console.log(err)
+    );
+  }
 
-  unidad_interna() {
-    const UNIDAD_INTERNA: AgregarUnidad = {
-      nombre_unidad_i:
-        this.unidad_interna_formulario_Grupo.get('nombre_unidad_i')?.value,
-    };
-
-    console.log(UNIDAD_INTERNA);
-
+  modificar() {
+    this.UnidadInternaService.editUnidad(
+      <any>this.unidad.id_unidad_i,
+      this.unidad
+    ).subscribe({
+      next: (res: any) => {
+        console.log(res);
+      },
+      error: (err) => console.log(err),
+    });
     this.router.navigate(['/unidades_internas']);
   }
 }

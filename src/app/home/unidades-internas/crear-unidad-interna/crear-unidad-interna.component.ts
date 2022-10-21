@@ -28,14 +28,12 @@ export class CrearUnidadInternaComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  unidad_interna() {
-    const UNIDAD_INTERNA: AgregarUnidad = {
+  crear_unidad() {
+    const UNIDAD: AgregarUnidad = {
       nombre_unidad_i:
         this.unidad_interna_formulario_Grupo.get('nombre_unidad_i')?.value,
     };
-
-    console.log(UNIDAD_INTERNA);
-
+    this.UnidadInternaService.addUnidad(UNIDAD).subscribe();
     this.router.navigate(['/unidades_internas']);
   }
 }

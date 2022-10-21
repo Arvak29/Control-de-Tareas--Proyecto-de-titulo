@@ -1,10 +1,9 @@
 <app-nav-flujo-de-tareas></app-nav-flujo-de-tareas>
-
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-11 col-md-7 col-lf-4 col-xl-4 col-xxl-5">
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
-        <app-card-header [titulo]="'Crear flujo de tareas'"></app-card-header>
+        <app-card-header [titulo]="'Crear tarea'"></app-card-header>
         <div class="card-body">
           <form
             [formGroup]="Crear_Flujo_de_tareas_Grupo"
@@ -15,68 +14,111 @@
                 class="form-control"
                 id="inputNombre"
                 type="text"
-                formControlName="nombre"
-                placeholder="name@example.com"
+                placeholder="nombre_flujo"
+                formControlName="nombre_flujo"
                 [class.is-invalid]="
-                  Crear_Flujo_de_tareas_Grupo.get('nombre')?.touched &&
-                  Crear_Flujo_de_tareas_Grupo.get('nombre')?.invalid
+                  Crear_Flujo_de_tareas_Grupo.get('nombre_flujo')?.touched &&
+                  Crear_Flujo_de_tareas_Grupo.get('nombre_flujo')?.invalid
                 "
               />
-              <label for="inputEmail">Nombre</label>
+              <label for="inputNombre">Nombre</label>
             </div>
 
             <div class="form-group">
-              <label for="inputEmail">Descripción</label>
+              <label for="descripcion">Descripción</label>
               <textarea
                 class="form-control"
-                id="inputEmail"
+                id="inputDescripcion"
                 rows="3"
-                formControlName="descripcion"
+                formControlName="descripcion_flujo"
+                placeholder="descripcion_flujo"
+                [class.is-invalid]="
+                  Crear_Flujo_de_tareas_Grupo.get('descripcion_flujo')
+                    ?.touched &&
+                  Crear_Flujo_de_tareas_Grupo.get('descripcion_flujo')?.invalid
+                "
               ></textarea>
             </div>
-            <app-card-body [titulo]="'Tarea subordinada'"></app-card-body>
 
-            <div class="card-body">
-              <br />
-              <div class="row">
-                <app-buscador class="col-8"></app-buscador>
-                <button class="btn btn-primary col">Crear Subtarea</button>
+            <div class="row">
+              <div class="form-floating mb-3 col-6">
+                <input
+                  class="form-control"
+                  id="inputNombre"
+                  type="text"
+                  formControlName="fecha_comienzo"
+                  placeholder="fecha_comienzo"
+                  [class.is-invalid]="
+                    Crear_Flujo_de_tareas_Grupo.get('fecha_comienzo')
+                      ?.touched &&
+                    Crear_Flujo_de_tareas_Grupo.get('fecha_comienzo')?.invalid
+                  "
+                />
+                <label for="fecha_comienzo">fecha_comienzo</label>
               </div>
-              <br />
-              <app-bar-subtarea></app-bar-subtarea>
+
+              <div class="form-floating mb-3 col-6">
+                <input
+                  class="form-control"
+                  id="inputNombre"
+                  type="text"
+                  formControlName="fecha_entrega"
+                  placeholder="fecha_entrega"
+                  [class.is-invalid]="
+                    Crear_Flujo_de_tareas_Grupo.get('fecha_entrega')?.touched &&
+                    Crear_Flujo_de_tareas_Grupo.get('fecha_entrega')?.invalid
+                  "
+                />
+                <label for="fecha_entrega">fecha_entrega</label>
+              </div>
             </div>
           </form>
-        </div>
-      </div>
-      <br />
-    </div>
-
-    <!--
-      <div class="col-lg-1 border-0 rounded-lg">
-        <div class="form-floating">
-          <form
-            [formGroup]="Crear_Flujo_de_tareas_Grupo"
-            (ngSubmit)="crear_flujo_de_tareas()"
-          >
-            <button
-              type="submit"
-              class="btn btn-primary col-12 p-3"
-              [disabled]="Crear_Flujo_de_tareas_Grupo.invalid"
-            >
-              Crear
-            </button>
-          </form>
-        </div>
-      </div>
-    -->
-
-    <div class="col-xs-12 col-sm-11 col-md-3 col-lf-2 col-xl-2 col-xxl-1">
-      <div class="container col-lg-12 col-6">
-        <div class="row text-center">
-          <button type="button" class="btn btn-primary">Crear</button>
+          <app-card-body [titulo]="'Asignar responsable'"></app-card-body>
+          <br />
+          <div class="row">
+            <app-buscador class="col-8"></app-buscador>
+            <div class="col text-end">
+              <button
+                class="btn btn-nav a"
+                routerLink="/crear_tarea_subordinada/"
+              >
+                <i><img src="../assets/img/agregar.svg" alt="" /></i>
+              </button>
+            </div>
+            <br />
+            <app-bar-responsable></app-bar-responsable>
+            <br />
+          </div>
+          <app-card-body [titulo]="'Tarea subordinada'"></app-card-body>
+          <br />
+          <div class="row">
+            <app-buscador class="col-8"></app-buscador>
+            <div class="col text-end">
+              <button class="btn btn-nav a" routerLink="/crear_subordinada">
+                <i><img src="../assets/img/agregar.svg" alt="" /></i>
+              </button>
+            </div>
+            <app-bar-subtarea></app-bar-subtarea>
+          </div>
         </div>
         <br />
       </div>
+      <br />
+    </div>
+    <div class="col-xs-12 col-sm-11 col-md-3 col-lf-2 col-xl-2 col-xxl-1">
+      <form
+        [formGroup]="Crear_Flujo_de_tareas_Grupo"
+        (ngSubmit)="crear_flujo_de_tareas()"
+      >
+        <button
+          type="submit"
+          class="btn btn-primary col-12 p-3"
+          [disabled]="Crear_Flujo_de_tareas_Grupo.invalid"
+        >
+          Crear
+        </button>
+      </form>
+      <br />
     </div>
   </div>
 </div>

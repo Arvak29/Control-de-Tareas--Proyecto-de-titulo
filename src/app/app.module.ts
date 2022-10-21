@@ -56,6 +56,7 @@ import { CrearRolComponent } from './home/roles/crear-rol/crear-rol.component';
 import { FiltroUnidadPipe } from './pipes/filtro-unidad.pipe';
 import { FiltroFlujoPipe } from './pipes/filtro-flujo.pipe';
 import { FiltroSubordinadaPipe } from './pipes/filtro-subordinada.pipe';
+import { BarUnidadComponent } from './home/componentes-diseno/bar-unidad/bar-unidad.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -65,7 +66,7 @@ const appRoutes: Routes = [
   { path: 'crear_usuario', component: CrearUsuariosComponent },
   { path: 'unidades_internas', component: UnidadesInternasComponent },
   { path: 'crear_unidad_interna', component: CrearUnidadInternaComponent },
-  { path: 'editar_unidad_interna', component: EditarUnidadInternaComponent },
+  { path: 'unidad_interna/:id', component: EditarUnidadInternaComponent },
   { path: 'roles', component: RolesComponent },
   { path: 'crear_rol', component: CrearRolComponent },
   { path: 'rol/:id', component: RolComponent },
@@ -134,6 +135,7 @@ const appRoutes: Routes = [
     FiltroUnidadPipe,
     FiltroFlujoPipe,
     FiltroSubordinadaPipe,
+    BarUnidadComponent,
   ],
   imports: [
     BrowserModule,
