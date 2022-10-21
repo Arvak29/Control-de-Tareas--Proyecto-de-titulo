@@ -6,7 +6,19 @@
       <br />
       <div class="row justify-content-between px-3">
         <div class="col-8 text-start">
-          <app-buscador></app-buscador>
+          <form class="form text-start mb-1">
+            <button>
+              <img src="../assets/img/search.svg" alt="" />
+            </button>
+            <input
+              class="input"
+              placeholder="Buscar..."
+              required=""
+              type="text"
+              name="filtroTarea"
+              [(ngModel)]="filtroTarea"
+            />
+          </form>
         </div>
 
         <div class="col text-end">
@@ -15,9 +27,10 @@
           </button>
         </div>
       </div>
+
       <div class="card-body">
         <app-bar-tarea
-          *ngFor="let tarea of ListarTarea"
+          *ngFor="let tarea of ListarTarea | filtro: filtroTarea"
           [titulo]="tarea.nombre_tarea"
           [id]="tarea.id_tarea"
         ></app-bar-tarea>

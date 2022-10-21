@@ -2,5 +2,12 @@
   <button>
     <img src="../assets/img/search.svg" alt="" />
   </button>
-  <input class="input" placeholder="Buscar" required="" type="text" />
+  <input
+    class="input"
+    placeholder="Buscar..."
+    required=""
+    type="text"
+    name="filtroTarea"
+    [(ngModel)]="filtroTarea"
+  />
 </form>

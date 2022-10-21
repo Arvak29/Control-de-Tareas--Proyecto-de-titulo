@@ -45,11 +45,17 @@ import { AddUsuarioComponent } from './home/usuarios/add-usuario/add-usuario.com
 import { CrearTareaSubordinadaComponent } from './home/tareas/crear-tarea-subordinada/crear-tarea-subordinada.component';
 import { HistorialComponent } from './home/tareas/historial/historial.component';
 
+//pipes
+import { FiltroPipe } from './pipes/filtro-Tarea.pipe';
+import { FiltrousuarioPipe } from './pipes/filtro-Usuario.pipe';
+import { FiltroRolPipe } from './pipes/filtro-Rol.pipe';
+import { BarResponsableComponent } from './home/componentes-diseno/bar-responsable/bar-responsable.component';
+
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'usuarios', component: UsuariosComponent },
-  { path: 'usuario', component: UsuarioComponent },
+  { path: 'usuario/:id', component: UsuarioComponent },
   { path: 'crear_usuario', component: CrearUsuariosComponent },
   { path: 'unidades_internas', component: UnidadesInternasComponent },
   { path: 'crear_unidad_interna', component: CrearUnidadInternaComponent },
@@ -110,6 +116,10 @@ const appRoutes: Routes = [
     AddUsuarioComponent,
     CrearTareaSubordinadaComponent,
     HistorialComponent,
+    FiltroPipe,
+    FiltroRolPipe,
+    FiltrousuarioPipe,
+    BarResponsableComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,39 +1,63 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Usuario } from 'src/app/models/usuario';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { Usuario } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
   styleUrls: ['./usuario.component.css'],
+  providers: [UsuarioService],
 })
 export class UsuarioComponent implements OnInit {
-  Crear_Usuario_Grupo: FormGroup;
+  usuario: Usuario = {
+    nombre_usuario: '',
+    email_usuario: '',
+    password_usuario: '',
+    id_rol: '',
+  };
 
-  constructor(private fb: FormBuilder, private router: Router) {
-    this.Crear_Usuario_Grupo = this.fb.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
-      RUT: ['', Validators.required],
-      email: ['', Validators.required],
-      telefono: ['', Validators.required],
-    });
+  constructor(
+    private UsuarioService: UsuarioService,
+    private router: Router,
+    private activeRouter: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    const id_entrada = this.activeRouter.snapshot.params['id'];
+    console.log(id_entrada);
+
+    if (id_entrada) {
+      this.UsuarioService.getUsuario(id_entrada).subscribe({
+        next: (res: any) => {
+          this.usuario = <any>res[0];
+          console.log(res);
+        },
+        error: (err) => console.log(err),
+      });
+    }
   }
 
-  ngOnInit(): void {}
+  modificar() {
+    this.UsuarioService.editUsuario(
+      <any>this.usuario.id_usuario,
+      this.usuario
+    ).subscribe({
+      next: (res: any) => {
+        console.log(res);
+      },
+      error: (err) => console.log(err),
+    });
+    this.router.navigate(['/usuarios']);
+  }
 
-  crear_usuario() {
-    const USUARIO: Usuario = {
-      nombre: this.Crear_Usuario_Grupo.get('nombre')?.value,
-      apellido: this.Crear_Usuario_Grupo.get('apellido')?.value,
-      RUT: this.Crear_Usuario_Grupo.get('RUT')?.value,
-      email: this.Crear_Usuario_Grupo.get('email')?.value,
-      telefono: this.Crear_Usuario_Grupo.get('telefono')?.value,
-    };
-
-    console.log(USUARIO);
-
-    this.router.navigate(['/crear_usuario']);
+  eliminar() {
+    this.UsuarioService.deleteUsuario(<any>this.usuario.id_usuario).subscribe(
+      (res) => {
+        console.log('usuario eliminado');
+        this.router.navigate(['/usuarios']);
+      },
+      (err) => console.log(err)
+    );
   }
 }

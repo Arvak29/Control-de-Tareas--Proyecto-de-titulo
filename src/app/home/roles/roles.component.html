@@ -44,7 +44,19 @@
 
         <div class="card-body">
           <div class="col-12 text-start">
-            <app-buscador></app-buscador>
+            <form class="form text-start mb-1">
+              <button>
+                <img src="../assets/img/search.svg" alt="" />
+              </button>
+              <input
+                class="input"
+                placeholder="Buscar..."
+                required=""
+                type="text"
+                name="filtroTarea"
+                [(ngModel)]="filtroRol"
+              />
+            </form>
             <br />
           </div>
           <table class="table">
@@ -56,7 +68,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let rol of ListarRol">
+              <tr *ngFor="let rol of ListarRol | filtroRol: filtroRol">
                 <th scope="row">{{ rol.id_rol }}</th>
                 <td>{{ rol.nombre }}</td>
                 <td>

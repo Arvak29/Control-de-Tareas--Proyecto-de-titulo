@@ -6,60 +6,27 @@
       <br />
       <div class="row justify-content-between px-3">
         <div class="col-12 text-start">
-          <app-buscador></app-buscador>
+          <form class="form text-start mb-1">
+            <button>
+              <img src="../assets/img/search.svg" alt="" />
+            </button>
+            <input
+              class="input"
+              placeholder="Buscar..."
+              required=""
+              type="text"
+              name="filtroTarea"
+              [(ngModel)]="filtroUsuario"
+            />
+          </form>
         </div>
-        <div class="card-body">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">RUT</th>
-                <th scope="col">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Prueba</td>
-                <td>Prueba</td>
-                <td>Prueba</td>
-                <td>
-                  <div class="col text-end">
-                    <button class="btn btn-nav a">
-                      <i
-                        ><img
-                          alt=""
-                          src="../assets/img/edit.svg"
-                          routerLink="/usuario"
-                      /></i>
-                    </button>
-                    <button class="btn btn-nav a">
-                      <i><img alt="" src="../assets/img/x.svg" /></i>
-                    </button>
-                  </div>
-                  <!--
-                    <button
-                      >(click)="eliminar(rol.id_rol)"
-                      type="button"
-                      class="btn btn-danger"
-                    >
-                      Eliminar
-                    </button>
-                    <button
-                      (click)="modificar(rol.id_rol)"
-                      type="button"
-                      class="btn btn-success"
-                    >
-                      Modificar
-                    </button>
 
-                  -->
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="card-body">
+          <app-bar-usuario
+            *ngFor="let usuario of ListarUsuario | filtroUsuario: filtroUsuario"
+            [nombre]="usuario.nombre_usuario"
+            [id]="usuario.id_usuario"
+          ></app-bar-usuario>
         </div>
       </div>
     </div>

@@ -8,71 +8,68 @@ import { AgregarRol, Rol, RolService } from '../../services/rol.service';
   selector: 'app-roles',
   templateUrl: './roles.component.html',
   styleUrls: ['./roles.component.css'],
-  providers:[RolService]
+  providers: [RolService],
 })
 export class RolesComponent implements OnInit {
-
   Rol_Grupo: FormGroup;
   ListarRol: Roles[] = [];
+  filtroRol = '';
 
-  rol: Rol={
-    id_rol:'',
-    nombre:''
-  }
+  rol: Rol = {
+    id_rol: '',
+    nombre: '',
+  };
 
-  constructor(private fb: FormBuilder, 
-              private router: Router,
-              private RolService : RolService) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private RolService: RolService
+  ) {
     this.Rol_Grupo = this.fb.group({
       nombre: ['', Validators.required],
-    })
+    });
   }
 
   ngOnInit(): void {
     this.listarRol();
   }
 
-  listarRol()
-  {
+  listarRol() {
     this.RolService.getRol().subscribe(
-        res=>{
-          console.log(res);
-          this.ListarRol=<any>res;
+      (res) => {
+        console.log(res);
+        this.ListarRol = <any>res;
       },
-      err => console.log(err)
+      (err) => console.log(err)
     );
   }
-  
-  crear_rol(){
 
+  crear_rol() {
     const ROL: AgregarRol = {
       nombre: this.Rol_Grupo.get('nombre')?.value,
-    }
+    };
     this.RolService.addRol(ROL).subscribe();
     this.listarRol();
   }
 
-  agregar(){
+  agregar() {
     delete this.rol.id_rol;
 
     this.RolService.addRol(this.rol).subscribe();
     this.listarRol();
   }
 
-
-  eliminar(id:number)
-  {
+  eliminar(id: number) {
     this.RolService.deleteRol(id).subscribe(
-      res=>{
+      (res) => {
         console.log('rol eliminado');
         this.listarRol();
       },
-      err=> console.log(err)
+      (err) => console.log(err)
     );
   }
 
-  modificar(id:number){
-    this.router.navigate(['/edit/'+id])
+  modificar(id: number) {
+    this.router.navigate(['/edit/' + id]);
   }
-
 }

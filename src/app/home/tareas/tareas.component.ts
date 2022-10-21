@@ -42,6 +42,8 @@ export class TareasComponent implements OnInit {
     });
   }
 
+  filtroTarea = '';
+
   ngOnInit(): void {
     this.listarTarea();
   }
@@ -54,6 +56,16 @@ export class TareasComponent implements OnInit {
       },
       (err) => console.log(err)
     );
+  }
+
+  transform(value: any, arg: any): any {
+    const resultado = [];
+    for (const tarea of value) {
+      if (tarea.nombre_tarea.indexOf(arg) > -1) {
+        resultado.push(tarea);
+      }
+    }
+    return resultado;
   }
 
   crear_tarea() {

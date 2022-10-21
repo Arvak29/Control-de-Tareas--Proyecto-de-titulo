@@ -22,7 +22,7 @@
     </div>
     <div class="col-lg-4 col-md-12">
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
-        <app-card-header [titulo]="'Detalle'"></app-card-header>
+        <app-card-header [titulo]="'Usuario'"></app-card-header>
         <div class="card-body">
           <form [formGroup]="Crear_Usuario_Grupo" (ngSubmit)="crear_usuario()">
             <div class="form-floating mb-3">
@@ -30,10 +30,10 @@
                 class="form-control"
                 type="text"
                 placeholder="text"
-                formControlName="nombre"
+                formControlName="nombre_usuario"
                 [class.is-invalid]="
-                  Crear_Usuario_Grupo.get('nombre')?.touched &&
-                  Crear_Usuario_Grupo.get('nombre')?.invalid
+                  Crear_Usuario_Grupo.get('nombre_usuario')?.touched &&
+                  Crear_Usuario_Grupo.get('nombre_usuario')?.invalid
                 "
               />
               <label for="inputNombre">Nombre</label>
@@ -43,56 +43,28 @@
               <input
                 class="form-control"
                 type="text"
-                placeholder="text"
-                formControlName="apellido"
+                placeholder="email_usuario"
+                formControlName="email_usuario"
                 [class.is-invalid]="
-                  Crear_Usuario_Grupo.get('apellido')?.touched &&
-                  Crear_Usuario_Grupo.get('apellido')?.invalid
+                  Crear_Usuario_Grupo.get('email_usuario')?.touched &&
+                  Crear_Usuario_Grupo.get('email_usuario')?.invalid
                 "
               />
-              <label for="inputApellido">Apellido</label>
+              <label for="inputApellido">Email</label>
             </div>
 
             <div class="form-floating mb-3">
               <input
                 class="form-control"
                 type="text"
-                placeholder="text"
-                formControlName="RUT"
+                placeholder="password_usuario"
+                formControlName="password_usuario"
                 [class.is-invalid]="
-                  Crear_Usuario_Grupo.get('RUT')?.touched &&
-                  Crear_Usuario_Grupo.get('RUT')?.invalid
+                  Crear_Usuario_Grupo.get('password_usuario')?.touched &&
+                  Crear_Usuario_Grupo.get('password_usuario')?.invalid
                 "
               />
-              <label for="inputRut">RUT</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <input
-                class="form-control"
-                type="text"
-                placeholder="text"
-                formControlName="email"
-                [class.is-invalid]="
-                  Crear_Usuario_Grupo.get('email')?.touched &&
-                  Crear_Usuario_Grupo.get('email')?.invalid
-                "
-              />
-              <label for="inputEmail">Email</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <input
-                class="form-control"
-                type="text"
-                placeholder="text"
-                formControlName="telefono"
-                [class.is-invalid]="
-                  Crear_Usuario_Grupo.get('telefono')?.touched &&
-                  Crear_Usuario_Grupo.get('telefono')?.invalid
-                "
-              />
-              <label for="inputTelefono">Teléfono</label>
+              <label for="inputRut">Password</label>
             </div>
 
             <button
