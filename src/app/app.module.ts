@@ -53,6 +53,9 @@ import { BarResponsableComponent } from './home/componentes-diseno/bar-responsab
 import { BarListaRolesComponent } from './home/componentes-diseno/bar-lista-roles/bar-lista-roles.component';
 import { NavRolComponent } from './home/roles/nav-rol/nav-rol.component';
 import { CrearRolComponent } from './home/roles/crear-rol/crear-rol.component';
+import { FiltroUnidadPipe } from './pipes/filtro-unidad.pipe';
+import { FiltroFlujoPipe } from './pipes/filtro-flujo.pipe';
+import { FiltroSubordinadaPipe } from './pipes/filtro-subordinada.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -68,7 +71,7 @@ const appRoutes: Routes = [
   { path: 'rol/:id', component: RolComponent },
   { path: 'flujo_de_tareas', component: FlujoDeTareasComponent },
   { path: 'crear_flujo_de_tareas', component: CrearFlujoDeTareasComponent },
-  { path: 'ver_flujo_de_tareas', component: VerFlujoDeTareasComponent },
+  { path: 'flujo_de_tarea/:id', component: VerFlujoDeTareasComponent },
   { path: 'tareas', component: TareasComponent },
   { path: 'tarea/:id', component: TareaComponent },
   { path: 'tarea_subordinada', component: TareaSubordinadaComponent },
@@ -128,6 +131,9 @@ const appRoutes: Routes = [
     RolComponent,
     NavRolComponent,
     CrearRolComponent,
+    FiltroUnidadPipe,
+    FiltroFlujoPipe,
+    FiltroSubordinadaPipe,
   ],
   imports: [
     BrowserModule,

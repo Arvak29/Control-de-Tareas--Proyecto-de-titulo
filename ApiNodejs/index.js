@@ -16,6 +16,9 @@ app.set("port", port);
 app.use("/api-rol", require("./rutas-rol"));
 app.use("/api-tarea", require("./rutas-tarea"));
 app.use("/api-usuario", require("./rutas-usuario"));
+app.use("/api-tarea-sub", require("./rutas-tarea-sub"));
+app.use("/api-unidad", require("./rutas-unidad"));
+app.use("/api-flujo", require("./rutas-flujo"));
 
 //iniciar espress
 app.listen(app.get("port"), (error) => {

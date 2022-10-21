@@ -6,13 +6,27 @@
       <br />
       <div class="row justify-content-between px-3">
         <div class="text-start">
-          <app-buscador></app-buscador>
+          <form class="form text-start mb-1">
+            <button>
+              <img src="../assets/img/search.svg" alt="" />
+            </button>
+            <input
+              class="input"
+              placeholder="Buscar..."
+              required=""
+              type="text"
+              name="filtroTarea"
+              [(ngModel)]="filtroFlujo"
+            />
+          </form>
         </div>
       </div>
       <div class="card-body">
-        <app-bar-flujo></app-bar-flujo>
-        <app-bar-flujo></app-bar-flujo>
-        <app-bar-flujo></app-bar-flujo>
+        <app-bar-flujo
+          *ngFor="let flujo of ListarFlujo | filtroFlujo: filtroFlujo"
+          [titulo]="flujo.nombre_flujo"
+          [id]="flujo.id_flujo"
+        ></app-bar-flujo>
       </div>
     </div>
   </div>

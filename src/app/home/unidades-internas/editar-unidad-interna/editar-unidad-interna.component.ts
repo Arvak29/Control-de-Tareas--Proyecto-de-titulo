@@ -2,16 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Unidad_Interna } from 'src/app/models/unidad_interna';
+import {
+  AgregarUnidad,
+  UnidadInternaService,
+} from 'src/app/services/unidad-interna.service';
 
 @Component({
   selector: 'app-editar-unidad-interna',
   templateUrl: './editar-unidad-interna.component.html',
   styleUrls: ['./editar-unidad-interna.component.css'],
+  providers: [UnidadInternaService],
 })
 export class EditarUnidadInternaComponent implements OnInit {
   unidad_interna_formulario_Grupo: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private UnidadInternaService: UnidadInternaService
+  ) {
     this.unidad_interna_formulario_Grupo = this.fb.group({
       nombre: ['', Validators.required],
     });
@@ -20,8 +29,9 @@ export class EditarUnidadInternaComponent implements OnInit {
   ngOnInit(): void {}
 
   unidad_interna() {
-    const UNIDAD_INTERNA: Unidad_Interna = {
-      nombre: this.unidad_interna_formulario_Grupo.get('nombre')?.value,
+    const UNIDAD_INTERNA: AgregarUnidad = {
+      nombre_unidad_i:
+        this.unidad_interna_formulario_Grupo.get('nombre_unidad_i')?.value,
     };
 
     console.log(UNIDAD_INTERNA);
