@@ -32,8 +32,8 @@ export class CrearUsuariosComponent implements OnInit {
   crear_usuario() {
     const USUARIO: AgregarUsuario = {
       nombre_usuario: this.Crear_Usuario_Grupo.get('nombre_usuario')?.value,
-      email_usuario: this.Crear_Usuario_Grupo.get('email')?.value,
-      password_usuario: this.Crear_Usuario_Grupo.get('password')?.value,
+      email_usuario: this.Crear_Usuario_Grupo.get('email_usuario')?.value,
+      password_usuario: this.Crear_Usuario_Grupo.get('password_usuario')?.value,
     };
     this.UsuarioService.addUsuario(USUARIO).subscribe();
     this.router.navigate(['/usuarios']);
