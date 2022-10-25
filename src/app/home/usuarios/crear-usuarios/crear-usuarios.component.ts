@@ -24,6 +24,7 @@ export class CrearUsuariosComponent implements OnInit {
       nombre_usuario: ['', Validators.required],
       email_usuario: ['', Validators.required],
       password_usuario: ['', Validators.required],
+      rol: ['', Validators.required],
     });
   }
 
@@ -34,6 +35,7 @@ export class CrearUsuariosComponent implements OnInit {
       nombre_usuario: this.Crear_Usuario_Grupo.get('nombre_usuario')?.value,
       email_usuario: this.Crear_Usuario_Grupo.get('email_usuario')?.value,
       password_usuario: this.Crear_Usuario_Grupo.get('password_usuario')?.value,
+      rol: this.Crear_Usuario_Grupo.get('rol')?.value,
     };
     this.UsuarioService.addUsuario(USUARIO).subscribe();
     this.router.navigate(['/usuarios']);

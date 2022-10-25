@@ -14,7 +14,7 @@ export class UsuarioComponent implements OnInit {
     nombre_usuario: '',
     email_usuario: '',
     password_usuario: '',
-    id_rol: '',
+    rol: '',
   };
 
   constructor(

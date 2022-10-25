@@ -67,6 +67,20 @@
               <label for="inputRut">Password</label>
             </div>
 
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                type="text"
+                placeholder="rol"
+                formControlName="rol"
+                [class.is-invalid]="
+                  Crear_Usuario_Grupo.get('rol')?.touched &&
+                  Crear_Usuario_Grupo.get('rol')?.invalid
+                "
+              />
+              <label for="inputRut">Rol</label>
+            </div>
+
             <button
               type="submit"
               class="btn btn-primary col-12 p-3"

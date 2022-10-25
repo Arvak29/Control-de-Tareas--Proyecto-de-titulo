@@ -26,10 +26,10 @@ router.get("/:id", (req, res) => {
 
 //agregar usuario ID_ROL NO ESTA PUESTO
 router.post("/", (req, res) => {
-  const { nombre_usuario, email_usuario, password_usuario } = req.body;
+  const { nombre_usuario, email_usuario, password_usuario, rol } = req.body;
 
-  let sql = `insert into tb_usuario(nombre_usuario, email_usuario, password_usuario) 
-            values ('${nombre_usuario}','${email_usuario}','${password_usuario}')`;
+  let sql = `insert into tb_usuario(nombre_usuario, email_usuario, password_usuario, rol) 
+            values ('${nombre_usuario}','${email_usuario}','${password_usuario}', '${rol}')`;
   conexion.query(sql, (err, rows, fields) => {
     if (err) throw err;
     else {
@@ -54,12 +54,13 @@ router.delete("/:id", (req, res) => {
 //modificar AGREGAR DATOS DE DATE Y ID_ROL
 router.put("/:id", (req, res) => {
   const { id } = req.params;
-  const { nombre_usuario, email_usuario, password_usuario } = req.body;
+  const { nombre_usuario, email_usuario, password_usuario, rol } = req.body;
 
   let sql = `update tb_usuario set 
                 nombre_usuario ='${nombre_usuario}',
                 email_usuario ='${email_usuario}',
-                password_usuario ='${password_usuario}'
+                password_usuario ='${password_usuario}',
+                rol ='${rol}'
                 where id_usuario = '${id}'`;
 
   conexion.query(sql, (err, rows, fields) => {
