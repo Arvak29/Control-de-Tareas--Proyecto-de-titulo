@@ -140,3 +140,27 @@
     display: none;
   }
 }
+
+.modal-header {
+  border-color: #40ed9a;
+}
+
+.modal-content {
+  background-color: transparent;
+}
+
+.btn-close {
+  color: #40ed9a;
+}
+
+.modal-dialog {
+  margin-right: 1rem;
+  max-width: 300px;
+}
+
+#perfil {
+  position: relative;
+  text-align: center;
+  justify-content: center;
+  text-align: center;
+}

@@ -50,3 +50,15 @@ img {
   box-shadow: none;
   border-radius: 8px;
 }
+
+.modal-header {
+  border-color: #40ed9a;
+}
+
+.modal-content {
+  background-color: transparent;
+}
+
+.btn-close {
+  color: #40ed9a;
+}

@@ -57,6 +57,7 @@ import { FiltroRolPipe } from './pipes/filtro-Rol.pipe';
 import { FiltroUnidadPipe } from './pipes/filtro-unidad.pipe';
 import { FiltroFlujoPipe } from './pipes/filtro-flujo.pipe';
 import { FiltroSubordinadaPipe } from './pipes/filtro-subordinada.pipe';
+import { BarNotificacionComponent } from './home/componentes-diseno/bar-notificacion/bar-notificacion.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -138,6 +139,7 @@ const appRoutes: Routes = [
     FiltroSubordinadaPipe,
     BarUnidadComponent,
     ModalAddUsuarioComponent,
+    BarNotificacionComponent,
   ],
   imports: [
     BrowserModule,

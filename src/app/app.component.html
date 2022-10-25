@@ -9,11 +9,22 @@
 
   <h1 class="d-none d-md-block me-auto color1">Control de tareas</h1>
 
-  <button class="btn btn-nav form-inline" id="notificacion" href="#!">
+  <button
+    class="btn btn-nav form-inline"
+    id="notificacion"
+    type="button"
+    data-bs-toggle="modal"
+    data-bs-target="#ModalNotificacion"
+  >
     <i><img class="tamano" src="../assets/img/campana.svg" alt="" /></i>
   </button>
 
-  <button class="btn btn-nav form-inline m-3" id="usuario" href="#!">
+  <button
+    class="btn btn-nav form-inline m-3"
+    type="button"
+    data-bs-toggle="modal"
+    data-bs-target="#Modal"
+  >
     <i><img src="../assets/img/user.svg" alt="" /></i>
   </button>
 </nav>
@@ -65,5 +76,76 @@
   </div>
   <div id="layoutSidenav_content">
     <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- Modal usuario-->
+<div
+  class="modal fade"
+  id="Modal"
+  tabindex="-1"
+  aria-labelledby="ModalUsuarioLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable pt-5">
+    <div class="modal-content">
+      <div class="modal-header text-white bg">
+        <h5 class="modal-title" id="ModalUsuarioLabel">Usuario</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body text-white bg">
+        <div class="card-body">
+          <div id="perfil">
+            <img
+              src="/assets/img/Perfil.png"
+              class="img-circle"
+              alt="Cinque Terre"
+            />
+          </div>
+          <br />
+          <h4 class="text-center">nombre</h4>
+          <h5 class="text-center">Juan Carlos</h5>
+          <br />
+          <h4 class="text-center">Rol</h4>
+          <h5 class="text-center">Funcionario</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal notificacion-->
+<div
+  class="modal fade"
+  id="ModalNotificacion"
+  tabindex="-1"
+  aria-labelledby="ModalNotificacionLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable pt-5">
+    <div class="modal-content">
+      <div class="modal-header text-white bg">
+        <h5 class="modal-title" id="ModalNotificacionLabel">notificacion</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="ModalNotificacion"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body text-white bg">
+        <div class="card-body">
+          <app-bar-notificacion></app-bar-notificacion>
+          <app-bar-notificacion></app-bar-notificacion>
+          <app-bar-notificacion></app-bar-notificacion>
+          <app-bar-notificacion></app-bar-notificacion>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

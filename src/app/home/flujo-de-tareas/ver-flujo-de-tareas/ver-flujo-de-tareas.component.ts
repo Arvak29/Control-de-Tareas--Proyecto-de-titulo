@@ -21,6 +21,7 @@ import {
 })
 export class VerFlujoDeTareasComponent implements OnInit {
   ListarUsuario: Usuario[] = [];
+  filtroUsuario = '';
   ListarFlujo: FLUJO[] = [];
   filtroFlujo = '';
   ListarTareaSub: TareaSub[] = [];
