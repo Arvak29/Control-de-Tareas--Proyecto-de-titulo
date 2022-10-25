@@ -24,7 +24,7 @@ export class TareaSubordinadaService {
   }
 
   //eliminar un tarea
-  deleteTarea(id: string) {
+  deleteTareasub(id: string) {
     return this.http.delete(this.url + '/' + id);
   }
 

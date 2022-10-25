@@ -1,15 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {
+  TareaSub,
+  TareaSubordinadaService,
+} from 'src/app/services/tarea-subordinada.service';
 
 @Component({
   selector: 'app-bar-subtarea',
   templateUrl: './bar-subtarea.component.html',
-  styleUrls: ['./bar-subtarea.component.css']
+  styleUrls: ['./bar-subtarea.component.css'],
+  providers: [TareaSubordinadaService],
 })
 export class BarSubtareaComponent implements OnInit {
+  @Input() titulo: string | undefined;
+  @Input() id: string | undefined;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private TareaSubordinadaService: TareaSubordinadaService
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  modificar(id = this.id) {
+    this.router.navigate(['/tarea_subordinada/' + id]);
   }
 
+  eliminar(id = this.id) {
+    this.TareaSubordinadaService.deleteTareasub('/' + id).subscribe(
+      (res) => {
+        console.log('tarea subordinada eliminado');
+      },
+      (err) => console.log(err)
+    );
+  }
 }

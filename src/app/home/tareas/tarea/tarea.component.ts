@@ -4,6 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Tareas } from 'src/app/models/tarea';
 import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
 import {
+  TareaSub,
+  TareaSubordinadaService,
+} from 'src/app/services/tarea-subordinada.service';
+import {
   AgregarTarea,
   Tarea,
   TareaService,
@@ -13,11 +17,13 @@ import {
   selector: 'app-tarea',
   templateUrl: './tarea.component.html',
   styleUrls: ['./tarea.component.css'],
-  providers: [TareaService, UsuarioService],
+  providers: [TareaService, UsuarioService, TareaSubordinadaService],
 })
 export class TareaComponent implements OnInit {
   ListarUsuario: Usuario[] = [];
   filtroUsuario = '';
+  ListarTareaSub: TareaSub[] = [];
+  filtroSubordinada = '';
 
   tarea: Tarea = {
     id_tarea: '',
@@ -32,10 +38,12 @@ export class TareaComponent implements OnInit {
     private TareaService: TareaService,
     private router: Router,
     private activeRouter: ActivatedRoute,
-    private UsuarioService: UsuarioService
+    private UsuarioService: UsuarioService,
+    private TareaSubordinadaService: TareaSubordinadaService
   ) {}
 
   ngOnInit(): void {
+    this.listarTareaSub();
     this.listarUsuario();
 
     const id_entrada = this.activeRouter.snapshot.params['id'];
@@ -50,6 +58,16 @@ export class TareaComponent implements OnInit {
         error: (err) => console.log(err),
       });
     }
+  }
+
+  listarTareaSub() {
+    this.TareaSubordinadaService.getTareasSub().subscribe(
+      (res) => {
+        console.log(res);
+        this.ListarTareaSub = <any>res;
+      },
+      (err) => console.log(err)
+    );
   }
 
   listarUsuario() {

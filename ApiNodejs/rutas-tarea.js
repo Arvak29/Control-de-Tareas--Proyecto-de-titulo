@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const conexion = require("./config/conexion");
 
-//get rol
+//get tarea
 router.get("/", (req, res) => {
   let sql = "select * from tb_tarea";
   conexion.query(sql, (err, rows, fields) => {
@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   });
 });
 
-//get de un rol
+//get de un tarea
 router.get("/:id", (req, res) => {
   const { id } = req.params;
   let sql = "select * from tb_tarea where id_tarea = ?";
@@ -24,7 +24,7 @@ router.get("/:id", (req, res) => {
   });
 });
 
-//agregar rol ID_RESPONTABLE NO ESTA PUESTO
+//agregar tarea ID_RESPONTABLE NO ESTA PUESTO
 router.post("/", (req, res) => {
   const { nombre_tarea, descripcion, fecha_inicio, fecha_termino } = req.body;
 

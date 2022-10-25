@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const conexion = require("./config/conexion");
 
-//get tarea-sub-sub
+//get tarea-sub
 router.get("/", (req, res) => {
   let sql = "select * from tb_tarea_subordinada";
   conexion.query(sql, (err, rows, fields) => {
@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   });
 });
 
-//get de un tarea-sub-sub
+//get de un tarea-sub
 router.get("/:id", (req, res) => {
   const { id } = req.params;
   let sql = "select * from tb_tarea_subordinada where id_tarea_sub = ?";
@@ -24,7 +24,7 @@ router.get("/:id", (req, res) => {
   });
 });
 
-//agregar tarea-sub-sub ID_RESPONTABLE NO ESTA PUESTO
+//agregar tarea-sub
 router.post("/", (req, res) => {
   const { nombre_tarea_sub, descripcion_sub, fecha_comienzo, fecha_entrega } =
     req.body;
@@ -52,7 +52,7 @@ router.delete("/:id", (req, res) => {
   });
 });
 
-//modificar AGREGAR DATOS DE DATE Y ID_RESPONSABLE
+//modificar
 router.put("/:id", (req, res) => {
   const { id } = req.params;
   const { nombre_tarea_sub, descripcion_sub, fecha_comienzo, fecha_entrega } =

@@ -41,22 +41,22 @@ import { BarFlujoComponent } from './home/componentes-diseno/bar-flujo/bar-flujo
 import { NavUnidadComponent } from './home/unidades-internas/nav-unidad/nav-unidad.component';
 import { TareaSubordinadaComponent } from './home/tareas/tarea-subordinada/tarea-subordinada.component';
 import { ReportarTareaComponent } from './home/tareas/reportar-tarea/reportar-tarea.component';
-import { AddUsuarioComponent } from './home/usuarios/add-usuario/add-usuario.component';
 import { CrearTareaSubordinadaComponent } from './home/tareas/crear-tarea-subordinada/crear-tarea-subordinada.component';
 import { HistorialComponent } from './home/tareas/historial/historial.component';
+import { BarUnidadComponent } from './home/componentes-diseno/bar-unidad/bar-unidad.component';
+import { BarListaRolesComponent } from './home/componentes-diseno/bar-lista-roles/bar-lista-roles.component';
+import { BarResponsableComponent } from './home/componentes-diseno/bar-responsable/bar-responsable.component';
+import { NavRolComponent } from './home/roles/nav-rol/nav-rol.component';
+import { CrearRolComponent } from './home/roles/crear-rol/crear-rol.component';
+import { ModalAddUsuarioComponent } from './home/usuarios/modal-add-usuario/modal-add-usuario.component';
 
 //pipes
 import { FiltroPipe } from './pipes/filtro-Tarea.pipe';
 import { FiltrousuarioPipe } from './pipes/filtro-Usuario.pipe';
 import { FiltroRolPipe } from './pipes/filtro-Rol.pipe';
-import { BarResponsableComponent } from './home/componentes-diseno/bar-responsable/bar-responsable.component';
-import { BarListaRolesComponent } from './home/componentes-diseno/bar-lista-roles/bar-lista-roles.component';
-import { NavRolComponent } from './home/roles/nav-rol/nav-rol.component';
-import { CrearRolComponent } from './home/roles/crear-rol/crear-rol.component';
 import { FiltroUnidadPipe } from './pipes/filtro-unidad.pipe';
 import { FiltroFlujoPipe } from './pipes/filtro-flujo.pipe';
 import { FiltroSubordinadaPipe } from './pipes/filtro-subordinada.pipe';
-import { BarUnidadComponent } from './home/componentes-diseno/bar-unidad/bar-unidad.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -75,8 +75,9 @@ const appRoutes: Routes = [
   { path: 'flujo_de_tarea/:id', component: VerFlujoDeTareasComponent },
   { path: 'tareas', component: TareasComponent },
   { path: 'tarea/:id', component: TareaComponent },
-  { path: 'tarea_subordinada', component: TareaSubordinadaComponent },
+  { path: 'tarea_subordinada/:id', component: TareaSubordinadaComponent },
   { path: 'historial', component: HistorialComponent },
+  { path: 'modal_usuario', component: ModalAddUsuarioComponent },
   {
     path: 'crear_subordinada',
     component: CrearTareaSubordinadaComponent,
@@ -85,6 +86,7 @@ const appRoutes: Routes = [
   { path: 'crear_tarea', component: CrearTareaComponent },
   { path: 'nav_tarea', component: NavTareaComponent },
   { path: 'p', component: BarTareaComponent },
+  { path: '**', redirectTo: 'modal_usuario', pathMatch: 'full' },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
@@ -121,7 +123,6 @@ const appRoutes: Routes = [
     NavUnidadComponent,
     TareaSubordinadaComponent,
     ReportarTareaComponent,
-    AddUsuarioComponent,
     CrearTareaSubordinadaComponent,
     HistorialComponent,
     FiltroPipe,
@@ -136,6 +137,7 @@ const appRoutes: Routes = [
     FiltroFlujoPipe,
     FiltroSubordinadaPipe,
     BarUnidadComponent,
+    ModalAddUsuarioComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,18 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filtroSubordinada'
+  name: 'filtroSubordinada',
 })
 export class FiltroSubordinadaPipe implements PipeTransform {
-
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(value: any, arg: any): any {
+    const resultado = [];
+    for (const tareasub of value) {
+      if (
+        tareasub.nombre_tarea_sub.toLowerCase().indexOf(arg.toLowerCase()) > -1
+      ) {
+        resultado.push(tareasub);
+      }
+    }
+    return resultado;
   }
-
 }

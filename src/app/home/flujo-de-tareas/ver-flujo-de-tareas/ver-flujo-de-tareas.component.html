@@ -67,11 +67,23 @@
         <br />
         <div class="row justify-content-between px-3">
           <div class="col-8 text-start">
-            <app-buscador></app-buscador>
+            <form class="form text-start mb-1">
+              <button>
+                <img src="../assets/img/search.svg" alt="" />
+              </button>
+              <input
+                class="input"
+                placeholder="Buscar..."
+                required=""
+                type="text"
+                name="filtroTarea"
+                [(ngModel)]="filtroSubordinada"
+              />
+            </form>
           </div>
 
           <div class="col text-end">
-            <button class="btn btn-nav a" routerLink="/crear_unidad_interna/">
+            <button class="btn btn-nav a" routerLink="/crear_subordinada">
               <i><img src="../assets/img/agregar.svg" alt="" /></i>
             </button>
           </div>
@@ -88,9 +100,15 @@
             ></div>
           </div>
           <br />
-          <app-bar-subtarea></app-bar-subtarea>
-          <app-bar-subtarea></app-bar-subtarea>
-          <app-bar-subtarea></app-bar-subtarea>
+          <app-bar-subtarea
+            *ngFor="
+              let tareasub of ListarTareaSub
+                | filtroSubordinada: filtroSubordinada
+            "
+            [titulo]="tareasub.nombre_tarea_sub"
+            [id]="tareasub.id_tarea_sub"
+            (click)="ngOnInit()"
+          ></app-bar-subtarea>
         </div>
       </div>
       <br />
