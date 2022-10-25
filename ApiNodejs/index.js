@@ -1,30 +1,23 @@
-require("./config/conexion");
-
-const express = require("express");
-const port = process.env.port || 3000;
-
-//express
+const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors');
 const app = express();
 
-//administrar
+//imports
+const tareaRutasPrueba = require('./rutas/rutas-tarea-prueba');
+
+//settings
+app.set('port', 3000);
+
+//middlewares
+app.use(morgan('dev'));
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-//config
-app.set("port", port);
+//routes
+app.use(tareaRutasPrueba);
 
-//rutas
-app.use("/api-rol", require("./rutas-rol"));
-app.use("/api-tarea", require("./rutas-tarea"));
-app.use("/api-usuario", require("./rutas-usuario"));
-app.use("/api-tarea-sub", require("./rutas-tarea-sub"));
-app.use("/api-unidad", require("./rutas-unidad"));
-app.use("/api-flujo", require("./rutas-flujo"));
-
-//iniciar espress
-app.listen(app.get("port"), (error) => {
-  if (error) {
-    console.log("error al iniciar el servidor: " + error);
-  } else {
-    console.log("servidor iniciado en el prueto: " + port);
-  }
-});
+//run
+app.listen(app.get('port'), () => {
+    console.log('Server on Port 3000')
+})
