@@ -1,4 +1,7 @@
-<nav class="sb-topnav color-fondo1 navbar navbar-expand">
+<nav
+  *ngIf="authService.isAuth()"
+  class="sb-topnav color-fondo1 navbar navbar-expand"
+>
   <a class="navbar-brand d-none d-md-block"
     ><h2 class="color2">Process S.A.</h2></a
   >
@@ -20,6 +23,7 @@
   </button>
 
   <button
+    (click)="dataUser()"
     class="btn btn-nav form-inline m-3"
     type="button"
     data-bs-toggle="modal"
@@ -30,11 +34,15 @@
 </nav>
 
 <div id="layoutSidenav">
-  <div id="layoutSidenav_nav">
+  <div *ngIf="authService.isAuth()" id="layoutSidenav_nav">
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
       <div class="color-fondo1 sb-sidenav-menu">
         <div class="nav">
-          <a class="nav-link" routerLink="/home">
+          <a
+            *ngIf="permisosAdministrador()"
+            class="nav-link"
+            routerLink="/home"
+          >
             <div class="sb-nav-link-icon">
               <img src="../assets/img/estado.svg" alt="" />
             </div>
@@ -46,7 +54,11 @@
             </div>
             Tareas
           </a>
-          <a class="nav-link" routerLink="/usuarios">
+          <a
+            *ngIf="permisosAdministrador()"
+            class="nav-link"
+            routerLink="/usuarios"
+          >
             <div class="sb-nav-link-icon">
               <img src="../assets/img/usuario.svg" alt="" />
             </div>
@@ -109,11 +121,19 @@
           </div>
           <br />
           <h4 class="text-center">nombre</h4>
-          <h5 class="text-center">Juan Carlos</h5>
+          <h5 class="text-center">{{ nombre }}</h5>
           <br />
           <h4 class="text-center">Rol</h4>
-          <h5 class="text-center">Funcionario</h5>
+          <h5 class="text-center">{{ rol }}</h5>
         </div>
+        <br />
+        <button
+          type="submit"
+          class="btn btn-primary col-12 p-3"
+          (click)="logOut()"
+        >
+          Cerrar sesión
+        </button>
       </div>
     </div>
   </div>

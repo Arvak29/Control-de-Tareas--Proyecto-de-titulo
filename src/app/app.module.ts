@@ -58,27 +58,79 @@ import { FiltroUnidadPipe } from './pipes/filtro-unidad.pipe';
 import { FiltroFlujoPipe } from './pipes/filtro-flujo.pipe';
 import { FiltroSubordinadaPipe } from './pipes/filtro-subordinada.pipe';
 import { BarNotificacionComponent } from './home/componentes-diseno/bar-notificacion/bar-notificacion.component';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { AuthGuard } from './guard/auth.guard';
+import { RolGuard } from './guard/rol.guard';
 
 const appRoutes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'usuarios', component: UsuariosComponent },
-  { path: 'usuario/:id', component: UsuarioComponent },
-  { path: 'crear_usuario', component: CrearUsuariosComponent },
-  { path: 'unidades_internas', component: UnidadesInternasComponent },
-  { path: 'crear_unidad_interna', component: CrearUnidadInternaComponent },
-  { path: 'unidad_interna/:id', component: EditarUnidadInternaComponent },
-  { path: 'roles', component: RolesComponent },
-  { path: 'crear_rol', component: CrearRolComponent },
-  { path: 'rol/:id', component: RolComponent },
-  { path: 'flujo_de_tareas', component: FlujoDeTareasComponent },
-  { path: 'crear_flujo_de_tareas', component: CrearFlujoDeTareasComponent },
-  { path: 'flujo_de_tarea/:id', component: VerFlujoDeTareasComponent },
-  { path: 'tareas', component: TareasComponent },
-  { path: 'tarea/:id', component: TareaComponent },
-  { path: 'tarea_subordinada/:id', component: TareaSubordinadaComponent },
-  { path: 'historial', component: HistorialComponent },
-  { path: 'modal_usuario', component: ModalAddUsuarioComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  {
+    path: 'usuarios',
+    component: UsuariosComponent,
+    canActivate: [RolGuard],
+    data: { expectedRole: 'Administrador' },
+  },
+  {
+    path: 'usuario/:id',
+    component: UsuarioComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'crear_usuario',
+    component: CrearUsuariosComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'unidades_internas',
+    component: UnidadesInternasComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'crear_unidad_interna',
+    component: CrearUnidadInternaComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'unidad_interna/:id',
+    component: EditarUnidadInternaComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'roles', component: RolesComponent, canActivate: [AuthGuard] },
+  { path: 'crear_rol', component: CrearRolComponent, canActivate: [AuthGuard] },
+  { path: 'rol/:id', component: RolComponent, canActivate: [AuthGuard] },
+  {
+    path: 'flujo_de_tareas',
+    component: FlujoDeTareasComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'crear_flujo_de_tareas',
+    component: CrearFlujoDeTareasComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'flujo_de_tarea/:id',
+    component: VerFlujoDeTareasComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'tareas', component: TareasComponent, canActivate: [AuthGuard] },
+  { path: 'tarea/:id', component: TareaComponent, canActivate: [AuthGuard] },
+  {
+    path: 'tarea_subordinada/:id',
+    component: TareaSubordinadaComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'historial',
+    component: HistorialComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'modal_usuario',
+    component: ModalAddUsuarioComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'crear_subordinada',
     component: CrearTareaSubordinadaComponent,
@@ -87,8 +139,7 @@ const appRoutes: Routes = [
   { path: 'crear_tarea', component: CrearTareaComponent },
   { path: 'nav_tarea', component: NavTareaComponent },
   { path: 'p', component: BarTareaComponent },
-  { path: '**', redirectTo: 'modal_usuario', pathMatch: 'full' },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({
@@ -181,7 +232,10 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

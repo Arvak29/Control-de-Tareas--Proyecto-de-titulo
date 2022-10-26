@@ -71,4 +71,45 @@ router.put("/:id", (req, res) => {
   });
 });
 
+//
+const jwt = require("jsonwebtoken");
+
+router.post("/singin", (req, res) => {
+  const { nombre_usuario, password_usuario } = req.body;
+  conexion.query(
+    "select nombre_usuario,rol from tb_usuario where nombre_usuario=? and password_usuario=?",
+    [nombre_usuario, password_usuario],
+    (err, rows, fields) => {
+      if (!err) {
+        if (rows.length > 0) {
+          let data = JSON.stringify(rows[0]);
+          const token = jwt.sign(data, "stil");
+          res.json({ token });
+        } else {
+          res.json("Usuario y clave incorrrectos");
+        }
+      } else {
+        res.json(rows);
+      }
+    }
+  );
+});
+
+router.post("/test", verifyToken, (req, res) => {
+  res.json("Informacion secreta");
+});
+
+function verifyToken(req, res, next) {
+  if (!req.headers.authorization) return res.status(401).json("No autorizado");
+
+  const token = req.headers.authorization.substr(7);
+  if (token !== "") {
+    const content = jwt.verify(token, "stil");
+    req.data = content;
+    next();
+  } else {
+    res.status(401).json("token vacio");
+  }
+}
+
 module.exports = router;
