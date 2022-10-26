@@ -38,45 +38,45 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
       <div class="color-fondo1 sb-sidenav-menu">
         <div class="nav">
-          <a
-            *ngIf="permisosAdministrador()"
-            class="nav-link"
-            routerLink="/home"
-          >
+          <a *ngIf="permisosPanel()" class="nav-link" routerLink="/home">
             <div class="sb-nav-link-icon">
               <img src="../assets/img/estado.svg" alt="" />
             </div>
             Panel de control
           </a>
-          <a class="nav-link" routerLink="/tareas">
+          <a *ngIf="permisosTareas()" class="nav-link" routerLink="/tareas">
             <div class="sb-nav-link-icon">
               <img src="../assets/img/files.svg" alt="" />
             </div>
             Tareas
           </a>
-          <a
-            *ngIf="permisosAdministrador()"
-            class="nav-link"
-            routerLink="/usuarios"
-          >
+          <a *ngIf="permisosUsuarios()" class="nav-link" routerLink="/usuarios">
             <div class="sb-nav-link-icon">
               <img src="../assets/img/usuario.svg" alt="" />
             </div>
             Usuarios
           </a>
-          <a class="nav-link" routerLink="/roles">
+          <a *ngIf="permisosRoles()" class="nav-link" routerLink="/roles">
             <div class="sb-nav-link-icon">
               <img src="../assets/img/roles.svg" alt="" />
             </div>
             Roles
           </a>
-          <a class="nav-link" routerLink="/flujo_de_tareas">
+          <a
+            *ngIf="permisosFrujos()"
+            class="nav-link"
+            routerLink="/flujo_de_tareas"
+          >
             <div class="sb-nav-link-icon">
               <img src="../assets/img/flujo.svg" alt="" />
             </div>
             Flujos de tareas
           </a>
-          <a class="nav-link" routerLink="/unidades_internas">
+          <a
+            *ngIf="permisosUnidades()"
+            class="nav-link"
+            routerLink="/unidades_internas"
+          >
             <div class="sb-nav-link-icon">
               <img src="../assets/img/usuarios.svg" alt="" />
             </div>
