@@ -1,0 +1,31 @@
+<div class="container-fluid col-lg-6 mt-5">
+  <div class="col-12 my-1">
+    <div class="card text-white bg shadow-lg border-0 rounded-lg">
+      <app-card-header [titulo]="'Notificaciones'"></app-card-header>
+      <br />
+      <div class="row justify-content-between px-3">
+        <div class="col-8 text-start">
+          <form class="form text-start mb-1">
+            <button>
+              <img src="../assets/img/search.svg" alt="" />
+            </button>
+            <input
+              class="input"
+              placeholder="Buscar..."
+              required=""
+              type="text"
+              name="filtroTarea"
+            />
+          </form>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <app-bar-notificacion></app-bar-notificacion>
+        <app-bar-notificacion></app-bar-notificacion>
+        <app-bar-notificacion></app-bar-notificacion>
+        <app-bar-notificacion></app-bar-notificacion>
+      </div>
+    </div>
+  </div>
+</div>

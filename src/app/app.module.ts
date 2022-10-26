@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+
 //Barra de progreso circular
 import { NgCircleProgressModule } from 'ng-circle-progress';
 
@@ -49,6 +51,9 @@ import { BarResponsableComponent } from './home/componentes-diseno/bar-responsab
 import { NavRolComponent } from './home/roles/nav-rol/nav-rol.component';
 import { CrearRolComponent } from './home/roles/crear-rol/crear-rol.component';
 import { ModalAddUsuarioComponent } from './home/usuarios/modal-add-usuario/modal-add-usuario.component';
+import { BarNotificacionComponent } from './home/componentes-diseno/bar-notificacion/bar-notificacion.component';
+import { NotificacionesComponent } from './home/notificaciones/notificaciones.component';
+import { NotificacionComponent } from './home/notificaciones/notificacion/notificacion.component';
 
 //pipes
 import { FiltroPipe } from './pipes/filtro-Tarea.pipe';
@@ -57,8 +62,7 @@ import { FiltroRolPipe } from './pipes/filtro-Rol.pipe';
 import { FiltroUnidadPipe } from './pipes/filtro-unidad.pipe';
 import { FiltroFlujoPipe } from './pipes/filtro-flujo.pipe';
 import { FiltroSubordinadaPipe } from './pipes/filtro-subordinada.pipe';
-import { BarNotificacionComponent } from './home/componentes-diseno/bar-notificacion/bar-notificacion.component';
-import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+
 import { AuthGuard } from './guard/auth.guard';
 import { RolGuard } from './guard/rol.guard';
 
@@ -68,8 +72,7 @@ const appRoutes: Routes = [
   {
     path: 'usuarios',
     component: UsuariosComponent,
-    canActivate: [RolGuard],
-    data: { expectedRole: 'Administrador' },
+    canActivate: [AuthGuard],
   },
   {
     path: 'usuario/:id',
@@ -134,11 +137,34 @@ const appRoutes: Routes = [
   {
     path: 'crear_subordinada',
     component: CrearTareaSubordinadaComponent,
+    canActivate: [AuthGuard],
   },
-  { path: 'reportar_tarea', component: ReportarTareaComponent },
-  { path: 'crear_tarea', component: CrearTareaComponent },
-  { path: 'nav_tarea', component: NavTareaComponent },
-  { path: 'p', component: BarTareaComponent },
+  {
+    path: 'reportar_tarea',
+    component: ReportarTareaComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'reportar_tarea',
+    component: ReportarTareaComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'crear_tarea',
+    component: CrearTareaComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'nav_tarea', component: NavTareaComponent, canActivate: [AuthGuard] },
+  {
+    path: 'notificaciones',
+    component: NotificacionesComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'notificacion', //poner el id
+    component: NotificacionComponent,
+    canActivate: [AuthGuard],
+  },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
@@ -191,6 +217,8 @@ const appRoutes: Routes = [
     BarUnidadComponent,
     ModalAddUsuarioComponent,
     BarNotificacionComponent,
+    NotificacionesComponent,
+    NotificacionComponent,
   ],
   imports: [
     BrowserModule,

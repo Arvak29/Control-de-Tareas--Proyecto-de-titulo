@@ -11,8 +11,8 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   user = {
-    nombre_usuario: 'tuto',
-    password_usuario: 'jim',
+    nombre_usuario: '',
+    password_usuario: '',
   };
 
   constructor(

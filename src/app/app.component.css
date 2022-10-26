@@ -164,3 +164,33 @@
   justify-content: center;
   text-align: center;
 }
+
+h5 {
+  position: relative;
+  text-decoration: none;
+  color: #7b7b7b;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+h5:after {
+  content: "";
+  position: absolute;
+  background-color: #febd01;
+  height: 3px;
+  width: 0;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+}
+
+h5:hover {
+  color: #febd01;
+}
+
+h5:hover:after {
+  width: 100%;
+}
+
+h5:focus {
+  color: #febd01;
+}
