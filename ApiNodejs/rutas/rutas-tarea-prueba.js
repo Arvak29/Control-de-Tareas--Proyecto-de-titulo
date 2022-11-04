@@ -3,7 +3,7 @@ const router = Router();
 const BD = require('../config/configbd');
 
 router.get('/', async (req, res) => {
-    sql = "select * from tarea where id_tarea = 1";
+    sql = "select * from tarea where id_t = 1";
 
     let result = await BD.Open(sql, [], false);
     

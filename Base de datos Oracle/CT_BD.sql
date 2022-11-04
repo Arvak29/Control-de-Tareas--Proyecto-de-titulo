@@ -5,12 +5,12 @@ DROP TABLE TAREA_SUBORDINADA CASCADE CONSTRAINTS;
 DROP TABLE FLUJO_TAREA CASCADE CONSTRAINTS;
 DROP TABLE UNIDAD_INTERNA CASCADE CONSTRAINTS;
 DROP TABLE ROL CASCADE CONSTRAINTS;
+DROP TABLE CARGO CASCADE CONSTRAINTS;
 DROP TABLE USUARIO CASCADE CONSTRAINTS;
 DROP TABLE REPORTE_PROBLEMA CASCADE CONSTRAINTS;
 DROP TABLE ASIGNACION_TAREA CASCADE CONSTRAINTS;
 DROP TABLE ASIGNACION_TAREA_SUBORDINADA CASCADE CONSTRAINTS;
 DROP TABLE EJECUCION_FLUJO_TAREA CASCADE CONSTRAINTS;
-
 
 -----------------------------------------------------------------------------------------------------------------------------------
 
@@ -20,11 +20,10 @@ CREATE TABLE FLUJO_TAREA (
     id_ft                   NUMBER(6) NOT NULL PRIMARY KEY,
     nombre_ft               VARCHAR2(30) NOT NULL,
     descripcion_ft          VARCHAR2(90) NOT NULL,
-    fecha_comienzo_ft       DATE,
+    fecha_inicio_ft         DATE,
     fecha_entrega_ft        DATE,
     porcentaje_avance_ft    NUMBER(6),
-    estado_ft               VARCHAR2(15),
-    id_responsable_ft       NUMBER(6)
+    estado_ft               VARCHAR2(15)
 );
 
 CREATE TABLE TAREA (
@@ -34,8 +33,7 @@ CREATE TABLE TAREA (
     fecha_inicio_t          DATE NOT NULL,
     fecha_entrega_t         DATE NOT NULL,
     porcentaje_avance_t     NUMBER(6),
-    estado_t                VARCHAR2(15),
-    id_responsable_t        NUMBER(6) NOT NULL
+    estado_t                VARCHAR2(15)
 );
 
 CREATE TABLE TAREA_SUBORDINADA (
@@ -46,7 +44,6 @@ CREATE TABLE TAREA_SUBORDINADA (
     fecha_entrega_ts        DATE,
     porcentaje_avance_ts    NUMBER(6),
     estado_ts               VARCHAR2(15),
-    id_responsable_ts       NUMBER(6),
     id_t                    NUMBER(6),
     id_ft                   Number(6)
 );
@@ -66,8 +63,14 @@ CREATE TABLE UNIDAD_INTERNA (
 
 CREATE TABLE ROL (
     id_r                    NUMBER(6) NOT NULL PRIMARY KEY,
-    nombre_r                VARCHAR2(30) NOT NULL,
-    id_ui             NUMBER(6) NOT NULL
+    nombre_r                VARCHAR2(30) NOT NULL
+);
+
+CREATE TABLE CARGO (
+    id_c                    NUMBER(6) NOT NULL PRIMARY KEY,
+    nombre_c                VARCHAR2(30) NOT NULL,
+    id_ui                   NUMBER(6) NOT NULL UNIQUE,
+    id_r                    NUMBER(6) NOT NULL UNIQUE
 );
 
 CREATE TABLE USUARIO (
@@ -75,66 +78,59 @@ CREATE TABLE USUARIO (
     nombre_u                VARCHAR2(30) NOT NULL,
     email_u                 VARCHAR2(30) NOT NULL,
     password_u              VARCHAR2(30) NOT NULL,
-    id_r                    NUMBER(6) NOT NULL
+    id_c                    NUMBER(6) NOT NULL UNIQUE
 );
 
 CREATE TABLE ASIGNACION_TAREA (
-    id_u_at                  NUMBER(6) NOT NULL PRIMARY KEY,
-    id_t_at                  NUMBER(6) UNIQUE,
+    id_u_at                  NUMBER(6),
+    id_t_at                  NUMBER(6),
     respuesta_at             VARCHAR2(30) NOT NULL,
-    justificacion_ats        VARCHAR2(30)
+    justificacion_ats        VARCHAR2(30),
+    CONSTRAINT ASIG_T_USUARIO FOREIGN KEY (id_u_at) REFERENCES USUARIO (id_u),
+    CONSTRAINT ASIG_T_TAREA FOREIGN KEY (id_t_at) REFERENCES TAREA (id_t),
+    CONSTRAINT asig_t_pk PRIMARY KEY (id_u_at, id_t_at)
 );
 
 CREATE TABLE ASIGNACION_TAREA_SUBORDINADA (
-    id_u_ats                  NUMBER(6) NOT NULL PRIMARY KEY,
-    id_ts_ats                 NUMBER(6) UNIQUE,
+    id_u_ats                  NUMBER(6),
+    id_ts_ats                 NUMBER(6),
     respuesta_ats             VARCHAR2(30) NOT NULL,
-    justificacion_ats         VARCHAR2(30)
+    justificacion_ats         VARCHAR2(30),
+    CONSTRAINT ASIG_TS_USUARIO FOREIGN KEY (id_u_ats) REFERENCES USUARIO (id_u),
+    CONSTRAINT ASIG_TS_TAREA FOREIGN KEY (id_ts_ats) REFERENCES TAREA_SUBORDINADA (id_ts),
+    CONSTRAINT asig_ts_pk PRIMARY KEY (id_u_ats, id_ts_ats)
 );
 
 CREATE TABLE EJECUCION_FLUJO_TAREA(
-    id_u_eft                 NUMBER(6) NOT NULL PRIMARY KEY,
-    id_ft_eft                NUMBER(6) UNIQUE,
+    id_u_eft                 NUMBER(6),
+    id_ft_eft                NUMBER(6),
     respuesta_eft            VARCHAR2(30) NOT NULL,
-    justificacion_eft        VARCHAR2(30)
+    justificacion_eft        VARCHAR2(30),
+    CONSTRAINT EJEC_FT_USUARIO FOREIGN KEY (id_u_eft) REFERENCES USUARIO (id_u),
+    CONSTRAINT EJEC_FT_TAREA FOREIGN KEY (id_ft_eft) REFERENCES FLUJO_TAREA (id_ft),
+    CONSTRAINT ejec_ft_pk PRIMARY KEY (id_u_eft, id_ft_eft)
 );
 
 -----------------------------------------------------------------------------------------------------------------------------------
 /*/// Alter Table ///*/
-  /* Tareas */
-ALTER TABLE TAREA ADD CONSTRAINT id_responsable_t_fk FOREIGN KEY (id_responsable_t) REFERENCES USUARIO (id_u) NOT DEFERRABLE;
 
   /* Tareas subordinadas */
-ALTER TABLE TAREA_SUBORDINADA ADD CONSTRAINT id_responsable_ts_fk FOREIGN KEY (id_responsable_ts) REFERENCES usuario (id_u) NOT DEFERRABLE;
 ALTER TABLE TAREA_SUBORDINADA ADD CONSTRAINT id_t_fk FOREIGN KEY (id_t) REFERENCES tarea (id_t) NOT DEFERRABLE;
 ALTER TABLE TAREA_SUBORDINADA ADD CONSTRAINT id_ft_fk FOREIGN KEY (id_ft) REFERENCES flujo_tarea (id_ft) NOT DEFERRABLE;
 
-  /* Flujo tareas */
-ALTER TABLE FLUJO_TAREA ADD CONSTRAINT id_responsable_ft_fk FOREIGN KEY (id_responsable_ft) REFERENCES usuario (id_u) NOT DEFERRABLE;
 
   /* Reportar problema */
 ALTER TABLE REPORTE_PROBLEMA ADD CONSTRAINT id_rp_t_fk FOREIGN KEY (id_t) REFERENCES tarea (id_t) NOT DEFERRABLE;
 ALTER TABLE REPORTE_PROBLEMA ADD CONSTRAINT id_rp_ts_fk FOREIGN KEY (id_ts) REFERENCES tarea_subordinada (id_ts) NOT DEFERRABLE;
 ALTER TABLE REPORTE_PROBLEMA ADD CONSTRAINT id_rp_ft_fk FOREIGN KEY (id_ft) REFERENCES flujo_tarea (id_ft) NOT DEFERRABLE;
 
-  /* Rol */
-ALTER TABLE ROL ADD CONSTRAINT id_rol_ui_fk FOREIGN KEY (id_ui) REFERENCES UNIDAD_INTERNA (id_ui) NOT DEFERRABLE;
+  /* Cargo */
+ALTER TABLE CARGO ADD CONSTRAINT id_c_ui_fk FOREIGN KEY (id_ui) REFERENCES UNIDAD_INTERNA (id_ui) NOT DEFERRABLE;
+ALTER TABLE CARGO ADD CONSTRAINT id_c_r_fk FOREIGN KEY (id_r) REFERENCES rol (id_r) NOT DEFERRABLE;
 
   /* Usuario */
-ALTER TABLE USUARIO ADD CONSTRAINT id_r_u_fk FOREIGN KEY (id_r) REFERENCES rol (id_r) NOT DEFERRABLE;
+ALTER TABLE USUARIO ADD CONSTRAINT id_c_u_fk FOREIGN KEY (id_c) REFERENCES cargo (id_c) NOT DEFERRABLE;
 
-  /* Asignaci�n tarea */
-ALTER TABLE ASIGNACION_TAREA ADD CONSTRAINT id_u_at_fk FOREIGN KEY (id_u_at) REFERENCES usuario (id_u) NOT DEFERRABLE;
-ALTER TABLE ASIGNACION_TAREA ADD CONSTRAINT id_t_at_fk FOREIGN KEY (id_t_at) REFERENCES tarea (id_t) NOT DEFERRABLE;
-
-  /* Asignaci�n tarea subordinada */
-ALTER TABLE ASIGNACION_TAREA_SUBORDINADA ADD CONSTRAINT id_u_ats_fk FOREIGN KEY (id_u_ats) REFERENCES usuario (id_u) NOT DEFERRABLE;
-ALTER TABLE ASIGNACION_TAREA_SUBORDINADA ADD CONSTRAINT id_ts_ats_fk FOREIGN KEY (id_ts_ats) REFERENCES tarea_subordinada (id_ts) NOT DEFERRABLE;
-
-  /* Ejecuci�n flujo de tareas */
-ALTER TABLE EJECUCION_FLUJO_TAREA ADD CONSTRAINT id_u_eft_fk FOREIGN KEY (id_u_eft) REFERENCES usuario (id_u) NOT DEFERRABLE;
-ALTER TABLE EJECUCION_FLUJO_TAREA ADD CONSTRAINT id_ft_eft_fk FOREIGN KEY (id_ft_eft) REFERENCES flujo_tarea (id_ft) NOT DEFERRABLE;
-  
 -----------------------------------------------------------------------------------------------------------------------------------
 /*/// Inserción de datos ///*/
 
@@ -148,9 +144,9 @@ INSERT INTO USUARIO VALUES ('1', 'Alonso Silva Bustos', 'alo.silva@duocuc.cl', '
 INSERT INTO USUARIO VALUES ('2', 'Jimmy Cabrera', 'jim.cabrera@duocuc.cl', '12345', '2');
 INSERT INTO USUARIO VALUES ('3', 'Manuel Mu�oz', 'Manue.munozg@duocuc.cl', '12345', '2');
 
-INSERT INTO TAREA VALUES ('1', 'Programaci�n de portafolio', 'Proceso de programaci�n de p�gina web en base al caso N�5', '18-10-2022', '1-12-2022', '0', 'En curso', '1');
-INSERT INTO TAREA VALUES ('2', 'Programaci�n de portafolio', 'Proceso de programaci�n de p�gina web en base al caso N�5', '25-10-2022', '1-12-2022', '0', 'En curso', '1');
-INSERT INTO TAREA VALUES ('3', 'Programaci�n de portafolio', 'Proceso de programaci�n de p�gina web en base al caso N�5', '08-09-2022', '31-12-2022', '0', 'En curso', '1');
+INSERT INTO TAREA VALUES ('1', 'Programación de portafolio', 'Proceso de programación de página web en base al caso N°5', '18-10-2022', '1-12-2022', '0', 'En curso');
+INSERT INTO TAREA VALUES ('2', 'Programación de portafolio', 'Proceso de programación de página web en base al caso N°5', '25-10-2022', '1-12-2022', '0', 'En curso');
+INSERT INTO TAREA VALUES ('3', 'Programación de portafolio', 'Proceso de programación de página web en base al caso N°5', '08-09-2022', '31-12-2022', '0', 'En curso');
 
 
 -----------------------------------------------------------------------------------------------------------------------------------
