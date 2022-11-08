@@ -6,6 +6,7 @@ const app = express();
 //imports
 const RutasTarea = require('./rutas/rutas-tarea');
 const RutasRol = require('./rutas/rutas-rol');
+const RutasUnidadInterna = require('./rutas/rutas-unidad-interna');
 
 //settings
 app.set('port', 3000);
@@ -16,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //routes
-app.use(RutasTarea, RutasRol);
+app.use(RutasTarea, RutasRol, RutasUnidadInterna);
 
 //run
 app.listen(app.get('port'), () => {

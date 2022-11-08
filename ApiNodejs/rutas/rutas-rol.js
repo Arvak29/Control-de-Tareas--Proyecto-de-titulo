@@ -78,7 +78,7 @@ router.delete("/deleteRol/:id", async (req, res) => {
 
     await BD.Open(sql, [id], true);
 
-    res.json({ msg: "Rol Eliminadao" })
+    res.json({ msg: "Rol Eliminado" })
 })
 
 module.exports = router;
