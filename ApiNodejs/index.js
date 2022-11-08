@@ -4,7 +4,8 @@ const cors = require('cors');
 const app = express();
 
 //imports
-const tareaRutasPrueba = require('./rutas/rutas-tarea-prueba');
+const RutasTarea = require('./rutas/rutas-tarea');
+const RutasRol = require('./rutas/rutas-rol');
 
 //settings
 app.set('port', 3000);
@@ -15,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //routes
-app.use(tareaRutasPrueba);
+app.use(RutasTarea, RutasRol);
 
 //run
 app.listen(app.get('port'), () => {
