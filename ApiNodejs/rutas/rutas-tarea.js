@@ -3,13 +3,13 @@ const router = Router();
 const BD = require('../config/configbd');
 
 
-// get especifico
+//Get especifico
 router.get('/getTarea/:id', async (req, res) => {
     const { id } = req.params;
     sql = "select * from tarea where id_t =:id";
 
     let result = await BD.Open(sql, [id], false);
-
+    Tarea = [];
     result.rows.map(tarea => {
         let tareaSchema = {
             "id_t": tarea[0],
@@ -28,7 +28,7 @@ router.get('/getTarea/:id', async (req, res) => {
     res.json(Tarea);
 })
 
-// get de todo
+//Get de todo
 router.get('/getTareas', async (req, res) => {
     sql = "select * from tarea";
 
@@ -90,7 +90,7 @@ router.put("/UpdateTarea", async (req, res) => {
         })
 })
 
-//DELETE
+//Borrar
 router.delete("/deleteTarea/:id", async (req, res) => {
     const { id } = req.params;
 

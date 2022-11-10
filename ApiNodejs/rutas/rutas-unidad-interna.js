@@ -3,12 +3,13 @@ const router = Router();
 const BD = require('../config/configbd');
 
 
-// get especifico
+//Get especifico
 router.get('/getUI/:id', async (req, res) => {
     const { id } = req.params;
     sql = "select * from unidad_interna where id_ui =:id";
 
     let result = await BD.Open(sql, [id], false);
+    Unidad_Interna = [];
 
     result.rows.map(unidad_interna => {
         let unidad_internaSchema = {
@@ -23,7 +24,7 @@ router.get('/getUI/:id', async (req, res) => {
     res.json(Unidad_Interna);
 })
 
-// get de todo
+//Get de todo
 router.get('/getUSIS', async (req, res) => {
     sql = "select * from unidad_interna";
 
@@ -36,13 +37,13 @@ router.get('/getUSIS', async (req, res) => {
             "nombre_r": unidad_interna[1]
         }
 
-        Unidades_Internas.push(unidades_internasSchema);
+        unidades_internas.push(unidades_internasSchema);
     })
 
     res.json(Unidades_Internas);
 })
 
-//agregar
+//Agregar
 router.post('/addUI', async (req, res) => {
     const { id_ui, nombre_ui} = req.body;
 
@@ -70,7 +71,7 @@ router.put("/UpdateUI", async (req, res) => {
         })
 })
 
-//DELETE
+//Borrar
 router.delete("/deleteUI/:id", async (req, res) => {
     const { id } = req.params;
 
@@ -78,7 +79,7 @@ router.delete("/deleteUI/:id", async (req, res) => {
 
     await BD.Open(sql, [id], true);
 
-    res.json({ msg: "Unidad Interna Eliminada" })
+    res.json({ msg: "Unidad interna eliminada" })
 })
 
 module.exports = router;

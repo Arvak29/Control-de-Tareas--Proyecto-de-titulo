@@ -3,12 +3,13 @@ const router = Router();
 const BD = require('../config/configbd');
 
 
-// get especifico
+//Get especifico
 router.get('/getRol/:id', async (req, res) => {
     const { id } = req.params;
     sql = "select * from rol where id_r =:id";
 
     let result = await BD.Open(sql, [id], false);
+    Rol = [];
 
     result.rows.map(rol => {
         let rolSchema = {
@@ -23,7 +24,7 @@ router.get('/getRol/:id', async (req, res) => {
     res.json(Rol);
 })
 
-// get de todo
+//Get de todo
 router.get('/getRoles', async (req, res) => {
     sql = "select * from rol";
 
@@ -42,7 +43,7 @@ router.get('/getRoles', async (req, res) => {
     res.json(Roles);
 })
 
-//agregar
+//Agregar
 router.post('/addRol', async (req, res) => {
     const { id_r, nombre_r} = req.body;
 
@@ -70,7 +71,7 @@ router.put("/UpdateRol", async (req, res) => {
         })
 })
 
-//DELETE
+//Borrar
 router.delete("/deleteRol/:id", async (req, res) => {
     const { id } = req.params;
 
