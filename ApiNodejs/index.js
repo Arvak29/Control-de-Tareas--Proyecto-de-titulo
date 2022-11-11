@@ -12,6 +12,7 @@ const RutasTareaSub = require('./rutas/rutas-tarea-sub');
 const RutasFlujoTarea = require('./rutas/rutas-flujo-tarea');
 const RutasUsuario = require('./rutas/rutas-usuario');
 const RutasCargo = require('./rutas/rutas-cargo');
+const RutasReporteProblema = require('./rutas/rutas-reporte-problemas');
 
 //settings
 app.set('port', puerto);
@@ -22,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //routes
-app.use(RutasTarea, RutasRol, RutasUnidadInterna, RutasTareaSub, RutasFlujoTarea, RutasUsuario, RutasCargo);
+app.use(RutasTarea, RutasRol, RutasUnidadInterna, RutasTareaSub, RutasFlujoTarea, RutasUsuario, RutasCargo, RutasReporteProblema );
 
 //run
 app.listen(app.get('port'), () => {
