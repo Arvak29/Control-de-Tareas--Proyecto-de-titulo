@@ -1,0 +1,31 @@
+_id: req_ece9f1783ef840e1bde41497681ac2c4
+type: Request
+parentId: fld_bbb36ab293ab4c2681a20d75868cf3b8
+modified: 1668290706407
+created: 1668290687014
+url: http://localhost:3000/deleteUsuario/4
+name: Delete usuario
+description: ""
+method: DELETE
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_5d0d1eaa2b1c476ea062015624a48d32
+authentication:
+  type: basic
+  useISO88591: false
+  disabled: false
+  username: Alonso
+  password: "12345"
+metaSortKey: -1667932175793.375
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

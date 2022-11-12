@@ -1,0 +1,34 @@
+_id: req_52d0a883fe4048bd893545f338db991a
+type: Request
+parentId: fld_d855bbd111f74c729ec0f4a5dfd8cc9f
+modified: 1668291409626
+created: 1668288654310
+url: http://localhost:3000/addtarea
+name: Add tarea
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    		"id_t": 4,
+    		"nombre_t": "tarea de prueba a través de Imsomnia",
+    		"descripcion_t": "Esto es una tarea de prueba",
+    		"fecha_inicio_t": "12-11-2022",
+    		"fecha_entrega_t": "12-12-2022",
+    		"porcentaje_avance_t": 0,
+    		"estado_t": "En curso"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1667932175984
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

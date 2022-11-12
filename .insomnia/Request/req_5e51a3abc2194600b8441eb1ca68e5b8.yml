@@ -1,0 +1,33 @@
+_id: req_5e51a3abc2194600b8441eb1ca68e5b8
+type: Request
+parentId: fld_bbb36ab293ab4c2681a20d75868cf3b8
+modified: 1668290616829
+created: 1668290511180
+url: http://localhost:3000/updateUsuario
+name: Update usuario
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |
+    {
+    		"id_u": 4,
+    		"nombre_u": "Alonso Antonio Silva Bustos",
+    		"email_u": "alo.silva@duocuc.cl",
+    		"password_u": "12345",
+    		"id_c": 6,
+    		"id_e": 2
+    	}
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1667932175893.375
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

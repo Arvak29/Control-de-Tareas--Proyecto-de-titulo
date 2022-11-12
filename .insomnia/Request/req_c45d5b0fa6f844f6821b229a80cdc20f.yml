@@ -1,0 +1,33 @@
+_id: req_c45d5b0fa6f844f6821b229a80cdc20f
+type: Request
+parentId: fld_bbb36ab293ab4c2681a20d75868cf3b8
+modified: 1668290615213
+created: 1668290379804
+url: http://localhost:3000/addUsuario
+name: Add usuario
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |
+    {
+    		"id_u": 4,
+    		"nombre_u": "Alonso Silva Bustos",
+    		"email_u": "alo.silva@duocuc.cl",
+    		"password_u": "12345",
+    		"id_c": 6,
+    		"id_e": 2
+    	}
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1667932175902.75
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

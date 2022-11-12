@@ -1,0 +1,31 @@
+_id: req_46e90d866df54b309fef3c70dfe2183f
+type: Request
+parentId: fld_de5ab832eaaa4e4295ebdaa13c9aaa7d
+modified: 1668290246770
+created: 1668289027426
+url: http://localhost:3000/addCargo
+name: Add cargo
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |
+    	{
+    		"id_c": 7,
+    		"nombre_c": "Ingeniero Comercial",
+    		"id_ui": 1,
+    		"id_r": 3
+    	}
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1667932175921.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

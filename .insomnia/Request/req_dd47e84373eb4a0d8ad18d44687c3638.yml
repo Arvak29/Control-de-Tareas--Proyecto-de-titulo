@@ -1,0 +1,34 @@
+_id: req_dd47e84373eb4a0d8ad18d44687c3638
+type: Request
+parentId: fld_f917899982a04c4c9b2847ec7293ff18
+modified: 1668291496096
+created: 1668291358485
+url: http://localhost:3000/addFlujoTarea
+name: Add tarea
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: >-
+    {
+    		"id_ft": 2,
+    		"nombre_ft": "Programación de portafolio de prueba",
+    		"descripcion_ft": "Proceso de programación de página web en base al caso N°5",
+    		"fecha_inicio_ft": "12-10-2022",
+    		"fecha_entrega_ft": "12-12-2022",
+    		"porcentaje_avance_ft": 0,
+    		"estado_ft": "En curso"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1667932175984
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

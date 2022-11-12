@@ -1,0 +1,40 @@
+_id: req_acf6b4b28ec344bf9f22be52a0a22b09
+type: Request
+parentId: fld_f917899982a04c4c9b2847ec7293ff18
+modified: 1668291562442
+created: 1668291358483
+url: http://localhost:3000/updateFlujoTarea
+name: Update tarea
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: >-
+    {
+    		"id_ft": 2,
+    		"nombre_ft": "Programación de portafolio de prueba modificada",
+    		"descripcion_ft": "Proceso de programación de página web en base al caso N°5",
+    		"fecha_inicio_ft": "12-10-2022",
+    		"fecha_entrega_ft": "12-12-2022",
+    		"porcentaje_avance_ft": 0,
+    		"estado_ft": "En curso"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_5d0d1eaa2b1c476ea062015624a48d32
+authentication:
+  type: basic
+  useISO88591: false
+  disabled: false
+  username: Alonso
+  password: "12345"
+metaSortKey: -1667932175834
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

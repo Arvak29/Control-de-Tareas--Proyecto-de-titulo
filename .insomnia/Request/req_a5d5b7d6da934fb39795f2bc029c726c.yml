@@ -1,17 +1,17 @@
-_id: req_87828ef031f14ceb947e57d259090df7
+_id: req_a5d5b7d6da934fb39795f2bc029c726c
 type: Request
-parentId: fld_de5ab832eaaa4e4295ebdaa13c9aaa7d
-modified: 1668291819774
-created: 1668114848305
-url: http://localhost:3000/getCargo/1
-name: Get cargo
+parentId: fld_bbb36ab293ab4c2681a20d75868cf3b8
+modified: 1668289722262
+created: 1668289713066
+url: http://localhost:3000/getUsuarios
+name: Get usuarios
 description: ""
 method: GET
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1667932175882.4375
+metaSortKey: -1667932175843.375
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

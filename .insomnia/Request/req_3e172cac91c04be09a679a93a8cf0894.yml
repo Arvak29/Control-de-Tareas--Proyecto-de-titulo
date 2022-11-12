@@ -1,17 +1,17 @@
-_id: req_87828ef031f14ceb947e57d259090df7
+_id: req_3e172cac91c04be09a679a93a8cf0894
 type: Request
-parentId: fld_de5ab832eaaa4e4295ebdaa13c9aaa7d
-modified: 1668291819774
-created: 1668114848305
-url: http://localhost:3000/getCargo/1
-name: Get cargo
+parentId: fld_001480faa886407380703a364346a9cf
+modified: 1668290780725
+created: 1668290731973
+url: http://localhost:3000/getTareaSub/1
+name: Get tarea subordinada
 description: ""
 method: GET
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1667932175882.4375
+metaSortKey: -1667932175934
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

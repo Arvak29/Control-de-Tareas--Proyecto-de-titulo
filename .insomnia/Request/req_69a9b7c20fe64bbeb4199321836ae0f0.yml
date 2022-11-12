@@ -1,0 +1,31 @@
+_id: req_69a9b7c20fe64bbeb4199321836ae0f0
+type: Request
+parentId: fld_d855bbd111f74c729ec0f4a5dfd8cc9f
+modified: 1668289006373
+created: 1668288998773
+url: http://localhost:3000/deleteTarea/4
+name: Delete tarea
+description: ""
+method: DELETE
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_5d0d1eaa2b1c476ea062015624a48d32
+authentication:
+  type: basic
+  useISO88591: false
+  disabled: false
+  username: Alonso
+  password: "12345"
+metaSortKey: -1667932175784
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
