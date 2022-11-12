@@ -1,0 +1,29 @@
+_id: req_ec0486db28b44950b2ac412b78c288bc
+type: Request
+parentId: fld_64863148789b4a66b877159b990ca919
+modified: 1668279305190
+created: 1667943025072
+url: http://localhost:3000/addrol
+name: Add rol
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    		"id_r": 3,
+    		"nombre_r": "Enfermeria"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1667932407595
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

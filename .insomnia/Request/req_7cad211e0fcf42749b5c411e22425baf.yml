@@ -1,0 +1,21 @@
+_id: req_7cad211e0fcf42749b5c411e22425baf
+type: Request
+parentId: fld_64863148789b4a66b877159b990ca919
+modified: 1668279347641
+created: 1667942725424
+url: http://localhost:3000/getRoles
+name: Get roles
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1667932407520
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
