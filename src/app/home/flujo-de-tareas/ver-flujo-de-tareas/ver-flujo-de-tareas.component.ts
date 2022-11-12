@@ -8,18 +8,24 @@ import {
   Flujo,
   FlujoService,
 } from 'src/app/services/flujo.service';
+import {
+  TareaSub,
+  TareaSubordinadaService,
+} from 'src/app/services/tarea-subordinada.service';
 
 @Component({
   selector: 'app-ver-flujo-de-tareas',
   templateUrl: './ver-flujo-de-tareas.component.html',
   styleUrls: ['./ver-flujo-de-tareas.component.css'],
-  providers: [FlujoService, UsuarioService],
+  providers: [FlujoService, UsuarioService, TareaSubordinadaService],
 })
 export class VerFlujoDeTareasComponent implements OnInit {
   ListarUsuario: Usuario[] = [];
-
+  filtroUsuario = '';
   ListarFlujo: FLUJO[] = [];
   filtroFlujo = '';
+  ListarTareaSub: TareaSub[] = [];
+  filtroSubordinada = '';
 
   flujo: Flujo = {
     id_flujo: '',
@@ -35,11 +41,13 @@ export class VerFlujoDeTareasComponent implements OnInit {
     private router: Router,
     private FlujoService: FlujoService,
     private UsuarioService: UsuarioService,
-    private activeRouter: ActivatedRoute
+    private activeRouter: ActivatedRoute,
+    private TareaSubordinadaService: TareaSubordinadaService
   ) {}
 
   ngOnInit(): void {
     this.listarUsuario();
+    this.listarTareaSub();
 
     const id_entrada = this.activeRouter.snapshot.params['id'];
 
@@ -52,6 +60,16 @@ export class VerFlujoDeTareasComponent implements OnInit {
         error: (err) => console.log(err),
       });
     }
+  }
+
+  listarTareaSub() {
+    this.TareaSubordinadaService.getTareasSub().subscribe(
+      (res) => {
+        console.log(res);
+        this.ListarTareaSub = <any>res;
+      },
+      (err) => console.log(err)
+    );
   }
 
   listarUsuario() {

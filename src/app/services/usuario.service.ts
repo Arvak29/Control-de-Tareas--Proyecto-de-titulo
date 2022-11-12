@@ -39,11 +39,12 @@ export interface Usuario {
   nombre_usuario?: string;
   email_usuario?: string;
   password_usuario?: string;
-  id_rol?: string;
+  rol?: string;
 }
 
 export interface AgregarUsuario {
   nombre_usuario?: string;
   email_usuario?: string;
   password_usuario?: string;
+  rol?: string;
 }

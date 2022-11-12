@@ -1,0 +1,40 @@
+_id: req_a5586bea69a242089bf6cf4dbc6f1a72
+type: Request
+parentId: fld_d855bbd111f74c729ec0f4a5dfd8cc9f
+modified: 1668279375699
+created: 1667943551719
+url: http://localhost:3000/updateTarea
+name: update tarea
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    		"id_t": 47,
+    		"nombre_t": "Probar cambiar tarea",
+    		"descripcion_t": "esto es una pruebaxd1",
+    		"fecha_inicio_t": "08-11-2022",
+    		"fecha_entrega_t": "15-11-2022",
+    		"porcentaje_avance_t": 0,
+    		"estado_t": "En curso"
+    	}
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_5d0d1eaa2b1c476ea062015624a48d32
+authentication:
+  type: basic
+  useISO88591: false
+  disabled: false
+  username: Alonso
+  password: "12345"
+metaSortKey: -1667932175834
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -19,6 +19,15 @@
           </div>
         </div>
       </div>
+      <br />
+      <button
+        type="submit"
+        class="btn btn-primary col-12 p-3"
+        (click)="crear_usuario()"
+        [disabled]="Crear_Usuario_Grupo.invalid"
+      >
+        Crear usuario
+      </button>
     </div>
     <div class="col-lg-4 col-md-12">
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
@@ -56,7 +65,7 @@
             <div class="form-floating mb-3">
               <input
                 class="form-control"
-                type="text"
+                type="password"
                 placeholder="password_usuario"
                 formControlName="password_usuario"
                 [class.is-invalid]="
@@ -67,13 +76,19 @@
               <label for="inputRut">Password</label>
             </div>
 
-            <button
-              type="submit"
-              class="btn btn-primary col-12 p-3"
-              [disabled]="Crear_Usuario_Grupo.invalid"
-            >
-              Crear usuario
-            </button>
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                type="text"
+                placeholder="rol"
+                formControlName="rol"
+                [class.is-invalid]="
+                  Crear_Usuario_Grupo.get('rol')?.touched &&
+                  Crear_Usuario_Grupo.get('rol')?.invalid
+                "
+              />
+              <label for="inputRut">Rol</label>
+            </div>
           </form>
         </div>
       </div>

@@ -1,4 +1,7 @@
-<nav class="sb-topnav color-fondo1 navbar navbar-expand">
+<nav
+  *ngIf="authService.isAuth()"
+  class="sb-topnav color-fondo1 navbar navbar-expand"
+>
   <a class="navbar-brand d-none d-md-block"
     ><h2 class="color2">Process S.A.</h2></a
   >
@@ -9,51 +12,71 @@
 
   <h1 class="d-none d-md-block me-auto color1">Control de tareas</h1>
 
-  <button class="btn btn-nav form-inline" id="notificacion" href="#!">
+  <button
+    class="btn btn-nav form-inline"
+    id="notificacion"
+    type="button"
+    data-bs-toggle="modal"
+    data-bs-target="#ModalNotificacion"
+  >
     <i><img class="tamano" src="../assets/img/campana.svg" alt="" /></i>
   </button>
 
-  <button class="btn btn-nav form-inline m-3" id="usuario" href="#!">
+  <button
+    (click)="dataUser()"
+    class="btn btn-nav form-inline m-3"
+    type="button"
+    data-bs-toggle="modal"
+    data-bs-target="#Modal"
+  >
     <i><img src="../assets/img/user.svg" alt="" /></i>
   </button>
 </nav>
 
 <div id="layoutSidenav">
-  <div id="layoutSidenav_nav">
+  <div *ngIf="authService.isAuth()" id="layoutSidenav_nav">
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
       <div class="color-fondo1 sb-sidenav-menu">
         <div class="nav">
-          <a class="nav-link" routerLink="/home">
+          <a *ngIf="permisosPanel()" class="nav-link" routerLink="/home">
             <div class="sb-nav-link-icon">
               <img src="../assets/img/estado.svg" alt="" />
             </div>
             Panel de control
           </a>
-          <a class="nav-link" routerLink="/tareas">
+          <a *ngIf="permisosTareas()" class="nav-link" routerLink="/tareas">
             <div class="sb-nav-link-icon">
               <img src="../assets/img/files.svg" alt="" />
             </div>
             Tareas
           </a>
-          <a class="nav-link" routerLink="/usuarios">
+          <a *ngIf="permisosUsuarios()" class="nav-link" routerLink="/usuarios">
             <div class="sb-nav-link-icon">
               <img src="../assets/img/usuario.svg" alt="" />
             </div>
             Usuarios
           </a>
-          <a class="nav-link" routerLink="/roles">
+          <a *ngIf="permisosRoles()" class="nav-link" routerLink="/roles">
             <div class="sb-nav-link-icon">
               <img src="../assets/img/roles.svg" alt="" />
             </div>
             Roles
           </a>
-          <a class="nav-link" routerLink="/flujo_de_tareas">
+          <a
+            *ngIf="permisosFrujos()"
+            class="nav-link"
+            routerLink="/flujo_de_tareas"
+          >
             <div class="sb-nav-link-icon">
               <img src="../assets/img/flujo.svg" alt="" />
             </div>
-            Flujos de trabajos
+            Flujos de tareas
           </a>
-          <a class="nav-link" routerLink="/unidades_internas">
+          <a
+            *ngIf="permisosUnidades()"
+            class="nav-link"
+            routerLink="/unidades_internas"
+          >
             <div class="sb-nav-link-icon">
               <img src="../assets/img/usuarios.svg" alt="" />
             </div>
@@ -65,5 +88,87 @@
   </div>
   <div id="layoutSidenav_content">
     <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- Modal usuario-->
+<div
+  class="modal fade"
+  id="Modal"
+  tabindex="-1"
+  aria-labelledby="ModalUsuarioLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable pt-5">
+    <div class="modal-content">
+      <div class="modal-header text-white bg">
+        <h5 class="modal-title" id="ModalUsuarioLabel">Usuario</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body text-white bg">
+        <div class="card-body">
+          <div id="perfil">
+            <img
+              src="/assets/img/Perfil.png"
+              class="img-circle"
+              alt="Cinque Terre"
+            />
+          </div>
+          <br />
+          <h4 class="text-center">nombre</h4>
+          <h5 class="text-center">{{ nombre }}</h5>
+          <br />
+          <h4 class="text-center">Rol</h4>
+          <h5 class="text-center">{{ rol }}</h5>
+        </div>
+        <br />
+        <button
+          type="submit"
+          class="btn btn-primary col-12 p-3"
+          (click)="logOut()"
+        >
+          Cerrar sesión
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal notificacion-->
+<div
+  class="modal fade"
+  id="ModalNotificacion"
+  tabindex="-1"
+  aria-labelledby="ModalNotificacionLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable pt-5">
+    <div class="modal-content">
+      <div class="modal-header text-white bg">
+        <h5 class="modal-title" id="ModalNotificacionLabel">notificacion</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="ModalNotificacion"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body text-white bg">
+        <a class="nav-link active" routerLink="/notificaciones"
+          ><h5>Ver todo</h5></a
+        >
+        <div class="card-body">
+          <app-bar-notificacion></app-bar-notificacion>
+          <app-bar-notificacion></app-bar-notificacion>
+          <app-bar-notificacion></app-bar-notificacion>
+          <app-bar-notificacion></app-bar-notificacion>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

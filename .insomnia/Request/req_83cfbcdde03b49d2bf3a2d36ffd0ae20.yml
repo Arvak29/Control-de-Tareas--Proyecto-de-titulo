@@ -1,0 +1,21 @@
+_id: req_83cfbcdde03b49d2bf3a2d36ffd0ae20
+type: Request
+parentId: fld_d855bbd111f74c729ec0f4a5dfd8cc9f
+modified: 1668279368291
+created: 1667932175934
+url: http://localhost:3000/gettarea/1
+name: Get tarea
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1667932175934
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,8 +1,8 @@
 <div class="bar-tarea">
-  <div class="btn d-flex" routerLink="/tarea_subordinada">
-    <h6 class="w-100 text-start">Tarea subordinada</h6>
+  <div class="btn d-flex" type="button">
+    <h6 class="w-100 text-start" (click)="modificar()">{{ titulo }}</h6>
     <div class="">
-      <button class="flex btn btn-nav a" id="boton">
+      <button class="flex btn btn-nav a" id="boton" (click)="eliminar()">
         <i><img src="../assets/img/x.svg" alt="" /></i>
       </button>
     </div>

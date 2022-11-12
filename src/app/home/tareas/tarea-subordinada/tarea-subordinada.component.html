@@ -3,26 +3,65 @@
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-11 col-md-7 col-lf-4 col-xl-4 col-xxl-5">
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
-        <app-card-header
-          [titulo]="'Nombre de la tarea subordinada'"
-        ></app-card-header>
+        <app-card-header [titulo]="tareasub.nombre_tarea_sub"></app-card-header>
         <div class="card-body text-center">
+          <div class="form-floating mb-3">
+            <input
+              [(ngModel)]="tareasub.nombre_tarea_sub"
+              class="form-control"
+              id="inputNombre"
+              type="text"
+              name="nombre_tarea"
+            />
+          </div>
           <h5 class="color5">Estado</h5>
           <h6>En curso</h6>
         </div>
       </div>
       <br />
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
+        <app-card-header
+          [titulo]="'Descripción de la tarea subordinada'"
+        ></app-card-header>
+        <div class="card-body">
+          <textarea
+            [(ngModel)]="tareasub.descripcion_sub"
+            class="form-control"
+            id="inputDescripcion"
+            rows="3"
+            name="descripcion"
+          ></textarea>
+        </div>
+      </div>
+
+      <br />
+      <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Fecha de termino'"></app-card-header>
         <div class="card-body">
           <div class="row text-between">
             <div class="col">
-              <h6>Inicio:</h6>
-              <h6>00:00:00</h6>
+              <div class="form-floating mb-3">
+                <input
+                  [(ngModel)]="tareasub.fecha_comienzo"
+                  class="form-control"
+                  id="inputNombre"
+                  type="text"
+                  name="fecha_inicio"
+                />
+                <label for="inputNombre">Inicio:</label>
+              </div>
             </div>
             <div class="col text-end">
-              <h6>Finaliza en:</h6>
-              <h6>00:00:00</h6>
+              <div class="form-floating mb-3">
+                <input
+                  [(ngModel)]="tareasub.fecha_entrega"
+                  class="form-control"
+                  id="inputNombre"
+                  type="text"
+                  name="fecha_termino"
+                />
+                <label for="inputNombre">fecha_termino:</label>
+              </div>
             </div>
           </div>
           <div class="progress">
@@ -38,27 +77,25 @@
         </div>
       </div>
       <br />
-      <div class="card text-white bg shadow-lg border-0 rounded-lg">
-        <app-card-header
-          [titulo]="'Descripción de la tarea subordinada'"
-        ></app-card-header>
-        <div class="card-body">
-          <h6>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque
-            dolore magni possimus culpa ab odio aut cumque consequuntur vel
-            labore impedit distinctio natus, dolor autem perferendis quo?
-            Deleniti, accusamus ab.
-          </h6>
-        </div>
-      </div>
-      <br />
 
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Responsables'"></app-card-header>
         <br />
         <div class="row justify-content-between px-3">
           <div class="col-8 text-start">
-            <app-buscador></app-buscador>
+            <form class="form text-start mb-1">
+              <button>
+                <img src="../assets/img/search.svg" alt="" />
+              </button>
+              <input
+                class="input"
+                placeholder="Buscar..."
+                required=""
+                type="text"
+                name="filtroTarea"
+                [(ngModel)]="filtroUsuario"
+              />
+            </form>
           </div>
           <div class="col text-end">
             <button class="btn btn-nav a" routerLink="/crear_unidad_interna/">
@@ -67,9 +104,11 @@
           </div>
         </div>
         <div class="card-body">
-          <app-bar-usuario></app-bar-usuario>
-          <app-bar-usuario></app-bar-usuario>
-          <app-bar-usuario></app-bar-usuario>
+          <app-bar-responsable
+            *ngFor="let usuario of ListarUsuario | filtroUsuario: filtroUsuario"
+            [nombre]="usuario.nombre_usuario"
+            [id]="usuario.id_usuario"
+          ></app-bar-responsable>
         </div>
       </div>
       <br />
@@ -86,6 +125,18 @@
         <br />
         <div class="row text-center">
           <button type="button" class="btn btn-primary">Reportar</button>
+        </div>
+
+        <br />
+        <div class="row text-center">
+          <button
+            (click)="modificar()"
+            (click)="irAtras()"
+            type="button"
+            class="btn btn-primary"
+          >
+            Guardar
+          </button>
         </div>
         <br />
         <div class="row text-center">

@@ -1,0 +1,21 @@
+_id: req_84a5d95cb86044ad9dc440e0a24a65f1
+type: Request
+parentId: fld_d6df231cf83747d1af37d143a7ca9f72
+modified: 1668279340500
+created: 1667945191331
+url: http://localhost:3000/getUSIS
+name: Get Unidades internas
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1667932320753.375
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

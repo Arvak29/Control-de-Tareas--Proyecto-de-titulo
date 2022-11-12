@@ -1,4 +1,4 @@
-export class Flujo_De_Tareas {
+export class Tarea_sub {
   id_tarea_sub: string;
   nombre_tarea_sub: string;
   descripcion_sub: string;

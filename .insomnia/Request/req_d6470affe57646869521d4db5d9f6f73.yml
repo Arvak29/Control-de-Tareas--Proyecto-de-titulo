@@ -1,0 +1,35 @@
+_id: req_d6470affe57646869521d4db5d9f6f73
+type: Request
+parentId: fld_64863148789b4a66b877159b990ca919
+modified: 1668279296482
+created: 1667932407445
+url: http://localhost:3000/updateRol
+name: update rol
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    		"id_r": 3,
+    		"nombre_r": "Enfermeria actualizada"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_5d0d1eaa2b1c476ea062015624a48d32
+authentication:
+  type: basic
+  useISO88591: false
+  disabled: false
+  username: Alonso
+  password: "12345"
+metaSortKey: -1667932407445
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
