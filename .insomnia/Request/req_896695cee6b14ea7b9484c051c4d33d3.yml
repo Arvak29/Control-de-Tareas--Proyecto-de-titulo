@@ -1,0 +1,21 @@
+_id: req_896695cee6b14ea7b9484c051c4d33d3
+type: Request
+parentId: fld_64863148789b4a66b877159b990ca919
+modified: 1668279302567
+created: 1667941968707
+url: http://localhost:3000/getRol/1
+name: Get rol
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1667932407545
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
