@@ -40,7 +40,7 @@ CREATE TABLE TAREA (
 
 CREATE TABLE TAREA_SUBORDINADA (
     id_ts                   NUMBER(6) NOT NULL PRIMARY KEY,
-    nombre_tarea_ts         VARCHAR2(50) NOT NULL,
+    nombre_ts	            VARCHAR2(50) NOT NULL,
     descripcion_ts          VARCHAR2(160) NOT NULL,
     fecha_inicio_ts         DATE,
     fecha_entrega_ts        DATE,
