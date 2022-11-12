@@ -7,17 +7,14 @@ import {
   Tarea,
   TareaService,
 } from 'src/app/services/tarea.service';
-import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-crear-tarea',
   templateUrl: './crear-tarea.component.html',
   styleUrls: ['./crear-tarea.component.css'],
-  providers: [TareaService, UsuarioService],
+  providers: [TareaService],
 })
 export class CrearTareaComponent implements OnInit {
-  ListarUsuario: Usuario[] = [];
-  filtroUsuario = '';
   Tarea_formulario: FormGroup;
   ListarTarea: Tareas[] = [];
 
@@ -33,8 +30,7 @@ export class CrearTareaComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private TareaService: TareaService,
-    private UsuarioService: UsuarioService
+    private TareaService: TareaService
   ) {
     this.Tarea_formulario = this.fb.group({
       nombre_tarea: ['', Validators.required],
@@ -44,19 +40,7 @@ export class CrearTareaComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.listarUsuario();
-  }
-
-  listarUsuario() {
-    this.UsuarioService.getUsuarios().subscribe(
-      (res) => {
-        console.log(res);
-        this.ListarUsuario = <any>res;
-      },
-      (err) => console.log(err)
-    );
-  }
+  ngOnInit(): void {}
 
   crear_tarea() {
     const TAREA: AgregarTarea = {
