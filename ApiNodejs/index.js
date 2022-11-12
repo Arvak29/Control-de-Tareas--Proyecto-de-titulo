@@ -12,7 +12,7 @@ const RutasTareaSub = require('./rutas/rutas-tarea-sub');
 const RutasFlujoTarea = require('./rutas/rutas-flujo-tarea');
 const RutasUsuario = require('./rutas/rutas-usuario');
 const RutasCargo = require('./rutas/rutas-cargo');
-const RutasReporteProblema = require('./rutas/rutas-reporte-problemas');
+const RutasReporteProblema = require('./rutas/rutas-reporte-problema');
 
 //settings
 app.set('port', puerto);

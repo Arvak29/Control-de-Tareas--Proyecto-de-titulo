@@ -85,7 +85,7 @@ CREATE TABLE ASIGNACION_TAREA (
     id_u_at                  NUMBER(6),
     id_t_at                  NUMBER(6),
     respuesta_at             VARCHAR2(30) NOT NULL,
-    justificacion_ats        VARCHAR2(30),
+    justificacion_at        VARCHAR2(30),
     CONSTRAINT ASIG_T_USUARIO FOREIGN KEY (id_u_at) REFERENCES USUARIO (id_u),
     CONSTRAINT ASIG_T_TAREA FOREIGN KEY (id_t_at) REFERENCES TAREA (id_t),
     CONSTRAINT asig_t_pk PRIMARY KEY (id_u_at, id_t_at)
@@ -114,7 +114,7 @@ CREATE TABLE EJECUCION_FLUJO_TAREA(
 -----------------------------------------------------------------------------------------------------------------------------------
 /*/// Alter Table ///*/
 
-  /* Tareas subordinadas */
+ /* Tareas subordinadas */
 ALTER TABLE TAREA_SUBORDINADA ADD CONSTRAINT id_t_fk FOREIGN KEY (id_t) REFERENCES tarea (id_t) NOT DEFERRABLE;
 ALTER TABLE TAREA_SUBORDINADA ADD CONSTRAINT id_ft_fk FOREIGN KEY (id_ft) REFERENCES flujo_tarea (id_ft) NOT DEFERRABLE;
 
@@ -134,21 +134,32 @@ ALTER TABLE USUARIO ADD CONSTRAINT id_c_u_fk FOREIGN KEY (id_c) REFERENCES cargo
 -----------------------------------------------------------------------------------------------------------------------------------
 /*/// Inserción de datos ///*/
 
-INSERT INTO UNIDAD_INTERNA VALUES ('1', 'Contabilidad');
-INSERT INTO UNIDAD_INTERNA VALUES ('2', 'Programador');
+INSERT INTO UNIDAD_INTERNA VALUES ('1', 'Departamento de contabilidad');
+INSERT INTO UNIDAD_INTERNA VALUES ('2', 'Departamento de informatica');
 
-INSERT INTO ROL VALUES ('1', 'Contador', '1');
-INSERT INTO ROL VALUES ('2', 'Programacion', '2');
+INSERT INTO ROL VALUES ('1', 'Administrador');
+INSERT INTO ROL VALUES ('2', 'Diseñador de procesos');
+INSERT INTO ROL VALUES ('3', 'Funcionario');
 
-INSERT INTO USUARIO VALUES ('1', 'Alonso Silva Bustos', 'alo.silva@duocuc.cl', '12345', '2');
-INSERT INTO USUARIO VALUES ('2', 'Jimmy Cabrera', 'jim.cabrera@duocuc.cl', '12345', '2');
-INSERT INTO USUARIO VALUES ('3', 'Manuel Mu�oz', 'Manue.munozg@duocuc.cl', '12345', '2');
+INSERT INTO CARGO VALUES ('1', 'Contador Auditor', 1, 2);
+INSERT INTO CARGO VALUES ('2', 'Contador', 1, 3);
+INSERT INTO CARGO VALUES ('3', 'Ayudante de Contador', 1, 3);
+INSERT INTO CARGO VALUES ('4', 'Programador Senior', 2, 1);
+INSERT INTO CARGO VALUES ('5', 'Programador Semi Senior', 2, 3);
+INSERT INTO CARGO VALUES ('6', 'Programador Junior', 2, 3);
+
+INSERT INTO USUARIO VALUES ('1', 'Alonso Silva Bustos', 'alo.silva@duocuc.cl', '12345', '6');
+INSERT INTO USUARIO VALUES ('2', 'Jimmy Cabrera', 'jim.cabrera@duocuc.cl', '12345', '6');
+INSERT INTO USUARIO VALUES ('3', 'Manuel Muñoz', 'Manue.munozg@duocuc.cl', '12345', '6');
 
 INSERT INTO TAREA VALUES ('1', 'Programación de portafolio', 'Proceso de programación de página web en base al caso N°5', '18-10-2022', '1-12-2022', '0', 'En curso');
 INSERT INTO TAREA VALUES ('2', 'Programación de portafolio', 'Proceso de programación de página web en base al caso N°5', '25-10-2022', '1-12-2022', '0', 'En curso');
 INSERT INTO TAREA VALUES ('3', 'Programación de portafolio', 'Proceso de programación de página web en base al caso N°5', '08-09-2022', '31-12-2022', '0', 'En curso');
 
+INSERT INTO FLUJO_TAREA VALUES ('1', 'Programación de portafolio', 'Proceso de programación de página web en base al caso N°5', '02-08-2022', '03-09-2022', '0', 'En curso');
 
+INSERT INTO TAREA_SUBORDINADA VALUES ('1', 'Programación de modulo de mantención', 'Proceso de programación de la vista de la página web del modulo de manteción en base al caso N°5', '02-08-2022', '03-09-2022', '0', 'En curso', 1, 0);
+INSERT INTO TAREA_SUBORDINADA VALUES ('1', 'Programación de modulo de mantención', 'Proceso de programación de la vista de la página web del modulo de manteción en base al caso N°5', '01-08-2022', '02-09-2022', '0', 'En curso', 0, 1);
 -----------------------------------------------------------------------------------------------------------------------------------
 /*/// PL SQL ///*/
 
