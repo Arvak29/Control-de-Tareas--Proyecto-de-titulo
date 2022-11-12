@@ -43,7 +43,7 @@ router.get('/getUsuarios', async (req, res) => {
             "id_c": usuario[4]
         }
 
-        usuario.push(usuariosSchema);
+        Usuarios.push(usuariosSchema);
     })
 
     res.json(Usuarios);

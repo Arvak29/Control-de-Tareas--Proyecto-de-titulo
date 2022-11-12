@@ -1,5 +1,6 @@
 /*/// Drop Table ///*/
 
+DROP TABLE EMPRESA CASCADE CONSTRAINTS;
 DROP TABLE TAREA CASCADE CONSTRAINTS;
 DROP TABLE TAREA_SUBORDINADA CASCADE CONSTRAINTS;
 DROP TABLE FLUJO_TAREA CASCADE CONSTRAINTS;
@@ -12,14 +13,15 @@ DROP TABLE ASIGNACION_TAREA CASCADE CONSTRAINTS;
 DROP TABLE ASIGNACION_TAREA_SUBORDINADA CASCADE CONSTRAINTS;
 DROP TABLE EJECUCION_FLUJO_TAREA CASCADE CONSTRAINTS;
 
+
 -----------------------------------------------------------------------------------------------------------------------------------
 
 /*/// Create Table ///*/
 
 CREATE TABLE FLUJO_TAREA (
     id_ft                   NUMBER(6) NOT NULL PRIMARY KEY,
-    nombre_ft               VARCHAR2(30) NOT NULL,
-    descripcion_ft          VARCHAR2(90) NOT NULL,
+    nombre_ft               VARCHAR2(50) NOT NULL,
+    descripcion_ft          VARCHAR2(160) NOT NULL,
     fecha_inicio_ft         DATE,
     fecha_entrega_ft        DATE,
     porcentaje_avance_ft    NUMBER(6),
@@ -28,8 +30,8 @@ CREATE TABLE FLUJO_TAREA (
 
 CREATE TABLE TAREA (
     id_t                    NUMBER(6) NOT NULL PRIMARY KEY,
-    nombre_t                VARCHAR2(30) NOT NULL,
-    descripcion_t           VARCHAR2(90) NOT NULL,
+    nombre_t                VARCHAR2(50) NOT NULL,
+    descripcion_t           VARCHAR2(160) NOT NULL,
     fecha_inicio_t          DATE NOT NULL,
     fecha_entrega_t         DATE NOT NULL,
     porcentaje_avance_t     NUMBER(6),
@@ -37,9 +39,9 @@ CREATE TABLE TAREA (
 );
 
 CREATE TABLE TAREA_SUBORDINADA (
-    id_ts             NUMBER(6) NOT NULL PRIMARY KEY,
-    nombre_tarea_ts         VARCHAR2(30) NOT NULL,
-    descripcion_ts          VARCHAR2(90) NOT NULL,
+    id_ts                   NUMBER(6) NOT NULL PRIMARY KEY,
+    nombre_tarea_ts         VARCHAR2(50) NOT NULL,
+    descripcion_ts          VARCHAR2(160) NOT NULL,
     fecha_inicio_ts         DATE,
     fecha_entrega_ts        DATE,
     porcentaje_avance_ts    NUMBER(6),
@@ -50,7 +52,7 @@ CREATE TABLE TAREA_SUBORDINADA (
 
 CREATE TABLE REPORTE_PROBLEMA (
     id_rp                   NUMBER(6) NOT NULL PRIMARY KEY,
-    descripcion_rp          VARCHAR2(90),
+    descripcion_rp          VARCHAR2(160),
     id_t                    NUMBER(6),
     id_ts                   NUMBER(6),
     id_ft                   NUMBER(6)
@@ -69,8 +71,13 @@ CREATE TABLE ROL (
 CREATE TABLE CARGO (
     id_c                    NUMBER(6) NOT NULL PRIMARY KEY,
     nombre_c                VARCHAR2(30) NOT NULL,
-    id_ui                   NUMBER(6) NOT NULL UNIQUE,
-    id_r                    NUMBER(6) NOT NULL UNIQUE
+    id_ui                   NUMBER(6) NOT NULL,
+    id_r                    NUMBER(6) NOT NULL
+);
+
+CREATE TABLE EMPRESA (
+    id_e                   NUMBER(6) NOT NULL PRIMARY KEY,
+    nombre_e               VARCHAR2(30) NOT NULL
 );
 
 CREATE TABLE USUARIO (
@@ -78,7 +85,8 @@ CREATE TABLE USUARIO (
     nombre_u                VARCHAR2(30) NOT NULL,
     email_u                 VARCHAR2(30) NOT NULL,
     password_u              VARCHAR2(30) NOT NULL,
-    id_c                    NUMBER(6) NOT NULL UNIQUE
+    id_c                    NUMBER(6) NOT NULL,
+    id_e		    NUMBER(6) NOT NULL
 );
 
 CREATE TABLE ASIGNACION_TAREA (
@@ -114,7 +122,7 @@ CREATE TABLE EJECUCION_FLUJO_TAREA(
 -----------------------------------------------------------------------------------------------------------------------------------
 /*/// Alter Table ///*/
 
- /* Tareas subordinadas */
+  /* Tareas subordinadas */
 ALTER TABLE TAREA_SUBORDINADA ADD CONSTRAINT id_t_fk FOREIGN KEY (id_t) REFERENCES tarea (id_t) NOT DEFERRABLE;
 ALTER TABLE TAREA_SUBORDINADA ADD CONSTRAINT id_ft_fk FOREIGN KEY (id_ft) REFERENCES flujo_tarea (id_ft) NOT DEFERRABLE;
 
@@ -130,9 +138,10 @@ ALTER TABLE CARGO ADD CONSTRAINT id_c_r_fk FOREIGN KEY (id_r) REFERENCES rol (id
 
   /* Usuario */
 ALTER TABLE USUARIO ADD CONSTRAINT id_c_u_fk FOREIGN KEY (id_c) REFERENCES cargo (id_c) NOT DEFERRABLE;
-
+ALTER TABLE USUARIO ADD CONSTRAINT id_e_u_fk FOREIGN KEY (id_e) REFERENCES EMPRESA (id_e) NOT DEFERRABLE;
+  
 -----------------------------------------------------------------------------------------------------------------------------------
-/*/// Inserción de datos ///*/
+/*/// Insertar de tabla tareas ///*/
 
 INSERT INTO UNIDAD_INTERNA VALUES ('1', 'Departamento de contabilidad');
 INSERT INTO UNIDAD_INTERNA VALUES ('2', 'Departamento de informatica');
@@ -148,9 +157,12 @@ INSERT INTO CARGO VALUES ('4', 'Programador Senior', 2, 1);
 INSERT INTO CARGO VALUES ('5', 'Programador Semi Senior', 2, 3);
 INSERT INTO CARGO VALUES ('6', 'Programador Junior', 2, 3);
 
-INSERT INTO USUARIO VALUES ('1', 'Alonso Silva Bustos', 'alo.silva@duocuc.cl', '12345', '6');
-INSERT INTO USUARIO VALUES ('2', 'Jimmy Cabrera', 'jim.cabrera@duocuc.cl', '12345', '6');
-INSERT INTO USUARIO VALUES ('3', 'Manuel Muñoz', 'Manue.munozg@duocuc.cl', '12345', '6');
+INSERT INTO EMPRESA VALUES ('1', 'Ubisoft');
+INSERT INTO EMPRESA VALUES ('2', 'Coca-Cola Company');
+
+INSERT INTO USUARIO VALUES ('1', 'Alonso Silva Bustos', 'alo.silva@duocuc.cl', '12345', '6', '2');
+INSERT INTO USUARIO VALUES ('2', 'Jimmy Cabrera', 'jim.cabrera@duocuc.cl', '12345', '6', '1');
+INSERT INTO USUARIO VALUES ('3', 'Manuel Muñoz', 'Manue.munozg@duocuc.cl', '12345', '6', '1');
 
 INSERT INTO TAREA VALUES ('1', 'Programación de portafolio', 'Proceso de programación de página web en base al caso N°5', '18-10-2022', '1-12-2022', '0', 'En curso');
 INSERT INTO TAREA VALUES ('2', 'Programación de portafolio', 'Proceso de programación de página web en base al caso N°5', '25-10-2022', '1-12-2022', '0', 'En curso');
@@ -158,8 +170,8 @@ INSERT INTO TAREA VALUES ('3', 'Programación de portafolio', 'Proceso de progra
 
 INSERT INTO FLUJO_TAREA VALUES ('1', 'Programación de portafolio', 'Proceso de programación de página web en base al caso N°5', '02-08-2022', '03-09-2022', '0', 'En curso');
 
-INSERT INTO TAREA_SUBORDINADA VALUES ('1', 'Programación de modulo de mantención', 'Proceso de programación de la vista de la página web del modulo de manteción en base al caso N°5', '02-08-2022', '03-09-2022', '0', 'En curso', 1, 0);
-INSERT INTO TAREA_SUBORDINADA VALUES ('1', 'Programación de modulo de mantención', 'Proceso de programación de la vista de la página web del modulo de manteción en base al caso N°5', '01-08-2022', '02-09-2022', '0', 'En curso', 0, 1);
+
+INSERT INTO TAREA_SUBORDINADA VALUES ('1', 'Programación de modulo de mantención', 'Proceso de programación de la vista de la página web del modulo de manteción en base al caso N°5', '02-08-2022', '03-09-2022', '0', 'En curso', 1, 1);
 -----------------------------------------------------------------------------------------------------------------------------------
 /*/// PL SQL ///*/
 
