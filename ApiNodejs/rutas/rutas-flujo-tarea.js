@@ -47,7 +47,7 @@ router.get('/getFlujosTareas', async (req, res) => {
             "estado_ft": flujo_tarea[6]
         }
 
-        Flujos_tareas.push(flujos_tareasSchema);
+        Flujos_Tareas.push(flujos_tareasSchema);
     })
 
     res.json(Flujos_Tareas);

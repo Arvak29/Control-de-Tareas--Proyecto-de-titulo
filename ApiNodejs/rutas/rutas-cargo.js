@@ -15,11 +15,11 @@ router.get('/getCargo/:id', async (req, res) => {
         let cargoSchema = {
             "id_c": cargo[0],
             "nombre_c": cargo[1],
-            "id_ui": cargo[0],
-            "id_r": cargo[0],
+            "id_ui": cargo[2],
+            "id_r": cargo[3],
         }
 
-        cargo.push(cargoSchema);
+        Cargo.push(cargoSchema);
         Cargo = [cargoSchema];
     })
     
@@ -27,7 +27,7 @@ router.get('/getCargo/:id', async (req, res) => {
 })
 
 //Get de todo
-router.get('/getCargo', async (req, res) => {
+router.get('/getCargos', async (req, res) => {
     sql = "select * from cargo";
 
     let result = await BD.Open(sql, [], false);
@@ -37,11 +37,11 @@ router.get('/getCargo', async (req, res) => {
         let cargosSchema = {
             "id_c": cargo[0],
             "nombre_c": cargo[1],
-            "id_ui": cargo[0],
-            "id_r": cargo[0],
+            "id_ui": cargo[2],
+            "id_r": cargo[3],
         }
 
-        cargos.push(cargosSchema);
+        Cargos.push(cargosSchema);
     })
 
     res.json(Cargos);
@@ -51,9 +51,9 @@ router.get('/getCargo', async (req, res) => {
 router.post('/addCargo', async (req, res) => {
     const {id_c, nombre_c, id_ui, id_r} = req.body;
 
-    sql = "insert into cargo(id_c, nombre_c, id_ui, id_r) values (:id_c, :nombre_c, id_ui, id_r)";
+    sql = "insert into cargo(id_c, nombre_c, id_ui, id_r) values (:id_c, :nombre_c, :id_ui, :id_r)";
 
-    await BD.Open(sql, [id_ui, nombre_ui], true);
+    await BD.Open(sql, [id_c, nombre_c, id_ui, id_r], true);
 
     res.status(200).json({
         "id_c": id_c,
@@ -69,7 +69,7 @@ router.put("/UpdateCargo", async (req, res) => {
     
     sql = "update cargo set nombre_c=:nombre_c, id_ui=:id_ui, id_r=:id_r where id_c=:id_c";
 
-    await BD.Open(sql, [nombre_ui, id_ui], true);
+    await BD.Open(sql, [nombre_c, id_ui, id_r, id_c], true);
 
     res.status(200).json({
         "id_c": id_c,

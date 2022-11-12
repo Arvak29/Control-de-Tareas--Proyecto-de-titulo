@@ -17,7 +17,8 @@ router.get('/getUsuario/:id', async (req, res) => {
             "nombre_u": usuario[1],
             "email_u": usuario[2],
             "password_u": usuario[3],
-            "id_c": usuario[4]
+            "id_c": usuario[4],
+            "id_e": usuario[5]
         }
 
         usuario.push(usuarioSchema);
@@ -40,7 +41,8 @@ router.get('/getUsuarios', async (req, res) => {
             "nombre_u": usuario[1],
             "email_u": usuario[2],
             "password_u": usuario[3],
-            "id_c": usuario[4]
+            "id_c": usuario[4],
+            "id_e": usuario[5]
         }
 
         Usuarios.push(usuariosSchema);
@@ -51,35 +53,37 @@ router.get('/getUsuarios', async (req, res) => {
 
 //Agregar
 router.post('/addUsuario', async (req, res) => {
-    const {id_u, nombre_u, email_u, password_u, id_c} = req.body;
+    const {id_u, nombre_u, email_u, password_u, id_c, id_e} = req.body;
 
-    sql = "insert into usuario(id_u, nombre_u, email_u, password_u, id_c) values (:id_u, :nombre_u, :email_u, :password_u, :id_c)";
+    sql = "insert into usuario(id_u, nombre_u, email_u, password_u, id_c, id_e) values (:id_u, :nombre_u, :email_u, :password_u, :id_c, :id_e)";
 
-    await BD.Open(sql, [id_u, nombre_u, email_u, password_u, id_c], true);
+    await BD.Open(sql, [id_u, nombre_u, email_u, password_u, id_c, id_e], true);
 
     res.status(200).json({
         "id_u": id_u,
         "nombre_u": nombre_u,
         "email_u": email_u,
         "password_u": password_u,
-        "id_c": id_c
+        "id_c": id_c,
+        "id_e": id_e
     })
 })
 
 //Actualizar
 router.put("/UpdateUsuario", async (req, res) => {
-    const {id_u, nombre_u, email_u, password_u, id_c} = req.body;
+    const {id_u, nombre_u, email_u, password_u, id_c, id_e} = req.body;
     
-    sql = "update usuario set nombre_u=:nombre_u, email_u=:email_u, password_u=:password_u, id_c=:id_c where id_u=:id_u";
+    sql = "update usuario set nombre_u=:nombre_u, email_u=:email_u, password_u=:password_u, id_c=:id_c, id_e=:id_e where id_u=:id_u";
 
-    await BD.Open(sql, [id_u, nombre_u, email_u, password_u, id_c], true);
+    await BD.Open(sql, [nombre_u, email_u, password_u, id_c, id_e, id_u], true);
 
     res.status(200).json({
         "id_u": id_u,
         "nombre_u": nombre_u,
         "email_u": email_u,
         "password_u": password_u,
-        "id_c": id_c
+        "id_c": id_c,
+        "id_e": id_e
         })
 })
 

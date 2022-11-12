@@ -6,7 +6,7 @@ const BD = require('../config/configbd');
 //Get especifico
 router.get('/getTareaSub/:id', async (req, res) => {
     const { id } = req.params;
-    sql = "select * from tarea_subordinara where id_ts =:id";
+    sql = "select * from tarea_subordinada where id_ts =:id";
 
     let result = await BD.Open(sql, [id], false);
     Tarea_Subordinada = [];
@@ -22,7 +22,7 @@ router.get('/getTareaSub/:id', async (req, res) => {
             "estado_ts": tarea_subordinada[6]
         }
 
-        tarea_subordinada.push(tarea_subordinadaSchema);
+        Tarea_Subordinada.push(tarea_subordinadaSchema);
         Tarea_Subordinada = [tarea_subordinadaSchema];
     })
     
@@ -47,7 +47,7 @@ router.get('/getTareasSub', async (req, res) => {
             "estado_ts": tarea_subordinada[6]
         }
 
-        Tareas_subordinadas.push(tareas_subordinadasSchema);
+        Tareas_Subordinadas.push(tareas_subordinadasSchema);
     })
 
     res.json(Tareas_Subordinadas);
