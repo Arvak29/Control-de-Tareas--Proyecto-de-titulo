@@ -47,4 +47,65 @@ export class AppComponent {
     }
     return true;
   }
+  permisosPanel(): boolean {
+    const token = localStorage.getItem('token');
+    let decodetoken: any = {};
+    decodetoken = decode(token!);
+    if (decodetoken.rol === 'Administrador') {
+      return true;
+    }
+    return false;
+  }
+  permisosTareas(): boolean {
+    const token = localStorage.getItem('token');
+    let decodetoken: any = {};
+    decodetoken = decode(token!);
+    if (
+      decodetoken.rol === 'Administrador' ||
+      decodetoken.rol === 'Funcionario' ||
+      decodetoken.rol === 'Diseñador de procesos'
+    ) {
+      return true;
+    }
+    return false;
+  }
+  permisosUsuarios(): boolean {
+    const token = localStorage.getItem('token');
+    let decodetoken: any = {};
+    decodetoken = decode(token!);
+    if (decodetoken.rol === 'Administrador') {
+      return true;
+    }
+    return false;
+  }
+  permisosRoles(): boolean {
+    const token = localStorage.getItem('token');
+    let decodetoken: any = {};
+    decodetoken = decode(token!);
+    if (decodetoken.rol === 'Administrador') {
+      return true;
+    }
+    return false;
+  }
+  permisosFrujos(): boolean {
+    const token = localStorage.getItem('token');
+    let decodetoken: any = {};
+    decodetoken = decode(token!);
+    if (
+      decodetoken.rol === 'Administrador' ||
+      decodetoken.rol === 'Diseñador de procesos'
+    ) {
+      return true;
+    }
+    return false;
+  }
+  permisosUnidades(): boolean {
+    const token = localStorage.getItem('token');
+    let decodetoken: any = {};
+    decodetoken = decode(token!);
+    if (decodetoken.rol === 'Administrador') {
+      return true;
+    }
+    return false;
+  }
 }

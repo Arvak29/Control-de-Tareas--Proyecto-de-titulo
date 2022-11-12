@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {
-  ActivatedRouteSnapshot,
   CanActivate,
-  Router,
+  ActivatedRouteSnapshot,
   RouterStateSnapshot,
   UrlTree,
+  Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
@@ -15,10 +15,10 @@ import decode from 'jwt-decode';
   providedIn: 'root',
 })
 export class RolGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, public router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot): boolean {
-    const expectedRole = route.data['expectedRole'];
+  canActivate(router: ActivatedRouteSnapshot): boolean {
+    const expectedRole = router.data['expectedRole'];
     const token = localStorage.getItem('token');
     let decodetoken: any = {};
     decodetoken = decode(token!);
@@ -26,7 +26,7 @@ export class RolGuard implements CanActivate {
 
     if (decodetoken.rol !== expectedRole) {
       console.log('Usuario no autorizado');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
       return false;
     }
 

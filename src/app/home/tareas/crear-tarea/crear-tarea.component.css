@@ -51,3 +51,15 @@ img {
   position: relative;
   z-index: 2;
 }
+
+.modal-header {
+  border-color: #40ed9a;
+}
+
+.modal-content {
+  background-color: transparent;
+}
+
+.btn-close {
+  color: #40ed9a;
+}

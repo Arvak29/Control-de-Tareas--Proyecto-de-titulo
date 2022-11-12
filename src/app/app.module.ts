@@ -72,36 +72,57 @@ const appRoutes: Routes = [
   {
     path: 'usuarios',
     component: UsuariosComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RolGuard],
+    data: { expectedRole: 'Administrador' },
   },
   {
     path: 'usuario/:id',
     component: UsuarioComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RolGuard],
+    data: { expectedRole: 'Administrador' },
   },
   {
     path: 'crear_usuario',
     component: CrearUsuariosComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RolGuard],
+    data: { expectedRole: 'Administrador' },
   },
   {
     path: 'unidades_internas',
     component: UnidadesInternasComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RolGuard],
+    data: { expectedRole: 'Administrador' },
   },
   {
     path: 'crear_unidad_interna',
     component: CrearUnidadInternaComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RolGuard],
+    data: { expectedRole: 'Administrador' },
   },
   {
     path: 'unidad_interna/:id',
     component: EditarUnidadInternaComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RolGuard],
+    data: { expectedRole: 'Administrador' },
   },
-  { path: 'roles', component: RolesComponent, canActivate: [AuthGuard] },
-  { path: 'crear_rol', component: CrearRolComponent, canActivate: [AuthGuard] },
-  { path: 'rol/:id', component: RolComponent, canActivate: [AuthGuard] },
+  {
+    path: 'roles',
+    component: RolesComponent,
+    canActivate: [AuthGuard, RolGuard],
+    data: { expectedRole: 'Administrador' },
+  },
+  {
+    path: 'crear_rol',
+    component: CrearRolComponent,
+    canActivate: [AuthGuard, RolGuard],
+    data: { expectedRole: 'Administrador' },
+  },
+  {
+    path: 'rol/:id',
+    component: RolComponent,
+    canActivate: [AuthGuard, RolGuard],
+    data: { expectedRole: 'Administrador' },
+  },
   {
     path: 'flujo_de_tareas',
     component: FlujoDeTareasComponent,
@@ -137,11 +158,6 @@ const appRoutes: Routes = [
   {
     path: 'crear_subordinada',
     component: CrearTareaSubordinadaComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'reportar_tarea',
-    component: ReportarTareaComponent,
     canActivate: [AuthGuard],
   },
   {
