@@ -1,31 +1,30 @@
-const express = require('express');
-const morgan = require('morgan');
-const cors = require('cors');
+require("./config/conexion");
+
+const express = require("express");
+const port = process.env.port || 3000;
+
+//express
 const app = express();
-const puerto = 3000;
 
-//imports
-const RutasTarea = require('./rutas/rutas-tarea');
-const RutasRol = require('./rutas/rutas-rol');
-const RutasUnidadInterna = require('./rutas/rutas-unidad-interna');
-const RutasTareaSub = require('./rutas/rutas-tarea-sub');
-const RutasFlujoTarea = require('./rutas/rutas-flujo-tarea');
-const RutasUsuario = require('./rutas/rutas-usuario');
-const RutasCargo = require('./rutas/rutas-cargo');
-const RutasReporteProblema = require('./rutas/rutas-reporte-problema');
-
-//settings
-app.set('port', puerto);
-
-//middlewares
-app.use(morgan('dev'));
+//administrar
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
-//routes
-app.use(RutasTarea, RutasRol, RutasUnidadInterna, RutasTareaSub, RutasFlujoTarea, RutasUsuario, RutasCargo, RutasReporteProblema );
+//config
+app.set("port", port);
 
-//run
-app.listen(app.get('port'), () => {
-    console.log('Server on Port 3000')
-})
+//rutas
+app.use("/api-rol", require("./rutas-rol"));
+app.use("/api-tarea", require("./rutas-tarea"));
+app.use("/api-usuario", require("./rutas-usuario"));
+app.use("/api-tarea-sub", require("./rutas-tarea-sub"));
+app.use("/api-unidad", require("./rutas-unidad"));
+app.use("/api-flujo", require("./rutas-flujo"));
+
+//iniciar espress
+app.listen(app.get("port"), (error) => {
+  if (error) {
+    console.log("error al iniciar el servidor: " + error);
+  } else {
+    console.log("servidor iniciado en el prueto: " + port);
+  }
+});
