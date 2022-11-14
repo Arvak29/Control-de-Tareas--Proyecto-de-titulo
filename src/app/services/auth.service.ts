@@ -12,7 +12,7 @@ export class AuthService {
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
 
   singin(user: any) {
-    return this.http.post(this.url + '/singin', user);
+    return this.http.post('RutasUsuario', user);
   }
 
   isAuth(): boolean {

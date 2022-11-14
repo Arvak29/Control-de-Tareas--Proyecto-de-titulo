@@ -21,6 +21,8 @@ export class AppComponent {
     window.location.reload();
   }
 
+  sidebar() {}
+
   dataUser() {
     const token = localStorage.getItem('token');
     let decodetoken: any = {};
