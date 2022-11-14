@@ -1,24 +1,28 @@
-export class FLUJO {
-  id_flujo: string;
-  nombre_flujo: string;
-  descripcion_flujo: string;
-  fecha_comienzo: string;
-  fecha_entrega: string;
-  id_responsable_flujo: string;
+export class Flujo_tarea {
+  id_ft: string;
+  nombre_ft: string;
+  descripcion_ft: string;
+  fecha_inicio_ft: string;
+  fecha_entrega_ft: string;
+  porcentaje_avance_ft: number;
+  estado_ft: string;
 
   constructor(
-    id_flujo: string,
-    nombre_flujo: string,
-    descripcion_flujo: string,
-    fecha_comienzo: string,
-    fecha_entrega: string,
-    id_responsable_flujo: string
-  ) {
-    this.id_flujo = id_flujo;
-    this.nombre_flujo = nombre_flujo;
-    this.descripcion_flujo = descripcion_flujo;
-    this.fecha_comienzo = fecha_comienzo;
-    this.fecha_entrega = fecha_entrega;
-    this.id_responsable_flujo = id_responsable_flujo;
+    id_ft: string,
+    nombre_ft: string,
+    descripcion_ft: string,
+    fecha_inicio_ft: string,
+    fecha_entrega_ft: string,
+    porcentaje_avance_ft: number,
+    estado_ft: string
+  ) 
+  {
+    this.id_ft = id_ft;
+    this.nombre_ft = nombre_ft;
+    this.descripcion_ft = descripcion_ft;
+    this.fecha_inicio_ft = fecha_inicio_ft;
+    this.fecha_entrega_ft = fecha_entrega_ft;
+    this.porcentaje_avance_ft = porcentaje_avance_ft;
+    this.estado_ft = estado_ft
   }
 }

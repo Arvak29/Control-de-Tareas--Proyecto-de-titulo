@@ -13,7 +13,8 @@ export class Tareas {
     fecha_inicio: string,
     fecha_termino: string,
     id_responsable: string
-  ) {
+  ) 
+  {
     this.id_tarea = id_tarea;
     this.nombre_tarea = nombre_tarea;
     this.descripcion = descripcion;
