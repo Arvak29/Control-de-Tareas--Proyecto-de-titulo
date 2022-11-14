@@ -1,0 +1,21 @@
+_id: req_e441254846e44039b0bb4b65faf77513
+type: Request
+parentId: fld_686a1869a9e443ec84d620585b98687e
+modified: 1668462187980
+created: 1668461038256
+url: http://localhost:3000/getEmpresas
+name: Get empresas
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1667932175843.375
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

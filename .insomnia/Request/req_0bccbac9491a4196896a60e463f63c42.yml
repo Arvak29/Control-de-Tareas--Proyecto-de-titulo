@@ -1,21 +1,19 @@
-_id: req_aeb1378bc5b3451bb60a80e51ccb9b82
+_id: req_0bccbac9491a4196896a60e463f63c42
 type: Request
-parentId: fld_de5ab832eaaa4e4295ebdaa13c9aaa7d
-modified: 1668461464746
-created: 1668290231286
-url: http://localhost:3000/UpdateCargo
-name: Update cargo
+parentId: fld_686a1869a9e443ec84d620585b98687e
+modified: 1668464147646
+created: 1668461038259
+url: http://localhost:3000/addEmpresa
+name: Add empresa
 description: ""
-method: PUT
+method: POST
 body:
   mimeType: application/json
   text: |
-    	{
-    		"id_c": 7,
-    		"nombre_c": "Ingeniero Comercial cambiado",
-    		"id_ui": 1,
-    		"id_r": 3
-    	}
+    {
+    		"id_e": 3,
+    		"nombre_e": "CCU"
+    }
 parameters: []
 headers:
   - name: Content-Type

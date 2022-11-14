@@ -1,27 +1,25 @@
-_id: req_aeb1378bc5b3451bb60a80e51ccb9b82
+_id: req_325dd75d16174a4fb1c1989d3e908b8d
 type: Request
-parentId: fld_de5ab832eaaa4e4295ebdaa13c9aaa7d
-modified: 1668461464746
-created: 1668290231286
-url: http://localhost:3000/UpdateCargo
-name: Update cargo
+parentId: fld_686a1869a9e443ec84d620585b98687e
+modified: 1668463190022
+created: 1668461038262
+url: http://localhost:3000/updateEmpresa
+name: Update empresa
 description: ""
 method: PUT
 body:
   mimeType: application/json
   text: |
-    	{
-    		"id_c": 7,
-    		"nombre_c": "Ingeniero Comercial cambiado",
-    		"id_ui": 1,
-    		"id_r": 3
-    	}
+    {
+    		"id_e": 3,
+    		"nombre_e": "CCU Cambiada"
+    }
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
 authentication: {}
-metaSortKey: -1667932175902.75
+metaSortKey: -1667932175893.375
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
