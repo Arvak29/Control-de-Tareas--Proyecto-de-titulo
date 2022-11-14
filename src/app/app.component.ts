@@ -21,7 +21,10 @@ export class AppComponent {
     window.location.reload();
   }
 
-  sidebar() {}
+  sidebar() {
+    console.log('hola');
+    document.getElementById('layoutSidenav_nav')?.classList.toggle('active');
+  }
 
   dataUser() {
     const token = localStorage.getItem('token');

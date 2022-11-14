@@ -92,9 +92,9 @@
 #layoutSidenav #layoutSidenav_nav {
   flex-basis: 225px;
   flex-shrink: 0;
-  transition: transform 0.15s ease-in-out;
   z-index: 1038;
-  transform: translateX(-225px);
+  transform: translateX(0);
+  transition: transform 0.15s ease-in-out;
 }
 #layoutSidenav #layoutSidenav_content {
   position: relative;
@@ -103,7 +103,12 @@
   min-width: 0;
   flex-grow: 1;
   min-height: calc(100vh - 64px);
+}
+#layoutSidenav #layoutSidenav_nav.active {
+  z-index: 1038;
   margin-left: -225px;
+  transform: translateX(-225px);
+  transition: all 0.15s linear;
 }
 
 .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
@@ -122,27 +127,6 @@
   opacity: 0.5;
   transition: opacity 0.3s ease-in-out;
 }
-@media (min-width: 992px) {
-  #layoutSidenav #layoutSidenav_nav {
-    transform: translateX(0);
-  }
-  #layoutSidenav #layoutSidenav_nav {
-    transform: translateX(1);
-  }
-  #layoutSidenav #layoutSidenav_content {
-    margin-left: 0;
-    transition: margin 0.15s ease-in-out;
-  }
-  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
-    transform: translateX(-225px);
-  }
-  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content {
-    margin-left: -225px;
-  }
-  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
-    display: none;
-  }
-}
 
 .modal-header {
   border-color: #40ed9a;
@@ -159,6 +143,12 @@
 .modal-dialog {
   margin-right: 1rem;
   max-width: 300px;
+}
+
+.modaltopbar {
+  margin-right: 1rem;
+  margin-left: 1rem;
+  max-width: 100%;
 }
 
 #perfil {
