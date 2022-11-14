@@ -16,7 +16,7 @@ router.get('/getCargo/:id', async (req, res) => {
             "id_c": cargo[0],
             "nombre_c": cargo[1],
             "id_ui": cargo[2],
-            "id_r": cargo[3],
+            "id_r": cargo[3]
         }
 
         Cargo.push(cargoSchema);
@@ -38,7 +38,7 @@ router.get('/getCargos', async (req, res) => {
             "id_c": cargo[0],
             "nombre_c": cargo[1],
             "id_ui": cargo[2],
-            "id_r": cargo[3],
+            "id_r": cargo[3]
         }
 
         Cargos.push(cargosSchema);
