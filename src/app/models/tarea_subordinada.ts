@@ -1,27 +1,34 @@
-export class Tarea_sub {
-  id_tarea_sub: string;
-  nombre_tarea_sub: string;
-  descripcion_sub: string;
-  fecha_comienzo: string;
-  fecha_entrega: string;
-  id_responsable_sub: string;
-  id_tarea: string;
+export class Tarea_subordinada {
+  id_ts: string;
+  nombre_ts: string;
+  descripcion_ts: string;
+  fecha_inicio_ts: string;
+  fecha_entrega_ts: string;
+  porcentaje_avance_ts: number;
+  estado_ts: string;
+  id_t: string;
+  id_ft: string;
 
   constructor(
-    id_tarea_sub: string,
-    nombre_tarea_sub: string,
-    descripcion_sub: string,
-    fecha_comienzo: string,
-    fecha_entrega: string,
-    id_responsable_sub: string,
-    id_tarea: string
-  ) {
-    this.id_tarea_sub = id_tarea_sub;
-    this.nombre_tarea_sub = nombre_tarea_sub;
-    this.descripcion_sub = descripcion_sub;
-    this.fecha_comienzo = fecha_comienzo;
-    this.fecha_entrega = fecha_entrega;
-    this.id_responsable_sub = id_responsable_sub;
-    this.id_tarea = id_tarea;
+    id_ts: string,
+    nombre_ts: string,
+    descripcion_ts: string,
+    fecha_inicio_ts: string,
+    fecha_entrega_ts: string,
+    porcentaje_avance_ts: number,
+    estado_ts: string,
+    id_t: string,
+    id_ft: string
+  ) 
+  {
+    this.id_ts = id_ts;
+    this.nombre_ts = nombre_ts;
+    this.descripcion_ts = descripcion_ts;
+    this.fecha_inicio_ts = fecha_inicio_ts;
+    this.fecha_entrega_ts = fecha_entrega_ts;
+    this.porcentaje_avance_ts = porcentaje_avance_ts;
+    this.estado_ts = estado_ts;
+    this.id_t = id_t;
+    this.id_ft = id_ft;
   }
 }

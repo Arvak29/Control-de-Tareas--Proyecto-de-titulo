@@ -172,6 +172,12 @@ INSERT INTO FLUJO_TAREA VALUES ('1', 'Programación de portafolio', 'Proceso de 
 
 
 INSERT INTO TAREA_SUBORDINADA VALUES ('1', 'Programación de modulo de mantención', 'Proceso de programación de la vista de la página web del modulo de manteción en base al caso N°5', '02-08-2022', '03-09-2022', '0', 'En curso', 1, 1);
+
+INSERT INTO ASIGNACION_TAREA VALUES ('1','2','si','no');
+
+INSERT INTO ASIGNACION_TAREA_SUBORDINADA VALUES ('1','1','si','no');
+
+INSERT INTO EJECUCION_FLUJO_TAREA VALUES ('1','1','si','no');
 -----------------------------------------------------------------------------------------------------------------------------------
 /*/// PL SQL ///*/
 

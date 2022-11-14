@@ -6,7 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root',
 })
 export class AuthService {
-  url = '/api-usuario/singin';
+  url = '/api-usuario/signin';
   user$: any;
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
 

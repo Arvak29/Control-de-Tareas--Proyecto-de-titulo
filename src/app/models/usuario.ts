@@ -1,19 +1,23 @@
 export class Usuario {
-  id_usuario?: number;
-  nombre_usuario: string;
-  email_usuario: string;
-  password_usuario: string;
-  rol: string;
+  id_u?: number;
+  nombre_u: string;
+  email_u: string;
+  password_u: string;
+  id_c: number;
+  id_e: number;
 
   constructor(
-    nombre_usuario: string,
-    email_usuario: string,
-    password_usuario: string,
-    rol: string
-  ) {
-    this.nombre_usuario = nombre_usuario;
-    this.email_usuario = email_usuario;
-    this.password_usuario = password_usuario;
-    this.rol = rol;
+    nombre_u: string,
+    email_u: string,
+    password_u: string,
+    id_c: number,
+    id_e: number
+  ) 
+  {
+    this.nombre_u = nombre_u;
+    this.email_u = email_u;
+    this.password_u = password_u;
+    this.id_c = id_c;
+    this.id_e = id_e;
   }
 }

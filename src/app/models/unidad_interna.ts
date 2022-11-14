@@ -1,9 +1,13 @@
-export class Unidad_Interna {
-  id_unidad_i: number;
-  nombre_unidad_i: string;
+export class Unidad_interna {
+  id_ui: number;
+  nombre_ui: string;
 
-  constructor(id_unidad_i: number, nombre_unidad_i: string) {
-    this.id_unidad_i = id_unidad_i;
-    this.nombre_unidad_i = nombre_unidad_i;
+  constructor(
+    id_ui: number, 
+    nombre_ui: string
+  )
+  {
+    this.id_ui = id_ui;
+    this.nombre_ui = nombre_ui;
   }
 }

@@ -5,14 +5,19 @@ const app = express();
 const puerto = 3000;
 
 //imports
-const RutasTarea = require("./rutas/rutas-tarea");
 const RutasRol = require("./rutas/rutas-rol");
 const RutasUnidadInterna = require("./rutas/rutas-unidad-interna");
-const RutasTareaSub = require("./rutas/rutas-tarea-sub");
-const RutasFlujoTarea = require("./rutas/rutas-flujo-tarea");
 const RutasUsuario = require("./rutas/rutas-usuario");
 const RutasCargo = require("./rutas/rutas-cargo");
+const RutasEmpresa = require("./rutas/rutas-empresa");
+const RutasTarea = require("./rutas/rutas-tarea");
+const RutasTareaSub = require("./rutas/rutas-tarea-sub");
+const RutasFlujoTarea = require("./rutas/rutas-flujo-tarea");
+const RutasAsignacionTarea = require("./rutas/rutas-asignacion-tarea");
+const RutasAsignacionTareaSub = require("./rutas/rutas-asignacion-tarea-subordinada");
+const RutasEjecucionFlujoTarea = require("./rutas/rutas-ejecucion-flujo-tarea");
 const RutasReporteProblema = require("./rutas/rutas-reporte-problema");
+
 
 //settings
 app.set("port", puerto);
@@ -24,13 +29,17 @@ app.use(express.urlencoded({ extended: false }));
 
 //routes
 app.use(
-  RutasTarea,
   RutasRol,
   RutasUnidadInterna,
-  RutasTareaSub,
-  RutasFlujoTarea,
   RutasUsuario,
   RutasCargo,
+  RutasEmpresa,
+  RutasTarea,
+  RutasTareaSub,
+  RutasFlujoTarea,
+  RutasAsignacionTarea,
+  RutasAsignacionTareaSub,
+  RutasEjecucionFlujoTarea,
   RutasReporteProblema
 );
 
@@ -39,6 +48,6 @@ app.listen(app.get("port"), (error) => {
   if (error) {
     console.log("error al iniciar el servidor: " + error);
   } else {
-    console.log("servidor iniciado en el prueto: " + puerto);
+    console.log("servidor iniciado en el puerto: " + puerto);
   }
 });
