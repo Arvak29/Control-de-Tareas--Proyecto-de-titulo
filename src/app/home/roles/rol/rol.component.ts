@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Rol, RolService } from 'src/app/services/rol.service';
+import { rol, RolService } from 'src/app/services/rol.service';
 
 @Component({
   selector: 'app-rol',
@@ -9,9 +9,9 @@ import { Rol, RolService } from 'src/app/services/rol.service';
   providers: [RolService],
 })
 export class RolComponent implements OnInit {
-  rol: Rol = {
-    id_rol: '',
-    nombre: '',
+  rol: rol = {
+    id_r: '',
+    nombre_r: '',
   };
 
   constructor(
@@ -36,7 +36,7 @@ export class RolComponent implements OnInit {
   }
 
   eliminar() {
-    this.RolService.deleteRol(<any>this.rol.id_rol).subscribe(
+    this.RolService.deleteRol(<any>this.rol.id_r).subscribe(
       (res) => {
         console.log('rol eliminado');
         this.router.navigate(['/roles']);
@@ -46,7 +46,7 @@ export class RolComponent implements OnInit {
   }
 
   modificar() {
-    this.RolService.editRol(<any>this.rol.id_rol, this.rol).subscribe({
+    this.RolService.editRol(<any>this.rol.id_r, this.rol).subscribe({
       next: (res: any) => {
         console.log(res);
       },

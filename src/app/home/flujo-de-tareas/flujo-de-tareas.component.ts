@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FLUJO } from 'src/app/models/flujo_tareas';
-import {
-  AgregarFlujo,
-  Flujo,
-  FlujoService,
-} from 'src/app/services/flujo.service';
+import { Flujo_tarea } from 'src/app/models/flujo_tareas';
+import {AgregarFlujo, Flujo, FlujoService} from 'src/app/services/flujo.service';
 
 @Component({
   selector: 'app-flujo-de-tareas',
@@ -16,16 +12,17 @@ import {
 })
 export class FlujoDeTareasComponent implements OnInit {
   Flujo_Grupo: FormGroup;
-  ListarFlujo: FLUJO[] = [];
+  ListarFlujo: Flujo_tarea[] = [];
   filtroFlujo = '';
 
   flujo: Flujo = {
-    id_flujo: '',
-    nombre_flujo: '',
-    descripcion_flujo: '',
-    fecha_comienzo: '',
-    fecha_entrega: '',
-    id_responsable_flujo: '',
+    id_ft: '',
+    nombre_ft: '',
+    descripcion_ft: '',
+    fecha_inicio_ft: '',
+    fecha_entrega_ft: '',
+    porcentaje_avance_ft: '',
+    estado_ft: ''
   };
 
   constructor(
@@ -34,11 +31,12 @@ export class FlujoDeTareasComponent implements OnInit {
     private FlujoService: FlujoService
   ) {
     this.Flujo_Grupo = this.fb.group({
-      nombre_flujo: ['', Validators.required],
-      descripcion_flujo: ['', Validators.required],
-      fecha_comienzo: ['', Validators.required],
-      fecha_entrega: ['', Validators.required],
-      id_responsable_flujo: ['', Validators.required],
+      nombre_ft: ['', Validators.required],
+      descripcion_ft: ['', Validators.required],
+      fecha_inicio_ft: ['', Validators.required],
+      fecha_entrega_ft: ['', Validators.required],
+      porcentaje_avance_ft: ['', Validators.required],
+      estado_ft: ['', Validators.required]
     });
   }
 
@@ -58,7 +56,7 @@ export class FlujoDeTareasComponent implements OnInit {
   transform(value: any, arg: any): any {
     const resultado = [];
     for (const flujo of value) {
-      if (flujo.nombre_flujo.indexOf(arg) > -1) {
+      if (flujo.nombre_ft.indexOf(arg) > -1) {
         resultado.push(flujo);
       }
     }
@@ -66,19 +64,20 @@ export class FlujoDeTareasComponent implements OnInit {
   }
 
   crear_tarea() {
-    const FLUJO: AgregarFlujo = {
-      nombre_flujo: this.Flujo_Grupo.get('nombre_flujo')?.value,
-      descripcion_flujo: this.Flujo_Grupo.get('descripcion_flujo')?.value,
-      fecha_comienzo: this.Flujo_Grupo.get('fecha_comienzo')?.value,
-      fecha_entrega: this.Flujo_Grupo.get('fecha_entrega')?.value,
-      id_responsable_flujo: this.Flujo_Grupo.get('id_responsable_flujo')?.value,
+    const Flujo: AgregarFlujo = {
+      nombre_ft: this.Flujo_Grupo.get('nombre_ft')?.value,
+      descripcion_ft: this.Flujo_Grupo.get('descripcion_ft')?.value,
+      fecha_inicio_ft: this.Flujo_Grupo.get('fecha_inicio_ft')?.value,
+      fecha_entrega_ft: this.Flujo_Grupo.get('fecha_entrega_ft')?.value,
+      porcentaje_avance_ft: this.Flujo_Grupo.get('porcentaje_avance_ft')?.value,
+      estado_ft: this.Flujo_Grupo.get('estado_ft')?.value
     };
-    this.FlujoService.addFlujo(FLUJO).subscribe();
+    this.FlujoService.addFlujo(Flujo).subscribe();
     this.listarFlujo();
   }
 
   agregar() {
-    delete this.flujo.id_flujo;
+    delete this.flujo.id_ft;
 
     this.FlujoService.addFlujo(this.flujo).subscribe();
     this.listarFlujo();

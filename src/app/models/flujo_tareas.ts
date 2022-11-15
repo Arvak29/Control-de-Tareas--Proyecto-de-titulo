@@ -1,5 +1,5 @@
 export class Flujo_tarea {
-  id_ft: string;
+  id_ft: number;
   nombre_ft: string;
   descripcion_ft: string;
   fecha_inicio_ft: string;
@@ -8,7 +8,7 @@ export class Flujo_tarea {
   estado_ft: string;
 
   constructor(
-    id_ft: string,
+    id_ft: number,
     nombre_ft: string,
     descripcion_ft: string,
     fecha_inicio_ft: string,

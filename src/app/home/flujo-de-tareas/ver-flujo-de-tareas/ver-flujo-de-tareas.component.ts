@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FLUJO } from 'src/app/models/flujo_tareas';
+import { Flujo_tarea } from 'src/app/models/flujo_tareas';
 import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
 import {
   AgregarFlujo,
@@ -22,18 +22,19 @@ import {
 export class VerFlujoDeTareasComponent implements OnInit {
   ListarUsuario: Usuario[] = [];
   filtroUsuario = '';
-  ListarFlujo: FLUJO[] = [];
+  ListarFlujo: Flujo_tarea[] = [];
   filtroFlujo = '';
   ListarTareaSub: TareaSub[] = [];
   filtroSubordinada = '';
 
   flujo: Flujo = {
-    id_flujo: '',
-    nombre_flujo: '',
-    descripcion_flujo: '',
-    fecha_comienzo: '',
-    fecha_entrega: '',
-    id_responsable_flujo: '',
+    id_ft: '',
+    nombre_ft: '',
+    descripcion_ft: '',
+    fecha_inicio_ft: '',
+    fecha_entrega_ft: '',
+    porcentaje_avance_ft: '',
+    estado_ft: ''
   };
 
   constructor(
@@ -82,7 +83,7 @@ export class VerFlujoDeTareasComponent implements OnInit {
     );
   }
   eliminar() {
-    this.FlujoService.deleteFlujo(<any>this.flujo.id_flujo).subscribe(
+    this.FlujoService.deleteFlujo(<any>this.flujo.id_ft).subscribe(
       (res) => {
         console.log('flujo eliminado');
         this.router.navigate(['/flujo_de_tareas']);
@@ -92,7 +93,7 @@ export class VerFlujoDeTareasComponent implements OnInit {
   }
 
   modificar() {
-    this.FlujoService.editFlujo(<any>this.flujo.id_flujo, this.flujo).subscribe(
+    this.FlujoService.editFlujo(<any>this.flujo.id_ft, this.flujo).subscribe(
       {
         next: (res: any) => {
           console.log(res);

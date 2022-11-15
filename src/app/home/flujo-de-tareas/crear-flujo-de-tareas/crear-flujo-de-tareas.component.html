@@ -17,8 +17,8 @@
                 placeholder="nombre_flujo"
                 formControlName="nombre_flujo"
                 [class.is-invalid]="
-                  Crear_Flujo_de_tareas_Grupo.get('nombre_flujo')?.touched &&
-                  Crear_Flujo_de_tareas_Grupo.get('nombre_flujo')?.invalid
+                  Crear_Flujo_de_tareas_Grupo.get('nombre_ft')?.touched &&
+                  Crear_Flujo_de_tareas_Grupo.get('nombre_ft')?.invalid
                 "
               />
               <label for="inputNombre">Nombre</label>
@@ -33,9 +33,9 @@
                 formControlName="descripcion_flujo"
                 placeholder="descripcion_flujo"
                 [class.is-invalid]="
-                  Crear_Flujo_de_tareas_Grupo.get('descripcion_flujo')
+                  Crear_Flujo_de_tareas_Grupo.get('descripcion_ft')
                     ?.touched &&
-                  Crear_Flujo_de_tareas_Grupo.get('descripcion_flujo')?.invalid
+                  Crear_Flujo_de_tareas_Grupo.get('descripcion_ft')?.invalid
                 "
               ></textarea>
             </div>
@@ -46,15 +46,15 @@
                   class="form-control"
                   id="inputNombre"
                   type="text"
-                  formControlName="fecha_comienzo"
-                  placeholder="fecha_comienzo"
+                  formControlName="fecha_inicio"
+                  placeholder="fecha_inicio"
                   [class.is-invalid]="
-                    Crear_Flujo_de_tareas_Grupo.get('fecha_comienzo')
+                    Crear_Flujo_de_tareas_Grupo.get('fecha_inicio_ft')
                       ?.touched &&
-                    Crear_Flujo_de_tareas_Grupo.get('fecha_comienzo')?.invalid
+                    Crear_Flujo_de_tareas_Grupo.get('fecha_inicio_ft')?.invalid
                   "
                 />
-                <label for="fecha_comienzo">fecha_comienzo</label>
+                <label for="fecha_inicio">fecha_inicio</label>
               </div>
 
               <div class="form-floating mb-3 col-6">
@@ -65,8 +65,8 @@
                   formControlName="fecha_entrega"
                   placeholder="fecha_entrega"
                   [class.is-invalid]="
-                    Crear_Flujo_de_tareas_Grupo.get('fecha_entrega')?.touched &&
-                    Crear_Flujo_de_tareas_Grupo.get('fecha_entrega')?.invalid
+                    Crear_Flujo_de_tareas_Grupo.get('fecha_entrega_ft')?.touched &&
+                    Crear_Flujo_de_tareas_Grupo.get('fecha_entrega_ft')?.invalid
                   "
                 />
                 <label for="fecha_entrega">fecha_entrega</label>

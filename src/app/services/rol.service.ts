@@ -29,16 +29,16 @@ export class RolService {
   }
 
   //modificar un rol
-  editRol(id: string, rol: Rol) {
+  editRol(id: string, rol: rol) {
     return this.http.put(this.url + '/' + id, rol);
   }
 }
 
-export interface Rol {
-  id_rol?: string;
-  nombre?: string;
+export interface rol {
+  id_r?: string;
+  nombre_r?: string;
 }
 
 export interface AgregarRol {
-  nombre?: string;
+  nombre_r?: string;
 }

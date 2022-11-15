@@ -35,18 +35,20 @@ export class FlujoService {
 }
 
 export interface Flujo {
-  id_flujo?: string;
-  nombre_flujo?: string;
-  descripcion_flujo?: string;
-  fecha_comienzo?: string;
-  fecha_entrega?: string;
-  id_responsable_flujo?: string;
+  id_ft?: string;
+  nombre_ft?: string;
+  descripcion_ft?: string;
+  fecha_inicio_ft?: string;
+  fecha_entrega_ft?: string;
+  porcentaje_avance_ft?: string;
+  estado_ft: string;
 }
 
 export interface AgregarFlujo {
-  nombre_flujo?: string;
-  descripcion_flujo?: string;
-  fecha_comienzo?: string;
-  fecha_entrega?: string;
-  id_responsable_flujo?: string;
+  nombre_ft?: string;
+  descripcion_ft?: string;
+  fecha_inicio_ft?: string;
+  fecha_entrega_ft?: string;
+  porcentaje_avance_ft?: string;
+  estado_ft: string;
 }

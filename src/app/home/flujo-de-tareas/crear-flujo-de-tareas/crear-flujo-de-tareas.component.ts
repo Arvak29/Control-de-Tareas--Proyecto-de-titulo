@@ -18,28 +18,29 @@ export class CrearFlujoDeTareasComponent implements OnInit {
     private FlujoService: FlujoService
   ) {
     this.Crear_Flujo_de_tareas_Grupo = this.fb.group({
-      nombre_flujo: ['', Validators.required],
-      descripcion_flujo: ['', Validators.required],
-      fecha_comienzo: ['', Validators.required],
-      fecha_entrega: ['', Validators.required],
+      nombre_ft: ['', Validators.required],
+      descripcion_ft: ['', Validators.required],
+      fecha_inicio_ft: ['', Validators.required],
+      fecha_entrega_ft: ['', Validators.required],
+      porcentaje_avance_ft: ['', Validators.required],
+      estado_ft: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {}
 
   crear_flujo_de_tareas() {
-    const FLUJO: AgregarFlujo = {
-      nombre_flujo: this.Crear_Flujo_de_tareas_Grupo.get('nombre_flujo')?.value,
-      descripcion_flujo:
-        this.Crear_Flujo_de_tareas_Grupo.get('descripcion_flujo')?.value,
-      fecha_comienzo:
-        this.Crear_Flujo_de_tareas_Grupo.get('fecha_comienzo')?.value,
-      fecha_entrega:
-        this.Crear_Flujo_de_tareas_Grupo.get('fecha_entrega')?.value,
+    const Flujo: AgregarFlujo = {
+      nombre_ft: this.Crear_Flujo_de_tareas_Grupo.get('nombre_ft')?.value,
+      descripcion_ft: this.Crear_Flujo_de_tareas_Grupo.get('descripcion_ft')?.value,
+      fecha_inicio_ft: this.Crear_Flujo_de_tareas_Grupo.get('fecha_inicio_ft')?.value,
+      fecha_entrega_ft: this.Crear_Flujo_de_tareas_Grupo.get('fecha_entrega_ft')?.value,
+      porcentaje_avance_ft: this.Crear_Flujo_de_tareas_Grupo.get('porcentaje_avance_ft')?.value,
+      estado_ft: this.Crear_Flujo_de_tareas_Grupo.get('estado_ft')?.value,
     };
-    this.FlujoService.addFlujo(FLUJO).subscribe();
+    this.FlujoService.addFlujo(Flujo).subscribe();
 
-    console.log(FLUJO);
+    console.log(Flujo);
 
     this.router.navigate(['/flujo_de_tareas']);
   }

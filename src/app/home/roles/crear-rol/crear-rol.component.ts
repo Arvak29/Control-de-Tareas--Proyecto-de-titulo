@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Roles } from 'src/app/models/rol';
-import { AgregarRol, Rol, RolService } from '../../../services/rol.service';
+import { Rol } from 'src/app/models/rol';
+import { AgregarRol, rol, RolService } from '../../../services/rol.service';
 
 @Component({
   selector: 'app-crear-rol',
@@ -12,12 +12,12 @@ import { AgregarRol, Rol, RolService } from '../../../services/rol.service';
 })
 export class CrearRolComponent implements OnInit {
   Rol_Grupo: FormGroup;
-  ListarRol: Roles[] = [];
+  ListarRol: Rol[] = [];
   filtroRol = '';
 
-  rol: Rol = {
-    id_rol: '',
-    nombre: '',
+  rol: rol = {
+    id_r: '',
+    nombre_r: '',
   };
 
   constructor(
@@ -46,14 +46,14 @@ export class CrearRolComponent implements OnInit {
 
   crear_rol() {
     const ROL: AgregarRol = {
-      nombre: this.Rol_Grupo.get('nombre')?.value,
+      nombre_r: this.Rol_Grupo.get('nombre_r')?.value,
     };
     this.RolService.addRol(ROL).subscribe();
     this.router.navigate(['/roles']);
   }
 
   agregar() {
-    delete this.rol.id_rol;
+    delete this.rol.id_r;
 
     this.RolService.addRol(this.rol).subscribe();
     this.listarRol();
