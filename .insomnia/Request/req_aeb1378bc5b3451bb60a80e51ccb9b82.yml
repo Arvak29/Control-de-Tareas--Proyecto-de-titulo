@@ -1,9 +1,9 @@
 _id: req_aeb1378bc5b3451bb60a80e51ccb9b82
 type: Request
 parentId: fld_de5ab832eaaa4e4295ebdaa13c9aaa7d
-modified: 1668461464746
+modified: 1668549355229
 created: 1668290231286
-url: http://localhost:3000/UpdateCargo
+url: http://localhost:3000/UpdateCargo/7
 name: Update cargo
 description: ""
 method: PUT
@@ -11,7 +11,6 @@ body:
   mimeType: application/json
   text: |
     	{
-    		"id_c": 7,
     		"nombre_c": "Ingeniero Comercial cambiado",
     		"id_ui": 1,
     		"id_r": 3

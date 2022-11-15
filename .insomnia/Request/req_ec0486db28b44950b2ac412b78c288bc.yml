@@ -1,7 +1,7 @@
 _id: req_ec0486db28b44950b2ac412b78c288bc
 type: Request
 parentId: fld_64863148789b4a66b877159b990ca919
-modified: 1668279305190
+modified: 1668549799006
 created: 1667943025072
 url: http://localhost:3000/addrol
 name: Add rol
@@ -11,8 +11,8 @@ body:
   mimeType: application/json
   text: |-
     {
-    		"id_r": 3,
-    		"nombre_r": "Enfermeria"
+    		"id_r": 4,
+    		"nombre_r": "Funcionario de prueba"
     }
 parameters: []
 headers:
