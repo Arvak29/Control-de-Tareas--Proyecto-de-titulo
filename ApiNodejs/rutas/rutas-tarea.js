@@ -72,12 +72,13 @@ router.post('/addTarea', async (req, res) => {
 })
 
 //Actualizar
-router.put("/UpdateTarea", async (req, res) => {
+router.put("/UpdateTarea/:id", async (req, res) => {
+    const { id } = req.params;
     const { id_t, nombre_t, descripcion_t, fecha_inicio_t, fecha_entrega_t, porcentaje_avance_t, estado_t} = req.body;
     
-    sql = "update tarea set nombre_t=:nombre_t, descripcion_t=:descripcion_t, fecha_inicio_t=:fecha_inicio_t, fecha_entrega_t=:fecha_entrega_t, porcentaje_avance_t=:porcentaje_avance_t, estado_t=:estado_t where id_t=:id_t";
+    sql = "update tarea set nombre_t=:nombre_t, descripcion_t=:descripcion_t, fecha_inicio_t=:fecha_inicio_t, fecha_entrega_t=:fecha_entrega_t, porcentaje_avance_t=:porcentaje_avance_t, estado_t=:estado_t where id_t=:id";
 
-    await BD.Open(sql, [nombre_t, descripcion_t, fecha_inicio_t, fecha_entrega_t, porcentaje_avance_t, estado_t, id_t], true);
+    await BD.Open(sql, [nombre_t, descripcion_t, fecha_inicio_t, fecha_entrega_t, porcentaje_avance_t, estado_t, id], true);
 
     res.status(200).json({
             "id_t": id_t,

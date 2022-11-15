@@ -35,12 +35,13 @@ router.post('/addEmpresa', async (req, res) => {
 })
 
 //Actualizar
-router.put("/UpdateEmpresa", async (req, res) => {
-    const {id, id_e, nombre_e} = req.body;
+router.put("/UpdateEmpresa/:id", async (req, res) => {
+    const { id } = req.params;
+    const { id_e, nombre_e} = req.body;
     
-    sql = "update empresa set nombre_e=:nombre_e where id_e=:id_e";
+    sql = "update empresa set nombre_e=:nombre_e where id_e=:id";
 
-    await BD.Open(sql, [nombre_e, id_e], true);
+    await BD.Open(sql, [nombre_e, id], true);
 
     res.status(200).json({
         "id_e": id_e,

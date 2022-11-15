@@ -68,14 +68,15 @@ router.post("/addUsuario", async (req, res) => {
 })
 
 //Actualizar
-router.put("/UpdateUsuario", async (req, res) => {
+router.put("/UpdateUsuario/:id", async (req, res) => {
+  const { id } = req.params;
   const { id_u, nombre_u, email_u, password_u, id_c, id_e } = req.body;
+  
 
-  sql =
-    "update usuario set nombre_u=:nombre_u, email_u=:email_u, password_u=:password_u, id_c=:id_c, id_e=:id_e where id_u=:id_u";
+  sql = "update usuario set nombre_u=:nombre_u, email_u=:email_u, password_u=:password_u, id_c=:id_c, id_e=:id_e where id_u=:id";
 
-  await BD.Open(sql, [nombre_u, email_u, password_u, id_c, id_e, id_u], true);
-
+  await BD.Open(sql, [nombre_u, email_u, password_u, id_c, id_e, id], true);
+  
   res.status(200).json({
     id_u: id_u,
     nombre_u: nombre_u,

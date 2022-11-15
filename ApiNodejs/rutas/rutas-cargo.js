@@ -64,12 +64,13 @@ router.post('/addCargo', async (req, res) => {
 })
 
 //Actualizar
-router.put("/UpdateCargo", async (req, res) => {
+router.put("/UpdateCargo/:id", async (req, res) => {
+    const { id } = req.params;
     const {id_c, nombre_c, id_ui, id_r} = req.body;
     
-    sql = "update cargo set nombre_c=:nombre_c, id_ui=:id_ui, id_r=:id_r where id_c=:id_c";
+    sql = "update cargo set nombre_c=:nombre_c, id_ui=:id_ui, id_r=:id_r where id_c=:id";
 
-    await BD.Open(sql, [nombre_c, id_ui, id_r, id_c], true);
+    await BD.Open(sql, [nombre_c, id_ui, id_r, id], true);
 
     res.status(200).json({
         "id_c": id_c,

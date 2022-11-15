@@ -33,11 +33,11 @@ router.get('/getUSIS', async (req, res) => {
 
     result.rows.map(unidad_interna => {
         let unidades_internasSchema = {
-            "id_r": unidad_interna[0],
-            "nombre_r": unidad_interna[1]
+            "id_ui": unidad_interna[0],
+            "nombre_ui": unidad_interna[1]
         }
 
-        unidades_internas.push(unidades_internasSchema);
+        Unidades_Internas.push(unidades_internasSchema);
     })
 
     res.json(Unidades_Internas);
@@ -58,12 +58,13 @@ router.post('/addUI', async (req, res) => {
 })
 
 //Actualizar
-router.put("/UpdateUI", async (req, res) => {
+router.put("/UpdateUI/:id", async (req, res) => {
+    const { id } = req.params;
     const { id_ui, nombre_ui} = req.body;
     
-    sql = "update unidad_interna set nombre_ui=:nombre_ui where id_ui=:id_ui";
+    sql = "update unidad_interna set nombre_ui=:nombre_ui where id_ui=:id";
 
-    await BD.Open(sql, [nombre_ui, id_ui], true);
+    await BD.Open(sql, [nombre_ui, id], true);
 
     res.status(200).json({
             "id_ui": id_ui,

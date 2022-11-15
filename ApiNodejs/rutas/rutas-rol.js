@@ -58,12 +58,13 @@ router.post('/addRol', async (req, res) => {
 })
 
 //Actualizar
-router.put("/UpdateRol", async (req, res) => {
+router.put("/UpdateRol/:id", async (req, res) => {
+    const { id } = req.params;
     const { id_r, nombre_r} = req.body;
     
-    sql = "update rol set nombre_r=:nombre_r where id_r=:id_r";
+    sql = "update rol set nombre_r=:nombre_r where id_r=:id";
 
-    await BD.Open(sql, [nombre_r, id_r], true);
+    await BD.Open(sql, [nombre_r, id], true);
 
     res.status(200).json({
             "id_r": id_r,

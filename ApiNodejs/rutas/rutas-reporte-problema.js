@@ -67,12 +67,13 @@ router.post('/addReporteProblema', async (req, res) => {
 })
 
 //Actualizar
-router.put("/UpdateReporteProblema", async (req, res) => {
+router.put("/UpdateReporteProblema/:id", async (req, res) => {
+    const { id } = req.params;
     const {id_rp, descripcion_rp, id_t, id_ts, id_ft} = req.body;
     
-    sql = "update reporte_problema set descripcion_rp=:descripcion_rp, id_t=:id_t, id_ts=:id_ts, id_ft=:id_ft where id_rp=:id_rp";
+    sql = "update reporte_problema set descripcion_rp=:descripcion_rp, id_t=:id_t, id_ts=:id_ts, id_ft=:id_ft where id_rp=:id";
 
-    await BD.Open(sql, [id_rp, descripcion_rp, id_t, id_ts, id_ft], true);
+    await BD.Open(sql, [id, descripcion_rp, id_t, id_ts, id_ft], true);
 
     res.status(200).json({
         "id_rp": id_rp,
