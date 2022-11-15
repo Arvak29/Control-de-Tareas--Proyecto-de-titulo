@@ -35,20 +35,24 @@ export class TareaSubordinadaService {
 }
 
 export interface TareaSub {
-  id_tarea_sub?: string;
-  nombre_tarea_sub?: string;
-  descripcion_sub?: string;
-  fecha_comienzo?: string;
-  fecha_entrega?: string;
-  id_responsable_sub?: string;
-  id_tarea?: string;
+  id_ts?: string;
+  nombre_ts?: string;
+  descripcion_ts?: string;
+  fecha_inicio_ts?: string;
+  fecha_entrega_ts?: string;
+  porcentaje_avance_ts: number; //no se como cambiar un numero xD
+  estado_ts?: string;
+  id_t?: string;
+  id_ft?: string;
 }
 
 export interface AgregarTareaSub {
-  nombre_tarea_sub?: string;
-  descripcion_sub?: string;
-  fecha_comienzo?: string;
-  fecha_entrega?: string;
-  id_responsable_sub?: string;
-  id_tarea?: string;
+  nombre_ts?: string;
+  descripcion_ts?: string;
+  fecha_inicio_ts?: string;
+  fecha_entrega_ts?: string;
+  porcentaje_avance_ts: number; //no se como cambiar un numero xD
+  estado_ts?: string;
+  id_t?: string;
+  id_ft?: string;
 }

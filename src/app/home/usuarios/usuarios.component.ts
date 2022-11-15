@@ -14,13 +14,6 @@ export class UsuariosComponent implements OnInit {
   ListarUsuario: Usuario[] = [];
   filtroUsuario = '';
 
-  usuario: Usuario = {
-    nombre_usuario: '',
-    email_usuario: '',
-    password_usuario: '',
-    rol: '',
-  };
-
   constructor(
     private fb: FormBuilder,
     private router: Router,

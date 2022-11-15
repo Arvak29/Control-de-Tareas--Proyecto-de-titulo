@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Tarea_sub } from 'src/app/models/tarea_subordinada';
+import { Tarea_subordinada } from 'src/app/models/tarea_subordinada';
 import {
   TareaSub,
   TareaSubordinadaService,
@@ -20,14 +20,16 @@ export class TareaSubordinadaComponent implements OnInit {
   ListarTareaSub: TareaSub[] = [];
   filtroSubordinada = '';
 
-  tareasub: Tarea_sub = {
-    id_tarea_sub: '',
-    nombre_tarea_sub: '',
-    descripcion_sub: '',
-    fecha_comienzo: '',
-    fecha_entrega: '',
-    id_responsable_sub: '',
-    id_tarea: '',
+  tareasub: Tarea_subordinada = {
+    id_ts: '',
+    nombre_ts: '',
+    descripcion_ts: '',
+    fecha_inicio_ts: '',
+    fecha_entrega_ts: '',
+    porcentaje_avance_ts: 1, //no se como cambiar un numero xD
+    estado_ts: '',
+    id_t: '',
+    id_ft: '',
   };
 
   constructor(
@@ -71,7 +73,7 @@ export class TareaSubordinadaComponent implements OnInit {
 
   modificar() {
     this.TareaSubordinadaService.editTarea(
-      <any>this.tareasub.id_tarea_sub,
+      <any>this.tareasub.id_ft,
       this.tareasub
     ).subscribe({
       next: (res: any) => {

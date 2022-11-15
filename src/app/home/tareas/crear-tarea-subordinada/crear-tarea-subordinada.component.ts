@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Tareas } from 'src/app/models/tarea';
-import { Tarea_sub } from 'src/app/models/tarea_subordinada';
+import { Tarea_subordinada } from 'src/app/models/tarea_subordinada';
 import {
   AgregarTareaSub,
   TareaSub,
@@ -18,14 +18,18 @@ import { Location } from '@angular/common';
 })
 export class CrearTareaSubordinadaComponent implements OnInit {
   TareaSub_formulario: FormGroup;
-  ListarTareaSub: Tarea_sub[] = [];
+  ListarTareaSub: Tarea_subordinada[] = [];
 
   tareaSub: TareaSub = {
-    id_tarea_sub: '',
-    nombre_tarea_sub: '',
-    descripcion_sub: '',
-    fecha_comienzo: '',
-    fecha_entrega: '',
+    id_ts: '',
+    nombre_ts: '',
+    descripcion_ts: '',
+    fecha_inicio_ts: '',
+    fecha_entrega_ts: '',
+    porcentaje_avance_ts: 1, //no se como cambiar un numero xD
+    estado_ts: '',
+    id_t: '',
+    id_ft: '',
   };
 
   constructor(
@@ -35,10 +39,14 @@ export class CrearTareaSubordinadaComponent implements OnInit {
     private location: Location
   ) {
     this.TareaSub_formulario = this.fb.group({
-      nombre_tarea_sub: ['', Validators.required],
-      descripcion_sub: ['', Validators.required],
-      fecha_comienzo: ['', Validators.required],
-      fecha_entrega: ['', Validators.required],
+      nombre_ts: ['', Validators.required],
+      descripcion_ts: ['', Validators.required],
+      fecha_inicio_ts: ['', Validators.required],
+      fecha_entrega_ts: ['', Validators.required],
+      porcentaje_avance_ts: ['', Validators.required],
+      estado_ts: ['', Validators.required],
+      id_t: ['', Validators.required],
+      id_ft: ['', Validators.required],
     });
   }
 
@@ -50,17 +58,22 @@ export class CrearTareaSubordinadaComponent implements OnInit {
 
   crear_tarea_sub() {
     const TAREASUB: AgregarTareaSub = {
-      nombre_tarea_sub: this.TareaSub_formulario.get('nombre_tarea_sub')?.value,
-      descripcion_sub: this.TareaSub_formulario.get('descripcion_sub')?.value,
-      fecha_comienzo: this.TareaSub_formulario.get('fecha_comienzo')?.value,
-      fecha_entrega: this.TareaSub_formulario.get('fecha_entrega')?.value,
+      nombre_ts: this.TareaSub_formulario.get('nombre_ts')?.value,
+      descripcion_ts: this.TareaSub_formulario.get('descripcion_ts')?.value,
+      fecha_inicio_ts: this.TareaSub_formulario.get('fecha_inicio_ts')?.value,
+      fecha_entrega_ts: this.TareaSub_formulario.get('fecha_entrega_ts')?.value,
+      porcentaje_avance_ts: this.TareaSub_formulario.get('porcentaje_avance_ts')
+        ?.value,
+      estado_ts: this.TareaSub_formulario.get('estado_ts')?.value,
+      id_t: this.TareaSub_formulario.get('id_t')?.value,
+      id_ft: this.TareaSub_formulario.get('id_ft')?.value,
     };
     this.TareaSubordinadaService.addTareaSub(TAREASUB).subscribe();
     this.router.navigate(['/tareas']);
   }
 
   agregar() {
-    delete this.tareaSub.id_tarea_sub;
+    delete this.tareaSub.id_ft;
 
     this.TareaSubordinadaService.addTareaSub(this.tareaSub).subscribe();
   }
