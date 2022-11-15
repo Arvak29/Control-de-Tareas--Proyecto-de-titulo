@@ -33,8 +33,7 @@
                 formControlName="descripcion_flujo"
                 placeholder="descripcion_flujo"
                 [class.is-invalid]="
-                  Crear_Flujo_de_tareas_Grupo.get('descripcion_ft')
-                    ?.touched &&
+                  Crear_Flujo_de_tareas_Grupo.get('descripcion_ft')?.touched &&
                   Crear_Flujo_de_tareas_Grupo.get('descripcion_ft')?.invalid
                 "
               ></textarea>
@@ -65,7 +64,8 @@
                   formControlName="fecha_entrega"
                   placeholder="fecha_entrega"
                   [class.is-invalid]="
-                    Crear_Flujo_de_tareas_Grupo.get('fecha_entrega_ft')?.touched &&
+                    Crear_Flujo_de_tareas_Grupo.get('fecha_entrega_ft')
+                      ?.touched &&
                     Crear_Flujo_de_tareas_Grupo.get('fecha_entrega_ft')?.invalid
                   "
                 />

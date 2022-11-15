@@ -27,3 +27,7 @@ a:hover:after {
 a:focus {
   color: #febd01;
 }
+
+.active {
+  color: #febd01;
+}
