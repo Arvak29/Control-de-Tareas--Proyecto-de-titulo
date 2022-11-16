@@ -10,12 +10,12 @@ export class FlujoService {
 
   //get flujo
   getFlujos() {
-    return this.http.get(this.url);
+    return this.http.get('/api-flujo/getFlujosTareas');
   }
 
   //get un flujo
   getFlujo(id: string) {
-    return this.http.get(this.url + '/' + id);
+    return this.http.get('/api-flujo/getFlujoTarea/' + id);
   }
 
   //agregar un flujo

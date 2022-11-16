@@ -22,7 +22,7 @@ export class CrearUnidadInternaComponent implements OnInit {
     private UnidadInternaService: UnidadInternaService
   ) {
     this.unidad_interna_formulario_Grupo = this.fb.group({
-      nombre_unidad_i: ['', Validators.required],
+      nombre_ui: ['', Validators.required],
     });
   }
 
@@ -30,8 +30,7 @@ export class CrearUnidadInternaComponent implements OnInit {
 
   crear_unidad() {
     const UNIDAD: AgregarUnidad = {
-      nombre_unidad_i:
-        this.unidad_interna_formulario_Grupo.get('nombre_unidad_i')?.value,
+      nombre_ui: this.unidad_interna_formulario_Grupo.get('nombre_ui')?.value,
     };
     this.UnidadInternaService.addUnidad(UNIDAD).subscribe();
     this.router.navigate(['/unidades_internas']);

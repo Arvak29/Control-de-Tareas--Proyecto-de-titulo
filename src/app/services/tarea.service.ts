@@ -10,12 +10,12 @@ export class TareaService {
 
   //get tarea
   getTareas() {
-    return this.http.get(this.url);
+    return this.http.get('/api-tarea/getTareas');
   }
 
   //get un tarea
   getTarea(id: string) {
-    return this.http.get(this.url + '/' + id);
+    return this.http.get('/api-tarea/getTarea/' + id);
   }
 
   //agregar un tarea
@@ -30,23 +30,25 @@ export class TareaService {
 
   //modificar un tarea
   editTarea(id: string, tarea: Tarea) {
-    return this.http.put(this.url + '/' + id, tarea);
+    return this.http.put(this.url + '/UpdateTarea/' + id, tarea);
   }
 }
 
 export interface Tarea {
-  id_tarea?: string;
-  nombre_tarea?: string;
-  descripcion?: string;
-  fecha_inicio?: string;
-  fecha_termino?: string;
-  id_responsable?: string;
+  id_t?: string;
+  nombre_t?: string;
+  descripcion_t?: string;
+  fecha_inicio_t?: string;
+  fecha_entrega_t?: string;
+  porcentaje_avance_t?: string;
+  estado_t?: string;
 }
 
 export interface AgregarTarea {
-  nombre_tarea?: string;
-  descripcion?: string;
-  fecha_inicio?: string;
-  fecha_termino?: string;
-  id_responsable?: string;
+  nombre_t?: string;
+  descripcion_t?: string;
+  fecha_inicio_t?: string;
+  fecha_entrega_t?: string;
+  porcentaje_avance_t?: string;
+  estado_t?: string;
 }

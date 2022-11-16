@@ -10,12 +10,12 @@ export class UsuarioService {
 
   //get usuario
   getUsuarios() {
-    return this.http.get(this.url);
+    return this.http.get('/api-usuario/getUsuarios');
   }
 
   //get un usuario
   getUsuario(id: string) {
-    return this.http.get(this.url + '/' + id);
+    return this.http.get('/api-usuario/getUsuario/' + id);
   }
 
   //agregar un usuario
@@ -35,11 +35,12 @@ export class UsuarioService {
 }
 
 export interface Usuario {
-  id_usuario?: string;
-  nombre_usuario?: string;
-  email_usuario?: string;
-  password_usuario?: string;
-  rol?: string;
+  id_u?: string;
+  nombre_u?: string;
+  email_u?: string;
+  password_u?: string;
+  id_c?: string;
+  id_e?: string;
 }
 
 export interface AgregarUsuario {

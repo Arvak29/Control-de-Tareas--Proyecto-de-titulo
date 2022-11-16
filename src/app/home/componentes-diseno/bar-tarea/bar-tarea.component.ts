@@ -13,7 +13,7 @@ export class BarTareaComponent implements OnInit {
   @Input() cantidadResponsables: string | undefined;
   @Input() cantidadSubordinada: string | undefined;
   @Input() porcentaje: string | undefined;
-  @Input() id: number | undefined;
+  @Input() id: string | undefined;
 
   constructor(private router: Router, private TareaService: TareaService) {}
 

@@ -14,8 +14,8 @@ import {
 })
 export class EditarUnidadInternaComponent implements OnInit {
   unidad: Unidad = {
-    id_unidad_i: '',
-    nombre_unidad_i: '',
+    id_ui: '',
+    nombre_ui: '',
   };
 
   constructor(
@@ -40,9 +40,7 @@ export class EditarUnidadInternaComponent implements OnInit {
   }
 
   eliminar() {
-    this.UnidadInternaService.deleteUnidad(
-      <any>this.unidad.id_unidad_i
-    ).subscribe(
+    this.UnidadInternaService.deleteUnidad(<any>this.unidad.id_ui).subscribe(
       (res) => {
         console.log('rol eliminado');
         this.router.navigate(['/unidades_internas']);
@@ -53,7 +51,7 @@ export class EditarUnidadInternaComponent implements OnInit {
 
   modificar() {
     this.UnidadInternaService.editUnidad(
-      <any>this.unidad.id_unidad_i,
+      <any>this.unidad.id_ui,
       this.unidad
     ).subscribe({
       next: (res: any) => {

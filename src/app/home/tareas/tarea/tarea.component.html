@@ -3,11 +3,11 @@
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-11 col-md-7 col-lf-4 col-xl-4 col-xxl-5">
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
-        <app-card-header [titulo]="tarea.nombre_tarea"></app-card-header>
+        <app-card-header [titulo]="tarea.nombre_t"></app-card-header>
         <div class="card-body text-center">
           <div class="form-floating mb-3">
             <input
-              [(ngModel)]="tarea.nombre_tarea"
+              [(ngModel)]="tarea.nombre_t"
               class="form-control"
               id="inputNombre"
               type="text"
@@ -26,7 +26,7 @@
             <div class="col">
               <div class="form-floating mb-3">
                 <input
-                  [(ngModel)]="tarea.fecha_inicio"
+                  [(ngModel)]="tarea.fecha_inicio_t"
                   class="form-control"
                   id="inputNombre"
                   type="text"
@@ -38,7 +38,7 @@
             <div class="col text-end">
               <div class="form-floating mb-3">
                 <input
-                  [(ngModel)]="tarea.fecha_termino"
+                  [(ngModel)]="tarea.fecha_entrega_t"
                   class="form-control"
                   id="inputNombre"
                   type="text"
@@ -65,7 +65,7 @@
         <app-card-header [titulo]="'Descripción de la tarea'"></app-card-header>
         <div class="card-body">
           <textarea
-            [(ngModel)]="tarea.descripcion"
+            [(ngModel)]="tarea.descripcion_t"
             class="form-control"
             id="inputDescripcion"
             rows="3"

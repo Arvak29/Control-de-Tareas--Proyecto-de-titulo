@@ -7,7 +7,7 @@ export class FiltroFlujoPipe implements PipeTransform {
   transform(value: any, arg: any): any {
     const resultado = [];
     for (const flujo of value) {
-      if (flujo.nombre_flujo.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
+      if (flujo.nombre_ft.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
         resultado.push(flujo);
       }
     }

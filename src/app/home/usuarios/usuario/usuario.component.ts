@@ -11,10 +11,12 @@ import { Usuario } from '../../../services/usuario.service';
 })
 export class UsuarioComponent implements OnInit {
   usuario: Usuario = {
-    nombre_usuario: '',
-    email_usuario: '',
-    password_usuario: '',
-    rol: '',
+    id_u: '',
+    nombre_u: '',
+    email_u: '',
+    password_u: '',
+    id_c: '',
+    id_e: '',
   };
 
   constructor(
@@ -40,7 +42,7 @@ export class UsuarioComponent implements OnInit {
 
   modificar() {
     this.UsuarioService.editUsuario(
-      <any>this.usuario.id_usuario,
+      <any>this.usuario.id_u,
       this.usuario
     ).subscribe({
       next: (res: any) => {
@@ -52,7 +54,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   eliminar() {
-    this.UsuarioService.deleteUsuario(<any>this.usuario.id_usuario).subscribe(
+    this.UsuarioService.deleteUsuario(<any>this.usuario.id_u).subscribe(
       (res) => {
         console.log('usuario eliminado');
         this.router.navigate(['/usuarios']);

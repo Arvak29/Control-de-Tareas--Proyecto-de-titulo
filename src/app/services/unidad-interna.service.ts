@@ -10,12 +10,12 @@ export class UnidadInternaService {
 
   //get unidad
   getUnidades() {
-    return this.http.get(this.url);
+    return this.http.get('/api-unidad/getUSIS');
   }
 
   //get un unidad
   getUnidad(id: string) {
-    return this.http.get(this.url + '/' + id);
+    return this.http.get('/api-unidad/getUI/' + id);
   }
 
   //agregar un unidad
@@ -35,10 +35,10 @@ export class UnidadInternaService {
 }
 
 export interface Unidad {
-  id_unidad_i?: string;
-  nombre_unidad_i?: string;
+  id_ui?: string;
+  nombre_ui?: string;
 }
 
 export interface AgregarUnidad {
-  nombre_unidad_i?: string;
+  nombre_ui?: string;
 }

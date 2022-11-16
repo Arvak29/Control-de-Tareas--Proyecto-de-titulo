@@ -1,25 +1,27 @@
 export class Tareas {
-  id_tarea: number;
-  nombre_tarea: string;
-  descripcion: string;
-  fecha_inicio: string;
-  fecha_termino: string;
-  id_responsable: string;
+  id_t: string;
+  nombre_t: string;
+  descripcion_t: string;
+  fecha_inicio_t: string;
+  fecha_entrega_t: string;
+  porcentaje_avance_t: string;
+  estado_t: string;
 
   constructor(
-    id_tarea: number,
-    nombre_tarea: string,
-    descripcion: string,
-    fecha_inicio: string,
-    fecha_termino: string,
-    id_responsable: string
-  ) 
-  {
-    this.id_tarea = id_tarea;
-    this.nombre_tarea = nombre_tarea;
-    this.descripcion = descripcion;
-    this.fecha_inicio = fecha_inicio;
-    this.fecha_termino = fecha_termino;
-    this.id_responsable = id_responsable;
+    id_t: string,
+    nombre_t: string,
+    descripcion_t: string,
+    fecha_inicio_t: string,
+    fecha_entrega_t: string,
+    porcentaje_avance_t: string,
+    estado_t: string
+  ) {
+    this.id_t = id_t;
+    this.nombre_t = nombre_t;
+    this.descripcion_t = descripcion_t;
+    this.fecha_inicio_t = fecha_inicio_t;
+    this.fecha_entrega_t = fecha_entrega_t;
+    this.porcentaje_avance_t = porcentaje_avance_t;
+    this.estado_t = estado_t;
   }
 }

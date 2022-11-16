@@ -26,12 +26,13 @@ export class TareaComponent implements OnInit {
   filtroSubordinada = '';
 
   tarea: Tarea = {
-    id_tarea: '',
-    nombre_tarea: '',
-    descripcion: '',
-    fecha_inicio: '',
-    fecha_termino: '',
-    id_responsable: '',
+    id_t: '',
+    nombre_t: '',
+    descripcion_t: '',
+    fecha_inicio_t: '',
+    fecha_entrega_t: '',
+    porcentaje_avance_t: '',
+    estado_t: '',
   };
 
   constructor(
@@ -81,7 +82,7 @@ export class TareaComponent implements OnInit {
   }
 
   eliminar() {
-    this.TareaService.deleteTarea(<any>this.tarea.id_tarea).subscribe(
+    this.TareaService.deleteTarea(<any>this.tarea.id_t).subscribe(
       (res) => {
         console.log('tarea eliminado');
         this.router.navigate(['/tareas']);
@@ -91,14 +92,12 @@ export class TareaComponent implements OnInit {
   }
 
   modificar() {
-    this.TareaService.editTarea(<any>this.tarea.id_tarea, this.tarea).subscribe(
-      {
-        next: (res: any) => {
-          console.log(res);
-        },
-        error: (err) => console.log(err),
-      }
-    );
+    this.TareaService.editTarea(<any>this.tarea.id_t, this.tarea).subscribe({
+      next: (res: any) => {
+        console.log(res);
+      },
+      error: (err) => console.log(err),
+    });
     this.router.navigate(['/tareas']);
   }
 }

@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Flujo_tarea } from 'src/app/models/flujo_tareas';
-import {AgregarFlujo, Flujo, FlujoService} from 'src/app/services/flujo.service';
+import {
+  AgregarFlujo,
+  Flujo,
+  FlujoService,
+} from 'src/app/services/flujo.service';
 
 @Component({
   selector: 'app-flujo-de-tareas',
@@ -22,7 +26,7 @@ export class FlujoDeTareasComponent implements OnInit {
     fecha_inicio_ft: '',
     fecha_entrega_ft: '',
     porcentaje_avance_ft: '',
-    estado_ft: ''
+    estado_ft: '',
   };
 
   constructor(
@@ -36,7 +40,7 @@ export class FlujoDeTareasComponent implements OnInit {
       fecha_inicio_ft: ['', Validators.required],
       fecha_entrega_ft: ['', Validators.required],
       porcentaje_avance_ft: ['', Validators.required],
-      estado_ft: ['', Validators.required]
+      estado_ft: ['', Validators.required],
     });
   }
 
@@ -45,14 +49,14 @@ export class FlujoDeTareasComponent implements OnInit {
   }
 
   listarFlujo() {
-    this.FlujoService.getFlujos().subscribe(
-      (res) => {
-        console.log(res);
+    this.FlujoService.getFlujos().subscribe({
+      next: (res: any) => {
         this.ListarFlujo = <any>res;
       },
-      (err) => console.log(err)
-    );
+      error: (err) => console.log(err),
+    });
   }
+
   transform(value: any, arg: any): any {
     const resultado = [];
     for (const flujo of value) {
@@ -70,7 +74,7 @@ export class FlujoDeTareasComponent implements OnInit {
       fecha_inicio_ft: this.Flujo_Grupo.get('fecha_inicio_ft')?.value,
       fecha_entrega_ft: this.Flujo_Grupo.get('fecha_entrega_ft')?.value,
       porcentaje_avance_ft: this.Flujo_Grupo.get('porcentaje_avance_ft')?.value,
-      estado_ft: this.Flujo_Grupo.get('estado_ft')?.value
+      estado_ft: this.Flujo_Grupo.get('estado_ft')?.value,
     };
     this.FlujoService.addFlujo(Flujo).subscribe();
     this.listarFlujo();

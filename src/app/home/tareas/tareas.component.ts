@@ -19,12 +19,13 @@ export class TareasComponent implements OnInit {
   ListarTarea: Tareas[] = [];
 
   tarea: Tarea = {
-    id_tarea: '',
-    nombre_tarea: '',
-    descripcion: '',
-    fecha_inicio: '',
-    fecha_termino: '',
-    id_responsable: '',
+    id_t: '',
+    nombre_t: '',
+    descripcion_t: '',
+    fecha_inicio_t: '',
+    fecha_entrega_t: '',
+    porcentaje_avance_t: '',
+    estado_t: '',
   };
 
   constructor(
@@ -34,11 +35,12 @@ export class TareasComponent implements OnInit {
     private TareaService: TareaService
   ) {
     this.Tarea_Grupo = this.fb.group({
-      nombre_tarea: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      fecha_inicio: ['', Validators.required],
-      fecha_termino: ['', Validators.required],
-      id_responsable: ['', Validators.required],
+      nombre_t: ['', Validators.required],
+      descripcion_t: ['', Validators.required],
+      fecha_inicio_t: ['', Validators.required],
+      fecha_entrega_t: ['', Validators.required],
+      porcentaje_avance_t: ['', Validators.required],
+      estado_t: ['', Validators.required],
     });
   }
 
@@ -49,13 +51,12 @@ export class TareasComponent implements OnInit {
   }
 
   listarTarea() {
-    this.TareaService.getTareas().subscribe(
-      (res) => {
-        console.log(res);
+    this.TareaService.getTareas().subscribe({
+      next: (res: any) => {
         this.ListarTarea = <any>res;
       },
-      (err) => console.log(err)
-    );
+      error: (err) => console.log(err),
+    });
   }
 
   transform(value: any, arg: any): any {
@@ -70,18 +71,19 @@ export class TareasComponent implements OnInit {
 
   crear_tarea() {
     const TAREA: AgregarTarea = {
-      nombre_tarea: this.Tarea_Grupo.get('nombre_tarea')?.value,
-      descripcion: this.Tarea_Grupo.get('descripcion')?.value,
-      fecha_inicio: this.Tarea_Grupo.get('fecha_inicio')?.value,
-      fecha_termino: this.Tarea_Grupo.get('fecha_termino')?.value,
-      id_responsable: this.Tarea_Grupo.get('id_responsable')?.value,
+      nombre_t: this.Tarea_Grupo.get('nombre_t')?.value,
+      descripcion_t: this.Tarea_Grupo.get('descripcion_t')?.value,
+      fecha_inicio_t: this.Tarea_Grupo.get('fecha_inicio_t')?.value,
+      fecha_entrega_t: this.Tarea_Grupo.get('fecha_entrega_t')?.value,
+      porcentaje_avance_t: this.Tarea_Grupo.get('porcentaje_avance_t')?.value,
+      estado_t: this.Tarea_Grupo.get('estado_t')?.value,
     };
     this.TareaService.addTarea(TAREA).subscribe();
     this.listarTarea();
   }
 
   agregar() {
-    delete this.tarea.id_tarea;
+    delete this.tarea.id_t;
 
     this.TareaService.addTarea(this.tarea).subscribe();
     this.listarTarea();

@@ -26,12 +26,11 @@ export class UsuariosComponent implements OnInit {
   }
 
   listarUsuario() {
-    this.UsuarioService.getUsuarios().subscribe(
-      (res) => {
-        console.log(res);
+    this.UsuarioService.getUsuarios().subscribe({
+      next: (res: any) => {
         this.ListarUsuario = <any>res;
       },
-      (err) => console.log(err)
-    );
+      error: (err) => console.log(err),
+    });
   }
 }

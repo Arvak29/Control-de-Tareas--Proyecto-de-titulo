@@ -20,8 +20,8 @@ export class UnidadesInternasComponent implements OnInit {
   filtroUnidad = '';
 
   unidad: Unidad = {
-    id_unidad_i: '',
-    nombre_unidad_i: '',
+    id_ui: '',
+    nombre_ui: '',
   };
 
   constructor(
@@ -39,25 +39,24 @@ export class UnidadesInternasComponent implements OnInit {
   }
 
   listarUnidad() {
-    this.UnidadInternaService.getUnidades().subscribe(
-      (res) => {
-        console.log(res);
+    this.UnidadInternaService.getUnidades().subscribe({
+      next: (res: any) => {
         this.ListarUnidad = <any>res;
       },
-      (err) => console.log(err)
-    );
+      error: (err) => console.log(err),
+    });
   }
 
   crear_unidad() {
     const UNIDAD: AgregarUnidad = {
-      nombre_unidad_i: this.Unidad_Grupo.get('nombre_unidad_i')?.value,
+      nombre_ui: this.Unidad_Grupo.get('nombre_ui')?.value,
     };
     this.UnidadInternaService.addUnidad(UNIDAD).subscribe();
     this.listarUnidad();
   }
 
   agregar() {
-    delete this.unidad.id_unidad_i;
+    delete this.unidad.id_ui;
 
     this.UnidadInternaService.addUnidad(this.unidad).subscribe();
     this.listarUnidad();
