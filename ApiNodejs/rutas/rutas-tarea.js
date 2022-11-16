@@ -4,7 +4,7 @@ const BD = require('../config/configbd');
 
 
 //Get especifico
-router.get('/getTarea/:id', async (req, res) => {
+router.get('/api-tarea/getTarea/:id', async (req, res) => {
     const { id } = req.params;
     sql = "select * from tarea where id_t =:id";
 
