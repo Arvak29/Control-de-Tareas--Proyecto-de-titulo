@@ -4,7 +4,7 @@ const BD = require('../config/configbd');
 
 
 //Get especifico
-router.get('/getFlujoTarea/:id', async (req, res) => {
+router.get('/api-flujo/getFlujoTarea/:id', async (req, res) => {
     const { id } = req.params;
     sql = "select * from flujo_tarea where id_ft =:id";
 
@@ -22,15 +22,14 @@ router.get('/getFlujoTarea/:id', async (req, res) => {
             "estado_ft": flujo_tarea[6]
         }
 
-        flujo_tarea.push(flujo_tareaSchema);
-        Flujo_Tarea = [flujo_tareaSchema];
+        Flujo_Tarea.push(flujo_tareaSchema);
     })
     
     res.json(Flujo_Tarea);
 })
 
 //Get de todo
-router.get('/getFlujosTareas', async (req, res) => {
+router.get('/api-flujo/getFlujosTareas', async (req, res) => {
     sql = "select * from flujo_tarea";
 
     let result = await BD.Open(sql, [], false);

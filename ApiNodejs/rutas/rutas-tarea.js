@@ -21,15 +21,14 @@ router.get('/getTarea/:id', async (req, res) => {
             "estado_t": tarea[6]
         }
 
-        tarea.push(tareaSchema);
-        Tarea = [tareaSchema];
+        Tarea.push(tareaSchema);
     })
     
     res.json(Tarea);
 })
 
 //Get de todo
-router.get('/getTareas', async (req, res) => {
+router.get('/api-tarea/getTareas', async (req, res) => {
     sql = "select * from tarea";
 
     let result = await BD.Open(sql, [], false);

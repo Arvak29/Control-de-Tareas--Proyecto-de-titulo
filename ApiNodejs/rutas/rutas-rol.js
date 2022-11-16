@@ -17,8 +17,7 @@ router.get('/getRol/:id', async (req, res) => {
             "nombre_r": rol[1]
         }
 
-        rol.push(rolSchema);
-        Rol = [rolSchema];
+        Rol.push(rolSchema);
     })
     
     res.json(Rol);
@@ -80,7 +79,7 @@ router.delete("/deleteRol/:id", async (req, res) => {
 
     await BD.Open(sql, [id], true);
 
-    res.json({ msg: "Rol Eliminado" })
+    res.json({ msg: "Rol eliminado" })
 })
 
 module.exports = router;

@@ -4,7 +4,7 @@ const BD = require('../config/configbd');
 
 
 //Get especifico
-router.get('/getUI/:id', async (req, res) => {
+router.get('/api-unidad/getUI/:id', async (req, res) => {
     const { id } = req.params;
     sql = "select * from unidad_interna where id_ui =:id";
 
@@ -17,15 +17,14 @@ router.get('/getUI/:id', async (req, res) => {
             "nombre_ui": unidad_interna[1]
         }
 
-        unidad_interna.push(unidad_internaSchema);
-        Unidad_Interna = [unidad_internaSchema];
+        Unidad_Interna.push(unidad_internaSchema);
     })
     
     res.json(Unidad_Interna);
 })
 
 //Get de todo
-router.get('/getUSIS', async (req, res) => {
+router.get('/api-unidad/getUSIS', async (req, res) => {
     sql = "select * from unidad_interna";
 
     let result = await BD.Open(sql, [], false);

@@ -2,7 +2,7 @@ const router = require("express").Router();
 const BD = require("../config/configbd");
 
 //Get especifico
-router.get("/getUsuario/:id", async (req, res) => {
+router.get("/api-usuario/getUsuario/:id", async (req, res) => {
   const { id } = req.params;
   sql = "select * from usuario where id_u =:id";
 
@@ -19,15 +19,14 @@ router.get("/getUsuario/:id", async (req, res) => {
       "id_e": usuario[5]
     }
 
-    usuario.push(usuarioSchema);
-    Usuario = [usuarioSchema];
+    Usuario.push(usuarioSchema);
   })
 
   res.json(Usuario);
 })
 
 //Get de todo
-router.get("/getUsuarios", async (req, res) => {
+router.get("/api-usuario/getUsuarios", async (req, res) => {
   sql = "select * from usuario";
 
   let result = await BD.Open(sql, [], false);
@@ -50,7 +49,7 @@ router.get("/getUsuarios", async (req, res) => {
 })
 
 //Agregar
-router.post("/addUsuario", async (req, res) => {
+router.post("/api-usuario/addUsuario", async (req, res) => {
   const { id_u, nombre_u, email_u, password_u, id_c, id_e } = req.body;
 
   sql = "insert into usuario(id_u, nombre_u, email_u, password_u, id_c, id_e) values (:id_u, :nombre_u, :email_u, :password_u, :id_c, :id_e)";

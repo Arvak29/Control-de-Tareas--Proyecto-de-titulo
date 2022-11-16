@@ -9,7 +9,18 @@ router.get('/getEmpresa/:id', async (req, res) => {
     sql = "select * from empresa where id_e =:id";
 
     let result = await BD.Open(sql, [id], false);
-    res.json(result.rows);
+    Empresa = [];
+
+    result.rows.map(empresa => {
+        let empresaSchema = {
+            "id_e": empresa[0],
+            "nombre_e": empresa[1]
+        }
+
+        Empresa.push(empresaSchema);
+    })
+    
+    res.json(Empresa);
 })
 
 //Get de todo
@@ -17,7 +28,18 @@ router.get('/getEmpresas', async (req, res) => {
     sql = "select * from empresa";
 
     let result = await BD.Open(sql, [], false);
-    res.json(result.rows);
+    Empresas = [];
+
+    result.rows.map(empresa => {
+        let empresasSchema = {
+            "id_e": empresa[0],
+            "nombre_e": empresa[1]
+        }
+
+        Empresas.push(empresasSchema);
+    })
+    
+    res.json(Empresas);
 })
 
 //Agregar

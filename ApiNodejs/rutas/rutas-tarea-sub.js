@@ -23,7 +23,6 @@ router.get('/getTareaSub/:id', async (req, res) => {
         }
 
         Tarea_Subordinada.push(tarea_subordinadaSchema);
-        Tarea_Subordinada = [tarea_subordinadaSchema];
     })
     
     res.json(Tarea_Subordinada);

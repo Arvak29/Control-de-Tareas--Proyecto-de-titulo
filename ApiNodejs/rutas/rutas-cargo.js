@@ -20,7 +20,6 @@ router.get('/getCargo/:id', async (req, res) => {
         }
 
         Cargo.push(cargoSchema);
-        Cargo = [cargoSchema];
     })
     
     res.json(Cargo);
@@ -64,7 +63,7 @@ router.post('/addCargo', async (req, res) => {
 })
 
 //Actualizar
-router.put("/UpdateCargo/:id", async (req, res) => {
+router.put("/updateCargo/:id", async (req, res) => {
     const { id } = req.params;
     const {id_c, nombre_c, id_ui, id_r} = req.body;
     
