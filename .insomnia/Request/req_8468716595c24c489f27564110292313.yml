@@ -1,9 +1,9 @@
 _id: req_8468716595c24c489f27564110292313
 type: Request
 parentId: fld_d855bbd111f74c729ec0f4a5dfd8cc9f
-modified: 1668279372852
+modified: 1668636171889
 created: 1667942044298
-url: http://localhost:3000/gettareas
+url: http://localhost:3000/api-tarea/gettareas
 name: Get tareas
 description: ""
 method: GET

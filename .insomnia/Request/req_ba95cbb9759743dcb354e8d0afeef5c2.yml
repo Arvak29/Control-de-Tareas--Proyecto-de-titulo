@@ -1,25 +1,27 @@
-_id: req_0bccbac9491a4196896a60e463f63c42
+_id: req_ba95cbb9759743dcb354e8d0afeef5c2
 type: Request
-parentId: fld_686a1869a9e443ec84d620585b98687e
-modified: 1668633227593
-created: 1668461038259
-url: http://localhost:3000/addEmpresa
-name: Add empresa
+parentId: fld_8ea96a94422e4681a1b9182e6eaec5ab
+modified: 1668634979124
+created: 1668632911048
+url: http://localhost:3000/addAsigTareaSub
+name: "Add asignacion tarea sub "
 description: ""
 method: POST
 body:
   mimeType: application/json
   text: |
     {
-    		"id_e": 3,
-    		"nombre_e": "CCU"
-    }
+    		"id_u_ats": 1,
+    		"id_ts_ats": 1,
+    		"respuesta_ats": "nose",
+    		"justificacion_ats": "12345"
+    	}
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
 authentication: {}
-metaSortKey: -1667932175902.75
+metaSortKey: -1667932175898.0625
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

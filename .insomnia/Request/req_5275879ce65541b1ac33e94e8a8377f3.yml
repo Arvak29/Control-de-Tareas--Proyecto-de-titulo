@@ -1,10 +1,10 @@
 _id: req_5275879ce65541b1ac33e94e8a8377f3
 type: Request
 parentId: fld_f917899982a04c4c9b2847ec7293ff18
-modified: 1668291567395
+modified: 1668634093424
 created: 1668291358488
 url: http://localhost:3000/deleteFlujoTarea/2
-name: Delete tarea
+name: Delete flujo de tarea
 description: ""
 method: DELETE
 body:

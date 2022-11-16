@@ -1,25 +1,27 @@
-_id: req_0bccbac9491a4196896a60e463f63c42
+_id: req_48311173b1f84da8a8870607b2bee98a
 type: Request
-parentId: fld_686a1869a9e443ec84d620585b98687e
-modified: 1668633227593
-created: 1668461038259
-url: http://localhost:3000/addEmpresa
-name: Add empresa
+parentId: fld_2bc2c1072a794cbf8b1fd011e79a716c
+modified: 1668634894953
+created: 1668633000950
+url: http://localhost:3000/addEjecFlujoT
+name: Add ejecucion flujo tarea
 description: ""
 method: POST
 body:
   mimeType: application/json
   text: |
     {
-    		"id_e": 3,
-    		"nombre_e": "CCU"
-    }
+    		"id_u_eft": 1,
+    		"id_ft_eft": 1,
+    		"respuesta_eft": "nose",
+    		"justificacion_eft": "12345"
+    	}
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
 authentication: {}
-metaSortKey: -1667932175902.75
+metaSortKey: -1667932175898.0625
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

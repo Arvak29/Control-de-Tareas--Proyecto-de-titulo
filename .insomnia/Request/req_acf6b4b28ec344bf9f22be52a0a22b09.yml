@@ -1,10 +1,10 @@
 _id: req_acf6b4b28ec344bf9f22be52a0a22b09
 type: Request
 parentId: fld_f917899982a04c4c9b2847ec7293ff18
-modified: 1668549898854
+modified: 1668634090314
 created: 1668291358483
 url: http://localhost:3000/updateFlujoTarea/2
-name: Update tarea
+name: Update flujo de tarea
 description: ""
 method: PUT
 body:

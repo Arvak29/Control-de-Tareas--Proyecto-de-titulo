@@ -1,9 +1,9 @@
 _id: req_3e1effa0a1b64b9fb4f79c8395ca8b4d
 type: Request
 parentId: fld_bbb36ab293ab4c2681a20d75868cf3b8
-modified: 1668289718639
+modified: 1668635006946
 created: 1668285996711
-url: http://localhost:3000/getUsuario/1
+url: http://localhost:3000/api-usuario/getUsuario/1
 name: Get usuario
 description: ""
 method: GET
