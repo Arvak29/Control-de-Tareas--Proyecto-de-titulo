@@ -209,7 +209,7 @@ ON (c.id_r = r.id_r);
 
 /* VISTA TAREA SUBORDINADA DE TAREA */
 
-CREATE OR REPLACE VIEW VISTA_TAREA_SUBORDINADA_TAREA AS
+CREATE OR REPLACE VIEW VISTA_TAREA_SUB_TAREA AS
 SELECT nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts, nombre_t 
 FROM tarea_subordinada TS 
 JOIN tarea T 
@@ -217,7 +217,7 @@ ON (ts.id_t = t.id_t);
 
 /* VISTA TAREA SUBORDINADA DE FLUJO DE TAREA */
 
-CREATE OR REPLACE VIEW VISTA_TAREA_SUBORDINADA_FLUJO_TAREA AS
+CREATE OR REPLACE VIEW VISTA_TAREA_SUB_FLUJO_TAREA AS
 SELECT nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts, nombre_ft 
 FROM tarea_subordinada TS 
 JOIN flujo_tarea FT 
@@ -233,7 +233,7 @@ ON (rp.id_t = t.id_t);
 
 /* VISTA REPORTE TAREA SUBORDINADA */
 
-CREATE OR REPLACE VIEW VISTA_REPORTE_TAREA_SUBORDINADA AS
+CREATE OR REPLACE VIEW VISTA_REPORTE_TAREA_SUB AS
 SELECT ts.nombre_ts, rp.descripcion_rp
 FROM REPORTE_PROBLEMA RP 
 JOIN tarea_subordinada TS 
@@ -259,7 +259,7 @@ ON (at.id_t_at = t.id_t);
 
 /* VISTA ASIGNACION_TAREA_SUBORDINADA */
 
-CREATE OR REPLACE VIEW VISTA_ASIGNACION_TAREA_SUBORDINADA AS
+CREATE OR REPLACE VIEW VISTA_ASIGNACION_TAREA_SUB AS
 SELECT u.nombre_u, ts.nombre_ts, at.respuesta_ats, at.justificacion_ats
 FROM asignacion_tarea_subordinada AT 
 JOIN usuario U
