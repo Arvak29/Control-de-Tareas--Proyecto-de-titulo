@@ -20,8 +20,8 @@ DROP TABLE EJECUCION_FLUJO_TAREA CASCADE CONSTRAINTS;
 
 CREATE TABLE FLUJO_TAREA (
     id_ft                   NUMBER(6) NOT NULL PRIMARY KEY,
-    nombre_ft               VARCHAR2(50) NOT NULL,
-    descripcion_ft          VARCHAR2(160) NOT NULL,
+    nombre_ft               VARCHAR2(100) NOT NULL,
+    descripcion_ft          VARCHAR2(300) NOT NULL,
     fecha_inicio_ft         DATE,
     fecha_entrega_ft        DATE,
     porcentaje_avance_ft    NUMBER(6),
@@ -30,8 +30,8 @@ CREATE TABLE FLUJO_TAREA (
 
 CREATE TABLE TAREA (
     id_t                    NUMBER(6) NOT NULL PRIMARY KEY,
-    nombre_t                VARCHAR2(50) NOT NULL,
-    descripcion_t           VARCHAR2(160) NOT NULL,
+    nombre_t                VARCHAR2(100) NOT NULL,
+    descripcion_t           VARCHAR2(300) NOT NULL,
     fecha_inicio_t          DATE NOT NULL,
     fecha_entrega_t         DATE NOT NULL,
     porcentaje_avance_t     NUMBER(6),
@@ -40,8 +40,8 @@ CREATE TABLE TAREA (
 
 CREATE TABLE TAREA_SUBORDINADA (
     id_ts                   NUMBER(6) NOT NULL PRIMARY KEY,
-    nombre_ts	            VARCHAR2(50) NOT NULL,
-    descripcion_ts          VARCHAR2(160) NOT NULL,
+    nombre_ts	            VARCHAR2(100) NOT NULL,
+    descripcion_ts          VARCHAR2(300) NOT NULL,
     fecha_inicio_ts         DATE,
     fecha_entrega_ts        DATE,
     porcentaje_avance_ts    NUMBER(6),
@@ -52,7 +52,7 @@ CREATE TABLE TAREA_SUBORDINADA (
 
 CREATE TABLE REPORTE_PROBLEMA (
     id_rp                   NUMBER(6) NOT NULL PRIMARY KEY,
-    descripcion_rp          VARCHAR2(160),
+    descripcion_rp          VARCHAR2(300),
     id_t                    NUMBER(6),
     id_ts                   NUMBER(6),
     id_ft                   NUMBER(6)
@@ -60,30 +60,30 @@ CREATE TABLE REPORTE_PROBLEMA (
 
 CREATE TABLE UNIDAD_INTERNA (
     id_ui                   NUMBER(6) NOT NULL PRIMARY KEY,
-    nombre_ui               VARCHAR2(30) NOT NULL
+    nombre_ui               VARCHAR2(60) NOT NULL
 );
 
 CREATE TABLE ROL (
     id_r                    NUMBER(6) NOT NULL PRIMARY KEY,
-    nombre_r                VARCHAR2(30) NOT NULL
+    nombre_r                VARCHAR2(60) NOT NULL
 );
 
 CREATE TABLE CARGO (
     id_c                    NUMBER(6) NOT NULL PRIMARY KEY,
-    nombre_c                VARCHAR2(30) NOT NULL,
+    nombre_c                VARCHAR2(60) NOT NULL,
     id_ui                   NUMBER(6) NOT NULL,
     id_r                    NUMBER(6) NOT NULL
 );
 
 CREATE TABLE EMPRESA (
     id_e                   NUMBER(6) NOT NULL PRIMARY KEY,
-    nombre_e               VARCHAR2(30) NOT NULL
+    nombre_e               VARCHAR2(60) NOT NULL
 );
 
 CREATE TABLE USUARIO (
     id_u                    NUMBER(6) NOT NULL PRIMARY KEY,
-    nombre_u                VARCHAR2(30) NOT NULL,
-    email_u                 VARCHAR2(30) NOT NULL,
+    nombre_u                VARCHAR2(60) NOT NULL,
+    email_u                 VARCHAR2(90) NOT NULL,
     password_u              VARCHAR2(30) NOT NULL,
     id_c                    NUMBER(6) NOT NULL,
     id_e		    NUMBER(6) NOT NULL
@@ -93,7 +93,7 @@ CREATE TABLE ASIGNACION_TAREA (
     id_u_at                  NUMBER(6),
     id_t_at                  NUMBER(6),
     respuesta_at             VARCHAR2(30) NOT NULL,
-    justificacion_at        VARCHAR2(30),
+    justificacion_at        VARCHAR2(300),
     CONSTRAINT ASIG_T_USUARIO FOREIGN KEY (id_u_at) REFERENCES USUARIO (id_u),
     CONSTRAINT ASIG_T_TAREA FOREIGN KEY (id_t_at) REFERENCES TAREA (id_t),
     CONSTRAINT asig_t_pk PRIMARY KEY (id_u_at, id_t_at)
@@ -103,7 +103,7 @@ CREATE TABLE ASIGNACION_TAREA_SUBORDINADA (
     id_u_ats                  NUMBER(6),
     id_ts_ats                 NUMBER(6),
     respuesta_ats             VARCHAR2(30) NOT NULL,
-    justificacion_ats         VARCHAR2(30),
+    justificacion_ats         VARCHAR2(300),
     CONSTRAINT ASIG_TS_USUARIO FOREIGN KEY (id_u_ats) REFERENCES USUARIO (id_u),
     CONSTRAINT ASIG_TS_TAREA FOREIGN KEY (id_ts_ats) REFERENCES TAREA_SUBORDINADA (id_ts),
     CONSTRAINT asig_ts_pk PRIMARY KEY (id_u_ats, id_ts_ats)
@@ -113,7 +113,7 @@ CREATE TABLE EJECUCION_FLUJO_TAREA(
     id_u_eft                 NUMBER(6),
     id_ft_eft                NUMBER(6),
     respuesta_eft            VARCHAR2(30) NOT NULL,
-    justificacion_eft        VARCHAR2(30),
+    justificacion_eft        VARCHAR2(300),
     CONSTRAINT EJEC_FT_USUARIO FOREIGN KEY (id_u_eft) REFERENCES USUARIO (id_u),
     CONSTRAINT EJEC_FT_TAREA FOREIGN KEY (id_ft_eft) REFERENCES FLUJO_TAREA (id_ft),
     CONSTRAINT ejec_ft_pk PRIMARY KEY (id_u_eft, id_ft_eft)
@@ -178,9 +178,145 @@ INSERT INTO ASIGNACION_TAREA VALUES ('1','2','si','no');
 INSERT INTO ASIGNACION_TAREA_SUBORDINADA VALUES ('1','1','si','no');
 
 INSERT INTO EJECUCION_FLUJO_TAREA VALUES ('1','1','si','no');
------------------------------------------------------------------------------------------------------------------------------------
-/*/// PL SQL ///*/
 
+INSERT INTO REPORTE_PROBLEMA VALUES ('1', 'No puedo solucionar este problema', '1', '', '');
+-----------------------------------------------------------------------------------------------------------------------------------
+/*/// VISTAS ///*/
+
+/* VISTA USUARIO */
+
+CREATE OR REPLACE VIEW VISTA_USUARIO AS
+SELECT u.nombre_u, u.email_u, u.password_u, r.nombre_r, c.nombre_c, ui.nombre_ui, e.nombre_e 
+FROM usuario U 
+JOIN cargo C
+ON (u.id_c = c.id_c)
+JOIN unidad_interna UI
+ON (c.id_ui = ui.id_ui)
+JOIN rol R
+ON (c.id_r = r.id_r)
+JOIN empresa E
+ON (u.id_e = e.id_e);
+
+/* VISTA CARGO */
+
+CREATE OR REPLACE VIEW VISTA_CARGO AS
+SELECT c.nombre_c, ui.nombre_ui, r.nombre_r
+FROM cargo C 
+JOIN unidad_interna UI
+ON (c.id_ui = ui.id_ui)
+JOIN rol R
+ON (c.id_r = r.id_r);
+
+/* VISTA TAREA SUBORDINADA DE TAREA */
+
+CREATE OR REPLACE VIEW VISTA_TAREA_SUBORDINADA_TAREA AS
+SELECT nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts, nombre_t 
+FROM tarea_subordinada TS 
+JOIN tarea T 
+ON (ts.id_t = t.id_t);
+
+/* VISTA TAREA SUBORDINADA DE FLUJO DE TAREA */
+
+CREATE OR REPLACE VIEW VISTA_TAREA_SUBORDINADA_FLUJO_TAREA AS
+SELECT nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts, nombre_ft 
+FROM tarea_subordinada TS 
+JOIN flujo_tarea FT 
+ON (ts.id_ft = ft.id_ft);
+
+/* VISTA REPORTE DE TAREA */
+
+CREATE OR REPLACE VIEW VISTA_REPORTE_TAREA AS
+SELECT t.nombre_t, rp.descripcion_rp
+FROM REPORTE_PROBLEMA RP 
+JOIN tarea T 
+ON (rp.id_t = t.id_t);
+
+/* VISTA REPORTE TAREA SUBORDINADA */
+
+CREATE OR REPLACE VIEW VISTA_REPORTE_TAREA_SUBORDINADA AS
+SELECT ts.nombre_ts, rp.descripcion_rp
+FROM REPORTE_PROBLEMA RP 
+JOIN tarea_subordinada TS 
+ON (rp.id_t = ts.id_ts);
+
+/* VISTA REPORTE DE TAREA DE FLUJO DE TAREA */
+
+CREATE OR REPLACE VIEW VISTA_REPORTE_FLUJO_TAREA AS
+SELECT ft.nombre_ft, rp.descripcion_rp
+FROM REPORTE_PROBLEMA RP 
+JOIN flujo_tarea FT 
+ON (rp.id_ft = ft.id_ft);
+
+/* VISTA ASIGNACION_TAREA */
+
+CREATE OR REPLACE VIEW VISTA_ASIGNACION_TAREA AS
+SELECT u.nombre_u, t.nombre_t, at.respuesta_at, at.justificacion_at
+FROM asignacion_tarea AT 
+JOIN usuario U
+ON (at.id_u_at = u.id_u)
+JOIN tarea T
+ON (at.id_t_at = t.id_t);
+
+/* VISTA ASIGNACION_TAREA_SUBORDINADA */
+
+CREATE OR REPLACE VIEW VISTA_ASIGNACION_TAREA_SUBORDINADA AS
+SELECT u.nombre_u, ts.nombre_ts, at.respuesta_ats, at.justificacion_ats
+FROM asignacion_tarea_subordinada AT 
+JOIN usuario U
+ON (at.id_u_ats = u.id_u)
+JOIN tarea_subordinada TS
+ON (at.id_ts_ats = ts.id_ts);
+
+/* VISTA EJECUCION FLUJO TAREA */
+
+CREATE OR REPLACE VIEW VISTA_EJECUCION_FLUJO_TAREA AS
+SELECT u.nombre_u, ft.nombre_ft, at.respuesta_eft, at.justificacion_eft
+FROM ejecucion_flujo_tarea AT 
+JOIN usuario U
+ON (at.id_u_eft = u.id_u)
+JOIN flujo_tarea FT
+ON (at.id_ft_eft = ft.id_ft);
+-----------------------------------------------------------------------------------------------------------------------------------
+/* TRIGGER CALCULO AVANCE TAREA FUNCIONAL*/
+
+CREATE OR REPLACE TRIGGER TGR_CALC_AVANCE_TAREA
+FOR INSERT ON TAREA
+COMPOUND TRIGGER
+TYPE r_tarea_type IS RECORD(
+    id_t tarea.id_t%TYPE,
+    fecha_inicio_t tarea.fecha_inicio_t%TYPE,
+    fecha_entrega_t tarea.fecha_entrega_t%TYPE
+);
+
+TYPE t_tarea_type IS TABLE OF r_tarea_type
+    INDEX BY PLS_INTEGER;
+    
+t_tarea t_tarea_type;
+
+AFTER EACH ROW IS
+BEGIN
+t_tarea (t_tarea.COUNT +1).id_t := :NEW.id_t;
+t_tarea (t_tarea.COUNT).fecha_inicio_t := :NEW.fecha_inicio_t;
+t_tarea (t_tarea.COUNT).fecha_entrega_t := :NEW.fecha_entrega_t;
+END AFTER EACH ROW;
+    AFTER STATEMENT IS
+                V_PROGRESO_ACTUAL NUMBER(10);
+                CURSOR c_t IS SELECT id_t FROM tarea where estado_t = 'En curso';
+            BEGIN
+                for v_fila in c_t 
+                LOOP
+                    SELECT ROUND(ROUND(SYSDATE - fecha_inicio_t)*100/(fecha_entrega_t - fecha_inicio_t))
+                    INTO V_PROGRESO_ACTUAL
+                    FROM tarea
+                    WHERE v_fila.id_t = id_t;
+                    UPDATE tarea 
+                    SET porcentaje_avance_t = V_PROGRESO_ACTUAL
+                    WHERE v_fila.id_t = id_t;
+                    END LOOP;
+    END AFTER STATEMENT;
+END TGR_CALC_AVANCE_TAREA;
+
+-----------------------------------------------------------------------------------------------------------------------------------
 /* Calculo varias filas de tarea FUNCIONAL */
 
 DECLARE
