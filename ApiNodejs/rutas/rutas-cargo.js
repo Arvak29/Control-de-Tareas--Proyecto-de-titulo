@@ -63,7 +63,7 @@ router.post('/addCargo', async (req, res) => {
 })
 
 //Actualizar
-router.put("/updateCargo/:id", async (req, res) => {
+router.patch("/updateCargo/:id", async (req, res) => {
     const { id } = req.params;
     const {id_c, nombre_c, id_ui, id_r} = req.body;
     

@@ -72,7 +72,7 @@ router.post('/addFlujoTarea', async (req, res) => {
 })
 
 //Actualizar
-router.put("/UpdateFlujoTarea/:id", async (req, res) => {
+router.patch("/UpdateFlujoTarea/:id", async (req, res) => {
     const { id } = req.params;
     const { id_ft, nombre_ft, descripcion_ft, fecha_inicio_ft, fecha_entrega_ft, porcentaje_avance_ft, estado_ft} = req.body;
     

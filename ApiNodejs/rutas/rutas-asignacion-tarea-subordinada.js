@@ -85,7 +85,7 @@ router.post('/addAsigTareaSub', async (req, res) => {
 })
 
 //Actualizar
-router.put("/updateAsigTareaSub/:id", async (req, res) => {
+router.patch("/updateAsigTareaSub/:id", async (req, res) => {
     const { id } = req.params;
     const {id_u_ats, id_ts_ats, respuesta_ats, justificacion_ats} = req.body;
     

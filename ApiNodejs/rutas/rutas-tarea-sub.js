@@ -72,10 +72,10 @@ router.post('/addTareaSub', async (req, res) => {
 })
 
 //Actualizar
-router.put("/UpdateTareaSub/:id", async (req, res) => {
+router.patch("/UpdateTareaSub/:id", async (req, res) => {
     const { id } = req.params;
     const { id_ts, nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts} = req.body;
-    
+
     sql = "update tarea_subordinada set nombre_ts=:nombre_ts, descripcion_ts=:descripcion_ts, fecha_inicio_ts=:fecha_inicio_ts, fecha_entrega_ts=:fecha_entrega_ts, porcentaje_avance_ts=:porcentaje_avance_ts, estado_ts=:estado_ts where id_ts=:id";
 
     await BD.Open(sql, [nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts, id], true);

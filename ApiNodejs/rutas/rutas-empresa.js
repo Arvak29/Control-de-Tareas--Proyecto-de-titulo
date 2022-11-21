@@ -57,7 +57,7 @@ router.post('/addEmpresa', async (req, res) => {
 })
 
 //Actualizar
-router.put("/UpdateEmpresa/:id", async (req, res) => {
+router.patch("/UpdateEmpresa/:id", async (req, res) => {
     const { id } = req.params;
     const { id_e, nombre_e} = req.body;
     

@@ -67,7 +67,7 @@ router.post('/addReporteProblema', async (req, res) => {
 })
 
 //Actualizar
-router.put("/UpdateReporteProblema/:id", async (req, res) => {
+router.patch("/UpdateReporteProblema/:id", async (req, res) => {
     const { id } = req.params;
     const {id_rp, descripcion_rp, id_t, id_ts, id_ft} = req.body;
     

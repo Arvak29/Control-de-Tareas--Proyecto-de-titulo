@@ -85,7 +85,7 @@ router.post('/addEjecFlujoT', async (req, res) => {
 })
 
 //Actualizar
-router.put("/updateEjecFlujoT/:id", async (req, res) => {
+router.patch("/updateEjecFlujoT/:id", async (req, res) => {
   const { id } = req.params;
   const {id_u_eft, id_ft_eft, respuesta_eft, justificacion_eft} = req.body;
   

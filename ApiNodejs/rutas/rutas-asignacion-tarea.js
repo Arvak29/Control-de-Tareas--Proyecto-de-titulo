@@ -85,7 +85,7 @@ router.post('/addAsigTarea', async (req, res) => {
 })
 
 //Actualizar
-router.put("/updateAsigTarea/:id", async (req, res) => {
+router.patch("/updateAsigTarea/:id", async (req, res) => {
   const { id } = req.params;
   const {id_u_at, id_t_at, respuesta_at, justificacion_at} = req.body;
   

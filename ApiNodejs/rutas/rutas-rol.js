@@ -57,7 +57,7 @@ router.post('/addRol', async (req, res) => {
 })
 
 //Actualizar
-router.put("/UpdateRol/:id", async (req, res) => {
+router.patch("/UpdateRol/:id", async (req, res) => {
     const { id } = req.params;
     const { id_r, nombre_r} = req.body;
     

@@ -57,10 +57,10 @@ router.post('/addUI', async (req, res) => {
 })
 
 //Actualizar
-router.put("/UpdateUI/:id", async (req, res) => {
+router.patch("/UpdateUI/:id", async (req, res) => {
     const { id } = req.params;
     const { id_ui, nombre_ui} = req.body;
-    
+
     sql = "update unidad_interna set nombre_ui=:nombre_ui where id_ui=:id";
 
     await BD.Open(sql, [nombre_ui, id], true);
