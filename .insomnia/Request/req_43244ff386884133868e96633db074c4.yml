@@ -1,0 +1,21 @@
+_id: req_43244ff386884133868e96633db074c4
+type: Request
+parentId: fld_8ea96a94422e4681a1b9182e6eaec5ab
+modified: 1668464945574
+created: 1668463823691
+url: http://localhost:3000/getAsigTareasSub
+name: Get asignaciones tareas sub
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1667932175846.8906
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,31 @@
+_id: req_7f61e0aeee7740f3b0227277843ab2eb
+type: Request
+parentId: fld_686a1869a9e443ec84d620585b98687e
+modified: 1668463193156
+created: 1668461038264
+url: http://localhost:3000/deleteEmpresa/3
+name: Delete empresa
+description: ""
+method: DELETE
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_5d0d1eaa2b1c476ea062015624a48d32
+authentication:
+  type: basic
+  useISO88591: false
+  disabled: false
+  username: Alonso
+  password: "12345"
+metaSortKey: -1667932175793.375
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

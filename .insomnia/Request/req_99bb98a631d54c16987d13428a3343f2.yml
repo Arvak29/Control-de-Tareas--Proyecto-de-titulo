@@ -1,0 +1,31 @@
+_id: req_99bb98a631d54c16987d13428a3343f2
+type: Request
+parentId: fld_48bbf179705c457f9c2a33918637826c
+modified: 1668634283296
+created: 1668632958072
+url: http://localhost:3000/addAsigTarea
+name: Add asignacion tarea
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |
+    {
+    		"id_u_at": 1,
+    		"id_t_at": 1,
+    		"respuesta_at": "nose",
+    		"justificacion_at": "12345"
+    	}
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1667932175898.0625
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

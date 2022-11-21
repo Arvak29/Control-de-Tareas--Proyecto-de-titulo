@@ -1,0 +1,21 @@
+_id: req_e321f125fb534381877dce90bdcdc891
+type: Request
+parentId: fld_8ea96a94422e4681a1b9182e6eaec5ab
+modified: 1668634581833
+created: 1668632948831
+url: http://localhost:3000/deleteAsigTareaSub/1
+name: "Delete asignacion tarea sub "
+description: ""
+method: DELETE
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1667932175795.7188
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

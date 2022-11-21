@@ -1,0 +1,34 @@
+_id: req_47d553e8f342420aaf39242e2b8632ac
+type: Request
+parentId: fld_d6df231cf83747d1af37d143a7ca9f72
+modified: 1668549901383
+created: 1667945556457
+url: http://localhost:3000/updateUI/3
+name: update unidad interna
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    		"nombre_ui": "Enfermeria actualizada"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_5d0d1eaa2b1c476ea062015624a48d32
+authentication:
+  type: basic
+  useISO88591: false
+  disabled: false
+  username: Alonso
+  password: "12345"
+metaSortKey: -1667932320728.375
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

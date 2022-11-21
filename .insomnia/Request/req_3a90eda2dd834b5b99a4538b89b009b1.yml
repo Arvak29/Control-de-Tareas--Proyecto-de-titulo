@@ -1,0 +1,21 @@
+_id: req_3a90eda2dd834b5b99a4538b89b009b1
+type: Request
+parentId: fld_48bbf179705c457f9c2a33918637826c
+modified: 1668464922309
+created: 1668463307414
+url: http://localhost:3000/getAsigTarea_t/2
+name: Get asignacion tarea por id tarea
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1667932175845.7188
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

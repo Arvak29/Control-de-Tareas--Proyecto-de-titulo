@@ -1,0 +1,21 @@
+_id: req_b5317cad6a4243f39193d8bba34109c3
+type: Request
+parentId: fld_2bc2c1072a794cbf8b1fd011e79a716c
+modified: 1668634172589
+created: 1668633038660
+url: http://localhost:3000/deleteEjecFlujoT/1
+name: Delete flujo ejecucion tarea
+description: ""
+method: DELETE
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1667932175844.5469
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

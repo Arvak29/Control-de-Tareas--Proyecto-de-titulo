@@ -1,0 +1,31 @@
+_id: req_ba95cbb9759743dcb354e8d0afeef5c2
+type: Request
+parentId: fld_8ea96a94422e4681a1b9182e6eaec5ab
+modified: 1668634979124
+created: 1668632911048
+url: http://localhost:3000/addAsigTareaSub
+name: "Add asignacion tarea sub "
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |
+    {
+    		"id_u_ats": 1,
+    		"id_ts_ats": 1,
+    		"respuesta_ats": "nose",
+    		"justificacion_ats": "12345"
+    	}
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1667932175898.0625
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

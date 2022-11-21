@@ -1,0 +1,31 @@
+_id: req_b1464e6bafba4e3799f8c99007a2a5bb
+type: Request
+parentId: fld_64863148789b4a66b877159b990ca919
+modified: 1668549856168
+created: 1667943624161
+url: http://localhost:3000/deleterol/4
+name: delete rol
+description: ""
+method: DELETE
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_5d0d1eaa2b1c476ea062015624a48d32
+authentication:
+  type: basic
+  useISO88591: false
+  disabled: false
+  username: Alonso
+  password: "12345"
+metaSortKey: -1667932407495
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

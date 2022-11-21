@@ -1,0 +1,21 @@
+_id: req_c9eb9fac527f43499d55ee0b9c5d3f4f
+type: Request
+parentId: fld_f917899982a04c4c9b2847ec7293ff18
+modified: 1668634086680
+created: 1668291358480
+url: http://localhost:3000/api-flujo/getFlujosTareas
+name: Get flujo de tareas
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1667932175884
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

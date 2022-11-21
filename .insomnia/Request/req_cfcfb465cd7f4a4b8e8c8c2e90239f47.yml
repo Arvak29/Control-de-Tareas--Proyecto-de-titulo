@@ -1,0 +1,21 @@
+_id: req_cfcfb465cd7f4a4b8e8c8c2e90239f47
+type: Request
+parentId: fld_de5ab832eaaa4e4295ebdaa13c9aaa7d
+modified: 1668289042426
+created: 1668288599578
+url: http://localhost:3000/getCargos
+name: Get cargos
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1667932175862.125
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

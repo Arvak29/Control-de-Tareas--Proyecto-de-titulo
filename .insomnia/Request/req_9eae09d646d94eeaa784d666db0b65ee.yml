@@ -1,0 +1,30 @@
+_id: req_9eae09d646d94eeaa784d666db0b65ee
+type: Request
+parentId: fld_48bbf179705c457f9c2a33918637826c
+modified: 1668634522190
+created: 1668632963169
+url: http://localhost:3000/UpdateAsigTarea/1
+name: Update asignacion tarea
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    		"id_u_at": 1,
+    		"respuesta_at": "nose cambiado",
+    		"justificacion_at": "12345"
+    	}
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1667932175873.0625
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

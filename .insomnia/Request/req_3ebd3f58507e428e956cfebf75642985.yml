@@ -1,0 +1,21 @@
+_id: req_3ebd3f58507e428e956cfebf75642985
+type: Request
+parentId: fld_48bbf179705c457f9c2a33918637826c
+modified: 1668633481240
+created: 1668632970229
+url: http://localhost:3000/deleteAsigTarea/1
+name: Delete asignacion tarea
+description: ""
+method: DELETE
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1667932175795.7188
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

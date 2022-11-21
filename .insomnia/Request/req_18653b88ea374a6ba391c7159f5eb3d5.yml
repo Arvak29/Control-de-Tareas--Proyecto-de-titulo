@@ -1,0 +1,40 @@
+_id: req_18653b88ea374a6ba391c7159f5eb3d5
+type: Request
+parentId: fld_001480faa886407380703a364346a9cf
+modified: 1668549896606
+created: 1668290731981
+url: http://localhost:3000/updateTareaSub/2
+name: Update tarea subordinada
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    		"id_ts": 2,
+    		"nombre_ts": "tarea subordinada modificada a través de Imsomnia",
+    		"descripcion_ts": "Esto es una tarea subordinada de prueba",
+    		"fecha_inicio_ts": "12-11-2022",
+    		"fecha_entrega_ts": "12-11-2022",
+    		"porcentaje_avance_ts": 0,
+    		"estado_ts": "En curso"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_5d0d1eaa2b1c476ea062015624a48d32
+authentication:
+  type: basic
+  useISO88591: false
+  disabled: false
+  username: Alonso
+  password: "12345"
+metaSortKey: -1667932175834
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
