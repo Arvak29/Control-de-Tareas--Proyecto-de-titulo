@@ -1,12 +1,12 @@
 _id: req_9eae09d646d94eeaa784d666db0b65ee
 type: Request
 parentId: fld_48bbf179705c457f9c2a33918637826c
-modified: 1668634522190
+modified: 1669066901658
 created: 1668632963169
 url: http://localhost:3000/UpdateAsigTarea/1
 name: Update asignacion tarea
 description: ""
-method: PUT
+method: PATCH
 body:
   mimeType: application/json
   text: |-

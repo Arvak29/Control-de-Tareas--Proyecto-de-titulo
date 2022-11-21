@@ -1,12 +1,12 @@
 _id: req_47d553e8f342420aaf39242e2b8632ac
 type: Request
 parentId: fld_d6df231cf83747d1af37d143a7ca9f72
-modified: 1668279323799
+modified: 1669066931421
 created: 1667945556457
 url: http://localhost:3000/updateUI
 name: update unidad interna
 description: ""
-method: PUT
+method: PATCH
 body:
   mimeType: application/json
   text: |-
