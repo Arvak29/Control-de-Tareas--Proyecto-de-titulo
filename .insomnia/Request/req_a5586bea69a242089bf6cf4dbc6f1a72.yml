@@ -1,12 +1,12 @@
 _id: req_a5586bea69a242089bf6cf4dbc6f1a72
 type: Request
 parentId: fld_d855bbd111f74c729ec0f4a5dfd8cc9f
-modified: 1669055384798
+modified: 1669058967199
 created: 1667943551719
-url: http://localhost:3000/updateTarea/4
+url: http://localhost:3000/updateTarea/6
 name: update tarea
 description: ""
-method: PUT
+method: PATCH
 body:
   mimeType: application/json
   text: |-
@@ -14,9 +14,7 @@ body:
     		"nombre_t": "Probar cambiar tarea",
     		"descripcion_t": "esto es una pruebaxd1",
     		"fecha_inicio_t": "08-11-2022",
-    		"fecha_entrega_t": "15-11-2022",
-    		"porcentaje_avance_t": 0,
-    		"estado_t": "En curso"
+    		"fecha_entrega_t": "15-11-2022"
     	}
 parameters: []
 headers:

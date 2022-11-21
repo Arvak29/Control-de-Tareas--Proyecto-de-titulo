@@ -1,7 +1,7 @@
 _id: req_52d0a883fe4048bd893545f338db991a
 type: Request
 parentId: fld_d855bbd111f74c729ec0f4a5dfd8cc9f
-modified: 1669055381694
+modified: 1669066891000
 created: 1668288654310
 url: http://localhost:3000/addtarea
 name: Add tarea
@@ -11,7 +11,6 @@ body:
   mimeType: application/json
   text: |-
     {
-    		"id_t": 5,
     		"nombre_t": "tarea de prueba a través de Imsomnia",
     		"descripcion_t": "Esto es una tarea de prueba",
     		"fecha_inicio_t": "12-11-2022",

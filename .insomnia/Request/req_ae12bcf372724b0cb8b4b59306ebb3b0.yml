@@ -1,12 +1,12 @@
 _id: req_ae12bcf372724b0cb8b4b59306ebb3b0
 type: Request
 parentId: fld_2bc2c1072a794cbf8b1fd011e79a716c
-modified: 1668634529448
+modified: 1669066898835
 created: 1668633021885
 url: http://localhost:3000/updateEjecFlujoT/1
 name: Update ejecucion flujo tarea
 description: ""
-method: PUT
+method: PATCH
 body:
   mimeType: application/json
   text: |

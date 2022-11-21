@@ -1,12 +1,12 @@
 _id: req_325dd75d16174a4fb1c1989d3e908b8d
 type: Request
 parentId: fld_686a1869a9e443ec84d620585b98687e
-modified: 1668632009399
+modified: 1669066913705
 created: 1668461038262
 url: http://localhost:3000/updateEmpresa/3
 name: Update empresa
 description: ""
-method: PUT
+method: PATCH
 body:
   mimeType: application/json
   text: |

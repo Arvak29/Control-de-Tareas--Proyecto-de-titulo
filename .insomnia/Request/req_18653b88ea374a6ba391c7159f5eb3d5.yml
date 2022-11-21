@@ -1,12 +1,12 @@
 _id: req_18653b88ea374a6ba391c7159f5eb3d5
 type: Request
 parentId: fld_001480faa886407380703a364346a9cf
-modified: 1668549896606
+modified: 1669066927445
 created: 1668290731981
 url: http://localhost:3000/updateTareaSub/2
 name: Update tarea subordinada
 description: ""
-method: PUT
+method: PATCH
 body:
   mimeType: application/json
   text: |-
