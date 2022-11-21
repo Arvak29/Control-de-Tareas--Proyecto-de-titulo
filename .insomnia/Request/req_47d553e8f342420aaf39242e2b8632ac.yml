@@ -11,7 +11,6 @@ body:
   mimeType: application/json
   text: |-
     {
-    		"id_ui": 3,
     		"nombre_ui": "Enfermeria actualizada"
     }
 parameters: []

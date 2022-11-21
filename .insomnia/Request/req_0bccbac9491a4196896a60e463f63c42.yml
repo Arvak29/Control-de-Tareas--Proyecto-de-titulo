@@ -1,25 +1,25 @@
-_id: req_ec0486db28b44950b2ac412b78c288bc
+_id: req_0bccbac9491a4196896a60e463f63c42
 type: Request
-parentId: fld_64863148789b4a66b877159b990ca919
-modified: 1668630360238
-created: 1667943025072
-url: http://localhost:3000/addrol
-name: Add rol
+parentId: fld_686a1869a9e443ec84d620585b98687e
+modified: 1668633227593
+created: 1668461038259
+url: http://localhost:3000/addEmpresa
+name: Add empresa
 description: ""
 method: POST
 body:
   mimeType: application/json
-  text: |-
+  text: |
     {
-    		"id_r": 4,
-    		"nombre_r": "Funcionario de prueba"
+    		"id_e": 3,
+    		"nombre_e": "CCU"
     }
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
 authentication: {}
-metaSortKey: -1667932407595
+metaSortKey: -1667932175902.75
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

@@ -1,10 +1,10 @@
-_id: req_b1464e6bafba4e3799f8c99007a2a5bb
+_id: req_94a1fa9f914b41f199319a0b93b5928f
 type: Request
-parentId: fld_64863148789b4a66b877159b990ca919
-modified: 1668549856168
-created: 1667943624161
-url: http://localhost:3000/deleterol/4
-name: delete rol
+parentId: fld_de5ab832eaaa4e4295ebdaa13c9aaa7d
+modified: 1668549366566
+created: 1668289257352
+url: http://localhost:3000/deleteCargo/7
+name: Delete cargo
 description: ""
 method: DELETE
 body:
@@ -21,7 +21,7 @@ authentication:
   disabled: false
   username: Alonso
   password: "12345"
-metaSortKey: -1667932407495
+metaSortKey: -1667932175812.125
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

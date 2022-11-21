@@ -1,10 +1,10 @@
-_id: req_b1464e6bafba4e3799f8c99007a2a5bb
+_id: req_fc1be9e57f1649fc94b86ab564af1bec
 type: Request
-parentId: fld_64863148789b4a66b877159b990ca919
-modified: 1668549856168
-created: 1667943624161
-url: http://localhost:3000/deleterol/4
-name: delete rol
+parentId: fld_001480faa886407380703a364346a9cf
+modified: 1668291328090
+created: 1668290731986
+url: http://localhost:3000/deleteTareaSub/2
+name: Delete tarea subordinada
 description: ""
 method: DELETE
 body:
@@ -21,7 +21,7 @@ authentication:
   disabled: false
   username: Alonso
   password: "12345"
-metaSortKey: -1667932407495
+metaSortKey: -1667932175784
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

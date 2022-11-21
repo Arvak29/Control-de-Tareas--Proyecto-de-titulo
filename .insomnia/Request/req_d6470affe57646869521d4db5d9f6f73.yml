@@ -1,9 +1,9 @@
 _id: req_d6470affe57646869521d4db5d9f6f73
 type: Request
 parentId: fld_64863148789b4a66b877159b990ca919
-modified: 1668279296482
+modified: 1668627889969
 created: 1667932407445
-url: http://localhost:3000/updateRol
+url: http://localhost:3000/updateRol/4
 name: update rol
 description: ""
 method: PUT
@@ -11,8 +11,7 @@ body:
   mimeType: application/json
   text: |-
     {
-    		"id_r": 3,
-    		"nombre_r": "Enfermeria actualizada"
+    		"nombre_r": "modificación de rol de prueba"
     }
 parameters: []
 headers:
@@ -25,7 +24,7 @@ authentication:
   disabled: false
   username: Alonso
   password: "12345"
-metaSortKey: -1667932407445
+metaSortKey: -1667932407507.5
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

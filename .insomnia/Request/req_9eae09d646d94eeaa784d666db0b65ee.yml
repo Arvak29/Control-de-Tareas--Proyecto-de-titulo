@@ -1,25 +1,26 @@
-_id: req_ec0486db28b44950b2ac412b78c288bc
+_id: req_9eae09d646d94eeaa784d666db0b65ee
 type: Request
-parentId: fld_64863148789b4a66b877159b990ca919
-modified: 1668630360238
-created: 1667943025072
-url: http://localhost:3000/addrol
-name: Add rol
+parentId: fld_48bbf179705c457f9c2a33918637826c
+modified: 1668634522190
+created: 1668632963169
+url: http://localhost:3000/UpdateAsigTarea/1
+name: Update asignacion tarea
 description: ""
-method: POST
+method: PUT
 body:
   mimeType: application/json
   text: |-
     {
-    		"id_r": 4,
-    		"nombre_r": "Funcionario de prueba"
-    }
+    		"id_u_at": 1,
+    		"respuesta_at": "nose cambiado",
+    		"justificacion_at": "12345"
+    	}
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
 authentication: {}
-metaSortKey: -1667932407595
+metaSortKey: -1667932175873.0625
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

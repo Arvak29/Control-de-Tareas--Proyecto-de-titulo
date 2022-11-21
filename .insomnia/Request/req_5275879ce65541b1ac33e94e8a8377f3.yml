@@ -1,10 +1,10 @@
-_id: req_b1464e6bafba4e3799f8c99007a2a5bb
+_id: req_5275879ce65541b1ac33e94e8a8377f3
 type: Request
-parentId: fld_64863148789b4a66b877159b990ca919
-modified: 1668549856168
-created: 1667943624161
-url: http://localhost:3000/deleterol/4
-name: delete rol
+parentId: fld_f917899982a04c4c9b2847ec7293ff18
+modified: 1668634093424
+created: 1668291358488
+url: http://localhost:3000/deleteFlujoTarea/2
+name: Delete flujo de tarea
 description: ""
 method: DELETE
 body:
@@ -21,7 +21,7 @@ authentication:
   disabled: false
   username: Alonso
   password: "12345"
-metaSortKey: -1667932407495
+metaSortKey: -1667932175784
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

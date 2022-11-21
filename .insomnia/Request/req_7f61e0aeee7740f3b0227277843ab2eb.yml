@@ -1,10 +1,10 @@
-_id: req_b1464e6bafba4e3799f8c99007a2a5bb
+_id: req_7f61e0aeee7740f3b0227277843ab2eb
 type: Request
-parentId: fld_64863148789b4a66b877159b990ca919
-modified: 1668549856168
-created: 1667943624161
-url: http://localhost:3000/deleterol/4
-name: delete rol
+parentId: fld_686a1869a9e443ec84d620585b98687e
+modified: 1668463193156
+created: 1668461038264
+url: http://localhost:3000/deleteEmpresa/3
+name: Delete empresa
 description: ""
 method: DELETE
 body:
@@ -21,7 +21,7 @@ authentication:
   disabled: false
   username: Alonso
   password: "12345"
-metaSortKey: -1667932407495
+metaSortKey: -1667932175793.375
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

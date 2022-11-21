@@ -1,17 +1,17 @@
-_id: req_3f4e601a8cdd4ac0b40d563a6ab533b1
+_id: req_ead1b15939414f74bea8c20047ca66f3
 type: Request
-parentId: fld_d6df231cf83747d1af37d143a7ca9f72
-modified: 1668635350346
-created: 1667944109779
-url: http://localhost:3000/api-unidad/getUI/1
-name: Get Unidad interna
+parentId: fld_686a1869a9e443ec84d620585b98687e
+modified: 1668462191287
+created: 1668461038253
+url: http://localhost:3000/getEmpresa/1
+name: Get empresa
 description: ""
 method: GET
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1667932320778.375
+metaSortKey: -1667932175852.75
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
