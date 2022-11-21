@@ -207,21 +207,53 @@ ON (c.id_ui = ui.id_ui)
 JOIN rol R
 ON (c.id_r = r.id_r);
 
+/* VISTA TAREA */
+
+CREATE OR REPLACE VIEW VISTA_TAREA AS
+SELECT t.nombre_t, t.descripcion_t, t.fecha_inicio_t, t.fecha_entrega_t, t.porcentaje_avance_t, t.estado_t, u.nombre_u, ts.nombre_ts 
+FROM tarea T
+JOIN tarea_subordinada ts
+ON (t.id_t = ts.id_t)
+JOIN asignacion_tarea AT 
+ON (t.id_t = at.id_t_at)
+JOIN usuario U
+ON (u.id_u = at.id_u_at);
+
 /* VISTA TAREA SUBORDINADA DE TAREA */
 
 CREATE OR REPLACE VIEW VISTA_TAREA_SUB_TAREA AS
-SELECT nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts, nombre_t 
-FROM tarea_subordinada TS 
-JOIN tarea T 
-ON (ts.id_t = t.id_t);
+SELECT ts.nombre_ts, ts.descripcion_ts, ts.fecha_inicio_ts, ts.fecha_entrega_ts, ts.porcentaje_avance_ts, ts.estado_ts, t.nombre_t, u.nombre_u 
+FROM tarea_subordinada TS
+JOIN tarea T
+ON (ts.id_t = t.id_t)
+JOIN asignacion_tarea_subordinada ATS 
+ON (ts.id_ts = ats.id_ts_ats)
+JOIN usuario U
+ON (u.id_u = ats.id_u_ats);
+
+/* VISTA FLUJO DE TAREA */
+
+CREATE OR REPLACE VIEW FLUJO_TAREA AS
+SELECT ft.nombre_ft, ft.descripcion_ft, ft.fecha_inicio_ft, ft.fecha_entrega_ft, ft.porcentaje_avance_ft, ft.estado_ft, ts.nombre_ts ,u.nombre_u
+FROM flujo_tarea FT
+JOIN tarea_subordinada ts
+ON (ft.id_ft = ts.id_ts)
+JOIN ejecucion_flujo_tarea EFT 
+ON (ft.id_ft = eft.id_ft_eft)
+JOIN usuario U
+ON (u.id_u = eft.id_u_eft);
 
 /* VISTA TAREA SUBORDINADA DE FLUJO DE TAREA */
 
 CREATE OR REPLACE VIEW VISTA_TAREA_SUB_FLUJO_TAREA AS
-SELECT nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts, nombre_ft 
+SELECT ts.nombre_ts, ts.descripcion_ts, ts.fecha_inicio_ts, ts.fecha_entrega_ts, ts.porcentaje_avance_ts, ts.estado_ts, ft.nombre_ft, u.nombre_u
 FROM tarea_subordinada TS 
 JOIN flujo_tarea FT 
-ON (ts.id_ft = ft.id_ft);
+ON (ts.id_ft = ft.id_ft)
+JOIN ejecucion_flujo_tarea EFT 
+ON (ft.id_ft = eft.id_ft_eft)
+JOIN usuario U
+ON (u.id_u = eft.id_u_eft);
 
 /* VISTA REPORTE DE TAREA */
 
@@ -276,6 +308,7 @@ JOIN usuario U
 ON (at.id_u_eft = u.id_u)
 JOIN flujo_tarea FT
 ON (at.id_ft_eft = ft.id_ft);
+
 -----------------------------------------------------------------------------------------------------------------------------------
 /* TRIGGER CALCULO AVANCE TAREA FUNCIONAL*/
 
