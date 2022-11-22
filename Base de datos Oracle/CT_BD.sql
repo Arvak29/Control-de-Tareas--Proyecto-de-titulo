@@ -186,7 +186,7 @@ INSERT INTO REPORTE_PROBLEMA VALUES ('1', 'No puedo solucionar este problema', '
 /* VISTA USUARIO */
 
 CREATE OR REPLACE VIEW VISTA_USUARIO AS
-SELECT u.nombre_u, u.email_u, u.password_u, r.nombre_r, c.nombre_c, ui.nombre_ui, e.nombre_e 
+SELECT u.id_u, u.nombre_u, u.email_u, u.password_u, r.nombre_r, c.nombre_c, ui.nombre_ui, e.nombre_e 
 FROM usuario U 
 JOIN cargo C
 ON (u.id_c = c.id_c)
@@ -195,119 +195,131 @@ ON (c.id_ui = ui.id_ui)
 JOIN rol R
 ON (c.id_r = r.id_r)
 JOIN empresa E
-ON (u.id_e = e.id_e);
+ON (u.id_e = e.id_e)
+ORDER BY u.id_u DESC;
 
 /* VISTA CARGO */
 
 CREATE OR REPLACE VIEW VISTA_CARGO AS
-SELECT c.nombre_c, ui.nombre_ui, r.nombre_r
+SELECT c.id_c, c.nombre_c, ui.nombre_ui, r.nombre_r
 FROM cargo C 
 JOIN unidad_interna UI
 ON (c.id_ui = ui.id_ui)
 JOIN rol R
-ON (c.id_r = r.id_r);
+ON (c.id_r = r.id_r)
+ORDER BY c.id_c DESC;
 
 /* VISTA TAREA */
 
 CREATE OR REPLACE VIEW VISTA_TAREA AS
-SELECT t.nombre_t, t.descripcion_t, t.fecha_inicio_t, t.fecha_entrega_t, t.porcentaje_avance_t, t.estado_t, u.nombre_u, ts.nombre_ts 
+SELECT t.id_t, t.nombre_t, t.descripcion_t, t.fecha_inicio_t, t.fecha_entrega_t, t.porcentaje_avance_t, t.estado_t, u.nombre_u, ts.nombre_ts 
 FROM tarea T
 JOIN tarea_subordinada ts
 ON (t.id_t = ts.id_t)
 JOIN asignacion_tarea AT 
 ON (t.id_t = at.id_t_at)
 JOIN usuario U
-ON (u.id_u = at.id_u_at);
+ON (u.id_u = at.id_u_at)
+ORDER BY t.id_t DESC;
 
 /* VISTA TAREA SUBORDINADA DE TAREA */
 
-CREATE OR REPLACE VIEW VISTA_TAREA_SUB_TAREA AS
-SELECT ts.nombre_ts, ts.descripcion_ts, ts.fecha_inicio_ts, ts.fecha_entrega_ts, ts.porcentaje_avance_ts, ts.estado_ts, t.nombre_t, u.nombre_u 
+CREATE OR REPLACE VIEW VISTA_TAREA_SUBORDINADA_TAREA AS
+SELECT t.id_t, ts.nombre_ts, ts.descripcion_ts, ts.fecha_inicio_ts, ts.fecha_entrega_ts, ts.porcentaje_avance_ts, ts.estado_ts, t.nombre_t, u.nombre_u 
 FROM tarea_subordinada TS
 JOIN tarea T
 ON (ts.id_t = t.id_t)
 JOIN asignacion_tarea_subordinada ATS 
 ON (ts.id_ts = ats.id_ts_ats)
 JOIN usuario U
-ON (u.id_u = ats.id_u_ats);
+ON (u.id_u = ats.id_u_ats)
+ORDER BY t.id_t DESC;
 
 /* VISTA FLUJO DE TAREA */
 
 CREATE OR REPLACE VIEW FLUJO_TAREA AS
-SELECT ft.nombre_ft, ft.descripcion_ft, ft.fecha_inicio_ft, ft.fecha_entrega_ft, ft.porcentaje_avance_ft, ft.estado_ft, ts.nombre_ts ,u.nombre_u
+SELECT ft.id_ft, ft.nombre_ft, ft.descripcion_ft, ft.fecha_inicio_ft, ft.fecha_entrega_ft, ft.porcentaje_avance_ft, ft.estado_ft, ts.nombre_ts ,u.nombre_u
 FROM flujo_tarea FT
 JOIN tarea_subordinada ts
 ON (ft.id_ft = ts.id_ts)
 JOIN ejecucion_flujo_tarea EFT 
 ON (ft.id_ft = eft.id_ft_eft)
 JOIN usuario U
-ON (u.id_u = eft.id_u_eft);
+ON (u.id_u = eft.id_u_eft)
+ORDER BY ft.id_ft DESC;
 
 /* VISTA TAREA SUBORDINADA DE FLUJO DE TAREA */
 
-CREATE OR REPLACE VIEW VISTA_TAREA_SUB_FLUJO_TAREA AS
-SELECT ts.nombre_ts, ts.descripcion_ts, ts.fecha_inicio_ts, ts.fecha_entrega_ts, ts.porcentaje_avance_ts, ts.estado_ts, ft.nombre_ft, u.nombre_u
+CREATE OR REPLACE VIEW VISTA_TAREA_SUBORDINADA_FLUJO_TAREA AS
+SELECT ft.id_ft, ts.nombre_ts, ts.descripcion_ts, ts.fecha_inicio_ts, ts.fecha_entrega_ts, ts.porcentaje_avance_ts, ts.estado_ts, ft.nombre_ft, u.nombre_u
 FROM tarea_subordinada TS 
 JOIN flujo_tarea FT 
 ON (ts.id_ft = ft.id_ft)
 JOIN ejecucion_flujo_tarea EFT 
 ON (ft.id_ft = eft.id_ft_eft)
 JOIN usuario U
-ON (u.id_u = eft.id_u_eft);
+ON (u.id_u = eft.id_u_eft)
+ORDER BY ft.id_ft DESC;
 
 /* VISTA REPORTE DE TAREA */
 
 CREATE OR REPLACE VIEW VISTA_REPORTE_TAREA AS
-SELECT t.nombre_t, rp.descripcion_rp
+SELECT t.id_t, t.nombre_t, rp.descripcion_rp
 FROM REPORTE_PROBLEMA RP 
 JOIN tarea T 
-ON (rp.id_t = t.id_t);
+ON (rp.id_t = t.id_t)
+ORDER BY t.id_t DESC;
 
 /* VISTA REPORTE TAREA SUBORDINADA */
 
-CREATE OR REPLACE VIEW VISTA_REPORTE_TAREA_SUB AS
-SELECT ts.nombre_ts, rp.descripcion_rp
+CREATE OR REPLACE VIEW VISTA_REPORTE_TAREA_SUBORDINADA AS
+SELECT ts.id_ts, ts.nombre_ts, rp.descripcion_rp
 FROM REPORTE_PROBLEMA RP 
 JOIN tarea_subordinada TS 
-ON (rp.id_t = ts.id_ts);
+ON (rp.id_t = ts.id_ts)
+ORDER BY ts.id_ts DESC;
 
 /* VISTA REPORTE DE TAREA DE FLUJO DE TAREA */
 
 CREATE OR REPLACE VIEW VISTA_REPORTE_FLUJO_TAREA AS
-SELECT ft.nombre_ft, rp.descripcion_rp
+SELECT ft.id_ft, ft.nombre_ft, rp.descripcion_rp
 FROM REPORTE_PROBLEMA RP 
 JOIN flujo_tarea FT 
-ON (rp.id_ft = ft.id_ft);
+ON (rp.id_ft = ft.id_ft)
+ORDER BY ft.id_ft DESC;
 
 /* VISTA ASIGNACION_TAREA */
 
 CREATE OR REPLACE VIEW VISTA_ASIGNACION_TAREA AS
-SELECT u.nombre_u, t.nombre_t, at.respuesta_at, at.justificacion_at
+SELECT t.id_t, u.nombre_u, t.nombre_t, at.respuesta_at, at.justificacion_at
 FROM asignacion_tarea AT 
 JOIN usuario U
 ON (at.id_u_at = u.id_u)
 JOIN tarea T
-ON (at.id_t_at = t.id_t);
+ON (at.id_t_at = t.id_t)
+ORDER BY t.id_t DESC;
 
 /* VISTA ASIGNACION_TAREA_SUBORDINADA */
 
-CREATE OR REPLACE VIEW VISTA_ASIGNACION_TAREA_SUB AS
-SELECT u.nombre_u, ts.nombre_ts, at.respuesta_ats, at.justificacion_ats
+CREATE OR REPLACE VIEW VISTA_ASIGNACION_TAREA_SUBORDINADA AS
+SELECT ts.id_ts, u.nombre_u, ts.nombre_ts, at.respuesta_ats, at.justificacion_ats
 FROM asignacion_tarea_subordinada AT 
 JOIN usuario U
 ON (at.id_u_ats = u.id_u)
 JOIN tarea_subordinada TS
-ON (at.id_ts_ats = ts.id_ts);
+ON (at.id_ts_ats = ts.id_ts)
+ORDER BY ts.id_ts DESC;
 
 /* VISTA EJECUCION FLUJO TAREA */
 
 CREATE OR REPLACE VIEW VISTA_EJECUCION_FLUJO_TAREA AS
-SELECT u.nombre_u, ft.nombre_ft, at.respuesta_eft, at.justificacion_eft
+SELECT ft.id_ft, u.nombre_u, ft.nombre_ft, at.respuesta_eft, at.justificacion_eft
 FROM ejecucion_flujo_tarea AT 
 JOIN usuario U
 ON (at.id_u_eft = u.id_u)
 JOIN flujo_tarea FT
-ON (at.id_ft_eft = ft.id_ft);
+ON (at.id_ft_eft = ft.id_ft)
+ORDER BY ft.id_ft DESC;
 
 -----------------------------------------------------------------------------------------------------------------------------------
 /* TRIGGER CALCULO AVANCE TAREA FUNCIONAL*/
