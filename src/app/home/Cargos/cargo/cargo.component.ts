@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { cargo, CargoService } from 'src/app/services/cargo.service';
+import { Cargo, CargoService } from 'src/app/services/cargo.service';
 
 @Component({
   selector: 'app-cargo',
@@ -9,7 +9,7 @@ import { cargo, CargoService } from 'src/app/services/cargo.service';
   providers: [CargoService],
 })
 export class CargoComponent implements OnInit {
-  cargo: cargo = {
+  cargo: Cargo = {
     id_c: '',
     nombre_c: '',
   };

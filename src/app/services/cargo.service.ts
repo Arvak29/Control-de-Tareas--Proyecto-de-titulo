@@ -30,12 +30,12 @@ export class CargoService {
   }
 
   //modificar un cargo
-  editCargo(id: string, cargo: cargo) {
+  editCargo(id: string, cargo: Cargo) {
     return this.http.patch('/api-cargo/updateCargo/' + id, cargo);
   }
 }
 
-export interface cargo {
+export interface Cargo {
   id_c?: string;
   nombre_c?: string;
   id_ui?: string;

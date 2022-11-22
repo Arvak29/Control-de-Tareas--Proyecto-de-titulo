@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Cargo } from 'src/app/models/cargo';
-import { AgregarCargo, cargo, CargoService} from '../../services/cargo.service';
+import { AgregarCargo, Cargo, CargoService} from '../../services/cargo.service';
 
 @Component({
   selector: 'app-cargos',
@@ -15,7 +14,7 @@ export class CargosComponent implements OnInit {
   ListarCargo: Cargo[] = [];
   filtroCargo = '';
 
-  cargo: cargo = {
+  cargo: Cargo = {
     id_c: '',
     nombre_c: '',
   };

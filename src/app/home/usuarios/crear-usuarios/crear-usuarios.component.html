@@ -76,32 +76,23 @@
               <label for="inputRut">Password</label>
             </div>
 
-            <div class="form-floating mb-3">
-              <input
-                class="form-control"
-                type="text"
-                placeholder="cargo"
-                formControlName="cargo"
-                [class.is-invalid]="
-                  Crear_Usuario_Grupo.get('cargo')?.touched &&
-                  Crear_Usuario_Grupo.get('cargo')?.invalid
-                "
-              />
-              <label for="inputRut">Cargo</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input
-                class="form-control"
-                type="text"
-                placeholder="empresa"
-                formControlName="empresa"
-                [class.is-invalid]="
-                  Crear_Usuario_Grupo.get('empresa')?.touched &&
-                  Crear_Usuario_Grupo.get('empresa')?.invalid
-                "
-              />
-              <label for="inputRut">Empresa</label>
-            </div>
+            <select class="form-select"               
+            placeholder="cargo_usuario"
+            formControlName="cargo_usuario"
+            [class.is-invalid]="
+            Crear_Usuario_Grupo.get('cargo_usuario')?.touched &&
+            Crear_Usuario_Grupo.get('cargo_usuario')?.invalid">
+              <option *ngFor="let cargo of ListarCargo" [value]="cargo.id_c">{{cargo.nombre_c}}</option>
+            </select>
+
+            <select class="form-select"               
+            placeholder="empresa_usuario"
+            formControlName="empresa_usuario"
+            [class.is-invalid]="
+            Crear_Usuario_Grupo.get('empresa_usuario')?.touched &&
+            Crear_Usuario_Grupo.get('empresa_usuario')?.invalid">
+              <option *ngFor="let empresa of ListarEmpresa" [value]="empresa.id_e" >{{empresa.nombre_e}}</option>
+            </select>
           </form>
         </div>
       </div>

@@ -24,7 +24,7 @@ router.get('/getEmpresa/:id', async (req, res) => {
 })
 
 //Get de todo
-router.get('/getEmpresas', async (req, res) => {
+router.get('/api-empresa/getEmpresas', async (req, res) => {
     sql = "select * from empresa";
 
     let result = await BD.Open(sql, [], false);
