@@ -22,7 +22,7 @@ export class CrearUnidadInternaComponent implements OnInit {
     private UnidadInternaService: UnidadInternaService
   ) {
     this.unidad_interna_formulario_Grupo = this.fb.group({
-      nombre_ui: ['', Validators.required],
+      nombre_ui: ['', Validators.required]
     });
   }
 

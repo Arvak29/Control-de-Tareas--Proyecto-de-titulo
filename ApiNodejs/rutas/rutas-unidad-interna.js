@@ -43,7 +43,7 @@ router.get('/api-unidad/getUSIS', async (req, res) => {
 })
 
 //Agregar
-router.post('/addUI', async (req, res) => {
+router.post('/api-unidad/addUI', async (req, res) => {
     const { id_ui, nombre_ui} = req.body;
 
     sql = "insert into unidad_interna(id_ui, nombre_ui) values (:id_ui, :nombre_ui)";
@@ -57,7 +57,7 @@ router.post('/addUI', async (req, res) => {
 })
 
 //Actualizar
-router.patch("/UpdateUI/:id", async (req, res) => {
+router.patch("/api-unidad/UpdateUI/:id", async (req, res) => {
     const { id } = req.params;
     const { id_ui, nombre_ui} = req.body;
 
@@ -72,7 +72,7 @@ router.patch("/UpdateUI/:id", async (req, res) => {
 })
 
 //Borrar
-router.delete("/deleteUI/:id", async (req, res) => {
+router.delete("/api-unidad/deleteUI/:id", async (req, res) => {
     const { id } = req.params;
 
     sql = "delete unidad_interna where id_ui=:id";

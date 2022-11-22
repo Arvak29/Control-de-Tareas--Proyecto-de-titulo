@@ -20,7 +20,7 @@ export class TareaService {
 
   //agregar un tarea
   addTarea(tarea: AgregarTarea) {
-    return this.http.post(this.url, tarea);
+    return this.http.post('/api-tarea/addTarea/', tarea);
   }
 
   //eliminar un tarea
@@ -30,7 +30,7 @@ export class TareaService {
 
   //modificar un tarea
   editTarea(id: string, tarea: Tarea) {
-    return this.http.put(this.url + '/UpdateTarea/' + id, tarea);
+    return this.http.patch(this.url + '/UpdateTarea/' + id, tarea);
   }
 }
 
@@ -38,8 +38,8 @@ export interface Tarea {
   id_t?: string;
   nombre_t?: string;
   descripcion_t?: string;
-  fecha_inicio_t?: string;
-  fecha_entrega_t?: string;
+  fecha_inicio_t?: Date;
+  fecha_entrega_t?: Date;
   porcentaje_avance_t?: string;
   estado_t?: string;
 }
@@ -47,8 +47,6 @@ export interface Tarea {
 export interface AgregarTarea {
   nombre_t?: string;
   descripcion_t?: string;
-  fecha_inicio_t?: string;
-  fecha_entrega_t?: string;
-  porcentaje_avance_t?: string;
-  estado_t?: string;
+  fecha_inicio_t?: Date;
+  fecha_entrega_t?: Date;
 }

@@ -20,8 +20,8 @@ import { NavComponent } from './home/usuarios/nav/nav.component';
 import { UnidadesInternasComponent } from './home/unidades-internas/unidades-internas.component';
 import { CrearUnidadInternaComponent } from './home/unidades-internas/crear-unidad-interna/crear-unidad-interna.component';
 import { EditarUnidadInternaComponent } from './home/unidades-internas/editar-unidad-interna/editar-unidad-interna.component';
-import { RolesComponent } from './home/roles/roles.component';
-import { RolComponent } from './home/roles/rol/rol.component';
+import { CargosComponent } from './home/Cargos/cargos.component';
+import { CargoComponent } from './home/Cargos/cargo/cargo.component';
 import { FlujoDeTareasComponent } from './home/flujo-de-tareas/flujo-de-tareas.component';
 import { CrearFlujoDeTareasComponent } from './home/flujo-de-tareas/crear-flujo-de-tareas/crear-flujo-de-tareas.component';
 import { VerFlujoDeTareasComponent } from './home/flujo-de-tareas/ver-flujo-de-tareas/ver-flujo-de-tareas.component';
@@ -46,10 +46,10 @@ import { ReportarTareaComponent } from './home/tareas/reportar-tarea/reportar-ta
 import { CrearTareaSubordinadaComponent } from './home/tareas/crear-tarea-subordinada/crear-tarea-subordinada.component';
 import { HistorialComponent } from './home/tareas/historial/historial.component';
 import { BarUnidadComponent } from './home/componentes-diseno/bar-unidad/bar-unidad.component';
-import { BarListaRolesComponent } from './home/componentes-diseno/bar-lista-roles/bar-lista-roles.component';
+import { BarListaCargosComponent } from './home/componentes-diseno/bar-lista-cargos/bar-lista-cargos.component';
 import { BarResponsableComponent } from './home/componentes-diseno/bar-responsable/bar-responsable.component';
-import { NavRolComponent } from './home/roles/nav-rol/nav-rol.component';
-import { CrearRolComponent } from './home/roles/crear-rol/crear-rol.component';
+import { NavCargoComponent } from './home/Cargos/nav-cargo/nav-cargo.component';
+import { CrearCargoComponent } from './home/Cargos/crear-cargo/crear-cargo.component';
 import { ModalAddUsuarioComponent } from './home/usuarios/modal-add-usuario/modal-add-usuario.component';
 import { BarNotificacionComponent } from './home/componentes-diseno/bar-notificacion/bar-notificacion.component';
 import { NotificacionesComponent } from './home/notificaciones/notificaciones.component';
@@ -58,7 +58,7 @@ import { NotificacionComponent } from './home/notificaciones/notificacion/notifi
 //pipes
 import { FiltroPipe } from './pipes/filtro-Tarea.pipe';
 import { FiltrousuarioPipe } from './pipes/filtro-Usuario.pipe';
-import { FiltroRolPipe } from './pipes/filtro-Rol.pipe';
+import { FiltroCargoPipe } from './pipes/filtro-Cargo.pipe';
 import { FiltroUnidadPipe } from './pipes/filtro-unidad.pipe';
 import { FiltroFlujoPipe } from './pipes/filtro-flujo.pipe';
 import { FiltroSubordinadaPipe } from './pipes/filtro-subordinada.pipe';
@@ -75,9 +75,9 @@ const appRoutes: Routes = [
   { path: 'unidades_internas', component: UnidadesInternasComponent },
   { path: 'crear_unidad_interna', component: CrearUnidadInternaComponent },
   { path: 'unidad_interna/:id', component: EditarUnidadInternaComponent },
-  { path: 'roles', component: RolesComponent },
-  { path: 'crear_rol', component: CrearRolComponent },
-  { path: 'rol/:id', component: RolComponent },
+  { path: 'cargos', component: CargosComponent },
+  { path: 'crear_cargo', component: CrearCargoComponent },
+  { path: 'cargo/:id', component: CargoComponent },
   { path: 'flujo_de_tareas', component: FlujoDeTareasComponent },
   { path: 'crear_flujo_de_tareas', component: CrearFlujoDeTareasComponent },
   { path: 'flujo_de_tarea/:id', component: VerFlujoDeTareasComponent },
@@ -107,7 +107,7 @@ const appRoutes: Routes = [
     UnidadesInternasComponent,
     CrearUnidadInternaComponent,
     EditarUnidadInternaComponent,
-    RolesComponent,
+    CargosComponent,
     FlujoDeTareasComponent,
     CrearFlujoDeTareasComponent,
     VerFlujoDeTareasComponent,
@@ -131,13 +131,13 @@ const appRoutes: Routes = [
     CrearTareaSubordinadaComponent,
     HistorialComponent,
     FiltroPipe,
-    FiltroRolPipe,
+    FiltroCargoPipe,
     FiltrousuarioPipe,
     BarResponsableComponent,
-    BarListaRolesComponent,
-    RolComponent,
-    NavRolComponent,
-    CrearRolComponent,
+    BarListaCargosComponent,
+    CargoComponent,
+    NavCargoComponent,
+    CrearCargoComponent,
     FiltroUnidadPipe,
     FiltroFlujoPipe,
     FiltroSubordinadaPipe,

@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { rol, RolService } from 'src/app/services/rol.service';
+import { cargo, CargoService } from 'src/app/services/cargo.service';
 
 @Component({
-  selector: 'app-rol',
-  templateUrl: './rol.component.html',
-  styleUrls: ['./rol.component.css'],
-  providers: [RolService],
+  selector: 'app-cargo',
+  templateUrl: './cargo.component.html',
+  styleUrls: ['./cargo.component.css'],
+  providers: [CargoService],
 })
-export class RolComponent implements OnInit {
-  rol: rol = {
-    id_r: '',
-    nombre_r: '',
+export class CargoComponent implements OnInit {
+  cargo: cargo = {
+    id_c: '',
+    nombre_c: '',
   };
 
   constructor(
-    private RolService: RolService,
+    private CargoService: CargoService,
     private router: Router,
     private activeRouter: ActivatedRoute
   ) {}
@@ -25,9 +25,9 @@ export class RolComponent implements OnInit {
     console.log(id_entrada);
 
     if (id_entrada) {
-      this.RolService.getUnRol(id_entrada).subscribe({
+      this.CargoService.getUnCargo(id_entrada).subscribe({
         next: (res: any) => {
-          this.rol = <any>res[0];
+          this.cargo = <any>res[0];
           console.log(res);
         },
         error: (err) => console.log(err),
@@ -36,22 +36,22 @@ export class RolComponent implements OnInit {
   }
 
   eliminar() {
-    this.RolService.deleteRol(<any>this.rol.id_r).subscribe(
+    this.CargoService.deleteCargo(<any>this.cargo.id_c).subscribe(
       (res) => {
-        console.log('rol eliminado');
-        this.router.navigate(['/roles']);
+        console.log('cargo eliminado');
+        this.router.navigate(['/cargos']);
       },
       (err) => console.log(err)
     );
   }
 
   modificar() {
-    this.RolService.editRol(<any>this.rol.id_r, this.rol).subscribe({
+    this.CargoService.editCargo(<any>this.cargo.id_c, this.cargo).subscribe({
       next: (res: any) => {
         console.log(res);
       },
       error: (err) => console.log(err),
     });
-    this.router.navigate(['/roles']);
+    this.router.navigate(['/cargos']);
   }
 }

@@ -4,7 +4,7 @@ const BD = require('../config/configbd');
 
 
 //Get especifico
-router.get('/getCargo/:id', async (req, res) => {
+router.get('/api-cargo/getCargo/:id', async (req, res) => {
     const { id } = req.params;
     sql = "select * from cargo where id_c =:id";
 
@@ -26,7 +26,7 @@ router.get('/getCargo/:id', async (req, res) => {
 })
 
 //Get de todo
-router.get('/getCargos', async (req, res) => {
+router.get('/api-cargo/getCargos', async (req, res) => {
     sql = "select * from cargo";
 
     let result = await BD.Open(sql, [], false);
@@ -47,7 +47,7 @@ router.get('/getCargos', async (req, res) => {
 })
 
 //Agregar
-router.post('/addCargo', async (req, res) => {
+router.post('/api-cargo/addCargo', async (req, res) => {
     const {id_c, nombre_c, id_ui, id_r} = req.body;
 
     sql = "insert into cargo(id_c, nombre_c, id_ui, id_r) values (:id_c, :nombre_c, :id_ui, :id_r)";
@@ -63,7 +63,7 @@ router.post('/addCargo', async (req, res) => {
 })
 
 //Actualizar
-router.patch("/updateCargo/:id", async (req, res) => {
+router.patch("/api-cargo/updateCargo/:id", async (req, res) => {
     const { id } = req.params;
     const {id_c, nombre_c, id_ui, id_r} = req.body;
     
@@ -80,7 +80,7 @@ router.patch("/updateCargo/:id", async (req, res) => {
 })
 
 //Borrar
-router.delete("/deleteCargo/:id", async (req, res) => {
+router.delete("/api-cargo/deleteCargo/:id", async (req, res) => {
     const { id } = req.params;
 
     sql = "delete cargo where id_c=:id";

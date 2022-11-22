@@ -1,11 +1,11 @@
 export class Cargo {
-  id_c: number;
+  id_c: string;
   nombre_c: string;
   id_ui: number;
   id_r: number;
 
   constructor(
-    id_c: number,
+    id_c: string,
     nombre_c: string,
     id_ui: number,
     id_r: number

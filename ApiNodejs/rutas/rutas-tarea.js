@@ -52,7 +52,7 @@ router.get('/api-tarea/getTareas', async (req, res) => {
 })
 
 //agregar
-router.post('/addTarea', async (req, res) => {
+router.post('/api-tarea/addTarea/', async (req, res) => {
     const { id_t, nombre_t, descripcion_t, fecha_inicio_t, fecha_entrega_t, porcentaje_avance_t, estado_t} = req.body;
 
     sql = "insert into tarea(id_t, nombre_t, descripcion_t, fecha_inicio_t, fecha_entrega_t, porcentaje_avance_t, estado_t) values (:id_t, :nombre_t, :descripcion_t, :fecha_inicio_t, :fecha_entrega_t, :porcentaje_avance_t, :estado_t)";

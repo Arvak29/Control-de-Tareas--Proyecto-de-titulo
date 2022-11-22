@@ -14,33 +14,18 @@
                 class="form-control"
                 id="inputNombre"
                 type="text"
-                formControlName="nombre_unidad_i"
-                placeholder="nombre_unidad_i"
+                formControlName="nombre_ui"
+                placeholder="nombre_ui"
                 [class.is-invalid]="
-                  unidad_interna_formulario_Grupo.get('nombre_unidad_i')
+                  unidad_interna_formulario_Grupo.get('nombre_ui')
                     ?.touched &&
-                  unidad_interna_formulario_Grupo.get('nombre_unidad_i')
+                  unidad_interna_formulario_Grupo.get('nombre_ui')
                     ?.invalid
                 "
               />
               <label for="inputEmail">Nombre</label>
             </div>
           </form>
-          <app-card-body [titulo]="'Asignar roles'"></app-card-body>
-
-          <div class="card-body">
-            <br />
-            <div class="row">
-              <app-buscador class="col-8"></app-buscador>
-              <div class="col text-end">
-                <!--Asignar ruta-->
-                <button class="btn btn-nav a" routerLink="">
-                  <i><img src="../assets/img/agregar.svg" alt="" /></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <app-bar-rol></app-bar-rol>
         </div>
       </div>
       <br />

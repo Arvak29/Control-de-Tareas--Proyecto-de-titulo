@@ -78,13 +78,24 @@
 
           <div class="form-floating mb-3">
             <input
-              [(ngModel)]="usuario.email_u"
+              [(ngModel)]="usuario.id_c"
               class="form-control"
               id="inputNombre"
               type="text"
               name="password_usuario"
             />
-            <label for="inputPassword">Rol</label>
+            <label for="inputPassword">Cargo</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              [(ngModel)]="usuario.id_e"
+              class="form-control"
+              id="inputNombre"
+              type="text"
+              name="password_usuario"
+            />
+            <label for="inputPassword">Empresa</label>
           </div>
         </div>
       </div>

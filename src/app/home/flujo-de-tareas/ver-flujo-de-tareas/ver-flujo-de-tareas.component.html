@@ -20,6 +20,19 @@
       </div>
       <br />
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
+        <app-card-header [titulo]="'Descripción'"></app-card-header>
+        <div class="card-body">
+          <textarea
+            [(ngModel)]="flujo.descripcion_ft"
+            class="form-control"
+            id="inputDescripcion"
+            rows="3"
+            name="descripcion"
+          ></textarea>
+        </div>
+      </div>
+      <br />
+      <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Fecha de termino'"></app-card-header>
         <div class="card-body">
           <div class="row text-between">
@@ -29,10 +42,10 @@
                   [(ngModel)]="flujo.fecha_inicio_ft"
                   class="form-control"
                   id="inputNombre"
-                  type="text"
+                  type="date"
                   name="fecha_inicio"
                 />
-                <label for="inputNombre">Inicio:</label>
+                <label for="inputNombre">Fecha Inicio:</label>
               </div>
             </div>
             <div class="col text-end">
@@ -41,10 +54,10 @@
                   [(ngModel)]="flujo.fecha_entrega_ft"
                   class="form-control"
                   id="inputNombre"
-                  type="text"
+                  type="date"
                   name="fecha_termino"
                 />
-                <label for="inputNombre">fecha_termino:</label>
+                <label for="inputNombre">fecha termino:</label>
               </div>
             </div>
           </div>
@@ -61,6 +74,7 @@
         </div>
       </div>
       <br />
+
 
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Tarea subordinada'"></app-card-header>
@@ -201,8 +215,8 @@
               *ngFor="
                 let usuario of ListarUsuario | filtroUsuario: filtroUsuario
               "
-              [nombre]="usuario.nombre_usuario"
-              [id]="usuario.id_usuario"
+              [nombre]="usuario.nombre_u"
+              [id]="usuario.id_u"
             ></app-bar-responsable>
           </div>
         </div>

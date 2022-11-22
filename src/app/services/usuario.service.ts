@@ -44,8 +44,9 @@ export interface Usuario {
 }
 
 export interface AgregarUsuario {
-  nombre_usuario?: string;
-  email_usuario?: string;
-  password_usuario?: string;
-  rol?: string;
+  nombre_u?: string;
+  email_u?: string;
+  password_u?: string;
+  id_c?: string;
+  id_e?: string;
 }

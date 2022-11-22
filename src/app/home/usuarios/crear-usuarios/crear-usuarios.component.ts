@@ -24,7 +24,8 @@ export class CrearUsuariosComponent implements OnInit {
       nombre_usuario: ['', Validators.required],
       email_usuario: ['', Validators.required],
       password_usuario: ['', Validators.required],
-      rol: ['', Validators.required],
+      cargo: ['', Validators.required],
+      empresa: ['', Validators.required],
     });
   }
 
@@ -32,10 +33,11 @@ export class CrearUsuariosComponent implements OnInit {
 
   crear_usuario() {
     const USUARIO: AgregarUsuario = {
-      nombre_usuario: this.Crear_Usuario_Grupo.get('nombre_usuario')?.value,
-      email_usuario: this.Crear_Usuario_Grupo.get('email_usuario')?.value,
-      password_usuario: this.Crear_Usuario_Grupo.get('password_usuario')?.value,
-      rol: this.Crear_Usuario_Grupo.get('rol')?.value,
+      nombre_u: this.Crear_Usuario_Grupo.get('nombre_usuario')?.value,
+      email_u: this.Crear_Usuario_Grupo.get('email_usuario')?.value,
+      password_u: this.Crear_Usuario_Grupo.get('password_usuario')?.value,
+      id_c: this.Crear_Usuario_Grupo.get('cargo')?.value,
+      id_e: this.Crear_Usuario_Grupo.get('empresa')?.value,
     };
     this.UsuarioService.addUsuario(USUARIO).subscribe();
     this.router.navigate(['/usuarios']);

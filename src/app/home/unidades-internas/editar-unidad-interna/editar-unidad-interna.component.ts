@@ -27,7 +27,6 @@ export class EditarUnidadInternaComponent implements OnInit {
   ngOnInit(): void {
     const id_entrada = this.activeRouter.snapshot.params['id'];
     console.log(id_entrada);
-
     if (id_entrada) {
       this.UnidadInternaService.getUnidad(id_entrada).subscribe({
         next: (res: any) => {

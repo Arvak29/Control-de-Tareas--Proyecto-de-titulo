@@ -80,14 +80,27 @@
               <input
                 class="form-control"
                 type="text"
-                placeholder="rol"
-                formControlName="rol"
+                placeholder="cargo"
+                formControlName="cargo"
                 [class.is-invalid]="
-                  Crear_Usuario_Grupo.get('rol')?.touched &&
-                  Crear_Usuario_Grupo.get('rol')?.invalid
+                  Crear_Usuario_Grupo.get('cargo')?.touched &&
+                  Crear_Usuario_Grupo.get('cargo')?.invalid
                 "
               />
-              <label for="inputRut">Rol</label>
+              <label for="inputRut">Cargo</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                type="text"
+                placeholder="empresa"
+                formControlName="empresa"
+                [class.is-invalid]="
+                  Crear_Usuario_Grupo.get('empresa')?.touched &&
+                  Crear_Usuario_Grupo.get('empresa')?.invalid
+                "
+              />
+              <label for="inputRut">Empresa</label>
             </div>
           </form>
         </div>

@@ -1,9 +1,9 @@
-<app-nav-rol></app-nav-rol>
+<app-nav-cargo></app-nav-cargo>
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-lg-6 border-0 rounded-lg">
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
-        <app-card-header [titulo]="'Lista de roles'"></app-card-header>
+        <app-card-header [titulo]="'Lista de cargo'"></app-card-header>
 
         <div class="card-body">
           <div class="col-12 text-start">
@@ -16,19 +16,18 @@
                 placeholder="Buscar..."
                 required=""
                 type="text"
-                name="filtroTarea"
-                [(ngModel)]="filtroRol"
+                name="filtroCargo"
+                [(ngModel)]="filtroCargo"
               />
             </form>
             <br />
           </div>
-          <div class="row">
-            <app-bar-lista-roles
-              *ngFor="let rol of ListarRol | filtroRol: filtroRol"
-              [nombre]="rol.nombre"
-              [id]="rol.id_rol"
-              class="col"
-            ></app-bar-lista-roles>
+          <div class="card-body">
+            <app-bar-lista-Cargos
+              *ngFor="let cargo of ListarCargo | filtro:filtroCargo"
+              [nombre]="cargo.nombre_c"
+              [id]="cargo.id_c"
+            ></app-bar-lista-Cargos>
           </div>
         </div>
       </div>

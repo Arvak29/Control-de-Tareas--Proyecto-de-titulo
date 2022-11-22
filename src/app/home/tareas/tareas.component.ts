@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tareas } from 'src/app/models/tarea';
-import {
-  AgregarTarea,
-  Tarea,
-  TareaService,
-} from '../../services/tarea.service';
+import { AgregarTarea, Tarea, TareaService} from '../../services/tarea.service';
 
 @Component({
   selector: 'app-tareas',
@@ -22,8 +18,8 @@ export class TareasComponent implements OnInit {
     id_t: '',
     nombre_t: '',
     descripcion_t: '',
-    fecha_inicio_t: '',
-    fecha_entrega_t: '',
+    fecha_inicio_t: new Date,
+    fecha_entrega_t: new Date,
     porcentaje_avance_t: '',
     estado_t: '',
   };
@@ -75,8 +71,6 @@ export class TareasComponent implements OnInit {
       descripcion_t: this.Tarea_Grupo.get('descripcion_t')?.value,
       fecha_inicio_t: this.Tarea_Grupo.get('fecha_inicio_t')?.value,
       fecha_entrega_t: this.Tarea_Grupo.get('fecha_entrega_t')?.value,
-      porcentaje_avance_t: this.Tarea_Grupo.get('porcentaje_avance_t')?.value,
-      estado_t: this.Tarea_Grupo.get('estado_t')?.value,
     };
     this.TareaService.addTarea(TAREA).subscribe();
     this.listarTarea();

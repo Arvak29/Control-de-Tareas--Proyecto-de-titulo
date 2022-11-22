@@ -42,7 +42,7 @@
                 <input
                   class="form-control"
                   id="inputNombre"
-                  type="text"
+                  type="date"
                   formControlName="fecha_inicio"
                   placeholder="fecha_inicio"
                   [class.is-invalid]="
@@ -55,9 +55,9 @@
 
               <div class="form-floating mb-3 col-6">
                 <input
-                  class="form-control"
+                  class="form-control "
                   id="inputNombre"
-                  type="text"
+                  type="date"
                   formControlName="fecha_termino"
                   placeholder="fecha_termino"
                   [class.is-invalid]="
@@ -157,8 +157,8 @@
                 *ngFor="
                   let usuario of ListarUsuario | filtroUsuario: filtroUsuario
                 "
-                [nombre]="usuario.nombre_usuario"
-                [id]="usuario.id_usuario"
+                [nombre]="usuario.nombre_u"
+                [id]="usuario.id_u"
               ></app-bar-responsable>
             </div>
           </div>

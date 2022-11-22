@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Tareas } from 'src/app/models/tarea';
-import {
-  AgregarTarea,
-  Tarea,
-  TareaService,
-} from 'src/app/services/tarea.service';
+import { AgregarTarea, Tarea, TareaService,} from 'src/app/services/tarea.service';
 import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -25,8 +21,8 @@ export class CrearTareaComponent implements OnInit {
     id_t: '',
     nombre_t: '',
     descripcion_t: '',
-    fecha_inicio_t: '',
-    fecha_entrega_t: '',
+    fecha_inicio_t: new Date,
+    fecha_entrega_t: new Date,
     porcentaje_avance_t: '',
     estado_t: '',
   };
@@ -40,8 +36,8 @@ export class CrearTareaComponent implements OnInit {
     this.Tarea_formulario = this.fb.group({
       nombre_tarea: ['', Validators.required],
       descripcion: ['', Validators.required],
-      fecha_inicio: ['', Validators.required],
-      fecha_termino: ['', Validators.required],
+      fecha_inicio: [Date, Validators.required],
+      fecha_termino: [Date, Validators.required],
     });
   }
 
@@ -50,24 +46,20 @@ export class CrearTareaComponent implements OnInit {
   }
 
   listarUsuario() {
-    this.UsuarioService.getUsuarios().subscribe(
-      (res) => {
-        console.log(res);
+    this.UsuarioService.getUsuarios().subscribe({
+      next: (res: any) => {
         this.ListarUsuario = <any>res;
       },
-      (err) => console.log(err)
-    );
-  }
+      error: (err) => console.log(err),
+    });
+ }
 
   crear_tarea() {
     const TAREA: AgregarTarea = {
-      nombre_t: this.Tarea_formulario.get('nombre_t')?.value,
-      descripcion_t: this.Tarea_formulario.get('descripcion_t')?.value,
-      fecha_inicio_t: this.Tarea_formulario.get('fecha_inicio_t')?.value,
-      fecha_entrega_t: this.Tarea_formulario.get('fecha_entrega_t')?.value,
-      porcentaje_avance_t: this.Tarea_formulario.get('porcentaje_avance_t')
-        ?.value,
-      estado_t: this.Tarea_formulario.get('estado_t')?.value,
+      nombre_t: this.Tarea_formulario.get('nombre_tarea')?.value,
+      descripcion_t: this.Tarea_formulario.get('descripcion')?.value,
+      fecha_inicio_t: this.Tarea_formulario.get('fecha_inicio')?.value,
+      fecha_entrega_t: this.Tarea_formulario.get('fecha_termino')?.value,
     };
     this.TareaService.addTarea(TAREA).subscribe();
     this.router.navigate(['/tareas']);

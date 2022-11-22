@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavRolComponent } from './nav-rol.component';
+import { NavCargoComponent } from './nav-cargo.component';
 
-describe('NavRolComponent', () => {
-  let component: NavRolComponent;
-  let fixture: ComponentFixture<NavRolComponent>;
+describe('NavCargoComponent', () => {
+  let component: NavCargoComponent;
+  let fixture: ComponentFixture<NavCargoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavRolComponent ]
+      declarations: [ NavCargoComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NavRolComponent);
+    fixture = TestBed.createComponent(NavCargoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

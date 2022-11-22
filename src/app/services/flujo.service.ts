@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {formatDate} from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +31,7 @@ export class FlujoService {
 
   //modificar un flujo
   editFlujo(id: string, flujo: Flujo) {
-    return this.http.put(this.url + '/' + id, flujo);
+    return this.http.patch('/api-flujo/UpdateFlujoTarea/' + id, flujo);
   }
 }
 
