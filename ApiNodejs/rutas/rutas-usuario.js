@@ -1,6 +1,55 @@
 const router = require("express").Router();
 const BD = require("../config/configbd");
 
+//Get especifico de vista
+router.get("/api-usuario/getVista_Usuario/:id", async (req, res) => {
+  const { id } = req.params;
+  sql = "select * from vista_usuario where id_u =:id";
+
+  let result = await BD.Open(sql, [id], false);
+  Vista_Usuario = [];
+
+  result.rows.map((vista_usuario) => {
+    let vista_usuarioSchema = {
+      "u.nombre_u": vista_usuario[1],
+      "u.email_u": vista_usuario[2],
+      "u.password_u": vista_usuario[3],
+      "r.nombre_r": vista_usuario[4],
+      "c.nombre_c": vista_usuario[5],
+      "ui.nombre_ui": vista_usuario[6],
+      "e.nombre_e": vista_usuario[7]
+    }
+
+    Vista_Usuario.push(vista_usuarioSchema);
+  })
+
+  res.json(Vista_Usuario);
+})
+
+//Get de toda la vista
+router.get("/api-usuario/getVistas_Usuarios", async (req, res) => {
+  sql = "select * from vista_usuario";
+
+  let result = await BD.Open(sql, [], false);
+  Vistas_Usuarios = [];
+
+  result.rows.map((vista_usuario) => {
+    let vistas_usuariosSchema = {
+      "u.nombre_u": vista_usuario[1],
+      "u.email_u": vista_usuario[2],
+      "u.password_u": vista_usuario[3],
+      "r.nombre_r": vista_usuario[4],
+      "c.nombre_c": vista_usuario[5],
+      "ui.nombre_ui": vista_usuario[6],
+      "e.nombre_e": vista_usuario[7]
+    }
+
+    Vistas_Usuarios.push(vistas_usuariosSchema);
+  })
+
+  res.json(Vistas_Usuarios);
+})
+
 //Get especifico
 router.get("/api-usuario/getUsuario/:id", async (req, res) => {
   const { id } = req.params;
