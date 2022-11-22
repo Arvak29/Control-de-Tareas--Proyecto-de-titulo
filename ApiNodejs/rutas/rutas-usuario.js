@@ -27,14 +27,14 @@ router.get("/api-usuario/getVista_Usuario/:id", async (req, res) => {
 })
 
 //Get de toda la vista
-router.get("/api-usuario/getVistas_Usuarios", async (req, res) => {
+router.get("/api-usuario/getVista_Usuarios", async (req, res) => {
   sql = "select * from vista_usuario";
 
   let result = await BD.Open(sql, [], false);
-  Vistas_Usuarios = [];
+  Vista_Usuarios = [];
 
   result.rows.map((vista_usuario) => {
-    let vistas_usuariosSchema = {
+    let vista_usuariosSchema = {
       "u.nombre_u": vista_usuario[1],
       "u.email_u": vista_usuario[2],
       "u.password_u": vista_usuario[3],
@@ -44,10 +44,10 @@ router.get("/api-usuario/getVistas_Usuarios", async (req, res) => {
       "e.nombre_e": vista_usuario[7]
     }
 
-    Vistas_Usuarios.push(vistas_usuariosSchema);
+    Vista_Usuarios.push(vista_usuariosSchema);
   })
 
-  res.json(Vistas_Usuarios);
+  res.json(Vista_Usuarios);
 })
 
 //Get especifico

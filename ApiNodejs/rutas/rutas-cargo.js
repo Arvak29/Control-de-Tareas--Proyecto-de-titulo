@@ -2,6 +2,46 @@ const { Router } = require('express');
 const router = Router();
 const BD = require('../config/configbd');
 
+//Get especifico de vista
+router.get('/api-cargo/getVista_Cargo/:id', async (req, res) => {
+    const { id } = req.params;
+    sql = "select * from vista_cargo where id_c =:id";
+
+    let result = await BD.Open(sql, [id], false);
+    Vista_Cargo = [];
+
+    result.rows.map(vista_cargo => {
+        let vista_cargoSchema = {
+            "c.nombre_c": vista_cargo[1],
+            "ui.nombre_ui": vista_cargo[2],
+            "r.nombre_r": vista_cargo[3]
+        }
+
+        Vista_Cargo.push(vista_cargoSchema);
+    })
+    
+    res.json(Vista_Cargo);
+})
+
+//Get de toda la vista
+router.get('/api-cargo/getVista_Cargos', async (req, res) => {
+    sql = "select * from vista_cargo";
+
+    let result = await BD.Open(sql, [], false);
+    Vista_Cargos = [];
+
+    result.rows.map(vista_cargo => {
+        let vista_cargosSchema = {
+            "c.nombre_c": vista_cargo[1],
+            "ui.nombre_ui": vista_cargo[2],
+            "r.nombre_r": vista_cargo[3]
+        }
+
+        Vista_Cargos.push(vista_cargosSchema);
+    })
+    
+    res.json(Vista_Cargos);
+})
 
 //Get especifico
 router.get('/api-cargo/getCargo/:id', async (req, res) => {
