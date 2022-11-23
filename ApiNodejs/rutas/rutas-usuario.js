@@ -11,10 +11,6 @@ router.get("/api-usuario/getVista_Usuario/:id", async (req, res) => {
 
   result.rows.map((vista_usuario) => {
     let vista_usuarioSchema = {
-<<<<<<< Updated upstream
-      "id_u": vista_usuario[0],
-=======
->>>>>>> Stashed changes
       "nombre_u": vista_usuario[1],
       "email_u": vista_usuario[2],
       "password_u": vista_usuario[3],
