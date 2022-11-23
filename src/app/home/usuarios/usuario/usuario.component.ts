@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input,OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { UsuarioService, VistaUsuario } from 'src/app/services/usuario.service';
 import { Usuario } from '../../../services/usuario.service';
 import { Cargo, CargoService} from 'src/app/services/cargo.service';
 import { Empresa, EmpresaService } from 'src/app/services/empresa.service';
@@ -13,6 +13,7 @@ import { Empresa, EmpresaService } from 'src/app/services/empresa.service';
   providers: [UsuarioService],
 })
 export class UsuarioComponent implements OnInit {
+
   ListarCargo: Cargo[] = [];
   ListarEmpresa: Empresa[] = [];
   usuario: Usuario = {
@@ -22,6 +23,15 @@ export class UsuarioComponent implements OnInit {
     password_u: '',
     id_c: '',
     id_e: '',
+  };
+  vistaUsuario: VistaUsuario = {
+    id_u: '',
+    nombre_u: '',
+    email_u: '',
+    password_u: '',
+    nombre_c: '',
+    nombre_ui: '',
+    nombre_e: '',
   };
 
   constructor(
@@ -35,10 +45,10 @@ export class UsuarioComponent implements OnInit {
   ngOnInit(): void {
     this.listarCargo();
     this.listarEmpresa();
-
+    
     const id_entrada = this.activeRouter.snapshot.params['id'];
     console.log(id_entrada);
-
+    
     if (id_entrada) {
       this.UsuarioService.getUsuario(id_entrada).subscribe({
         next: (res: any) => {
@@ -48,8 +58,34 @@ export class UsuarioComponent implements OnInit {
         error: (err) => console.log(err),
       });
     }
+
+    if (id_entrada) {
+      this.UsuarioService.getVistaUsuarios(id_entrada).subscribe({
+        next: (res: any) => {
+          this.vistaUsuario = <any>res[0];
+          console.log(res);
+        },
+        error: (err) => console.log(err),
+      });
+    }
+
   }
 
+  listarVistaUsuario() {
+    const id_entrada = this.activeRouter.snapshot.params['id'];
+    console.log(id_entrada);
+
+    if (id_entrada) {
+      this.UsuarioService.getVistaUsuarios(id_entrada).subscribe({
+        next: (res: any) => {
+          this.vistaUsuario = <any>res[0];
+          console.log(res);
+        },
+        error: (err) => console.log(err),
+      });
+    }
+  }
+  
   listarCargo() {
     this.CargoService.getCargo().subscribe({
       next: (res: any) => {
