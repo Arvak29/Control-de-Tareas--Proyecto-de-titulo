@@ -8,6 +8,11 @@ export class TareaService {
   url = '/api-tarea';
   constructor(private http: HttpClient) {}
 
+  //get una vista de tarea
+  getVistaTarea(id: string) {
+    return this.http.get('/api-tarea/getVista_Tarea/' + id);
+  }
+
   //get tarea
   getTareas() {
     return this.http.get('/api-tarea/getTareas');
@@ -34,6 +39,7 @@ export class TareaService {
   }
 }
 
+
 export interface Tarea {
   id_t?: string;
   nombre_t?: string;
@@ -42,6 +48,17 @@ export interface Tarea {
   fecha_entrega_t?: Date;
   porcentaje_avance_t?: string;
   estado_t?: string;
+}
+
+export interface VistaTarea {
+  id_t?: string;
+  nombre_t?: string;
+  descripcion_t?: string;
+  fecha_inicio_t?: Date;
+  fecha_entrega_t?: Date;
+  porcentaje_avance_t?: string;
+  estado_t?: string;
+  nombre_ts: string;
 }
 
 export interface AgregarTarea {

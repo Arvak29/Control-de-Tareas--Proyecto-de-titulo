@@ -12,14 +12,14 @@ router.get('/api-flujo/getVista_Flujo_Tarea/:id', async (req, res) => {
 
     result.rows.map(vista_flujo_tarea => {
         let vista_flujo_tareaSchema = {
-            "ft.nombre_ft": vista_flujo_tarea[1],
-            "ft.descripcion_ft": vista_flujo_tarea[2],
-            "ft.fecha_inicio_ft": vista_flujo_tarea[3],
-            "ft.fecha_entrega_ft": vista_flujo_tarea[4],
-            "ft.porcentaje_avance_ft": vista_flujo_tarea[5],
-            "ft.estado_ft": vista_flujo_tarea[6],
-            "u.nombre_u": vista_flujo_tarea[7],
-            "ts.nombre_ts": vista_flujo_tarea[8]
+            "nombre_ft": vista_flujo_tarea[1],
+            "descripcion_ft": vista_flujo_tarea[2],
+            "fecha_inicio_ft": vista_flujo_tarea[3],
+            "fecha_entrega_ft": vista_flujo_tarea[4],
+            "porcentaje_avance_ft": vista_flujo_tarea[5],
+            "estado_ft": vista_flujo_tarea[6],
+            "nombre_u": vista_flujo_tarea[7],
+            "nombre_ts": vista_flujo_tarea[8]
         }
 
         Vista_Flujo_Tarea.push(vista_flujo_tareaSchema);
@@ -37,14 +37,14 @@ router.get('/api-flujo/getVista_Flujos_Tareas', async (req, res) => {
 
     result.rows.map(vista_flujo_tarea => {
         let vista_flujos_tareaSchema = {
-            "ft.nombre_ft": vista_flujo_tarea[1],
-            "ft.descripcion_ft": vista_flujo_tarea[2],
-            "ft.fecha_inicio_ft": vista_flujo_tarea[3],
-            "ft.fecha_entrega_ft": vista_flujo_tarea[4],
-            "ft.porcentaje_avance_ft": vista_flujo_tarea[5],
-            "ft.estado_ft": vista_flujo_tarea[6],
-            "u.nombre_u": vista_flujo_tarea[7],
-            "ts.nombre_ts": vista_flujo_tarea[8]
+            "nombre_ft": vista_flujo_tarea[1],
+            "descripcion_ft": vista_flujo_tarea[2],
+            "fecha_inicio_ft": vista_flujo_tarea[3],
+            "fecha_entrega_ft": vista_flujo_tarea[4],
+            "porcentaje_avance_ft": vista_flujo_tarea[5],
+            "estado_ft": vista_flujo_tarea[6],
+            "nombre_u": vista_flujo_tarea[7],
+            "nombre_ts": vista_flujo_tarea[8]
         }
 
         Vista_Flujos_Tarea.push(vista_flujos_tareaSchema);

@@ -12,10 +12,10 @@ router.get('/api-asig-sub/getVista_Asig_Tarea_Sub/:id', async (req, res) => {
   
     result.rows.map(vista_asignacion_tarea_sub => {
         let vista_asignacion_tarea_subSchema = {
-            "u.nombre_u": vista_asignacion_tarea_sub[1],
-            "ts.nombre_ts": vista_asignacion_tarea_sub[2],
-            "ats.respuesta_ats": vista_asignacion_tarea_sub[3],
-            "ats.justificacion_ats": vista_asignacion_tarea_sub[4]
+            "nombre_u": vista_asignacion_tarea_sub[1],
+            "nombre_ts": vista_asignacion_tarea_sub[2],
+            "respuesta_ats": vista_asignacion_tarea_sub[3],
+            "justificacion_ats": vista_asignacion_tarea_sub[4]
         }
   
         Vista_Asignacion_Tarea_Sub.push(vista_asignacion_tarea_subSchema);
@@ -33,10 +33,10 @@ router.get('/api-asig-sub/getVista_Asig_Tarea_Sub/:id', async (req, res) => {
   
     result.rows.map(vista_asignacion_tarea_sub => {
         let vista_asignaciones_tareas_subSchema = {
-            "u.nombre_u": vista_asignacion_tarea_sub[1],
-            "ts.nombre_ts": vista_asignacion_tarea_sub[2],
-            "ats.respuesta_ats": vista_asignacion_tarea_sub[3],
-            "ats.justificacion_ats": vista_asignacion_tarea_sub[4]
+            "nombre_u": vista_asignacion_tarea_sub[1],
+            "nombre_ts": vista_asignacion_tarea_sub[2],
+            "respuesta_ats": vista_asignacion_tarea_sub[3],
+            "justificacion_ats": vista_asignacion_tarea_sub[4]
         }
   
         Vista_Asignaciones_Tareas_Sub.push(vista_asignaciones_tareas_subSchema);

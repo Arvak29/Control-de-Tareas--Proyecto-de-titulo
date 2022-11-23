@@ -12,14 +12,14 @@ router.get('/api-tarea-sub/getVista_Tarea_Sub/:id', async (req, res) => {
 
     result.rows.map(vista_tarea_sub_tarea => {
         let vista_tarea_subSchema = {
-            "ts.nombre_ts": vista_tarea_sub_tarea[1],
-            "ts.descripcion_ts": vista_tarea_sub_tarea[2],
-            "ts.fecha_inicio_ts": vista_tarea_sub_tarea[3],
-            "ts.fecha_entrega_ts": vista_tarea_sub_tarea[4],
-            "ts.porcentaje_avance_ts": vista_tarea_sub_tarea[5],
-            "ts.estado_ts": vista_tarea_sub_tarea[6],
-            "u.nombre_u": vista_tarea_sub_tarea[7],
-            "t.nombre_t": vista_tarea_sub_tarea[8]
+            "nombre_ts": vista_tarea_sub_tarea[1],
+            "descripcion_ts": vista_tarea_sub_tarea[2],
+            "fecha_inicio_ts": vista_tarea_sub_tarea[3],
+            "fecha_entrega_ts": vista_tarea_sub_tarea[4],
+            "porcentaje_avance_ts": vista_tarea_sub_tarea[5],
+            "estado_ts": vista_tarea_sub_tarea[6],
+            "nombre_u": vista_tarea_sub_tarea[7],
+            "nombre_t": vista_tarea_sub_tarea[8]
         }
 
         Vista_Tarea_Sub.push(vista_tarea_subSchema);
@@ -37,14 +37,14 @@ router.get('/api-tarea-sub/getVista_Tareas_Sub', async (req, res) => {
 
     result.rows.map(vista_tarea_sub_tarea => {
         let vista_tareas_subSchema = {
-            "ts.nombre_ts": vista_tarea_sub_tarea[1],
-            "ts.descripcion_ts": vista_tarea_sub_tarea[2],
-            "ts.fecha_inicio_ts": vista_tarea_sub_tarea[3],
-            "ts.fecha_entrega_ts": vista_tarea_sub_tarea[4],
-            "ts.porcentaje_avance_ts": vista_tarea_sub_tarea[5],
-            "ts.estado_ts": vista_tarea_sub_tarea[6],
-            "u.nombre_u": vista_tarea_sub_tarea[7],
-            "t.nombre_t": vista_tarea_sub_tarea[8]
+            "nombre_ts": vista_tarea_sub_tarea[1],
+            "descripcion_ts": vista_tarea_sub_tarea[2],
+            "fecha_inicio_ts": vista_tarea_sub_tarea[3],
+            "fecha_entrega_ts": vista_tarea_sub_tarea[4],
+            "porcentaje_avance_ts": vista_tarea_sub_tarea[5],
+            "estado_ts": vista_tarea_sub_tarea[6],
+            "nombre_u": vista_tarea_sub_tarea[7],
+            "nombre_t": vista_tarea_sub_tarea[8]
         }
 
         Vista_Tareas_Sub.push(vista_tareas_subSchema);

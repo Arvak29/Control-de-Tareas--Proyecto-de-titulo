@@ -12,10 +12,10 @@ router.get('/api-ejec-tarea/getVista_Ejec_Flujo_Tarea/:id', async (req, res) => 
 
   result.rows.map(vista_ejecucion_flujo_tarea => {
       let vista_ejecucion_flujo_tareaSchema = {
-          "u.nombre_u": vista_ejecucion_flujo_tarea[1],
-          "ft.nombre_ft": vista_ejecucion_flujo_tarea[2],
-          "eft.respuesta_eft": vista_ejecucion_flujo_tarea[3],
-          "eft.justificacion_eft": vista_ejecucion_flujo_tarea[4]
+          "nombre_u": vista_ejecucion_flujo_tarea[1],
+          "nombre_ft": vista_ejecucion_flujo_tarea[2],
+          "respuesta_eft": vista_ejecucion_flujo_tarea[3],
+          "justificacion_eft": vista_ejecucion_flujo_tarea[4]
       }
 
       Vista_Ejecucion_Flujo_Tarea.push(vista_ejecucion_flujo_tareaSchema);
@@ -33,10 +33,10 @@ router.get('/api-ejec-tarea/getVista_Ejec_Flujos_Tareas', async (req, res) => {
 
   result.rows.map(vista_ejecucion_flujo_tarea => {
       let vista_ejecuciones_flujos_tareasSchema = {
-          "u.nombre_u": vista_ejecucion_flujo_tarea[1],
-          "ft.nombre_ft": vista_ejecucion_flujo_tarea[2],
-          "eft.respuesta_eft": vista_ejecucion_flujo_tarea[3],
-          "eft.justificacion_eft": vista_ejecucion_flujo_tarea[4]
+          "nombre_u": vista_ejecucion_flujo_tarea[1],
+          "nombre_ft": vista_ejecucion_flujo_tarea[2],
+          "respuesta_eft": vista_ejecucion_flujo_tarea[3],
+          "justificacion_eft": vista_ejecucion_flujo_tarea[4]
       }
 
       Vista_Ejecuciones_Flujos_Tareas.push(vista_ejecuciones_flujos_tareasSchema);
