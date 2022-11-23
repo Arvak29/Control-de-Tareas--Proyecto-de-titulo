@@ -2,6 +2,48 @@ const { Router } = require('express');
 const router = Router();
 const BD = require('../config/configbd');
 
+//Get especifico de vista
+router.get('/api-asig-tarea/getVista_Asig_Tarea/:id', async (req, res) => {
+  const { id } = req.params;
+  sql = "select * from vista_asignacion_tarea where id_t =:id";
+
+  let result = await BD.Open(sql, [id], false);
+  Vista_Asignacion_Tarea = [];
+
+  result.rows.map(vista_asignacion_tarea => {
+      let vista_asignacion_tareaSchema = {
+          "u.nombre_u": vista_asignacion_tarea[1],
+          "t.nombre_t": vista_asignacion_tarea[2],
+          "at.respuesta_at": vista_asignacion_tarea[3],
+          "at.justificacion_at": vista_asignacion_tarea[4]
+      }
+
+      Vista_Asignacion_Tarea.push(vista_asignacion_tareaSchema);
+  })
+  
+  res.json(Vista_Asignacion_Tarea);
+})
+
+//Get de toda la vista
+router.get('/api-asig-tarea/getVista_Asig_Tareas', async (req, res) => {
+  sql = "select * from vista_asignacion_tarea";
+
+  let result = await BD.Open(sql, [], false);
+  Vista_Asignaciones_Tareas = [];
+
+  result.rows.map(vista_asignacion_tarea => {
+      let vista_asignaciones_tareasSchema = {
+          "u.nombre_u": vista_asignacion_tarea[1],
+          "t.nombre_t": vista_asignacion_tarea[2],
+          "at.respuesta_at": vista_asignacion_tarea[3],
+          "at.justificacion_at": vista_asignacion_tarea[4]
+      }
+
+      Vista_Asignaciones_Tareas.push(vista_asignaciones_tareasSchema);
+  })
+  
+  res.json(Vista_Asignaciones_Tareas);
+})
 
 //Get especifico por usuario
 router.get("/getAsigTarea_us/:id", async (req, res) => {

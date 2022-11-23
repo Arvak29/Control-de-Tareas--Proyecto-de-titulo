@@ -2,6 +2,48 @@ const { Router } = require('express');
 const router = Router();
 const BD = require('../config/configbd');
 
+//Get especifico de vista
+router.get('/api-ejec-tarea/getVista_Ejec_Flujo_Tarea/:id', async (req, res) => {
+  const { id } = req.params;
+  sql = "select * from vista_ejecucion_flujo_tarea where id_ft =:id";
+
+  let result = await BD.Open(sql, [id], false);
+  Vista_Ejecucion_Flujo_Tarea = [];
+
+  result.rows.map(vista_ejecucion_flujo_tarea => {
+      let vista_ejecucion_flujo_tareaSchema = {
+          "u.nombre_u": vista_ejecucion_flujo_tarea[1],
+          "ft.nombre_ft": vista_ejecucion_flujo_tarea[2],
+          "eft.respuesta_eft": vista_ejecucion_flujo_tarea[3],
+          "eft.justificacion_eft": vista_ejecucion_flujo_tarea[4]
+      }
+
+      Vista_Ejecucion_Flujo_Tarea.push(vista_ejecucion_flujo_tareaSchema);
+  })
+  
+  res.json(Vista_Ejecucion_Flujo_Tarea);
+})
+
+//Get de toda la vista
+router.get('/api-ejec-tarea/getVista_Ejec_Flujos_Tareas', async (req, res) => {
+  sql = "select * from vista_ejecucion_flujo_tarea";
+
+  let result = await BD.Open(sql, [], false);
+  Vista_Ejecuciones_Flujos_Tareas = [];
+
+  result.rows.map(vista_ejecucion_flujo_tarea => {
+      let vista_ejecuciones_flujos_tareasSchema = {
+          "u.nombre_u": vista_ejecucion_flujo_tarea[1],
+          "ft.nombre_ft": vista_ejecucion_flujo_tarea[2],
+          "eft.respuesta_eft": vista_ejecucion_flujo_tarea[3],
+          "eft.justificacion_eft": vista_ejecucion_flujo_tarea[4]
+      }
+
+      Vista_Ejecuciones_Flujos_Tareas.push(vista_ejecuciones_flujos_tareasSchema);
+  })
+  
+  res.json(Vista_Ejecuciones_Flujos_Tareas);
+})
 
 //Get especifico por usuario
 router.get("/getEjecFlujoT_us/:id", async (req, res) => {
