@@ -19,7 +19,6 @@ router.get("/api-usuario/getVista_Usuario/:id", async (req, res) => {
       "nombre_ui": vista_usuario[6],
       "nombre_e": vista_usuario[7]
     }
-
     Vista_Usuario.push(vista_usuarioSchema);
   })
 
