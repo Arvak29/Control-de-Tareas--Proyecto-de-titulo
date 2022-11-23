@@ -13,6 +13,7 @@ import { AgregarTarea, Tarea, TareaService} from '../../services/tarea.service';
 export class TareasComponent implements OnInit {
   Tarea_Grupo: FormGroup;
   ListarTarea: Tareas[] = [];
+  filtroTarea = '';
 
   tarea: Tarea = {
     id_t: '',
@@ -39,8 +40,6 @@ export class TareasComponent implements OnInit {
       estado_t: ['', Validators.required],
     });
   }
-
-  filtroTarea = '';
 
   ngOnInit(): void {
     this.listarTarea();
