@@ -10,12 +10,12 @@ export class RolService {
 
   //get rol
   getRol() {
-    return this.http.get(this.url);
+    return this.http.get('/api-rol/getRoles');
   }
 
   //get un rol
   getUnRol(id: string) {
-    return this.http.get(this.url + '/' + id);
+    return this.http.get('/api-rol/getRoles' + id);
   }
 
   //agregar un rol

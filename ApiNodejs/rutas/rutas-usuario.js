@@ -116,7 +116,7 @@ router.post("/api-usuario/addUsuario", async (req, res) => {
 })
 
 //Actualizar
-router.patch("/UpdateUsuario/:id", async (req, res) => {
+router.patch("/api-usuario/UpdateUsuario/:id", async (req, res) => {
   const { id } = req.params;
   const { id_u, nombre_u, email_u, password_u, id_c, id_e } = req.body;
 
@@ -135,7 +135,7 @@ router.patch("/UpdateUsuario/:id", async (req, res) => {
 })
 
 //Borrar
-router.delete("/deleteUsuario/:id", async (req, res) => {
+router.delete("/api-usuario/deleteUsuario/:id", async (req, res) => {
   const { id } = req.params;
 
   sql = "delete usuario where id_u=:id";

@@ -20,17 +20,17 @@ export class UsuarioService {
 
   //agregar un usuario
   addUsuario(usuario: AgregarUsuario) {
-    return this.http.post(this.url, usuario);
+    return this.http.post('/api-usuario/addUsuario/', usuario);
   }
 
   //eliminar un usuario
   deleteUsuario(id: string) {
-    return this.http.delete(this.url + '/' + id);
+    return this.http.delete('/api-usuario/deleteUsuario/' + id);
   }
 
   //modificar un usuario
   editUsuario(id: string, usuario: Usuario) {
-    return this.http.put(this.url + '/' + id, usuario);
+    return this.http.patch('/api-usuario/UpdateUsuario/' + id, usuario);
   }
 }
 

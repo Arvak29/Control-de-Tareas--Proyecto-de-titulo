@@ -57,7 +57,7 @@ export class CargosComponent implements OnInit {
     this.listarCargo();
   }
 
-  eliminar(id: number) {
+  eliminar(id: string) {
     this.CargoService.deleteCargo(id).subscribe(
       (res) => {
         console.log('Cargo eliminado');

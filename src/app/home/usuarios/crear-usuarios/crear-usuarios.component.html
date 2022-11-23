@@ -21,14 +21,15 @@
       </div>
       <br />
       <button
-        type="submit"
-        class="btn btn-primary col-12 p-3"
-        (click)="crear_usuario()"
-        [disabled]="Crear_Usuario_Grupo.invalid"
+      type="submit"
+      class="btn btn-primary col-12 p-3 mb-3"
+      (click)="crear_usuario()"
+      [disabled]="Crear_Usuario_Grupo.invalid"
       >
-        Crear usuario
-      </button>
-    </div>
+      Crear usuario
+    </button>
+    
+  </div>
     <div class="col-lg-4 col-md-12">
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Usuario'"></app-card-header>
@@ -76,16 +77,18 @@
               <label for="inputRut">Password</label>
             </div>
 
-            <select class="form-select"               
+            <h6 class="center">Cargo</h6>
+            <select class="form-select mb-3"               
             placeholder="cargo_usuario"
             formControlName="cargo_usuario"
             [class.is-invalid]="
             Crear_Usuario_Grupo.get('cargo_usuario')?.touched &&
             Crear_Usuario_Grupo.get('cargo_usuario')?.invalid">
-              <option *ngFor="let cargo of ListarCargo" [value]="cargo.id_c">{{cargo.nombre_c}}</option>
+            <option *ngFor="let cargo of ListarCargo" [value]="cargo.id_c">{{cargo.nombre_c}}</option>
             </select>
-
-            <select class="form-select"               
+          
+          <h6 class="center">Empresa</h6>
+            <select class="form-select mb-3"               
             placeholder="empresa_usuario"
             formControlName="empresa_usuario"
             [class.is-invalid]="

@@ -30,7 +30,7 @@ export class TareaService {
 
   //modificar un tarea
   editTarea(id: string, tarea: Tarea) {
-    return this.http.patch(this.url + '/UpdateTarea/' + id, tarea);
+    return this.http.patch('/api-tarea/UpdateTarea/' + id, tarea);
   }
 }
 

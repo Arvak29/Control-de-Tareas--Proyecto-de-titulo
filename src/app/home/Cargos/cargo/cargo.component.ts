@@ -35,16 +35,6 @@ export class CargoComponent implements OnInit {
     }
   }
 
-  eliminar() {
-    this.CargoService.deleteCargo(<any>this.cargo.id_c).subscribe(
-      (res) => {
-        console.log('cargo eliminado');
-        this.router.navigate(['/cargos']);
-      },
-      (err) => console.log(err)
-    );
-  }
-
   modificar() {
     this.CargoService.editCargo(<any>this.cargo.id_c, this.cargo).subscribe({
       next: (res: any) => {
@@ -53,5 +43,15 @@ export class CargoComponent implements OnInit {
       error: (err) => console.log(err),
     });
     this.router.navigate(['/cargos']);
+  }
+
+  eliminar() {
+    this.CargoService.deleteCargo(<any>this.cargo.id_c).subscribe(
+      (res) => {
+        console.log('cargo eliminado');
+        this.router.navigate(['/cargos']);
+      },
+      (err) => console.log(err)
+    );
   }
 }

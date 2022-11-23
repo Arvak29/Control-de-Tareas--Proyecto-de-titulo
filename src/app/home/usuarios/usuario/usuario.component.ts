@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from '../../../services/usuario.service';
+import { Cargo, CargoService} from 'src/app/services/cargo.service';
+import { Empresa, EmpresaService } from 'src/app/services/empresa.service';
+
 
 @Component({
   selector: 'app-usuario',
@@ -10,6 +13,8 @@ import { Usuario } from '../../../services/usuario.service';
   providers: [UsuarioService],
 })
 export class UsuarioComponent implements OnInit {
+  ListarCargo: Cargo[] = [];
+  ListarEmpresa: Empresa[] = [];
   usuario: Usuario = {
     id_u: '',
     nombre_u: '',
@@ -22,10 +27,15 @@ export class UsuarioComponent implements OnInit {
   constructor(
     private UsuarioService: UsuarioService,
     private router: Router,
-    private activeRouter: ActivatedRoute
+    private activeRouter: ActivatedRoute,
+    private CargoService: CargoService,
+    private EmpresaService: EmpresaService
   ) {}
 
   ngOnInit(): void {
+    this.listarCargo();
+    this.listarEmpresa();
+
     const id_entrada = this.activeRouter.snapshot.params['id'];
     console.log(id_entrada);
 
@@ -38,6 +48,24 @@ export class UsuarioComponent implements OnInit {
         error: (err) => console.log(err),
       });
     }
+  }
+
+  listarCargo() {
+    this.CargoService.getCargo().subscribe({
+      next: (res: any) => {
+        this.ListarCargo = <any>res;
+      },
+      error: (err) => console.log(err),
+    });
+  }
+
+  listarEmpresa() {
+    this.EmpresaService.getEmpresa().subscribe({
+      next: (res: any) => {
+        this.ListarEmpresa = <any>res;
+      },
+      error: (err) => console.log(err),
+    });
   }
 
   modificar() {

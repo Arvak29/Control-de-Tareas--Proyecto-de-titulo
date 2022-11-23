@@ -87,7 +87,7 @@ router.get('/api-cargo/getCargos', async (req, res) => {
 })
 
 //Agregar
-router.post('/api-cargo/addCargo', async (req, res) => {
+router.post('/api-cargo/addCargo/', async (req, res) => {
     const {id_c, nombre_c, id_ui, id_r} = req.body;
 
     sql = "insert into cargo(id_c, nombre_c, id_ui, id_r) values (:id_c, :nombre_c, :id_ui, :id_r)";
