@@ -7,7 +7,7 @@ export class Reporte_problema {
   
     constructor(
       id_rp: number, 
-      nombre_r: string,
+      nombre_rp: string,
       id_t: number, 
       id_ts: number,
       id_ft: number

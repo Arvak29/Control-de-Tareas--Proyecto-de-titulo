@@ -214,50 +214,50 @@ ORDER BY c.id_c DESC;
 CREATE OR REPLACE VIEW VISTA_TAREA AS
 SELECT t.id_t, t.nombre_t, t.descripcion_t, t.fecha_inicio_t, t.fecha_entrega_t, t.porcentaje_avance_t, t.estado_t, u.nombre_u, ts.nombre_ts 
 FROM tarea T
-JOIN tarea_subordinada ts
+LEFT JOIN tarea_subordinada ts
 ON (t.id_t = ts.id_t)
-JOIN asignacion_tarea AT 
+LEFT JOIN asignacion_tarea AT 
 ON (t.id_t = at.id_t_at)
-JOIN usuario U
+LEFT JOIN usuario U
 ON (u.id_u = at.id_u_at)
 ORDER BY t.id_t DESC;
 
 /* VISTA TAREA SUBORDINADA DE TAREA */
 
-CREATE OR REPLACE VIEW VISTA_TAREA_SUBORDINADA_TAREA AS
-SELECT t.id_t, ts.nombre_ts, ts.descripcion_ts, ts.fecha_inicio_ts, ts.fecha_entrega_ts, ts.porcentaje_avance_ts, ts.estado_ts, t.nombre_t, u.nombre_u 
+CREATE OR REPLACE VIEW VISTA_TAREA_SUB_TAREA AS
+SELECT ts.id_ts, ts.nombre_ts, ts.descripcion_ts, ts.fecha_inicio_ts, ts.fecha_entrega_ts, ts.porcentaje_avance_ts, ts.estado_ts, u.nombre_u, t.nombre_t 
 FROM tarea_subordinada TS
-JOIN tarea T
+LEFT JOIN tarea T
 ON (ts.id_t = t.id_t)
-JOIN asignacion_tarea_subordinada ATS 
+LEFT JOIN asignacion_tarea_subordinada ATS 
 ON (ts.id_ts = ats.id_ts_ats)
-JOIN usuario U
+LEFT JOIN usuario U
 ON (u.id_u = ats.id_u_ats)
 ORDER BY t.id_t DESC;
 
 /* VISTA FLUJO DE TAREA */
 
-CREATE OR REPLACE VIEW FLUJO_TAREA AS
-SELECT ft.id_ft, ft.nombre_ft, ft.descripcion_ft, ft.fecha_inicio_ft, ft.fecha_entrega_ft, ft.porcentaje_avance_ft, ft.estado_ft, ts.nombre_ts ,u.nombre_u
+CREATE OR REPLACE VIEW VISTA_FLUJO_TAREA AS
+SELECT ft.id_ft, ft.nombre_ft, ft.descripcion_ft, ft.fecha_inicio_ft, ft.fecha_entrega_ft, ft.porcentaje_avance_ft, ft.estado_ft ,u.nombre_u, ts.nombre_ts 
 FROM flujo_tarea FT
-JOIN tarea_subordinada ts
+LEFT JOIN tarea_subordinada ts
 ON (ft.id_ft = ts.id_ts)
-JOIN ejecucion_flujo_tarea EFT 
+LEFT JOIN ejecucion_flujo_tarea EFT 
 ON (ft.id_ft = eft.id_ft_eft)
-JOIN usuario U
+LEFT JOIN usuario U
 ON (u.id_u = eft.id_u_eft)
 ORDER BY ft.id_ft DESC;
 
 /* VISTA TAREA SUBORDINADA DE FLUJO DE TAREA */
 
-CREATE OR REPLACE VIEW VISTA_TAREA_SUBORDINADA_FLUJO_TAREA AS
-SELECT ft.id_ft, ts.nombre_ts, ts.descripcion_ts, ts.fecha_inicio_ts, ts.fecha_entrega_ts, ts.porcentaje_avance_ts, ts.estado_ts, ft.nombre_ft, u.nombre_u
+CREATE OR REPLACE VIEW VISTA_TAREA_SUB_FLUJO_TAREA AS
+SELECT ft.id_ft, ts.nombre_ts, ts.descripcion_ts, ts.fecha_inicio_ts, ts.fecha_entrega_ts, ts.porcentaje_avance_ts, ts.estado_ts, u.nombre_u, ft.nombre_ft
 FROM tarea_subordinada TS 
-JOIN flujo_tarea FT 
+LEFT JOIN flujo_tarea FT 
 ON (ts.id_ft = ft.id_ft)
-JOIN ejecucion_flujo_tarea EFT 
+LEFT JOIN ejecucion_flujo_tarea EFT 
 ON (ft.id_ft = eft.id_ft_eft)
-JOIN usuario U
+LEFT JOIN usuario U
 ON (u.id_u = eft.id_u_eft)
 ORDER BY ft.id_ft DESC;
 
