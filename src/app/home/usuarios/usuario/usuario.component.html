@@ -91,12 +91,29 @@
             <option *ngFor="let empresa of ListarEmpresa" [value]="empresa.id_e" >{{empresa.nombre_e}}</option>
           </select>
 
-          <h6>{{vistaUsuario.nombre_u}}</h6>
-
-
+          <div *ngIf="true">
+            <h6 class="text-center">Nombre</h6>
+            <h6 class="caja_usuario">{{vistaUsuario.nombre_u}}</h6>
+  
+            <h6 class="text-center">Email</h6>
+            <h6 class="caja_usuario">{{vistaUsuario.email_u}}</h6>
+  
+            <h6 class="text-center">Rol</h6>
+            <h6 class="caja_usuario">{{vistaUsuario.nombre_r}}</h6>
+  
+            <h6 class="text-center">Cargo</h6>
+            <h6 class="caja_usuario">{{vistaUsuario.nombre_c}}</h6>
+  
+            <h6 class="text-center">Unidad interna</h6>
+            <h6 class="caja_usuario">{{vistaUsuario.nombre_ui}}</h6>
+  
+            <h6 class="text-center">Empresa</h6>
+            <h6 class="caja_usuario">{{vistaUsuario.nombre_e}}</h6>
+          </div>
 
         </div>
       </div>
     </div>
   </div>
+  <br>
 </div>

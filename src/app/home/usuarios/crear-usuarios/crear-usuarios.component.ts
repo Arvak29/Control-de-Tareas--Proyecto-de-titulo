@@ -16,7 +16,6 @@ export class CrearUsuariosComponent implements OnInit {
   Crear_Usuario_Grupo: FormGroup;
   ListarCargo: Cargo[] = [];
   ListarEmpresa: Empresa[] = [];
-  
 
   constructor(
     private fb: FormBuilder,

@@ -1,10 +1,8 @@
 import { Component, Input,OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UsuarioService, VistaUsuario } from 'src/app/services/usuario.service';
-import { Usuario } from '../../../services/usuario.service';
+import { UsuarioService, VistaUsuario, Usuario } from 'src/app/services/usuario.service';
 import { Cargo, CargoService} from 'src/app/services/cargo.service';
 import { Empresa, EmpresaService } from 'src/app/services/empresa.service';
-
 
 @Component({
   selector: 'app-usuario',
@@ -29,6 +27,7 @@ export class UsuarioComponent implements OnInit {
     nombre_u: '',
     email_u: '',
     password_u: '',
+    nombre_r: '',
     nombre_c: '',
     nombre_ui: '',
     nombre_e: '',
@@ -60,7 +59,7 @@ export class UsuarioComponent implements OnInit {
     }
 
     if (id_entrada) {
-      this.UsuarioService.getVistaUsuarios(id_entrada).subscribe({
+      this.UsuarioService.getVistaUsuario(id_entrada).subscribe({
         next: (res: any) => {
           this.vistaUsuario = <any>res[0];
           console.log(res);
@@ -71,21 +70,7 @@ export class UsuarioComponent implements OnInit {
 
   }
 
-  listarVistaUsuario() {
-    const id_entrada = this.activeRouter.snapshot.params['id'];
-    console.log(id_entrada);
 
-    if (id_entrada) {
-      this.UsuarioService.getVistaUsuarios(id_entrada).subscribe({
-        next: (res: any) => {
-          this.vistaUsuario = <any>res[0];
-          console.log(res);
-        },
-        error: (err) => console.log(err),
-      });
-    }
-  }
-  
   listarCargo() {
     this.CargoService.getCargo().subscribe({
       next: (res: any) => {
