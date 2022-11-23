@@ -14,6 +14,21 @@
               name="nombre_c"
             />
           </div>
+
+          <h6 class="text-center">Rol</h6>
+          <select class="form-select mb-3"
+          [(ngModel)]="cargo.id_r"
+          >
+          <option *ngFor="let rol of ListarRol" [value]="rol.id_r">{{rol.nombre_r}}</option>
+        </select>
+
+        <h6 class="text-center">Unidad interna</h6>
+        <select class="form-select mb-3"
+        [(ngModel)]="cargo.id_ui"
+        >
+          <option *ngFor="let unidad of ListarUnidad" [value]="unidad.id_ui" >{{unidad.nombre_ui}}</option>
+        </select>
+
         </div>
       </div>
       <br />

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cargo, CargoService } from 'src/app/services/cargo.service';
+import { rol, RolService } from '../../../services/rol.service';
+import { Unidad, UnidadInternaService } from '../../../services/unidad-interna.service';
 
 @Component({
   selector: 'app-cargo',
@@ -9,6 +11,8 @@ import { Cargo, CargoService } from 'src/app/services/cargo.service';
   providers: [CargoService],
 })
 export class CargoComponent implements OnInit {
+  ListarRol: rol[] = [];
+  ListarUnidad: Unidad[] = [];
   cargo: Cargo = {
     id_c: '',
     nombre_c: '',
@@ -17,10 +21,15 @@ export class CargoComponent implements OnInit {
   constructor(
     private CargoService: CargoService,
     private router: Router,
-    private activeRouter: ActivatedRoute
+    private activeRouter: ActivatedRoute,
+    private RolService: RolService,
+    private UnidadInternaService: UnidadInternaService
   ) {}
 
   ngOnInit(): void {
+    this.listarRol();
+    this.listarUniadad();
+
     const id_entrada = this.activeRouter.snapshot.params['id'];
     console.log(id_entrada);
 
@@ -33,6 +42,23 @@ export class CargoComponent implements OnInit {
         error: (err) => console.log(err),
       });
     }
+  }
+
+  listarRol() {
+    this.RolService.getRol().subscribe({
+      next: (res: any) => {
+        this.ListarRol = <any>res;
+      },
+      error: (err) => console.log(err),
+    });
+  }
+  listarUniadad() {
+    this.UnidadInternaService.getUnidades().subscribe({
+      next: (res: any) => {
+        this.ListarUnidad = <any>res;
+      },
+      error: (err) => console.log(err),
+    });
   }
 
   modificar() {
