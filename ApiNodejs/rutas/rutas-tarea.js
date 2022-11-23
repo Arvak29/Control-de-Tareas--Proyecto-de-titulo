@@ -2,6 +2,56 @@ const { Router } = require('express');
 const router = Router();
 const BD = require('../config/configbd');
 
+//Get especifico de vista
+router.get('/api-tarea/getVista_Tarea/:id', async (req, res) => {
+    const { id } = req.params;
+    sql = "select * from vista_tarea where id_t =:id";
+
+    let result = await BD.Open(sql, [id], false);
+    Vista_Tarea = [];
+
+    result.rows.map(vista_tarea => {
+        let vista_tareaSchema = {
+            "t.nombre_t": vista_tarea[1],
+            "t.descripcion_t": vista_tarea[2],
+            "t.fecha_inicio_t": vista_tarea[3],
+            "t.fecha_entrega_t": vista_tarea[4],
+            "t.porcentaje_avance_t": vista_tarea[5],
+            "t.estado_t": vista_tarea[6],
+            "u.nombre_u": vista_tarea[7],
+            "ts.nombre_ts": vista_tarea[8]
+        }
+
+        Vista_Tarea.push(vista_tareaSchema);
+    })
+    
+    res.json(Vista_Tarea);
+})
+
+//Get de todo la vista
+router.get('/api-tarea/getVista_Tareas', async (req, res) => {
+    sql = "select * from vista_tarea";
+
+    let result = await BD.Open(sql, [], false);
+    Vista_Tareas = [];
+
+    result.rows.map(vista_tarea => {
+        let vistas_tareasSchema = {
+            "t.nombre_t": vista_tarea[1],
+            "t.descripcion_t": vista_tarea[2],
+            "t.fecha_inicio_t": vista_tarea[3],
+            "t.fecha_entrega_t": vista_tarea[4],
+            "t.porcentaje_avance_t": vista_tarea[5],
+            "t.estado_t": vista_tarea[6],
+            "u.nombre_u": vista_tarea[7],
+            "ts.nombre_ts": vista_tarea[8]
+        }
+
+        Vista_Tareas.push(vistas_tareasSchema);
+    })
+    
+    res.json(Vista_Tareas);
+})
 
 //Get especifico
 router.get('/api-tarea/getTarea/:id', async (req, res) => {

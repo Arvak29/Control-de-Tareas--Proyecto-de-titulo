@@ -2,6 +2,56 @@ const { Router } = require('express');
 const router = Router();
 const BD = require('../config/configbd');
 
+//Get especifico de vista con tarea
+router.get('/api-tarea-sub/getVista_Tarea_Sub/:id', async (req, res) => {
+    const { id } = req.params;
+    sql = "select * from vista_tarea_sub_tarea where id_ts =:id";
+
+    let result = await BD.Open(sql, [id], false);
+    Vista_Tarea_Sub = [];
+
+    result.rows.map(vista_tarea_sub_tarea => {
+        let vista_tarea_subSchema = {
+            "ts.nombre_ts": vista_tarea_sub_tarea[1],
+            "ts.descripcion_ts": vista_tarea_sub_tarea[2],
+            "ts.fecha_inicio_ts": vista_tarea_sub_tarea[3],
+            "ts.fecha_entrega_ts": vista_tarea_sub_tarea[4],
+            "ts.porcentaje_avance_ts": vista_tarea_sub_tarea[5],
+            "ts.estado_ts": vista_tarea_sub_tarea[6],
+            "u.nombre_u": vista_tarea_sub_tarea[7],
+            "t.nombre_t": vista_tarea_sub_tarea[8]
+        }
+
+        Vista_Tarea_Sub.push(vista_tarea_subSchema);
+    })
+    
+    res.json(Vista_Tarea_Sub);
+})
+
+//Get de todo la vista
+router.get('/api-tarea-sub/getVista_Tareas_Sub', async (req, res) => {
+    sql = "select * from vista_tarea_sub_tarea";
+
+    let result = await BD.Open(sql, [], false);
+    Vista_Tareas_Sub = [];
+
+    result.rows.map(vista_tarea_sub_tarea => {
+        let vista_tareas_subSchema = {
+            "ts.nombre_ts": vista_tarea_sub_tarea[1],
+            "ts.descripcion_ts": vista_tarea_sub_tarea[2],
+            "ts.fecha_inicio_ts": vista_tarea_sub_tarea[3],
+            "ts.fecha_entrega_ts": vista_tarea_sub_tarea[4],
+            "ts.porcentaje_avance_ts": vista_tarea_sub_tarea[5],
+            "ts.estado_ts": vista_tarea_sub_tarea[6],
+            "u.nombre_u": vista_tarea_sub_tarea[7],
+            "t.nombre_t": vista_tarea_sub_tarea[8]
+        }
+
+        Vista_Tareas_Sub.push(vista_tareas_subSchema);
+    })
+    
+    res.json(Vista_Tareas_Sub);
+})
 
 //Get especifico
 router.get('/getTareaSub/:id', async (req, res) => {
