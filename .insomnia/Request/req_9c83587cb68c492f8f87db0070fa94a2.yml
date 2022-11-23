@@ -1,0 +1,21 @@
+_id: req_9c83587cb68c492f8f87db0070fa94a2
+type: Request
+parentId: fld_43f9bb4165204563884023f7c223b866
+modified: 1669161982633
+created: 1669161665105
+url: http://localhost:3000/api-reporte/getVista_Reportes_Flujos_Tareas
+name: Get vista reportes problema de flujos tarea
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1668622478792.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

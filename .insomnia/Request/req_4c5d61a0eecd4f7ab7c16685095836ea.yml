@@ -1,17 +1,17 @@
-_id: req_3f4e601a8cdd4ac0b40d563a6ab533b1
+_id: req_4c5d61a0eecd4f7ab7c16685095836ea
 type: Request
-parentId: fld_d6df231cf83747d1af37d143a7ca9f72
-modified: 1668635350346
-created: 1667944109779
-url: http://localhost:3000/api-unidad/getUI/1
-name: Get Unidad interna
+parentId: fld_f917899982a04c4c9b2847ec7293ff18
+modified: 1669157049416
+created: 1669156917512
+url: http://localhost:3000/api-flujo/getVista_Flujo_Tarea/1
+name: Get vista flujo de tarea
 description: ""
 method: GET
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1667932320778.375
+metaSortKey: -1667932175932.4375
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

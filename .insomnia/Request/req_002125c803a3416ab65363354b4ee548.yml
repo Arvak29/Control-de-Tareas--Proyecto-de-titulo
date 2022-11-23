@@ -1,17 +1,17 @@
-_id: req_3f4e601a8cdd4ac0b40d563a6ab533b1
+_id: req_002125c803a3416ab65363354b4ee548
 type: Request
-parentId: fld_d6df231cf83747d1af37d143a7ca9f72
-modified: 1668635350346
-created: 1667944109779
-url: http://localhost:3000/api-unidad/getUI/1
-name: Get Unidad interna
+parentId: fld_bbb36ab293ab4c2681a20d75868cf3b8
+modified: 1669147740744
+created: 1669147042876
+url: http://localhost:3000/api-usuario/getVista_Usuario/1
+name: Get vista usuario
 description: ""
 method: GET
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1667932320778.375
+metaSortKey: -1667932175850.4062
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

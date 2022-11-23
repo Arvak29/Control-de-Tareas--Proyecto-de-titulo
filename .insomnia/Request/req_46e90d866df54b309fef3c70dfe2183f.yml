@@ -1,9 +1,9 @@
 _id: req_46e90d866df54b309fef3c70dfe2183f
 type: Request
 parentId: fld_de5ab832eaaa4e4295ebdaa13c9aaa7d
-modified: 1668549305261
+modified: 1669158325428
 created: 1668289027426
-url: http://localhost:3000/addCargo
+url: http://localhost:3000/api-cargo/addCargo
 name: Add cargo
 description: ""
 method: POST

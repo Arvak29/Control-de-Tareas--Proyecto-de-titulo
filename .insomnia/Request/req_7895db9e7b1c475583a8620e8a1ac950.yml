@@ -1,17 +1,17 @@
-_id: req_3f4e601a8cdd4ac0b40d563a6ab533b1
+_id: req_7895db9e7b1c475583a8620e8a1ac950
 type: Request
-parentId: fld_d6df231cf83747d1af37d143a7ca9f72
-modified: 1668635350346
-created: 1667944109779
-url: http://localhost:3000/api-unidad/getUI/1
-name: Get Unidad interna
+parentId: fld_de5ab832eaaa4e4295ebdaa13c9aaa7d
+modified: 1669149859052
+created: 1669149852912
+url: http://localhost:3000/api-cargo/getVista_Cargos
+name: Get vistas cargos
 description: ""
 method: GET
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1667932320778.375
+metaSortKey: -1667932175875.4062
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

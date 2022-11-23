@@ -1,9 +1,9 @@
 _id: req_94a1fa9f914b41f199319a0b93b5928f
 type: Request
 parentId: fld_de5ab832eaaa4e4295ebdaa13c9aaa7d
-modified: 1668549366566
+modified: 1669158312604
 created: 1668289257352
-url: http://localhost:3000/deleteCargo/7
+url: http://localhost:3000/api-cargo/deleteCargo/7
 name: Delete cargo
 description: ""
 method: DELETE

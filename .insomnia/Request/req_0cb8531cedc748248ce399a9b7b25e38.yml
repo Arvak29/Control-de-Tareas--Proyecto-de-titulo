@@ -1,17 +1,17 @@
-_id: req_3f4e601a8cdd4ac0b40d563a6ab533b1
+_id: req_0cb8531cedc748248ce399a9b7b25e38
 type: Request
-parentId: fld_d6df231cf83747d1af37d143a7ca9f72
-modified: 1668635350346
-created: 1667944109779
-url: http://localhost:3000/api-unidad/getUI/1
-name: Get Unidad interna
+parentId: fld_d855bbd111f74c729ec0f4a5dfd8cc9f
+modified: 1669153293239
+created: 1669153290743
+url: http://localhost:3000/api-tarea/getVista_Tareas
+name: Get vistas tareas
 description: ""
 method: GET
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1667932320778.375
+metaSortKey: -1667932175924.625
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

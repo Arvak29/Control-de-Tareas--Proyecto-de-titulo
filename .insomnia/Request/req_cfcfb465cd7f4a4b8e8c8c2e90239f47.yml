@@ -1,9 +1,9 @@
 _id: req_cfcfb465cd7f4a4b8e8c8c2e90239f47
 type: Request
 parentId: fld_de5ab832eaaa4e4295ebdaa13c9aaa7d
-modified: 1668289042426
+modified: 1669158306416
 created: 1668288599578
-url: http://localhost:3000/getCargos
+url: http://localhost:3000/api-cargo/getCargos
 name: Get cargos
 description: ""
 method: GET
