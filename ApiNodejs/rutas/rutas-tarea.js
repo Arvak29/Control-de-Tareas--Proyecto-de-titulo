@@ -121,7 +121,7 @@ router.post('/api-tarea/addTarea/', async (req, res) => {
 })
 
 //Actualizar
-router.patch("/UpdateTarea/:id", async (req, res) => {
+router.patch("/api-tarea/UpdateTarea/:id", async (req, res) => {
     const { id } = req.params;
     const { id_t, nombre_t, descripcion_t, fecha_inicio_t, fecha_entrega_t, porcentaje_avance_t, estado_t} = req.body;
 
@@ -141,7 +141,7 @@ router.patch("/UpdateTarea/:id", async (req, res) => {
 })
 
 //Borrar
-router.delete("/deleteTarea/:id", async (req, res) => {
+router.delete("/api-tarea/deleteTarea/:id", async (req, res) => {
     const { id } = req.params;
 
     sql = "delete tarea where id_t=:id";

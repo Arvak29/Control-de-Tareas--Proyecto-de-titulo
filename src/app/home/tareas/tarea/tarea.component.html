@@ -26,25 +26,28 @@
             <div class="col">
               <div class="form-floating mb-3">
                 <input
-                  [(ngModel)]="tarea.fecha_inicio_t"
+                  [ngModel]="tarea.fecha_inicio_t | date:'yyyy-MM-dd'"
                   class="form-control"
                   id="inputNombre"
-                  type="text"
+                  type="date"
                   name="fecha_inicio"
                 />
-                <label for="inputNombre">Inicio:</label>
+                <label for="inputNombre">Fecha Inicio:</label>
               </div>
             </div>
+            <!--
+              <h6>{{tarea.fecha_entrega_t | date}}</h6>
+            -->
             <div class="col text-end">
               <div class="form-floating mb-3">
                 <input
-                  [(ngModel)]="tarea.fecha_entrega_t"
+                  [ngModel]="tarea.fecha_entrega_t | date:'yyyy-MM-dd'"
                   class="form-control"
                   id="inputNombre"
-                  type="text"
+                  type="date"
                   name="fecha_termino"
                 />
-                <label for="inputNombre">fecha_termino:</label>
+                <label for="inputNombre">Fecha termino:</label>
               </div>
             </div>
           </div>
