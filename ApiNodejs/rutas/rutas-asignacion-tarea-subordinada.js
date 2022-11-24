@@ -46,7 +46,7 @@ router.get('/api-asig-sub/getVista_Asig_Tarea_Sub/:id', async (req, res) => {
   })
 
 //Get especifico por usuario
-router.get("/getAsigTareaSub_us/:id", async (req, res) => {
+router.get("/getAsigTarea_Sub_us/:id", async (req, res) => {
     const { id } = req.params;
     sql = "select * from asignacion_tarea_subordinada where id_u_ats =:id";
   
@@ -68,7 +68,7 @@ router.get("/getAsigTareaSub_us/:id", async (req, res) => {
   });
 
 //Get especifico por tarea
-router.get("/getAsigTareaSub_t/:id", async (req, res) => {
+router.get("/getAsigTarea_Sub_t/:id", async (req, res) => {
     const { id } = req.params;
     sql = "select * from asignacion_tarea_subordinada where id_ts_ats =:id";
   
@@ -90,7 +90,7 @@ router.get("/getAsigTareaSub_t/:id", async (req, res) => {
   });
 
 //Get de todo
-router.get('/getAsigTareasSub', async (req, res) => {
+router.get('/getAsigTareas_Sub', async (req, res) => {
     sql = "select * from asignacion_tarea_subordinada";
   
     let result = await BD.Open(sql, [], false);
@@ -111,7 +111,7 @@ router.get('/getAsigTareasSub', async (req, res) => {
   })
 
 //Agregar
-router.post('/addAsigTareaSub', async (req, res) => {
+router.post('/addAsig_Tarea_Sub', async (req, res) => {
     const {id_u_ats, id_ts_ats, respuesta_ats, justificacion_ats} = req.body;
 
     sql = "insert into asignacion_tarea_subordinada(id_u_ats, id_ts_ats, respuesta_ats, justificacion_ats) values (:id_u_ats, :id_ts_ats, :respuesta_ats, :justificacion_ats)";
@@ -127,7 +127,7 @@ router.post('/addAsigTareaSub', async (req, res) => {
 })
 
 //Actualizar
-router.patch("/updateAsigTareaSub/:id", async (req, res) => {
+router.patch("/updateAsigTarea_Sub/:id", async (req, res) => {
     const { id } = req.params;
     const {id_u_ats, id_ts_ats, respuesta_ats, justificacion_ats} = req.body;
     
@@ -144,7 +144,7 @@ router.patch("/updateAsigTareaSub/:id", async (req, res) => {
 })
 
 //Borrar
-router.delete("/deleteAsigTareaSub/:id", async (req, res) => {
+router.delete("/deleteAsigTarea_Sub/:id", async (req, res) => {
     const { id } = req.params;
 
     sql = "delete asignacion_tarea_subordinada where id_ts_ats=:id";

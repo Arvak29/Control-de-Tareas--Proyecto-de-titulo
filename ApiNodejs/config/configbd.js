@@ -1,9 +1,9 @@
 const oracledb = require('oracledb');
 
 cns = {
-    user: "jim",
-    password: "admin",
-    connectString: 'localhost:1521/Orcl'
+    user: "Alonso",
+    password: "12345",
+    connectString: 'localhost:1521/Oracle'
 }
 
 async function Open(sql, binds, autoCommit) {

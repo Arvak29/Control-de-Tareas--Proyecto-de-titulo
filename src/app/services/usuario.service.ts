@@ -28,16 +28,17 @@ export class UsuarioService {
     return this.http.post('/api-usuario/addUsuario/', usuario);
   }
 
-  //eliminar un usuario
-  deleteUsuario(id: string) {
-    return this.http.delete('/api-usuario/deleteUsuario/' + id);
-  }
-
   //modificar un usuario
   editUsuario(id: string, usuario: Usuario) {
     return this.http.patch('/api-usuario/UpdateUsuario/' + id, usuario);
   }
+
+  //eliminar un usuario
+  deleteUsuario(id: string) {
+    return this.http.delete('/api-usuario/deleteUsuario/' + id);
+  }
 }
+
 
 export interface Usuario {
   id_u?: string;
