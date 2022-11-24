@@ -29,7 +29,7 @@
       </div>
       <div class="card-body">
         <app-bar-tarea
-          *ngFor="let tarea of ListarTarea | filtro: filtroTarea"
+          *ngFor="let tarea of ListarTarea | filtroTarea: filtroTarea"
           [titulo]="tarea.nombre_t"
           [id]="tarea.id_t"
         ></app-bar-tarea>

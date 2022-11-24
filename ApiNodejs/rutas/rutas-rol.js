@@ -24,7 +24,7 @@ router.get('/getRol/:id', async (req, res) => {
 })
 
 //Get de todo
-router.get('/getRoles', async (req, res) => {
+router.get('/api-rol/getRoles', async (req, res) => {
     sql = "select * from rol";
 
     let result = await BD.Open(sql, [], false);

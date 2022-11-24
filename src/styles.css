@@ -187,3 +187,8 @@ input:not(:placeholder-shown) ~ .reset {
   border-radius: 50%;
   padding: 4px;
 }
+
+.form-select{
+  background-color: #151821 !important;
+  color: #ffffff !important;
+  }

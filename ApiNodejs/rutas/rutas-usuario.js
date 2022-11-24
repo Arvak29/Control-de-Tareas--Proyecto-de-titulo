@@ -11,15 +11,14 @@ router.get("/api-usuario/getVista_Usuario/:id", async (req, res) => {
 
   result.rows.map((vista_usuario) => {
     let vista_usuarioSchema = {
-      "u.nombre_u": vista_usuario[1],
-      "u.email_u": vista_usuario[2],
-      "u.password_u": vista_usuario[3],
-      "r.nombre_r": vista_usuario[4],
-      "c.nombre_c": vista_usuario[5],
-      "ui.nombre_ui": vista_usuario[6],
-      "e.nombre_e": vista_usuario[7]
+      "nombre_u": vista_usuario[1],
+      "email_u": vista_usuario[2],
+      "password_u": vista_usuario[3],
+      "nombre_r": vista_usuario[4],
+      "nombre_c": vista_usuario[5],
+      "nombre_ui": vista_usuario[6],
+      "nombre_e": vista_usuario[7]
     }
-
     Vista_Usuario.push(vista_usuarioSchema);
   })
 
@@ -35,13 +34,13 @@ router.get("/api-usuario/getVista_Usuarios", async (req, res) => {
 
   result.rows.map((vista_usuario) => {
     let vista_usuariosSchema = {
-      "u.nombre_u": vista_usuario[1],
-      "u.email_u": vista_usuario[2],
-      "u.password_u": vista_usuario[3],
-      "r.nombre_r": vista_usuario[4],
-      "c.nombre_c": vista_usuario[5],
-      "ui.nombre_ui": vista_usuario[6],
-      "e.nombre_e": vista_usuario[7]
+      "nombre_u": vista_usuario[1],
+      "email_u": vista_usuario[2],
+      "password_u": vista_usuario[3],
+      "nombre_r": vista_usuario[4],
+      "nombre_c": vista_usuario[5],
+      "nombre_ui": vista_usuario[6],
+      "nombre_e": vista_usuario[7]
     }
 
     Vista_Usuarios.push(vista_usuariosSchema);
@@ -116,7 +115,7 @@ router.post("/api-usuario/addUsuario", async (req, res) => {
 })
 
 //Actualizar
-router.patch("/UpdateUsuario/:id", async (req, res) => {
+router.patch("/api-usuario/UpdateUsuario/:id", async (req, res) => {
   const { id } = req.params;
   const { id_u, nombre_u, email_u, password_u, id_c, id_e } = req.body;
 
@@ -135,7 +134,7 @@ router.patch("/UpdateUsuario/:id", async (req, res) => {
 })
 
 //Borrar
-router.delete("/deleteUsuario/:id", async (req, res) => {
+router.delete("/api-usuario/deleteUsuario/:id", async (req, res) => {
   const { id } = req.params;
 
   sql = "delete usuario where id_u=:id";

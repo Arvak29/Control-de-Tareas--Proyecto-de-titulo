@@ -2,9 +2,51 @@ const { Router } = require('express');
 const router = Router();
 const BD = require('../config/configbd');
 
+//Get especifico de vista
+router.get('/api-asig-sub/getVista_Asig_Tarea_Sub/:id', async (req, res) => {
+    const { id } = req.params;
+    sql = "select * from vista_asignacion_tarea_sub where id_ts =:id";
+  
+    let result = await BD.Open(sql, [id], false);
+    Vista_Asignacion_Tarea_Sub = [];
+  
+    result.rows.map(vista_asignacion_tarea_sub => {
+        let vista_asignacion_tarea_subSchema = {
+            "nombre_u": vista_asignacion_tarea_sub[1],
+            "nombre_ts": vista_asignacion_tarea_sub[2],
+            "respuesta_ats": vista_asignacion_tarea_sub[3],
+            "justificacion_ats": vista_asignacion_tarea_sub[4]
+        }
+  
+        Vista_Asignacion_Tarea_Sub.push(vista_asignacion_tarea_subSchema);
+    })
+
+    res.json(Vista_Asignacion_Tarea_Sub);
+  })
+  
+  //Get de toda la vista
+  router.get('/api-asig-sub/getVista_Asig_Tareas_Sub', async (req, res) => {
+    sql = "select * from vista_asignacion_tarea_sub";
+  
+    let result = await BD.Open(sql, [], false);
+    Vista_Asignaciones_Tareas_Sub = [];
+  
+    result.rows.map(vista_asignacion_tarea_sub => {
+        let vista_asignaciones_tareas_subSchema = {
+            "nombre_u": vista_asignacion_tarea_sub[1],
+            "nombre_ts": vista_asignacion_tarea_sub[2],
+            "respuesta_ats": vista_asignacion_tarea_sub[3],
+            "justificacion_ats": vista_asignacion_tarea_sub[4]
+        }
+  
+        Vista_Asignaciones_Tareas_Sub.push(vista_asignaciones_tareas_subSchema);
+    })
+    
+    res.json(Vista_Asignaciones_Tareas_Sub);
+  })
 
 //Get especifico por usuario
-router.get("/getAsigTareaSub_us/:id", async (req, res) => {
+router.get("/getAsig_Tarea_Sub_us/:id", async (req, res) => {
     const { id } = req.params;
     sql = "select * from asignacion_tarea_subordinada where id_u_ats =:id";
   
@@ -26,7 +68,7 @@ router.get("/getAsigTareaSub_us/:id", async (req, res) => {
   });
 
 //Get especifico por tarea
-router.get("/getAsigTareaSub_t/:id", async (req, res) => {
+router.get("/getAsig_Tarea_Sub_t/:id", async (req, res) => {
     const { id } = req.params;
     sql = "select * from asignacion_tarea_subordinada where id_ts_ats =:id";
   
@@ -48,7 +90,7 @@ router.get("/getAsigTareaSub_t/:id", async (req, res) => {
   });
 
 //Get de todo
-router.get('/getAsigTareasSub', async (req, res) => {
+router.get('/getAsig_Tareas_Sub', async (req, res) => {
     sql = "select * from asignacion_tarea_subordinada";
   
     let result = await BD.Open(sql, [], false);
@@ -69,7 +111,7 @@ router.get('/getAsigTareasSub', async (req, res) => {
   })
 
 //Agregar
-router.post('/addAsigTareaSub', async (req, res) => {
+router.post('/addAsig_Tarea_Sub', async (req, res) => {
     const {id_u_ats, id_ts_ats, respuesta_ats, justificacion_ats} = req.body;
 
     sql = "insert into asignacion_tarea_subordinada(id_u_ats, id_ts_ats, respuesta_ats, justificacion_ats) values (:id_u_ats, :id_ts_ats, :respuesta_ats, :justificacion_ats)";
@@ -85,7 +127,7 @@ router.post('/addAsigTareaSub', async (req, res) => {
 })
 
 //Actualizar
-router.patch("/updateAsigTareaSub/:id", async (req, res) => {
+router.patch("/updateAsig_Tarea_Sub/:id", async (req, res) => {
     const { id } = req.params;
     const {id_u_ats, id_ts_ats, respuesta_ats, justificacion_ats} = req.body;
     
@@ -102,7 +144,7 @@ router.patch("/updateAsigTareaSub/:id", async (req, res) => {
 })
 
 //Borrar
-router.delete("/deleteAsigTareaSub/:id", async (req, res) => {
+router.delete("/deleteAsig_Tarea_Sub/:id", async (req, res) => {
     const { id } = req.params;
 
     sql = "delete asignacion_tarea_subordinada where id_ts_ats=:id";

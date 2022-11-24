@@ -24,14 +24,14 @@ export class CargoService {
     return this.http.post('/api-cargo/addCargo/', cargo);
   }
 
-  //eliminar un cargo
-  deleteCargo(id: number) {
-    return this.http.delete('/api-cargo/deleteCargo/' + id);
-  }
-
   //modificar un cargo
   editCargo(id: string, cargo: Cargo) {
     return this.http.patch('/api-cargo/updateCargo/' + id, cargo);
+  }
+
+  //eliminar un cargo
+  deleteCargo(id: string) {
+    return this.http.delete('/api-cargo/deleteCargo/' + id);
   }
 }
 
@@ -44,4 +44,6 @@ export interface Cargo {
 
 export interface AgregarCargo {
   nombre_c?: string;
+  id_ui?: string;
+  id_r?: string;
 }

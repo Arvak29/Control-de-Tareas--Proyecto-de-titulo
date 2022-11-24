@@ -16,7 +16,6 @@ export class CrearUsuariosComponent implements OnInit {
   Crear_Usuario_Grupo: FormGroup;
   ListarCargo: Cargo[] = [];
   ListarEmpresa: Empresa[] = [];
-  
 
   constructor(
     private fb: FormBuilder,
@@ -62,8 +61,8 @@ export class CrearUsuariosComponent implements OnInit {
       nombre_u: this.Crear_Usuario_Grupo.get('nombre_usuario')?.value,
       email_u: this.Crear_Usuario_Grupo.get('email_usuario')?.value,
       password_u: this.Crear_Usuario_Grupo.get('password_usuario')?.value,
-      id_c: this.Crear_Usuario_Grupo.get('cargo')?.value,
-      id_e: this.Crear_Usuario_Grupo.get('empresa')?.value,
+      id_c: this.Crear_Usuario_Grupo.get('cargo_usuario')?.value,
+      id_e: this.Crear_Usuario_Grupo.get('empresa_usuario')?.value,
     };
     this.UsuarioService.addUsuario(USUARIO).subscribe();
     this.router.navigate(['/usuarios']);
