@@ -31,21 +31,21 @@ export class EjecFlujoTareaService {
 
 export interface EjecFlujoTarea {
     id_u_eft?: string;
-    id_t_eft?: string;
+    id_ft_eft?: string;
     respuesta_eft?: string;
     justificacion_eft?: string;
   }
   
 export interface VistaEjecFlujoTarea {
     id_u_eft?: string;
-    id_t_eft?: string;
+    id_ft_eft?: string;
     respuesta_eft?: string;
     justificacion_eft?: string;
   }
 
   export interface AgregarEjecFlujoTarea {
     id_u_eft?: string;
-    id_t_eft?: string;
+    id_ft_eft?: string;
     respuesta_eft?: string;
     justificacion_eft?: string;
   }
