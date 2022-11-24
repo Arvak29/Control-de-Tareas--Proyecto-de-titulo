@@ -1,7 +1,7 @@
 _id: req_9eae09d646d94eeaa784d666db0b65ee
 type: Request
 parentId: fld_48bbf179705c457f9c2a33918637826c
-modified: 1669251168378
+modified: 1669251661988
 created: 1668632963169
 url: http://localhost:3000/api-asig-tarea/api-asig-tarea/UpdateAsig_Tarea/1
 name: Update asignacion tarea
