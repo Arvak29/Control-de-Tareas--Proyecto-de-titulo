@@ -1,5 +1,4 @@
-const { Router } = require('express');
-const router = Router();
+const router = require("express").Router();
 const BD = require('../config/configbd');
 
 //Get especifico de vista
@@ -130,14 +129,14 @@ router.patch("/api-tarea/UpdateTarea/:id", async (req, res) => {
     await BD.Open(sql, [nombre_t, descripcion_t, fecha_inicio_t, fecha_entrega_t, porcentaje_avance_t, estado_t, id], true);
 
     res.status(200).json({
-            "id_t": id_t,
-            "nombre_t": nombre_t,
-            "descripcion_t": descripcion_t,
-            "fecha_inicio_t": fecha_inicio_t,
-            "fecha_entrega_t": fecha_entrega_t,
-            "porcentaje_avance_t": porcentaje_avance_t,
-            "estado_t": estado_t
-        })
+        id_t: id_t,
+        nombre_t: nombre_t,
+        descripcion_t: descripcion_t,
+        fecha_inicio_t: fecha_inicio_t,
+        fecha_entrega_t: fecha_entrega_t,
+        porcentaje_avance_t: porcentaje_avance_t,
+        estado_t: estado_t
+    })
 })
 
 //Borrar

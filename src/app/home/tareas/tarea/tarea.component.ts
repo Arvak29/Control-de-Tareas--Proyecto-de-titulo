@@ -29,8 +29,8 @@ export class TareaComponent implements OnInit {
     id_t: '',
     nombre_t: '',
     descripcion_t: '',
-    fecha_inicio_t: new Date,
-    fecha_entrega_t: new Date,
+    fecha_inicio_t: '',
+    fecha_entrega_t: '',
     porcentaje_avance_t: '',
     estado_t: '',
   };
@@ -44,7 +44,7 @@ export class TareaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.listarTareaSub();
+    //this.listarTareaSub();
     this.listarUsuario();
 
     const id_entrada = this.activeRouter.snapshot.params['id'];
@@ -98,6 +98,12 @@ export class TareaComponent implements OnInit {
       },
       error: (err) => console.log(err),
     });
+    console.log(this.tarea.nombre_t)
+    console.log(this.tarea.descripcion_t)
+    console.log(this.tarea.fecha_inicio_t)
+    console.log(this.tarea.fecha_entrega_t)
+    console.log(this.tarea.porcentaje_avance_t)
+    console.log(this.tarea.estado_t)
     this.router.navigate(['/tareas']);
   }
 }

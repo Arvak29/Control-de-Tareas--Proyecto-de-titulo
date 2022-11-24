@@ -27,9 +27,10 @@
               <div class="form-floating mb-3">
                 <input
                   [ngModel]="tarea.fecha_inicio_t | date:'yyyy-MM-dd'"
+                  (ngModelChange)="tarea.fecha_inicio_t = $event"
+                  type="date"
                   class="form-control"
                   id="inputNombre"
-                  type="date"
                   name="fecha_inicio"
                 />
                 <label for="inputNombre">Fecha Inicio:</label>
@@ -42,9 +43,10 @@
               <div class="form-floating mb-3">
                 <input
                   [ngModel]="tarea.fecha_entrega_t | date:'yyyy-MM-dd'"
+                  (ngModelChange)="tarea.fecha_entrega_t = $event"
+                  type="date"
                   class="form-control"
                   id="inputNombre"
-                  type="date"
                   name="fecha_termino"
                 />
                 <label for="inputNombre">Fecha termino:</label>

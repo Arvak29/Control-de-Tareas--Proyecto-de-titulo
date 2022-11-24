@@ -21,8 +21,8 @@ export class CrearTareaComponent implements OnInit {
     id_t: '',
     nombre_t: '',
     descripcion_t: '',
-    fecha_inicio_t: new Date,
-    fecha_entrega_t: new Date,
+    fecha_inicio_t: '',
+    fecha_entrega_t: '',
     porcentaje_avance_t: '',
     estado_t: '',
   };

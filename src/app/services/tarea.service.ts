@@ -44,8 +44,8 @@ export interface Tarea {
   id_t?: string;
   nombre_t?: string;
   descripcion_t?: string;
-  fecha_inicio_t?: Date;
-  fecha_entrega_t?: Date;
+  fecha_inicio_t?: string;
+  fecha_entrega_t?: string;
   porcentaje_avance_t?: string;
   estado_t?: string;
 }
@@ -54,8 +54,8 @@ export interface VistaTarea {
   id_t?: string;
   nombre_t?: string;
   descripcion_t?: string;
-  fecha_inicio_t?: Date;
-  fecha_entrega_t?: Date;
+  fecha_inicio_t?: string;
+  fecha_entrega_t?: string;
   porcentaje_avance_t?: string;
   estado_t?: string;
   nombre_ts: string;
@@ -64,6 +64,6 @@ export interface VistaTarea {
 export interface AgregarTarea {
   nombre_t?: string;
   descripcion_t?: string;
-  fecha_inicio_t?: Date;
-  fecha_entrega_t?: Date;
+  fecha_inicio_t?: string;
+  fecha_entrega_t?: string;
 }
