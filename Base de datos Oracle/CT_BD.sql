@@ -427,6 +427,40 @@ END AFTER EACH ROW;
                     END LOOP;
     END AFTER STATEMENT;
 END TGR_ASIG_ID_TAREA_SUB;
+
+/* TRIGGER ASIGNACIÓN DE ID DE EJECUCION DE FLUJO DE TAREA */
+
+CREATE OR REPLACE TRIGGER TGR_ASIG_ID_EJEC_FLUJO_TAREA
+FOR INSERT ON flujo_tarea
+COMPOUND TRIGGER
+TYPE r_flujo_tarea_type IS RECORD(
+    id_ft flujo_tarea.id_ft%TYPE
+);
+
+TYPE t_flujo_tarea_type IS TABLE OF r_flujo_tarea_type
+    INDEX BY PLS_INTEGER;
+    
+t_flujo_tarea t_flujo_tarea_type;
+
+AFTER EACH ROW IS
+BEGIN
+t_flujo_tarea (t_flujo_tarea.COUNT +1).id_ft := :NEW.id_ft;
+END AFTER EACH ROW;
+    AFTER STATEMENT IS
+                V_ID NUMBER(10);
+                CURSOR c_ft IS SELECT id_ft FROM flujo_tarea;
+            BEGIN
+            DELETE FROM ejecucion_flujo_tarea;
+                for v_fila in c_ft 
+                LOOP
+                    SELECT id_ft
+                    INTO V_ID
+                    FROM flujo_tarea
+                    WHERE v_fila.id_ft = id_ft;
+                    INSERT INTO ejecucion_flujo_tarea(id_u_eft, id_ft_eft, respuesta_eft) VALUES (NULL, V_ID, 'Pendiente');
+                    END LOOP;
+    END AFTER STATEMENT;
+END TGR_ASIG_ID_EJEC_FLUJO_TAREA;
 -----------------------------------------------------------------------------------------------------------------------------------
 /* Calculo varias filas de tarea FUNCIONAL */
 

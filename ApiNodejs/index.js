@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const bodyParser = require('body-parser');
 const cors = require("cors");
 const app = express();
 const puerto = 3000;
@@ -26,6 +27,9 @@ app.set("port", puerto);
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json({
+  reviver: revivirFecha
+}));
 
 //routes
 app.use(
@@ -51,3 +55,13 @@ app.listen(app.get("port"), (error) => {
     console.log("servidor iniciado en el puerto: " + puerto);
   }
 });
+
+const dateTimeRegExp = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{3})?Z%/;
+
+function revivirFecha(key, value) {
+  if (typeof value === 'string' && dateTimeRegExp.test(value)) {
+    return new Date(value);
+  } else {
+    return value;
+  }
+}
