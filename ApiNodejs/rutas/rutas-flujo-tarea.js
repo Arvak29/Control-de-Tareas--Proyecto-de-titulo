@@ -3,7 +3,7 @@ const router = Router();
 const BD = require('../config/configbd');
 
 //Get especifico de vista
-router.get('/api-flujo/getVista_Flujo_Tarea/:id', async (req, res) => {
+router.get('/api-flujo-tarea/getVista_Flujo_Tarea/:id', async (req, res) => {
     const { id } = req.params;
     sql = "select * from vista_flujo_tarea where id_ft =:id";
 
@@ -29,7 +29,7 @@ router.get('/api-flujo/getVista_Flujo_Tarea/:id', async (req, res) => {
 })
 
 //Get de todo la vista
-router.get('/api-flujo/getVista_Flujos_Tareas', async (req, res) => {
+router.get('/api-flujo-tarea/getVista_Flujos_Tareas', async (req, res) => {
     sql = "select * from vista_flujo_tarea";
 
     let result = await BD.Open(sql, [], false);
@@ -54,7 +54,7 @@ router.get('/api-flujo/getVista_Flujos_Tareas', async (req, res) => {
 })
 
 //Get especifico sin responsable
-router.get('/api-flujo/getFlujoTarea/:id', async (req, res) => {
+router.get('/api-flujo-tarea/getFlujoTarea/:id', async (req, res) => {
     const { id } = req.params;
     sql = "select * from flujo_tarea where id_ft =:id";
 
@@ -79,7 +79,7 @@ router.get('/api-flujo/getFlujoTarea/:id', async (req, res) => {
 })
 
 //Get de todo sin responsable
-router.get('/api-flujo/getFlujosTareas', async (req, res) => {
+router.get('/api-flujo-tarea/getFlujosTareas', async (req, res) => {
     sql = "select * from flujo_tarea";
 
     let result = await BD.Open(sql, [], false);
@@ -103,7 +103,7 @@ router.get('/api-flujo/getFlujosTareas', async (req, res) => {
 })
 
 //Agregar
-router.post('/addFlujoTarea', async (req, res) => {
+router.post('/api-flujo-tarea/addFlujo_Tarea', async (req, res) => {
     const { id_ft, nombre_ft, descripcion_ft, fecha_inicio_ft, fecha_entrega_ft, porcentaje_avance_ft, estado_ft} = req.body;
 
     sql = "insert into flujo_tarea(id_ft, nombre_ft, descripcion_ft, fecha_inicio_ft, fecha_entrega_ft, porcentaje_avance_ft, estado_ft) values (:id_ft, :nombre_ft, :descripcion_ft, :fecha_inicio_ft, :fecha_entrega_ft, :porcentaje_avance_ft, :estado_ft)";
@@ -122,7 +122,7 @@ router.post('/addFlujoTarea', async (req, res) => {
 })
 
 //Actualizar
-router.patch("/api-flujo/UpdateFlujoTarea/:id", async (req, res) => {
+router.patch("/api-flujo-tarea/UpdateFlujo_Tarea/:id", async (req, res) => {
     const { id } = req.params;
     const { id_ft, nombre_ft, descripcion_ft, fecha_inicio_ft, fecha_entrega_ft, porcentaje_avance_ft, estado_ft} = req.body;
     
@@ -142,7 +142,7 @@ router.patch("/api-flujo/UpdateFlujoTarea/:id", async (req, res) => {
 })
 
 //Borrar
-router.delete("/deleteFlujoTarea/:id", async (req, res) => {
+router.delete("/api-flujo-tarea/deleteFlujo_Tarea/:id", async (req, res) => {
     const { id } = req.params;
 
     sql = "delete flujo_tarea where id_ft=:id";

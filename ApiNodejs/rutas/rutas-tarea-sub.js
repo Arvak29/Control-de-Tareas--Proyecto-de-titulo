@@ -54,7 +54,7 @@ router.get('/api-tarea-sub/getVista_Tareas_Sub', async (req, res) => {
 })
 
 //Get especifico
-router.get('/getTareaSub/:id', async (req, res) => {
+router.get('/getTarea_Sub/:id', async (req, res) => {
     const { id } = req.params;
     sql = "select * from tarea_subordinada where id_ts =:id";
 
@@ -79,7 +79,7 @@ router.get('/getTareaSub/:id', async (req, res) => {
 })
 
 //Get de todo
-router.get('/getTareasSub', async (req, res) => {
+router.get('/getTareas_Sub', async (req, res) => {
     sql = "select * from tarea_subordinada";
 
     let result = await BD.Open(sql, [], false);
@@ -103,7 +103,7 @@ router.get('/getTareasSub', async (req, res) => {
 })
 
 //Agregar
-router.post('/addTareaSub', async (req, res) => {
+router.post('/addTarea_Sub', async (req, res) => {
     const { id_ts, nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts} = req.body;
 
     sql = "insert into tarea_subordinada(id_ts, nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts) values (:id_ts, :nombre_ts, :descripcion_ts, :fecha_inicio_ts, :fecha_entrega_ts, :porcentaje_avance_ts, :estado_ts)";
@@ -122,7 +122,7 @@ router.post('/addTareaSub', async (req, res) => {
 })
 
 //Actualizar
-router.patch("/UpdateTareaSub/:id", async (req, res) => {
+router.patch("/UpdateTarea_Sub/:id", async (req, res) => {
     const { id } = req.params;
     const { id_ts, nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts} = req.body;
 
@@ -142,7 +142,7 @@ router.patch("/UpdateTareaSub/:id", async (req, res) => {
 })
 
 //Borrar
-router.delete("/deleteTareaSub/:id", async (req, res) => {
+router.delete("/deleteTarea_Sub/:id", async (req, res) => {
     const { id } = req.params;
 
     sql = "delete tarea_subordinada where id_ts=:id";

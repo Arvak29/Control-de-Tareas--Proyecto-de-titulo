@@ -90,7 +90,7 @@ router.get("/api-asig-tarea/getAsig_Tarea_t/:id", async (req, res) => {
   });
 
 //Get de todo
-router.get('/api-asig-tarea/getAsigTareas', async (req, res) => {
+router.get('/api-asig-tarea/getAsig_Tareas', async (req, res) => {
   sql = "select * from asignacion_tarea";
 
   let result = await BD.Open(sql, [], false);
