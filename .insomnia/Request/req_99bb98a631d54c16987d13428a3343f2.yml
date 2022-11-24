@@ -1,9 +1,9 @@
 _id: req_99bb98a631d54c16987d13428a3343f2
 type: Request
 parentId: fld_48bbf179705c457f9c2a33918637826c
-modified: 1668634283296
+modified: 1669251162006
 created: 1668632958072
-url: http://localhost:3000/addAsigTarea
+url: http://localhost:3000/api-asig-tarea/api-asig-tarea/addAsig_Tarea
 name: Add asignacion tarea
 description: ""
 method: POST

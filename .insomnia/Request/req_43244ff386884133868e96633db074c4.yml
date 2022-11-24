@@ -1,9 +1,9 @@
 _id: req_43244ff386884133868e96633db074c4
 type: Request
 parentId: fld_8ea96a94422e4681a1b9182e6eaec5ab
-modified: 1668464945574
+modified: 1669251288458
 created: 1668463823691
-url: http://localhost:3000/getAsigTareasSub
+url: http://localhost:3000/getAsig_Tareas_Sub
 name: Get asignaciones tareas sub
 description: ""
 method: GET

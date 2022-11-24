@@ -1,9 +1,9 @@
 _id: req_2a87b21b116b4b758090b40f183d10cf
 type: Request
 parentId: fld_8ea96a94422e4681a1b9182e6eaec5ab
-modified: 1668464933694
+modified: 1669251282940
 created: 1668463823684
-url: http://localhost:3000/getAsigTareaSub_us/1
+url: http://localhost:3000/getAsig_TareaSub_us/1
 name: Get asignacion tarea sub por id usuario
 description: ""
 method: GET

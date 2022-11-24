@@ -1,9 +1,9 @@
 _id: req_e321f125fb534381877dce90bdcdc891
 type: Request
 parentId: fld_8ea96a94422e4681a1b9182e6eaec5ab
-modified: 1668634581833
+modified: 1669251331075
 created: 1668632948831
-url: http://localhost:3000/deleteAsigTareaSub/1
+url: http://localhost:3000/deleteAsig_Tarea_Sub/1
 name: "Delete asignacion tarea sub "
 description: ""
 method: DELETE

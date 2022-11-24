@@ -1,9 +1,9 @@
 _id: req_a4bc2d1d50f94901a90f66438625e377
 type: Request
 parentId: fld_001480faa886407380703a364346a9cf
-modified: 1668290795158
+modified: 1669251408255
 created: 1668290731978
-url: http://localhost:3000/getTareasSub
+url: http://localhost:3000/getTareas_Sub
 name: Get tareas subordinada
 description: ""
 method: GET

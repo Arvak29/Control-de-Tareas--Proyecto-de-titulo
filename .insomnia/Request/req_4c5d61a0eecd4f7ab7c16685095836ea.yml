@@ -1,9 +1,9 @@
 _id: req_4c5d61a0eecd4f7ab7c16685095836ea
 type: Request
 parentId: fld_f917899982a04c4c9b2847ec7293ff18
-modified: 1669157049416
+modified: 1669250777841
 created: 1669156917512
-url: http://localhost:3000/api-flujo/getVista_Flujo_Tarea/1
+url: http://localhost:3000/api-flujo-tarea/getVista_Flujo_Tarea/1
 name: Get vista flujo de tarea
 description: ""
 method: GET
