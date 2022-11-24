@@ -96,7 +96,7 @@ CREATE TABLE ASIGNACION_TAREA (
     justificacion_at        VARCHAR2(300),
     CONSTRAINT ASIG_T_USUARIO FOREIGN KEY (id_u_at) REFERENCES USUARIO (id_u),
     CONSTRAINT ASIG_T_TAREA FOREIGN KEY (id_t_at) REFERENCES TAREA (id_t),
-    CONSTRAINT asig_t_pk PRIMARY KEY (id_u_at, id_t_at)
+    CONSTRAINT asig_t_pk PRIMARY KEY (id_t_at)
 );
 
 CREATE TABLE ASIGNACION_TAREA_SUBORDINADA (
@@ -106,7 +106,7 @@ CREATE TABLE ASIGNACION_TAREA_SUBORDINADA (
     justificacion_ats         VARCHAR2(300),
     CONSTRAINT ASIG_TS_USUARIO FOREIGN KEY (id_u_ats) REFERENCES USUARIO (id_u),
     CONSTRAINT ASIG_TS_TAREA FOREIGN KEY (id_ts_ats) REFERENCES TAREA_SUBORDINADA (id_ts),
-    CONSTRAINT asig_ts_pk PRIMARY KEY (id_u_ats, id_ts_ats)
+    CONSTRAINT asig_ts_pk PRIMARY KEY (id_ts_ats)
 );
 
 CREATE TABLE EJECUCION_FLUJO_TAREA(
@@ -116,7 +116,7 @@ CREATE TABLE EJECUCION_FLUJO_TAREA(
     justificacion_eft        VARCHAR2(300),
     CONSTRAINT EJEC_FT_USUARIO FOREIGN KEY (id_u_eft) REFERENCES USUARIO (id_u),
     CONSTRAINT EJEC_FT_TAREA FOREIGN KEY (id_ft_eft) REFERENCES FLUJO_TAREA (id_ft),
-    CONSTRAINT ejec_ft_pk PRIMARY KEY (id_u_eft, id_ft_eft)
+    CONSTRAINT ejec_ft_pk PRIMARY KEY (id_ft_eft)
 );
 
 -----------------------------------------------------------------------------------------------------------------------------------
@@ -169,7 +169,6 @@ INSERT INTO TAREA VALUES ('2', 'Programación de portafolio', 'Proceso de progra
 INSERT INTO TAREA VALUES ('3', 'Programación de portafolio', 'Proceso de programación de página web en base al caso N°5', '08-09-2022', '31-12-2022', '0', 'En curso');
 
 INSERT INTO FLUJO_TAREA VALUES ('1', 'Programación de portafolio', 'Proceso de programación de página web en base al caso N°5', '02-08-2022', '03-09-2022', '0', 'En curso');
-
 
 INSERT INTO TAREA_SUBORDINADA VALUES ('1', 'Programación de modulo de mantención', 'Proceso de programación de la vista de la página web del modulo de manteción en base al caso N°5', '02-08-2022', '03-09-2022', '0', 'En curso', 1, 1);
 
@@ -293,21 +292,21 @@ ORDER BY ft.id_ft DESC;
 CREATE OR REPLACE VIEW VISTA_ASIGNACION_TAREA AS
 SELECT t.id_t, u.nombre_u, t.nombre_t, at.respuesta_at, at.justificacion_at
 FROM asignacion_tarea AT 
-JOIN usuario U
+LEFT JOIN usuario U
 ON (at.id_u_at = u.id_u)
-JOIN tarea T
+LEFT JOIN tarea T
 ON (at.id_t_at = t.id_t)
 ORDER BY t.id_t DESC;
 
 /* VISTA ASIGNACION_TAREA_SUBORDINADA */
 
-CREATE OR REPLACE VIEW VISTA_ASIGNACION_TAREA_SUBORDINADA AS
-SELECT ts.id_ts, u.nombre_u, ts.nombre_ts, at.respuesta_ats, at.justificacion_ats
-FROM asignacion_tarea_subordinada AT 
-JOIN usuario U
-ON (at.id_u_ats = u.id_u)
-JOIN tarea_subordinada TS
-ON (at.id_ts_ats = ts.id_ts)
+CREATE OR REPLACE VIEW VISTA_ASIGNACION_TAREA_SUB AS
+SELECT ts.id_ts, u.nombre_u, ts.nombre_ts, ats.respuesta_ats, ats.justificacion_ats
+FROM asignacion_tarea_subordinada ATS 
+LEFT JOIN usuario U
+ON (ats.id_u_ats = u.id_u)
+LEFT JOIN tarea_subordinada TS
+ON (ats.id_ts_ats = ts.id_ts)
 ORDER BY ts.id_ts DESC;
 
 /* VISTA EJECUCION FLUJO TAREA */
@@ -315,9 +314,9 @@ ORDER BY ts.id_ts DESC;
 CREATE OR REPLACE VIEW VISTA_EJECUCION_FLUJO_TAREA AS
 SELECT ft.id_ft, u.nombre_u, ft.nombre_ft, at.respuesta_eft, at.justificacion_eft
 FROM ejecucion_flujo_tarea AT 
-JOIN usuario U
+LEFT JOIN usuario U
 ON (at.id_u_eft = u.id_u)
-JOIN flujo_tarea FT
+LEFT JOIN flujo_tarea FT
 ON (at.id_ft_eft = ft.id_ft)
 ORDER BY ft.id_ft DESC;
 
@@ -361,6 +360,73 @@ END AFTER EACH ROW;
     END AFTER STATEMENT;
 END TGR_CALC_AVANCE_TAREA;
 
+/* TRIGGER DE ASIGNACIÓN DE ID DE TAREA */
+
+CREATE OR REPLACE TRIGGER TGR_ASIG_ID_TAREA
+FOR INSERT ON tarea
+COMPOUND TRIGGER
+TYPE r_tarea_type IS RECORD(
+    id_t tarea.id_t%TYPE
+);
+
+TYPE t_tarea_type IS TABLE OF r_tarea_type
+    INDEX BY PLS_INTEGER;
+    
+t_tarea t_tarea_type;
+
+AFTER EACH ROW IS
+BEGIN
+t_tarea (t_tarea.COUNT +1).id_t := :NEW.id_t;
+END AFTER EACH ROW;
+    AFTER STATEMENT IS
+                V_ID NUMBER(10);
+                CURSOR c_t IS SELECT id_t FROM tarea;
+            BEGIN
+            DELETE FROM asignacion_tarea;
+                for v_fila in c_t 
+                LOOP
+                    SELECT id_t
+                    INTO V_ID
+                    FROM tarea
+                    WHERE v_fila.id_t = id_t;
+                    INSERT INTO asignacion_tarea(id_u_at, id_t_at, respuesta_at) VALUES (NULL, V_ID, 'Pendiente');
+                    END LOOP;
+    END AFTER STATEMENT;
+END TGR_ASIG_ID_TAREA;
+
+/* TRIGGER DE ASIGNACIÓN DE ID DE TAREA SUBORDINADA */
+
+CREATE OR REPLACE TRIGGER TGR_ASIG_ID_TAREA_SUB
+FOR INSERT ON tarea_subordinada
+COMPOUND TRIGGER
+TYPE r_tarea_sub_type IS RECORD(
+    id_ts tarea_subordinada.id_t%TYPE
+);
+
+TYPE t_tarea_sub_type IS TABLE OF r_tarea_sub_type
+    INDEX BY PLS_INTEGER;
+    
+t_tarea_sub t_tarea_sub_type;
+
+AFTER EACH ROW IS
+BEGIN
+t_tarea_sub (t_tarea_sub.COUNT +1).id_ts := :NEW.id_ts;
+END AFTER EACH ROW;
+    AFTER STATEMENT IS
+                V_ID NUMBER(10);
+                CURSOR c_ts IS SELECT id_ts FROM tarea_subordinada;
+            BEGIN
+            DELETE FROM asignacion_tarea_subordinada;
+                for v_fila in c_ts 
+                LOOP
+                    SELECT id_ts
+                    INTO V_ID
+                    FROM tarea_subordinada
+                    WHERE v_fila.id_ts = id_ts;
+                    INSERT INTO asignacion_tarea_subordinada(id_u_ats, id_ts_ats, respuesta_ats) VALUES (NULL, V_ID, 'Pendiente');
+                    END LOOP;
+    END AFTER STATEMENT;
+END TGR_ASIG_ID_TAREA_SUB;
 -----------------------------------------------------------------------------------------------------------------------------------
 /* Calculo varias filas de tarea FUNCIONAL */
 
