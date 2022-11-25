@@ -5,81 +5,106 @@ const BD = require('../config/configbd');
 
 //Get especifico
 router.get('/getRol/:id', async (req, res) => {
-    const { id } = req.params;
-    sql = "select * from rol where id_r =:id";
 
-    let result = await BD.Open(sql, [id], false);
-    Rol = [];
+    try{
+        const { id } = req.params;
+        sql = "select * from rol where id_r =:id";
 
-    result.rows.map(rol => {
-        let rolSchema = {
-            "id_r": rol[0],
-            "nombre_r": rol[1]
-        }
+        let result = await BD.Open(sql, [id], false);
+        Rol = [];
 
-        Rol.push(rolSchema);
-    })
-    
-    res.json(Rol);
+        result.rows.map(rol => {
+            let rolSchema = {
+                "id_r": rol[0],
+                "nombre_r": rol[1]
+            }
+
+            Rol.push(rolSchema);
+        })
+        
+        res.json(Rol);
+    } catch (error){
+        return res.status(500).json({message: 'Hubo un error'})
+    }
 })
 
 //Get de todo
 router.get('/api-rol/getRoles', async (req, res) => {
-    sql = "select * from rol";
 
-    let result = await BD.Open(sql, [], false);
-    Roles = [];
+    try{
+        sql = "select * from rol";
 
-    result.rows.map(rol => {
-        let rolesSchema = {
-            "id_r": rol[0],
-            "nombre_r": rol[1]
-        }
+        let result = await BD.Open(sql, [], false);
+        Roles = [];
 
-        Roles.push(rolesSchema);
-    })
+        result.rows.map(rol => {
+            let rolesSchema = {
+                "id_r": rol[0],
+                "nombre_r": rol[1]
+            }
 
-    res.json(Roles);
+            Roles.push(rolesSchema);
+        })
+
+        res.json(Roles);
+    } catch (error){
+        return res.status(500).json({message: 'Hubo un error'})
+    }
 })
 
 //Agregar
 router.post('/addRol', async (req, res) => {
-    const { id_r, nombre_r} = req.body;
 
-    sql = "insert into rol(id_r, nombre_r) values (:id_r, :nombre_r)";
+    try{
+        const { id_r, nombre_r} = req.body;
 
-    await BD.Open(sql, [id_r, nombre_r], true);
+        sql = "insert into rol(id_r, nombre_r) values (:id_r, :nombre_r)";
 
-    res.status(200).json({
-        "id_r": id_r,
-        "nombre_r": nombre_r
-    })
+        await BD.Open(sql, [id_r, nombre_r], true);
+
+        res.status(200).json({
+            "id_r": id_r,
+            "nombre_r": nombre_r
+        })
+    } catch (error){
+        return res.status(500).json({message: 'Hubo un error'})
+    }
 })
 
 //Actualizar
 router.patch("/UpdateRol/:id", async (req, res) => {
-    const { id } = req.params;
-    const { id_r, nombre_r} = req.body;
-    
-    sql = "update rol set nombre_r=:nombre_r where id_r=:id";
 
-    await BD.Open(sql, [nombre_r, id], true);
+    try{
+        const { id } = req.params;
+        const { id_r, nombre_r} = req.body;
+        
+        sql = "update rol set nombre_r=:nombre_r where id_r=:id";
 
-    res.status(200).json({
-            "id_r": id_r,
-            "nombre_r": nombre_r
-        })
+        await BD.Open(sql, [nombre_r, id], true);
+
+        res.status(200).json({
+                "id_r": id_r,
+                "nombre_r": nombre_r
+            })
+        } catch (error){
+            return res.status(500).json({message: 'Hubo un error'})
+        }
 })
 
 //Borrar
 router.delete("/deleteRol/:id", async (req, res) => {
-    const { id } = req.params;
 
-    sql = "delete rol where id_r=:id";
+    try{
+        const { id } = req.params;
 
-    await BD.Open(sql, [id], true);
+        sql = "delete rol where id_r=:id";
 
-    res.json({ msg: "Rol eliminado" })
+        await BD.Open(sql, [id], true);
+
+        res.json({ msg: "Rol eliminado" })
+    } catch (error){
+        return res.status(500).json({message: 'Hubo un error'})
+    }
 })
 
 module.exports = router;

@@ -5,81 +5,106 @@ const BD = require('../config/configbd');
 
 //Get especifico
 router.get('/getEmpresa/:id', async (req, res) => {
-    const { id } = req.params;
-    sql = "select * from empresa where id_e =:id";
 
-    let result = await BD.Open(sql, [id], false);
-    Empresa = [];
+    try{
+        const { id } = req.params;
+        sql = "select * from empresa where id_e =:id";
 
-    result.rows.map(empresa => {
-        let empresaSchema = {
-            "id_e": empresa[0],
-            "nombre_e": empresa[1]
-        }
+        let result = await BD.Open(sql, [id], false);
+        Empresa = [];
 
-        Empresa.push(empresaSchema);
-    })
-    
-    res.json(Empresa);
+        result.rows.map(empresa => {
+            let empresaSchema = {
+                "id_e": empresa[0],
+                "nombre_e": empresa[1]
+            }
+
+            Empresa.push(empresaSchema);
+        })
+        
+        res.json(Empresa);
+    } catch (error){
+        return res.status(500).json({message: 'Hubo un error'})
+    }
 })
 
 //Get de todo
 router.get('/api-empresa/getEmpresas', async (req, res) => {
-    sql = "select * from empresa";
 
-    let result = await BD.Open(sql, [], false);
-    Empresas = [];
+    try{
+        sql = "select * from empresa";
 
-    result.rows.map(empresa => {
-        let empresasSchema = {
-            "id_e": empresa[0],
-            "nombre_e": empresa[1]
-        }
+        let result = await BD.Open(sql, [], false);
+        Empresas = [];
 
-        Empresas.push(empresasSchema);
-    })
-    
-    res.json(Empresas);
+        result.rows.map(empresa => {
+            let empresasSchema = {
+                "id_e": empresa[0],
+                "nombre_e": empresa[1]
+            }
+
+            Empresas.push(empresasSchema);
+        })
+        
+        res.json(Empresas);
+    } catch (error){
+        return res.status(500).json({message: 'Hubo un error'})
+    }
 })
 
 //Agregar
 router.post('/addEmpresa', async (req, res) => {
-    const { id_e, nombre_e} = req.body;
 
-    sql = "insert into empresa(id_e, nombre_e) values (:id_e, :nombre_e)";
-    
-    await BD.Open(sql, [id_e, nombre_e], true);
+    try{
+        const { id_e, nombre_e} = req.body;
 
-    res.status(200).json({
-        "id_e": id_e,
-        "nombre_e": nombre_e
-    })
+        sql = "insert into empresa(id_e, nombre_e) values (:id_e, :nombre_e)";
+        
+        await BD.Open(sql, [id_e, nombre_e], true);
+
+        res.status(200).json({
+            "id_e": id_e,
+            "nombre_e": nombre_e
+        })
+        } catch (error){
+        return res.status(500).json({message: 'Hubo un error'})
+    }
 })
 
 //Actualizar
 router.patch("/UpdateEmpresa/:id", async (req, res) => {
-    const { id } = req.params;
-    const { id_e, nombre_e} = req.body;
-    
-    sql = "update empresa set nombre_e=:nombre_e where id_e=:id";
 
-    await BD.Open(sql, [nombre_e, id], true);
+    try{
+        const { id } = req.params;
+        const { id_e, nombre_e} = req.body;
+        
+        sql = "update empresa set nombre_e=:nombre_e where id_e=:id";
 
-    res.status(200).json({
-        "id_e": id_e,
-        "nombre_e": nombre_e
-    })
+        await BD.Open(sql, [nombre_e, id], true);
+
+        res.status(200).json({
+            "id_e": id_e,
+            "nombre_e": nombre_e
+        })
+        } catch (error){
+        return res.status(500).json({message: 'Hubo un error'})
+    }
 })
 
 //Borrar
 router.delete("/deleteEmpresa/:id", async (req, res) => {
-    const { id } = req.params;
 
-    sql = "delete empresa where id_e=:id";
+    try{
+        const { id } = req.params;
 
-    await BD.Open(sql, [id], true);
+        sql = "delete empresa where id_e=:id";
 
-    res.json({ msg: "Empresa eliminada" })
+        await BD.Open(sql, [id], true);
+
+        res.json({ msg: "Empresa eliminada" })
+        } catch (error){
+        return res.status(500).json({message: 'Hubo un error'})
+    }
 })
 
 module.exports = router;
