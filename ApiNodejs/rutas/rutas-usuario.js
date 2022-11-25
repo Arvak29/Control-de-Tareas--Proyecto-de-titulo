@@ -45,7 +45,6 @@ router.get("/api-usuario/getVista_Usuarios", async (req, res) => {
 
     Vista_Usuarios.push(vista_usuariosSchema);
   })
-
   res.json(Vista_Usuarios);
 })
 

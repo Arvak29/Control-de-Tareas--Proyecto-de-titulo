@@ -321,6 +321,19 @@ ON (at.id_ft_eft = ft.id_ft)
 ORDER BY ft.id_ft DESC;
 
 -----------------------------------------------------------------------------------------------------------------------------------
+/*/// PROCEDURE ///*/
+/* PROCEDURE TERMINAR_TAREA*/
+CREATE OR REPLACE PROCEDURE TERMINAR_TAREA(
+    t_id_t NUMBER
+)
+IS
+BEGIN
+  UPDATE tarea
+  SET estado_t = 'Terminada'
+  WHERE id_t = t_id_t;
+END;
+-----------------------------------------------------------------------------------------------------------------------------------
+/*/// VISTAS ///*/
 /* TRIGGER CALCULO AVANCE TAREA FUNCIONAL*/
 
 CREATE OR REPLACE TRIGGER TGR_CALC_AVANCE_TAREA
