@@ -10,6 +10,7 @@ import { TareaService } from 'src/app/services/tarea.service';
 })
 export class HistorialComponent implements OnInit {
   ListarTarea: Tareas[] = [];
+  
 
   constructor(private TareaService: TareaService) {}
 
@@ -20,7 +21,7 @@ export class HistorialComponent implements OnInit {
   }
 
   listarTarea() {
-    this.TareaService.getTareas().subscribe(
+    this.TareaService.getHistorialTareas().subscribe(
       (res) => {
         console.log(res);
         this.ListarTarea = <any>res;

@@ -120,6 +120,34 @@ router.get('/api-tarea/getTareas', async (req, res) => {
     }
 })
 
+router.get('/api-tarea/getHistorialTareas', async (req, res) => {
+    
+    try{
+        sql = "select * from tarea where estado_t = 'Terminada'";
+
+        let result = await BD.Open(sql, [], false);
+        Tareas = [];
+
+        result.rows.map(tarea => {
+            let tareasSchema = {
+                "id_t": tarea[0],
+                "nombre_t": tarea[1],
+                "descripcion_t": tarea[2],
+                "fecha_inicio_t": tarea[3],
+                "fecha_entrega_t": tarea[4],
+                "porcentaje_avance_t": tarea[5],
+                "estado_t": tarea[6]
+            }
+
+            Tareas.push(tareasSchema);
+        })
+
+        res.json(Tareas);
+    } catch (error){
+        return res.status(500).json({message: 'Hubo un error'})
+    }
+})
+
 //agregar
 router.post('/api-tarea/addTarea/', async (req, res) => {
     

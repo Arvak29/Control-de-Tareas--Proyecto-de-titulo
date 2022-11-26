@@ -13,7 +13,12 @@ export class TareaService {
     return this.http.get('/api-tarea/getVista_Tarea/' + id);
   }
 
-  //get tarea
+  //get tareas
+  getHistorialTareas() {
+    return this.http.get('/api-tarea/getHistorialTareas');
+  }
+
+  //get tareas
   getTareas() {
     return this.http.get('/api-tarea/getTareas');
   }
