@@ -3,7 +3,7 @@
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-11 col-md-7 col-lf-4 col-xl-4 col-xxl-5">
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
-        <app-card-header [titulo]="tarea.nombre_t"></app-card-header>
+        <app-card-header [titulo]="'Nombre'"></app-card-header>
         <div class="card-body text-center">
           <div class="form-floating mb-3">
             <input
@@ -14,13 +14,26 @@
               name="nombre_tarea"
             />
           </div>
-          <h5 class="color5">Estado</h5>
-          <h6>En curso</h6>
+        </div>
+      </div>
+      <br/>
+      <div class="card text-white bg shadow-lg border-0 rounded-lg">
+        <app-card-header [titulo]="'Estado'"></app-card-header>
+        <div class="card-body text-center">
+          <div class="form-floating mb-3">
+            <input
+              [(ngModel)]="tarea.estado_t"
+              class="form-control"
+              id="inputNombre"
+              type="text"
+              name="nombre_tarea"
+            />
+          </div>
         </div>
       </div>
       <br />
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
-        <app-card-header [titulo]="'Fecha de termino'"></app-card-header>
+        <app-card-header [titulo]="'Fechas'"></app-card-header>
         <div class="card-body">
           <div class="row text-between">
             <div class="col">
@@ -234,7 +247,7 @@
         </div>
         <br />
         <div class="row text-center">
-          <button type="button" class="btn btn-primary">alertar</button>
+          <button type="button" class="btn btn-primary">Alertar</button>
         </div>
         <br />
         <div class="row text-center">
