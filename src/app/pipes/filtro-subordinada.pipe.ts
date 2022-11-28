@@ -8,7 +8,7 @@ export class FiltroSubordinadaPipe implements PipeTransform {
     const resultado = [];
     for (const tareasub of value) {
       if (
-        tareasub.nombre_tarea_sub.toLowerCase().indexOf(arg.toLowerCase()) > -1
+        tareasub.nombre_ts.toLowerCase().indexOf(arg.toLowerCase()) > -1
       ) {
         resultado.push(tareasub);
       }

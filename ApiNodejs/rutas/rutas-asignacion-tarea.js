@@ -14,6 +14,7 @@ router.get('/api-asig-tarea/getVista_Asig_Tarea/:id', async (req, res) => {
 
       result.rows.map(vista_asignacion_tarea => {
           let vista_asignacion_tareaSchema = {
+              "id_t": vista_asignacion_tarea[0],
               "nombre_u": vista_asignacion_tarea[1],
               "nombre_t": vista_asignacion_tarea[2],
               "respuesta_at": vista_asignacion_tarea[3],
@@ -82,7 +83,7 @@ router.get("/api-asig-tarea/getAsig_Tarea_us/:id", async (req, res) => {
     }
   });
 
-//Get especifico por tarea
+//Get especifico por tarea (CAMBIOS)
 router.get("/api-asig-tarea/getAsig_Tarea_t/:id", async (req, res) => {
 
   try{
@@ -180,7 +181,6 @@ router.patch("/api-asig-tarea/updateAsig_Tarea/:id", async (req, res) => {
 
 //Borrar
 router.delete("/api-asig-tarea/deleteAsig_Tarea/:id", async (req, res) => {
-
   try{
       const { id } = req.params;
 

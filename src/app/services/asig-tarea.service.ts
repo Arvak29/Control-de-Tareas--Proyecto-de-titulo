@@ -12,6 +12,10 @@ export class AsigTareaService {
   getVistaAsigTarea(id: string) {
     return this.http.get('/api-asig-tarea/getVista_Asig_Tarea/' + id);
   }
+  //get una vista de asignacion de tarea (NUEVO)
+  getAsigTarea(id: string) {
+    return this.http.get('/api-asig-tarea/getAsig_Tarea_t/' + id);
+  }
 
   //agregar una asignacion
   addAsigTarea(asigtarea: AgregarAsigTarea) {
@@ -30,23 +34,24 @@ export class AsigTareaService {
 }
 
 export interface AsigTarea {
-    id_u_at?: string;
-    id_t_at?: string;
-    respuesta_at?: string;
-    justificacion_at?: string;
-  }
+  id_t?: string;
+  nombre_u?: string;
+  nombre_t?: string;
+  respuesta_at?: string;
+  justificacion_at?: string;
+}
   
 export interface VistaAsigTarea {
-    id_u_at?: string;
-    id_t_at?: string;
-    respuesta_at?: string;
-    justificacion_at?: string;
-  }
+  id_u_at?: string;
+  id_t_at?: string;
+  respuesta_at?: string;
+  justificacion_at?: string;
+}
 
-  export interface AgregarAsigTarea {
-    id_u_at?: string;
-    id_t_at?: string;
-    respuesta_at?: string;
-    justificacion_at?: string;
-  }
+export interface AgregarAsigTarea {
+  id_u_at?: string;
+  id_t_at?: string;
+  respuesta_at?: string;
+  justificacion_at?: string;
+}
   

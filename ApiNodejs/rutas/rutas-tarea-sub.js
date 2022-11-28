@@ -33,6 +33,39 @@ router.get('/api-tarea-sub/getVista_Tarea_Sub/:id', async (req, res) => {
     }
 })
 
+//Get especifico de vista con tarea (Modificado)
+router.get('/api-tarea-sub/get_Tarea_Sub/:id', async (req, res) => {
+
+    try{
+        const { id } = req.params;
+        sql = "select * from TAREA_SUBORDINADA where id_t=:id";
+
+        let result = await BD.Open(sql, [id], false);
+        Vista_Tarea_Sub = [];
+
+        result.rows.map(vista_tarea_sub_tarea => {
+            let vista_tarea_subSchema = {
+                "id_ts": vista_tarea_sub_tarea[0],
+                "nombre_ts": vista_tarea_sub_tarea[1],
+                "descripcion_ts": vista_tarea_sub_tarea[2],
+                "fecha_inicio_ts": vista_tarea_sub_tarea[3],
+                "fecha_entrega_ts": vista_tarea_sub_tarea[4],
+                "porcentaje_avance_ts": vista_tarea_sub_tarea[5],
+                "estado_ts": vista_tarea_sub_tarea[6],
+                "id_t": vista_tarea_sub_tarea[7],
+                "id_ft": vista_tarea_sub_tarea[8]
+            }
+
+            Vista_Tarea_Sub.push(vista_tarea_subSchema);
+        })
+        
+        res.json(Vista_Tarea_Sub);
+        } catch (error){
+        return res.status(500).json({message: 'Hubo un error'})
+    }
+})
+
+
 //Get de todo la vista
 router.get('/api-tarea-sub/getVista_Tareas_Sub', async (req, res) => {
     
@@ -93,7 +126,7 @@ router.get('/getTarea_Sub/:id', async (req, res) => {
     }
 })
 
-//Get de todo
+//Get de todo (Modificado)
 router.get('/getTareas_Sub', async (req, res) => {
 
     try{
@@ -110,7 +143,9 @@ router.get('/getTareas_Sub', async (req, res) => {
                 "fecha_inicio_ts": tarea_subordinada[3],
                 "fecha_entrega_ts": tarea_subordinada[4],
                 "porcentaje_avance_ts": tarea_subordinada[5],
-                "estado_ts": tarea_subordinada[6]
+                "estado_ts": tarea_subordinada[6],
+                "id_t": tarea_subordinada[7],
+                "id_ft": tarea_subordinada[8]
             }
 
             Tareas_Subordinadas.push(tareas_subordinadasSchema);
@@ -126,11 +161,11 @@ router.get('/getTareas_Sub', async (req, res) => {
 router.post('/addTarea_Sub', async (req, res) => {
 
     try{
-        const { id_ts, nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts} = req.body;
+        const { id_ts, nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts, id_t, id_ft} = req.body;
 
-        sql = "insert into tarea_subordinada(id_ts, nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts) values (:id_ts, :nombre_ts, :descripcion_ts, :fecha_inicio_ts, :fecha_entrega_ts, :porcentaje_avance_ts, :estado_ts)";
+        sql = "insert into tarea_subordinada(id_ts, nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts, id_t, id_ft) values (:id_ts, :nombre_ts, :descripcion_ts, :fecha_inicio_ts, :fecha_entrega_ts, :porcentaje_avance_ts, :estado_ts, :id_t, :id_ft)";
 
-        await BD.Open(sql, [id_ts, nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts], true);
+        await BD.Open(sql, [id_ts, nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts, id_t, id_ft], true);
 
         res.status(200).json({
             "id_ts": id_ts,
@@ -139,7 +174,9 @@ router.post('/addTarea_Sub', async (req, res) => {
             "fecha_inicio_ts": fecha_inicio_ts,
             "fecha_entrega_ts": fecha_entrega_ts,
             "porcentaje_avance_ts": porcentaje_avance_ts,
-            "estado_ts": estado_ts
+            "estado_ts": estado_ts,
+            "id_t": id_t,
+            "id_ft": id_ft
         })
     } catch (error){
         return res.status(500).json({message: 'Hubo un error'})
@@ -172,7 +209,7 @@ router.patch("/UpdateTarea_Sub/:id", async (req, res) => {
 })
 
 //Borrar
-router.delete("/deleteTarea_Sub/:id", async (req, res) => {
+router.delete("/api-tarea-sub/deleteTarea_Sub/:id", async (req, res) => {
 
     try{
         const { id } = req.params;

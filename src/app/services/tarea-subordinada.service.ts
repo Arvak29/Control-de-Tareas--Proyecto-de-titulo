@@ -18,9 +18,9 @@ export class TareaSubordinadaService {
     return this.http.get(this.url);
   }
 
-  //get una tarea sub
+  //get una tarea sub (listar)
   getTareaSub(id: string) {
-    return this.http.get(this.url + '/' + id);
+    return this.http.get('/api-tarea-sub/get_Tarea_Sub/' + id);
   }
 
   //agregar una tarea sub
@@ -30,7 +30,7 @@ export class TareaSubordinadaService {
 
   //eliminar una tarea
   deleteTareasub(id: string) {
-    return this.http.delete(this.url + '/' + id);
+    return this.http.delete('/api-tarea-sub/deleteTarea_Sub/' + id);
   }
 
   //modificar una tarea

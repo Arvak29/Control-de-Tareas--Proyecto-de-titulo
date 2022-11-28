@@ -12,6 +12,10 @@ export class AsigTareaSubService {
   getVistaAsigTareaSub(id: string) {
     return this.http.get('/api-asig-tarea-sub/getVista_Asig_Tarea_Sub/' + id);
   }
+  //get una vista de asignacion de tarea subordinada (NUEVO) 
+  getVistaAsigTareasSub(id: string) {
+    return this.http.get('/api-asig-tarea-sub/getAsig_Tarea_Sub_t/' + id);
+  }
 
   //agregar una asignacion subordinada
   addAsigTareaSub(asigtareasub: AgregarAsigTareaSub) {

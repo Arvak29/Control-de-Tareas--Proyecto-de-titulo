@@ -35,7 +35,7 @@ export class TareaService {
 
   //eliminar un tarea
   deleteTarea(id: string) {
-    return this.http.delete(this.url + '/' + id);
+    return this.http.delete('/api-tarea/deleteTarea/' + id);
   }
 
   //modificar un tarea

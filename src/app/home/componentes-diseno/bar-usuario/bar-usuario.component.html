@@ -1,5 +1,11 @@
-<div class="bar-tarea my-1">
-  <div type="button" class="btn" (click)="modificar()">
+<div class="bar-tarea my-1" [ngSwitch]="funciones">
+  <div type="button" class="btn" *ngSwitchCase="1" (click)="modificar()">
+    <img class="circular" src="../assets/img/Perfil.png" alt="" />
+    <h6 class="text-start">
+      {{ nombre }}
+    </h6>
+  </div>
+  <div type="button" class="btn" *ngSwitchCase="2" (click)="crear_asig_tarea()">
     <img class="circular" src="../assets/img/Perfil.png" alt="" />
     <h6 class="text-start">
       {{ nombre }}

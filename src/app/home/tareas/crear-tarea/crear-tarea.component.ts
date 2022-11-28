@@ -36,8 +36,8 @@ export class CrearTareaComponent implements OnInit {
     this.Tarea_formulario = this.fb.group({
       nombre_tarea: ['', Validators.required],
       descripcion: ['', Validators.required],
-      fecha_inicio: [Date, Validators.required],
-      fecha_termino: [Date, Validators.required],
+      fecha_inicio: ['', Validators.required],
+      fecha_termino: ['', Validators.required],
     });
   }
 

@@ -56,7 +56,7 @@ router.get('/api-asig-sub/getVista_Asig_Tarea_Sub/:id', async (req, res) => {
   })
 
 //Get especifico por usuario
-router.get("/getAsig_Tarea_Sub_us/:id", async (req, res) => {
+router.get("/api-asig-sub/getAsig_Tarea_Sub_us/:id", async (req, res) => {
 
     try{
         const { id } = req.params;
@@ -83,7 +83,7 @@ router.get("/getAsig_Tarea_Sub_us/:id", async (req, res) => {
   });
 
 //Get especifico por tarea
-router.get("/getAsig_Tarea_Sub_t/:id", async (req, res) => {
+router.get("/api-asig-sub/getAsig_Tarea_Sub_t/:id", async (req, res) => {
 
     try{
         const { id } = req.params;
@@ -110,7 +110,7 @@ router.get("/getAsig_Tarea_Sub_t/:id", async (req, res) => {
   });
 
 //Get de todo
-router.get('/getAsig_Tareas_Sub', async (req, res) => {
+router.get('/api-asig-sub/getAsig_Tareas_Sub', async (req, res) => {
 
     try{
         sql = "select * from asignacion_tarea_subordinada";
@@ -136,7 +136,7 @@ router.get('/getAsig_Tareas_Sub', async (req, res) => {
   })
 
 //Agregar
-router.post('/addAsig_Tarea_Sub', async (req, res) => {
+router.post('/api-asig-sub/addAsig_Tarea_Sub', async (req, res) => {
 
     try{
         const {id_u_ats, id_ts_ats, respuesta_ats, justificacion_ats} = req.body;

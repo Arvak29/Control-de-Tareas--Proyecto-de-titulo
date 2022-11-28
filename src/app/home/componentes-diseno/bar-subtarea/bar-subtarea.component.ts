@@ -27,9 +27,10 @@ export class BarSubtareaComponent implements OnInit {
   }
 
   eliminar(id = this.id) {
-    this.TareaSubordinadaService.deleteTareasub('/' + id).subscribe(
+    this.TareaSubordinadaService.deleteTareasub(<any>this.id).subscribe(
       (res) => {
         console.log('tarea subordinada eliminado');
+        window.location.reload();
       },
       (err) => console.log(err)
     );
