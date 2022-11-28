@@ -136,8 +136,8 @@ router.get('/api-asig-sub/getAsig_Tareas_Sub', async (req, res) => {
   })
 
 //Agregar
-router.post('/api-asig-sub/addAsig_Tarea_Sub', async (req, res) => {
-
+router.post('/api-asig-tarea-sub/addAsig_Tarea_Sub/', async (req, res) => {
+    console.log("ESTE ENTRA Y DEJA LA CAGA")
     try{
         const {id_u_ats, id_ts_ats, respuesta_ats, justificacion_ats} = req.body;
 

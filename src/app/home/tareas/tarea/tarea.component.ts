@@ -86,10 +86,12 @@ export class TareaComponent implements OnInit {
     };
     if(this.id_usuario_crear_ts != undefined){
       this.TareaSubordinadaService.addTareaSub(TAREASUB).subscribe();
+      console.log( TAREASUB )
       this.crear_asig_tarea_sub();
     }else{
       //mensaje de error
       console.log("falta un responsable")
+      console.log( this.TareaSub_formulario )
     }
   }
   crear_asig_tarea_sub() {
@@ -99,9 +101,10 @@ export class TareaComponent implements OnInit {
       respuesta_ats: "Pendiente",
       justificacion_ats: "",
     };
+    console.log( ASIGTAREASUB )
     this.AsigTareaSubService.addAsigTareaSub(ASIGTAREASUB).subscribe();
 
-    //window.location.reload();
+    window.location.reload();
   }
   limpiarFormularioTareaSub()
   {

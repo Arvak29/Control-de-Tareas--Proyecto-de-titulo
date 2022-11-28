@@ -158,7 +158,7 @@ router.get('/getTareas_Sub', async (req, res) => {
 })
 
 //Agregar
-router.post('/addTarea_Sub', async (req, res) => {
+router.post('/api-tarea-sub/getTareas_Sub/', async (req, res) => {
 
     try{
         const { id_ts, nombre_ts, descripcion_ts, fecha_inicio_ts, fecha_entrega_ts, porcentaje_avance_ts, estado_ts, id_t, id_ft} = req.body;

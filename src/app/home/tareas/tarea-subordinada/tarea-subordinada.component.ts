@@ -7,6 +7,7 @@ import {
 } from 'src/app/services/tarea-subordinada.service';
 import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
 import { Location } from '@angular/common';
+import { AsigTarea } from 'src/app/services/asig-tarea.service';
 
 @Component({
   selector: 'app-tarea-subordinada',
@@ -18,7 +19,10 @@ export class TareaSubordinadaComponent implements OnInit {
   ListarUsuario: Usuario[] = [];
   filtroUsuario = '';
   ListarTareaSub: TareaSub[] = [];
+  ListarAsignTarea: AsigTarea[] = [];
   filtroSubordinada = '';
+  id_entrada: string = "";
+  mostrar_add_responsable: boolean = false;
 
   tareasub: Tarea_subordinada = {
     id_ts: '',
@@ -43,11 +47,12 @@ export class TareaSubordinadaComponent implements OnInit {
   ngOnInit(): void {
     this.listarUsuario();
 
-    const id_entrada = this.activeRouter.snapshot.params['id'];
-    console.log(id_entrada);
+    this.id_entrada = this.activeRouter.snapshot.params['id'];
+    console.log(this.id_entrada);
 
-    if (id_entrada) {
-      this.TareaSubordinadaService.getTareaSub(id_entrada).subscribe({
+
+    if (this.id_entrada) {
+      this.TareaSubordinadaService.getTareaSub(this.id_entrada).subscribe({
         next: (res: any) => {
           this.tareasub = <any>res[0];
           console.log(res);
@@ -59,6 +64,17 @@ export class TareaSubordinadaComponent implements OnInit {
 
   irAtras() {
     this.location.back();
+  }
+
+  listarTareaSub() {
+    this.TareaSubordinadaService.getTareaSub(this.id_entrada).subscribe(
+      (res) => {
+        console.log(res);
+          this.ListarTareaSub = <any>res;
+          console.log("asd: ")
+        },
+        (err) => console.log(err)
+      );
   }
 
   listarUsuario() {
