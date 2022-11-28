@@ -17,7 +17,7 @@ export class AsigTareaSubService {
     return this.http.get('/api-asig-tarea-sub/getAsig_Tarea_Sub_t/' + id);
   }
 
-  //agregar una asignacion subordinada
+  //agregar una asignacion subordinada (este)
   addAsigTareaSub(asigtareasub: AgregarAsigTareaSub) {
     return this.http.post('/api-asig-tarea-sub/addAsig_Tarea_Sub/', asigtareasub);
   }

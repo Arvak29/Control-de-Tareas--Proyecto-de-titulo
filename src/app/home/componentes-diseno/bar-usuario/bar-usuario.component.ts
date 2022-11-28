@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AsigTareaService, AgregarAsigTarea } from '../../../services/asig-tarea.service';
 
-
 @Component({
   selector: 'app-bar-usuario',
   templateUrl: './bar-usuario.component.html',
@@ -18,7 +17,7 @@ export class BarUsuarioComponent implements OnInit {
   constructor(private router: Router, 
     private activeRouter: ActivatedRoute,
     private UsuarioService: UsuarioService,
-    private AsigTareaService: AsigTareaService
+    private AsigTareaService: AsigTareaService,
     ) {}
 
   id_entrada: string = "";
@@ -44,4 +43,6 @@ export class BarUsuarioComponent implements OnInit {
 
     window.location.reload();
   }
+
+
 }

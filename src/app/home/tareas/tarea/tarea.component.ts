@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tareas } from 'src/app/models/tarea';
 import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
-import { TareaSub, TareaSubordinadaService} from 'src/app/services/tarea-subordinada.service';
+import { AgregarTareaSub, TareaSub, TareaSubordinadaService} from 'src/app/services/tarea-subordinada.service';
 import { AgregarTarea, Tarea, TareaService} from '../../../services/tarea.service';
 import { AsigTareaService, AsigTarea } from '../../../services/asig-tarea.service';
-import { AsigTareaSub, AsigTareaSubService } from 'src/app/services/asig-tarea-sub.service';
+import { AgregarAsigTareaSub, AsigTareaSub, AsigTareaSubService } from 'src/app/services/asig-tarea-sub.service';
 
 @Component({
   selector: 'app-tarea',
@@ -16,7 +16,10 @@ import { AsigTareaSub, AsigTareaSubService } from 'src/app/services/asig-tarea-s
 })
 export class TareaComponent implements OnInit {
   mostrar_add_responsable: boolean = false;
+  TareaSub_formulario: FormGroup;
   id_entrada: string = "";
+  public id_usuario_crear_ts: number | undefined;
+  public nombre_usuario_crear_ts: string | undefined;
   ListarAsignTarea: AsigTarea[] = [];
   ListarAsigTareaSub: AsigTareaSub[] = [];
   ListarUsuario: Usuario[] = [];
@@ -35,16 +38,24 @@ export class TareaComponent implements OnInit {
   };
 
   constructor(
+    private fb: FormBuilder,
     private TareaService: TareaService,
     private router: Router,
     private activeRouter: ActivatedRoute,
     private UsuarioService: UsuarioService,
-    private TareaSubordinadaService: TareaSubordinadaService,
     private AsigTareaService: AsigTareaService,
+    private TareaSubordinadaService: TareaSubordinadaService,
     private AsigTareaSubService: AsigTareaSubService
-  ) {}
+  ) {
+    this.TareaSub_formulario = this.fb.group({
+      nombre_ts: ['', Validators.required],
+      descripcion_ts: ['', Validators.required],
+      fecha_inicio_ts: ['', Validators.required],
+      fecha_entrega_ts: ['', Validators.required],
+    });
+  }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {   
     this.id_entrada = this.activeRouter.snapshot.params['id'];
     console.log(this.id_entrada);
 
@@ -63,13 +74,53 @@ export class TareaComponent implements OnInit {
     this.listarAsigTarea();
   }
 
+  crear_tarea_sub() {
+    const TAREASUB: AgregarTareaSub = {
+      nombre_ts: this.TareaSub_formulario.get('nombre_ts')?.value,
+      descripcion_ts: this.TareaSub_formulario.get('descripcion_ts')?.value,
+      fecha_inicio_ts: this.TareaSub_formulario.get('fecha_inicio_ts')?.value,
+      fecha_entrega_ts: this.TareaSub_formulario.get('fecha_entrega_ts')?.value,
+      porcentaje_avance_ts: 0,
+      estado_ts: "Pendiente",
+      id_t: this.id_entrada,
+    };
+    if(this.id_usuario_crear_ts != undefined){
+      this.TareaSubordinadaService.addTareaSub(TAREASUB).subscribe();
+      this.crear_asig_tarea_sub();
+    }else{
+      //mensaje de error
+      console.log("falta un responsable")
+    }
+  }
+  crear_asig_tarea_sub() {
+    const ASIGTAREASUB: AgregarAsigTareaSub = {
+      id_u_ats: this.id_usuario_crear_ts?.toString(),
+      id_ts_ats: this.id_entrada,
+      respuesta_ats: "Pendiente",
+      justificacion_ats: "",
+    };
+    this.AsigTareaSubService.addAsigTareaSub(ASIGTAREASUB).subscribe();
+
+    //window.location.reload();
+  }
+  limpiarFormularioTareaSub()
+  {
+    this.TareaSub_formulario.reset();
+    this.id_usuario_crear_ts = undefined;
+    this.nombre_usuario_crear_ts = undefined;
+  }
+
+  prueba(){
+    console.log(
+    this.id_usuario_crear_ts
+    )
+  }
+
   listarUsuario() {
     this.UsuarioService.getUsuarios().subscribe(
       (res) => {
         console.log(res);
-
           this.ListarUsuario = <any>res;
-
       },
       (err) => console.log(err)
     );

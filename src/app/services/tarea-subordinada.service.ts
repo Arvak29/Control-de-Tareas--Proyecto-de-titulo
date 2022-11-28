@@ -25,7 +25,7 @@ export class TareaSubordinadaService {
 
   //agregar una tarea sub
   addTareaSub(tarea: AgregarTareaSub) {
-    return this.http.post(this.url, tarea);
+    return this.http.post('/api-asig-sub/addAsig_Tarea_Sub', tarea);
   }
 
   //eliminar una tarea

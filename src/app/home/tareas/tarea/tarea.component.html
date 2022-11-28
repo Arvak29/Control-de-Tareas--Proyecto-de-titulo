@@ -206,10 +206,160 @@
           </div>
 
           <div class="col text-end">
-            <button class="btn btn-nav a" routerLink="/crear_subordinada">
+            <!-- Button trigger modal -->
+            <button
+              class="btn btn-nav a"
+              type="button"
+              (click)="limpiarFormularioTareaSub()"
+              data-bs-toggle="modal"
+              data-bs-target="#Modal_Tarea_subordinada"
+            >
               <i><img src="../assets/img/agregar.svg" alt="" /></i>
             </button>
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="Modal_Tarea_subordinada"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div
+                class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+              >
+                <div class="modal-content">
+                  <div class="modal-header text-white bg">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      Crear tarea subordinada
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close btn-close-white"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body text-white bg">
+
+                      <form
+                        [formGroup]="TareaSub_formulario"
+                        (ngSubmit)="crear_tarea_sub()"
+                      >
+                        <!--aqui-->
+                        <div class="form-floating mb-3">
+                          <input
+                            class="form-control"
+                            id="inputNombre"
+                            type="text"
+                            formControlName="nombre_ts"
+                            placeholder="nombre_ts"
+                            [class.is-invalid]="
+                              TareaSub_formulario.get('nombre_ts')?.touched &&
+                              TareaSub_formulario.get('nombre_ts')?.invalid
+                            "
+                          /><!--aqui-->
+                          <label for="name">Nombre</label>
+                        </div>
+            
+                        <div class="form-group">
+                          <label for="descripcion">Descripción</label>
+                          <textarea
+                            class="form-control"
+                            id="inputDescripcion"
+                            rows="3"
+                            formControlName="descripcion_ts"
+                            [class.is-invalid]="
+                              TareaSub_formulario.get('descripcion_ts')?.touched &&
+                              TareaSub_formulario.get('descripcion_ts')?.invalid
+                            "
+                          ></textarea>
+                        </div>
+            
+                        <div class="row">
+                          <div class="form-floating mb-3 col-6">
+                            <input
+                              class="form-control"
+                              id="inputNombre"
+                              type="text"
+                              formControlName="fecha_inicio_ts"
+                              placeholder="fecha_inicio_ts"
+                              [class.is-invalid]="
+                                TareaSub_formulario.get('fecha_inicio_ts')?.touched &&
+                                TareaSub_formulario.get('fecha_inicio_ts')?.invalid
+                              "
+                            /><!--aqui-->
+                            <label for="fecha_inicio">Fecha inicio</label>
+                          </div>
+            
+                          <div class="form-floating mb-3 col-6">
+                            <input
+                              class="form-control"
+                              id="inputNombre"
+                              type="text"
+                              formControlName="fecha_entrega_ts"
+                              placeholder="fecha_entrega_ts"
+                              [class.is-invalid]="
+                                TareaSub_formulario.get('fecha_entrega_ts')?.touched &&
+                                TareaSub_formulario.get('fecha_entrega_ts')?.invalid
+                              "
+                            />
+                            <!--aqui-->
+                            <label for="fecha_termino">Fecha termino</label>
+                          </div>
+                        </div>
+
+                        <app-card-body [titulo]="'Asignar responsable'"></app-card-body>
+                          <h5 class="usuario_responsable text-center mt-3">{{nombre_usuario_crear_ts}}</h5>
+
+
+                        <div class="row">
+                          <br />
+                          <div class="col-12 text-start">
+                            <form class="form text-start mb-1">
+                              <button>
+                                <img src="../assets/img/search.svg" alt="" />
+                              </button>
+                              <input
+                                class="input"
+                                placeholder="Buscar..."
+                                required=""
+                                type="text"
+                                name="filtroTarea"
+                                [(ngModel)]="filtroUsuario"
+                              />
+                            </form>
+                          </div>
+
+                          <app-bar-usuario
+                          *ngFor="let usuario of ListarUsuario | filtroUsuario: filtroUsuario"
+                          [nombre]="usuario.nombre_u"
+                          [id]="usuario.id_u"
+                          (click)="id_usuario_crear_ts = usuario.id_u"
+                          (click)="nombre_usuario_crear_ts = usuario.nombre_u"
+                          [funciones]="3">
+                          </app-bar-usuario>
+                          <br />
+                        </div>
+
+                        <button
+                          type="submit"
+                          class="btn btn-primary col-12 p-3"
+                          [disabled]="TareaSub_formulario.invalid"
+                        >
+                          Crear
+                        </button>
+
+                      </form>
+
+
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
         <div class="card-body">
           <div class="progress">
@@ -241,7 +391,7 @@
         </div>
         <br />
         <div class="row text-center">
-          <button type="button" class="btn btn-primary">Alertar</button>
+          <button type="button" class="btn btn-primary" >Alertar</button>
         </div>
         <br />
         <div class="row text-center">
