@@ -459,55 +459,6 @@ END AFTER EACH ROW;
 END TGR_ASIG_ID_EJEC_FLUJO_TAREA;
 
 
-/* TRIGGER DE ESTADO TAREA TERMINADA  --------------NECESITA CORRECCIÓN*/
-
-CREATE OR REPLACE TRIGGER TGR_ESTADO_TAREA_TER
-FOR UPDATE OF porcentaje_avance_t ON TAREA
-COMPOUND TRIGGER
-TYPE r_tarea_type IS RECORD(
-    id_t tarea.id_t%TYPE,
-    porcentaje_avance_t tarea.porcentaje_avance_t%TYPE,
-    estado_t tarea.estado_t%TYPE
-);
-
-TYPE t_tarea_type IS TABLE OF r_tarea_type
-    INDEX BY PLS_INTEGER;
-    
-t_tarea t_tarea_type;
-
-AFTER EACH ROW IS
-BEGIN
-t_tarea (t_tarea.COUNT +1).id_t := :NEW.id_t;
-t_tarea (t_tarea.COUNT).porcentaje_avance_t := :NEW.porcentaje_avance_t;
-t_tarea (t_tarea.COUNT).estado_t := :NEW.estado_t;
-END AFTER EACH ROW;
-    AFTER STATEMENT IS
-                porcentaje_avance number(10);
-                estado VARCHAR2(10);
-                CURSOR c_t IS SELECT id_t FROM tarea;
-            BEGIN
-            for v_fila in c_t
-            LOOP
-            SELECT porcentaje_avance_t, estado_t
-            INTO porcentaje_avance, estado
-            FROM tarea
-            WHERE v_fila.id_t = id_t;
-            IF porcentaje_avance >=100
-                THEN
-                    UPDATE tarea 
-                    SET estado_t = 'Terminada'
-                    WHERE v_fila.id_t = id_t;    
-            ELSIF estado = 'Terminada'
-                THEN
-                UPDATE tarea 
-                SET porcentaje_avance_t = 100
-                WHERE v_fila.id_t = id_t; 
-            END IF;
-            END LOOP;
-    END AFTER STATEMENT;
-END TGR_ESTADO_TAREA_TER;
-DROP TRIGGER TGR_ESTADO_TAREA_TER;
-
 /* TRIGGER DE CALCULO DE INDICADOR DE TAREA */
 
 CREATE OR REPLACE TRIGGER TGR_CALCULO_INDICADOR_TAREA
