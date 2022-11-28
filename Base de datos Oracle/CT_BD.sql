@@ -485,6 +485,10 @@ DECLARE
                         WHERE v_fila_at.id_t_at = id_t;
                     END IF;
                 END LOOP;
+                ELSIF V_ID = NULL THEN
+                    UPDATE tarea
+                    SET INDICADOR_T = 'En espera'
+                    WHERE V_FILA_AT.ID_T_AT = ID_T;
                 END IF;
             END LOOP;
 END TGR_CALCULO_INDICADOR_TAREA;
@@ -528,6 +532,10 @@ DECLARE
                                 WHERE v_fila_ats.id_ts_ats = id_ts;
                             END IF;
                         END LOOP;
+                    ELSIF V_ID = NULL THEN
+                        UPDATE tarea_subordinada
+                        SET INDICADOR_TS = 'En espera'
+                        WHERE V_FILA_ATS.ID_TS_ATS = ID_TS;
                     END IF;
                 END LOOP;
 END TGR_CALCULO_INDICADOR_TAREA_SUB;
@@ -571,6 +579,10 @@ DECLARE
                                 WHERE v_fila_eft.id_ft_eft = id_ft;
                             END IF;
                         END LOOP;
+                    ELSIF V_ID = NULL THEN
+                        UPDATE flujo_tarea
+                        SET INDICADOR_FT = 'En espera'
+                        WHERE V_FILA_EFT.ID_FT_EFT = ID_FT;
                     END IF;
                 END LOOP;
 END TGR_CALCULO_INDICADOR_FLUJO_TAREA;
@@ -717,6 +729,11 @@ DECLARE
                         UPDATE tarea 
                         SET fecha_entrega_efectiva_t = SYSDATE
                         WHERE v_fila.id_t = id_t;
+                ELSIF estado = 'Pendiente'
+                    THEN
+                        UPDATE tarea
+                        SET fecha_entrega_efectiva_t = NULL
+                        WHERE v_fila.id_t = id_t;
                 END IF;
             END LOOP;
 END TGR_FECHA_ENTREGA_EFECTIVA_TAREA;
@@ -741,6 +758,11 @@ DECLARE
                         UPDATE tarea_subordinada
                         SET fecha_entrega_efectiva_ts = SYSDATE
                         WHERE v_fila.id_ts = id_ts;
+                ELSIF estado = 'Pendiente'
+                    THEN
+                        UPDATE tarea_subordinada
+                        SET fecha_entrega_efectiva_ts = NULL
+                        WHERE v_fila.id_ts = id_ts;
                 END IF;
             END LOOP;
 END TGR_FECHA_ENTREGA_EFECTIVA_TAREA_SUBORDINADA;
@@ -764,6 +786,11 @@ DECLARE
                     THEN
                         UPDATE flujo_tarea
                         SET fecha_entrega_efectiva_ft = SYSDATE
+                        WHERE v_fila.id_ft = id_ft;
+                ELSIF estado = 'Pendiente'
+                    THEN
+                        UPDATE flujo_tarea
+                        SET fecha_entrega_efectiva_ft = NULL
                         WHERE v_fila.id_ft = id_ft;
                 END IF;
             END LOOP;
