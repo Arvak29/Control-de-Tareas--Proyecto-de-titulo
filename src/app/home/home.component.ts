@@ -1,37 +1,21 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Tareas } from '../models/tarea';
 import { TareaService } from '../services/tarea.service';
-import { PorcGlobal, PorcGlobalService } from '../services/porc-global.service';
 import decode from 'jwt-decode';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [TareaService, PorcGlobalService],
+  providers: [TareaService],
 })
 export class HomeComponent implements OnInit {
   ListarTarea: Tareas[] = [];
-  ListarPG: PorcGlobal[] = [];
-  @Input() avance_pg: string | undefined;
-  constructor(private router: Router, private TareaService: TareaService, private PorcGlobalService : PorcGlobalService) {}
+  constructor(private TareaService: TareaService) {}
 
   ngOnInit(): void {
-    this.listarPG();
     this.listarTarea();
   }
-
-  listarPG() {
-    this.PorcGlobalService.getPorcGlobal().subscribe(
-      (res) => {
-        console.log(res);
-        this.ListarPG = <any>res;
-      },
-      (err) => console.log(err)
-    );
-  }
-
 
   listarTarea() {
     this.TareaService.getTareas().subscribe(

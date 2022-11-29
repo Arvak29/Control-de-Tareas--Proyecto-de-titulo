@@ -108,9 +108,8 @@ router.get('/api-tarea/getTareas', async (req, res) => {
                 "descripcion_t": tarea[2],
                 "fecha_inicio_t": tarea[3],
                 "fecha_entrega_t": tarea[4],
-                "fecha_entrega_efectiva_t": tarea[5],
-                "porcentaje_avance_t": tarea[6],
-                "estado_t": tarea[7]
+                "porcentaje_avance_t": tarea[5],
+                "estado_t": tarea[6]
             }
 
             Tareas.push(tareasSchema);
