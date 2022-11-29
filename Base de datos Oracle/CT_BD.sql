@@ -342,77 +342,6 @@ END AFTER EACH ROW;
     END AFTER STATEMENT;
 END TGR_CALC_AVANCE_TAREA;
 
-
-/* TRIGGER DE ASIGNACIÓN DE ID DE TAREA */
-
-CREATE OR REPLACE TRIGGER TGR_ASIG_ID_TAREA
-FOR INSERT ON tarea
-COMPOUND TRIGGER
-TYPE r_tarea_type IS RECORD(
-    id_t tarea.id_t%TYPE
-);
-
-TYPE t_tarea_type IS TABLE OF r_tarea_type
-    INDEX BY PLS_INTEGER;
-    
-t_tarea t_tarea_type;
-
-AFTER EACH ROW IS
-BEGIN
-t_tarea (t_tarea.COUNT +1).id_t := :NEW.id_t;
-END AFTER EACH ROW;
-    AFTER STATEMENT IS
-                V_ID NUMBER(10);
-                CURSOR c_t IS SELECT id_t FROM tarea;
-            BEGIN
-            DELETE FROM asignacion_tarea;
-                for v_fila in c_t 
-                LOOP
-                    SELECT id_t
-                    INTO V_ID
-                    FROM tarea
-                    WHERE v_fila.id_t = id_t;
-                    INSERT INTO asignacion_tarea(id_u_at, id_t_at, respuesta_at) VALUES (NULL, V_ID, 'Pendiente');
-                    END LOOP;
-    END AFTER STATEMENT;
-END TGR_ASIG_ID_TAREA;
-
-
-/* TRIGGER DE ASIGNACIÓN DE ID DE TAREA SUBORDINADA */
-
-CREATE OR REPLACE TRIGGER TGR_ASIG_ID_TAREA_SUB
-FOR INSERT ON tarea_subordinada
-COMPOUND TRIGGER
-TYPE r_tarea_sub_type IS RECORD(
-    id_ts tarea_subordinada.id_t%TYPE
-);
-
-TYPE t_tarea_sub_type IS TABLE OF r_tarea_sub_type
-    INDEX BY PLS_INTEGER;
-    
-t_tarea_sub t_tarea_sub_type;
-
-AFTER EACH ROW IS
-BEGIN
-t_tarea_sub (t_tarea_sub.COUNT +1).id_ts := :NEW.id_ts;
-END AFTER EACH ROW;
-    AFTER STATEMENT IS
-                V_ID NUMBER(10);
-                CURSOR c_ts IS SELECT id_ts FROM tarea_subordinada;
-            BEGIN
-            DELETE FROM asignacion_tarea_subordinada;
-                for v_fila in c_ts 
-                LOOP
-                    SELECT id_ts
-                    INTO V_ID
-                    FROM tarea_subordinada
-                    WHERE v_fila.id_ts = id_ts;
-                    INSERT INTO asignacion_tarea_subordinada(id_u_ats, id_ts_ats, respuesta_ats) VALUES (NULL, V_ID, 'Pendiente');
-                    END LOOP;
-    END AFTER STATEMENT;
-END TGR_ASIG_ID_TAREA_SUB;
-
-
 /* TRIGGER ASIGNACIÓN DE ID DE EJECUCION DE FLUJO DE TAREA */
 
 CREATE OR REPLACE TRIGGER TGR_ASIG_ID_EJEC_FLUJO_TAREA
@@ -485,7 +414,7 @@ DECLARE
                         WHERE v_fila_at.id_t_at = id_t;
                     END IF;
                 END LOOP;
-                ELSIF V_ID = NULL THEN
+                ELSE
                     UPDATE tarea
                     SET INDICADOR_T = 'En espera'
                     WHERE V_FILA_AT.ID_T_AT = ID_T;
@@ -532,7 +461,7 @@ DECLARE
                                 WHERE v_fila_ats.id_ts_ats = id_ts;
                             END IF;
                         END LOOP;
-                    ELSIF V_ID = NULL THEN
+                    ELSE
                         UPDATE tarea_subordinada
                         SET INDICADOR_TS = 'En espera'
                         WHERE V_FILA_ATS.ID_TS_ATS = ID_TS;
@@ -579,13 +508,12 @@ DECLARE
                                 WHERE v_fila_eft.id_ft_eft = id_ft;
                             END IF;
                         END LOOP;
-                    ELSIF V_ID = NULL THEN
+                    ELSE
                         UPDATE flujo_tarea
                         SET INDICADOR_FT = 'En espera'
                         WHERE V_FILA_EFT.ID_FT_EFT = ID_FT;
                     END IF;
                 END LOOP;
-END TGR_CALCULO_INDICADOR_FLUJO_TAREA;
 
 
 /* TRIGGER DE ESTADO DE TAREA (EN CURSO O PENDIENTE)  ----- SE PUEDE JUNTAR CON EL DE ABAJO */
