@@ -3,7 +3,7 @@ const router = Router();
 const BD = require('../config/configbd');
 
 //Get especifico de vista
-router.get('/api-asig-sub/getVista_Asig_Tarea_Sub/:id', async (req, res) => {
+router.get('/api-asig-tarea-sub/getVista_Asig_Tarea_Sub/:id', async (req, res) => {
 
     try{
         const { id } = req.params;
@@ -14,6 +14,7 @@ router.get('/api-asig-sub/getVista_Asig_Tarea_Sub/:id', async (req, res) => {
     
         result.rows.map(vista_asignacion_tarea_sub => {
             let vista_asignacion_tarea_subSchema = {
+                "id_ts": vista_asignacion_tarea_sub[0],
                 "nombre_u": vista_asignacion_tarea_sub[1],
                 "nombre_ts": vista_asignacion_tarea_sub[2],
                 "respuesta_ats": vista_asignacion_tarea_sub[3],
@@ -76,7 +77,7 @@ router.get("/api-asig-sub/getAsig_Tarea_Sub_us/:id", async (req, res) => {
             Asignacion_Tarea_Subordinada.push(asignacion_tarea_subordinadaSchema);
         })
         
-        res.json(Asignacion_Tarea_Subordinada);
+        return res.json(Asignacion_Tarea_Subordinada);
     } catch (error){
         return res.status(500).json({message: 'Hubo un error'})
     }
@@ -103,7 +104,7 @@ router.get("/api-asig-sub/getAsig_Tarea_Sub_t/:id", async (req, res) => {
             Asignacion_Tarea_Subordinada.push(asignacion_tarea_subordinadaSchema);
         })
         
-        res.json(Asignacion_Tarea_Subordinada);
+        res.json(Asignacion_Tarea_Subordinada.id_ts_ats);
     } catch (error){
         return res.status(500).json({message: 'Hubo un error'})
     }
@@ -137,7 +138,6 @@ router.get('/api-asig-sub/getAsig_Tareas_Sub', async (req, res) => {
 
 //Agregar
 router.post('/api-asig-tarea-sub/addAsig_Tarea_Sub/', async (req, res) => {
-    console.log("ESTE ENTRA Y DEJA LA CAGA")
     try{
         const {id_u_ats, id_ts_ats, respuesta_ats, justificacion_ats} = req.body;
 
@@ -151,6 +151,7 @@ router.post('/api-asig-tarea-sub/addAsig_Tarea_Sub/', async (req, res) => {
         "respuesta_ats": respuesta_ats, 
         "justificacion_ats": justificacion_ats
         })
+        
     } catch (error){
         return res.status(500).json({message: 'Hubo un error'})
     }
@@ -179,12 +180,27 @@ router.patch("/updateAsig_Tarea_Sub/:id", async (req, res) => {
 })
 
 //Borrar
-router.delete("/deleteAsig_Tarea_Sub/:id", async (req, res) => {
+router.delete("/api-asig-tarea-sub/deleteAsig_Tarea_Sub/:id", async (req, res) => {
 
     try{
         const { id } = req.params;
-
+        
         sql = "delete asignacion_tarea_subordinada where id_ts_ats=:id";
+
+        await BD.Open(sql, [id], true);
+
+        res.json({ msg: "Asignación de tarea subordinada eliminada" })
+    } catch (error){
+        return res.status(500).json({message: 'Hubo un error'})
+    }
+})
+
+router.delete("/api-asig-tarea-sub/deleteAsigTareaSub/:id", async (req, res) => {
+
+    try{
+        const { id } = req.params;
+        
+        sql = "delete asignacion_tarea_subordinada where id_u_ats=:id";
 
         await BD.Open(sql, [id], true);
 

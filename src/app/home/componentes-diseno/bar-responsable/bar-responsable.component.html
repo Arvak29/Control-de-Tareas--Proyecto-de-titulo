@@ -1,9 +1,18 @@
-<div class="bar-tarea">
-  <div class="btn d-flex" href="/home">
+<div class="bar-tarea" [ngSwitch]="funciones">
+  <div class="btn d-flex" href="/home" *ngSwitchCase="1">
     <img class="circular" src="../assets/img/Perfil.png" alt="" />
     <h6 class="text-start w-100">{{ nombre }}</h6>
     <div class="">
       <button class="flex btn btn-nav a" id="boton" (click)="eliminar()">
+        <i><img src="../assets/img/x.svg" alt="" /></i>
+      </button>
+    </div>
+  </div>
+  <div class="btn d-flex" href="/home" *ngSwitchCase="2">
+    <img class="circular" src="../assets/img/Perfil.png" alt="" />
+    <h6 class="text-start w-100">{{ nombre }}</h6>
+    <div class="">
+      <button class="flex btn btn-nav a" id="boton" (click)="eliminarTareaSub()">
         <i><img src="../assets/img/x.svg" alt="" /></i>
       </button>
     </div>

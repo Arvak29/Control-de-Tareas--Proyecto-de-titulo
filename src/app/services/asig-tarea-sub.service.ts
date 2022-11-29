@@ -23,7 +23,7 @@ export class AsigTareaSubService {
   }
 
   //modificar una asignacion subordinada
-  editAsigTareaSub(id: string, asigtareasub: AsigTareaSub) {
+  editAsigTareaSub(id: string, asigtareasub: AgregarAsigTareaSub) {
     return this.http.patch('/api-asig-tarea-sub/updateAsig_Tarea/' + id, asigtareasub);
   }
 
@@ -34,10 +34,11 @@ export class AsigTareaSubService {
 }
 
 export interface AsigTareaSub {
-    id_u_ats?: string;
-    id_ts_ats?: string;
-    respuesta_ats?: string;
-    justificacion_ats?: string;
+  id_ts?: string;
+  nombre_u?: string;
+  nombre_ts?: string;
+  respuesta_ats?: string;
+  justificacion_ats?: string;
   }
   
 export interface VistaAsigTareaSub {
@@ -48,7 +49,7 @@ export interface VistaAsigTareaSub {
   }
 
   export interface AgregarAsigTareaSub {
-    id_u_ats?: string;
+    id_u_ats?: number;
     id_ts_ats?: string;
     respuesta_ats?: string;
     justificacion_ats?: string;

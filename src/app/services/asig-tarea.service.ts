@@ -49,7 +49,7 @@ export interface VistaAsigTarea {
 }
 
 export interface AgregarAsigTarea {
-  id_u_at?: string;
+  id_u_at?: number;
   id_t_at?: string;
   respuesta_at?: string;
   justificacion_at?: string;

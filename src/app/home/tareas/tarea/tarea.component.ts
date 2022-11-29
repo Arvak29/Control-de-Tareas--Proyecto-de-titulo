@@ -18,8 +18,8 @@ export class TareaComponent implements OnInit {
   mostrar_add_responsable: boolean = false;
   TareaSub_formulario: FormGroup;
   id_entrada: string = "";
-  public id_usuario_crear_ts: number | undefined;
-  public nombre_usuario_crear_ts: string | undefined;
+  id_usuario_crear_ts: number | undefined;
+  nombre_usuario_crear_ts: string | undefined;
   ListarAsignTarea: AsigTarea[] = [];
   ListarAsigTareaSub: AsigTareaSub[] = [];
   ListarUsuario: Usuario[] = [];
@@ -32,7 +32,7 @@ export class TareaComponent implements OnInit {
     nombre_t: '',
     descripcion_t: '',
     fecha_inicio_t: '',
-    fecha_entrega_t: '',
+    fecha_entrega_t: ''.substring(0,10),
     porcentaje_avance_t: '',
     estado_t: '',
   };
@@ -45,12 +45,10 @@ export class TareaComponent implements OnInit {
     private UsuarioService: UsuarioService,
     private AsigTareaService: AsigTareaService,
     private TareaSubordinadaService: TareaSubordinadaService,
-    private AsigTareaSubService: AsigTareaSubService
   ) {
     this.TareaSub_formulario = this.fb.group({
       nombre_ts: ['', Validators.required],
       descripcion_ts: ['', Validators.required],
-      fecha_inicio_ts: ['', Validators.required],
       fecha_entrega_ts: ['', Validators.required],
     });
   }
@@ -78,40 +76,34 @@ export class TareaComponent implements OnInit {
     const TAREASUB: AgregarTareaSub = {
       nombre_ts: this.TareaSub_formulario.get('nombre_ts')?.value,
       descripcion_ts: this.TareaSub_formulario.get('descripcion_ts')?.value,
-      fecha_inicio_ts: this.TareaSub_formulario.get('fecha_inicio_ts')?.value,
       fecha_entrega_ts: this.TareaSub_formulario.get('fecha_entrega_ts')?.value,
       porcentaje_avance_ts: 0,
-      estado_ts: "Pendiente",
+      estado_ts: "En curso",
       id_t: this.id_entrada,
     };
-    if(this.id_usuario_crear_ts != undefined){
       this.TareaSubordinadaService.addTareaSub(TAREASUB).subscribe();
-      console.log( TAREASUB )
-      this.crear_asig_tarea_sub();
-    }else{
-      //mensaje de error
-      console.log("falta un responsable")
-      console.log( this.TareaSub_formulario )
-    }
+      window.location.reload();
   }
-  crear_asig_tarea_sub() {
-    const ASIGTAREASUB: AgregarAsigTareaSub = {
-      id_u_ats: this.id_usuario_crear_ts?.toString(),
-      id_ts_ats: this.id_entrada,
-      respuesta_ats: "Pendiente",
-      justificacion_ats: "",
-    };
-    console.log( ASIGTAREASUB )
-    this.AsigTareaSubService.addAsigTareaSub(ASIGTAREASUB).subscribe();
-
-    window.location.reload();
-  }
+  
   limpiarFormularioTareaSub()
   {
     this.TareaSub_formulario.reset();
     this.id_usuario_crear_ts = undefined;
     this.nombre_usuario_crear_ts = undefined;
   }
+
+  // crear_asig_tarea_sub() {
+  //   const ASIGTAREASUB: AgregarAsigTareaSub = {
+  //     id_u_ats: this.id_usuario_crear_ts,
+  //     id_ts_ats: this.id_entrada,//cambiar
+  //     respuesta_ats: "Pendiente",
+  //     justificacion_ats: "",
+  //   };
+  //   this.AsigTareaSubService.addAsigTareaSub(ASIGTAREASUB).subscribe();
+
+  //   window.location.reload();
+  // }
+
 
   prueba(){
     console.log(
@@ -193,13 +185,18 @@ export class TareaComponent implements OnInit {
   }
 
   modificar() {
+    console.log(this.tarea);
+    const año = this.tarea.fecha_entrega_t?.substring(0,4)
+    const mes = this.tarea.fecha_entrega_t?.substring(5,7)
+    const dia = this.tarea.fecha_entrega_t?.substring(8,10)
+    this.tarea.fecha_entrega_t = (dia +"-"+mes+"-"+ año)
     this.TareaService.editTarea(<any>this.tarea.id_t, this.tarea).subscribe({
       next: (res: any) => {
         console.log(res);
       },
       error: (err) => console.log(err),
     });
-    this.router.navigate(['/tareas']);
+    
   }
   
 

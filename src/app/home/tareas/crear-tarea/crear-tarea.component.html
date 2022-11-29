@@ -37,22 +37,7 @@
               ></textarea>
             </div>
 
-            <div class="row">
-              <div class="form-floating mb-3 col-6">
-                <input
-                  class="form-control"
-                  id="inputNombre"
-                  type="text"
-                  formControlName="fecha_inicio"
-                  placeholder="fecha_inicio"
-                  [class.is-invalid]="
-                    Tarea_formulario.get('fecha_inicio')?.touched &&
-                    Tarea_formulario.get('fecha_inicio')?.invalid
-                  "
-                />
-                <label for="fecha_inicio">Fecha inicio</label>
-              </div>
-
+            <div class="row justify-content-center">
               <div class="form-floating mb-3 col-6">
                 <input
                   class="form-control "
@@ -69,115 +54,12 @@
               </div>
             </div>
           </form>
-          <app-card-body [titulo]="'Responsable'"></app-card-body>
-          <br />
-          <div class="row justify-content-between px-3">
-            <div class="col-8 text-start">
-              <form class="form text-start mb-1">
-                <button>
-                  <img src="../assets/img/search.svg" alt="" />
-                </button>
-                <input
-                  class="input"
-                  placeholder="Buscar..."
-                  required=""
-                  type="text"
-                  name="filtroTarea"
-                  [(ngModel)]="filtroUsuario"
-                />
-              </form>
-            </div>
-
-            <div class="col text-end">
-              <!-- Button trigger modal -->
-              <button
-                class="btn btn-nav a"
-                type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-              >
-                <i><img src="../assets/img/agregar.svg" alt="" /></i>
-              </button>
-
-              <!-- Modal -->
-              <div
-                class="modal fade"
-                id="exampleModal"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div
-                  class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                >
-                  <div class="modal-content">
-                    <div class="modal-header text-white bg">
-                      <h5 class="modal-title" id="exampleModalLabel">
-                        Agregar usuario
-                      </h5>
-                      <button
-                        type="button"
-                        class="btn-close btn-close-white"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div class="modal-body text-white bg">
-                      <form class="form text-start mb-1">
-                        <button>
-                          <img src="../assets/img/search.svg" alt="" />
-                        </button>
-                        <input
-                          class="input"
-                          placeholder="Buscar usuario"
-                          required=""
-                          type="text"
-                          name="filtroTarea"
-                          [(ngModel)]="filtroUsuario"
-                        />
-                      </form>
-                      <div class="card-body">
-                        <app-bar-usuario
-                          *ngFor="
-                            let usuario of ListarUsuario
-                              | filtroUsuario: filtroUsuario
-                          "
-                          [nombre]="usuario.nombre_usuario"
-                          [id]="usuario.id_usuario"
-                        ></app-bar-usuario>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <app-bar-responsable
-                *ngFor="
-                  let usuario of ListarUsuario | filtroUsuario: filtroUsuario
-                "
-                [nombre]="usuario.nombre_u"
-                [id]="usuario.id_u"
-              ></app-bar-responsable>
-            </div>
-          </div>
-          <app-card-body [titulo]="'Tarea subordinada'"></app-card-body>
-          <br />
-          <div class="row">
-            <app-buscador class="col-8"></app-buscador>
-            <div class="col text-end">
-              <button class="btn btn-nav a" routerLink="/crear_subordinada">
-                <i><img src="../assets/img/agregar.svg" alt="" /></i>
-              </button>
-            </div>
-            <app-bar-subtarea></app-bar-subtarea>
-          </div>
         </div>
         <br />
       </div>
       <br />
     </div>
+
     <div class="col-xs-12 col-sm-11 col-md-3 col-lf-2 col-xl-2 col-xxl-1">
       <form [formGroup]="Tarea_formulario" (ngSubmit)="crear_tarea()">
         <button

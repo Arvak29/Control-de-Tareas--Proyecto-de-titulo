@@ -17,68 +17,56 @@
         </div>
       </div>
       <br/>
-      <div class="card text-white bg shadow-lg border-0 rounded-lg">
-        <app-card-header [titulo]="'Estado'"></app-card-header>
-        <div class="card-body text-center">
-          <div class="form-floating mb-3">
-            <input
-              [(ngModel)]="tarea.estado_t"
-              class="form-control"
-              id="inputNombre"
-              type="text"
-              name="nombre_tarea"
-            />
+
+      
+      <div class="row m-0 justify-content-between">
+        <div class="col card text-white bg shadow-lg border-0 rounded-lg p-0">
+          <app-card-header [titulo]="'Estado'"></app-card-header>
+          <div class="card-body text-center">
+            <div class="form-floating mb-3">
+              <h1>{{tarea.estado_t}}</h1>
+            </div>
           </div>
         </div>
-      </div>
-      <br />
-      <div class="card text-white bg shadow-lg border-0 rounded-lg">
-        <app-card-header [titulo]="'Fechas'"></app-card-header>
-        <div class="card-body">
-          <div class="row text-between">
-            <div class="col">
-              <div class="form-floating mb-3">
-                <input
-                  [ngModel]="tarea.fecha_inicio_t | date:'yyyy-MM-dd'"
-                  (ngModelChange)="tarea.fecha_inicio_t = $event"
+        <div class="col-1"></div>
+        <div class="col card text-white bg shadow-lg border-0 rounded-lg p-0">
+          <app-card-header [titulo]="'Fechas'"></app-card-header>
+          <div class="card-body">
+
+              <h6 class="col text-center">Fecha de inicio</h6>
+              <h6 class="col text-center fecha_inicio">{{tarea.fecha_inicio_t | date}}</h6>
+
+              <div class="col text-end">
+                <div class="form-floating mb-3">
+                  <input
                   type="date"
-                  class="form-control"
-                  id="inputNombre"
-                  name="fecha_inicio"
-                />
-                <label for="inputNombre">Fecha Inicio:</label>
-              </div>
-            </div>
-            <!--
-              <h6>{{tarea.fecha_entrega_t | date}}</h6>
-            -->
-            <div class="col text-end">
-              <div class="form-floating mb-3">
-                <input
                   [ngModel]="tarea.fecha_entrega_t | date:'yyyy-MM-dd'"
                   (ngModelChange)="tarea.fecha_entrega_t = $event"
                   type="date"
-                  class="form-control"
-                  id="inputNombre"
-                  name="fecha_termino"
-                />
-                <label for="inputNombre">Fecha termino:</label>
-              </div>
+                    class="form-control"
+                    id="inputNombre"
+                    name="fecha_termino"
+                  />
+                  <label for="inputNombre">Fecha termino:</label>
+                </div>
             </div>
-          </div>
-          <div class="progress">
-            <div
-              class="progress-bar progress-bar-striped progress-bar-animated"
-              role="progressbar"
-              aria-valuenow="20"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              style="width: 75%"
-            ></div>
+            <!-- <div class="progress">
+              <div
+                class="progress-bar progress-bar-striped progress-bar-animated"
+                role="progressbar"
+                aria-valuenow="20"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width: 75%"
+              ></div>
+            </div> -->
           </div>
         </div>
+        <br />
       </div>
-      <br />
+
+      <br/>
+
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Descripción de la tarea'"></app-card-header>
         <div class="card-body">
@@ -178,6 +166,7 @@
           <div class="card-body">
             <app-bar-responsable
               *ngFor="let usuario of ListarAsignTarea | filtroUsuario: filtroUsuario"
+              [funciones]="1"
               [nombre]="usuario.nombre_u"
               [id]="usuario.id_t"
             ></app-bar-responsable>            
@@ -275,23 +264,7 @@
                           ></textarea>
                         </div>
             
-                        <div class="row">
-                          <div class="form-floating mb-3 col-6">
-                            <input
-                              class="form-control"
-                              id="inputNombre"
-                              type="text"
-                              formControlName="fecha_inicio_ts"
-                              placeholder="fecha_inicio_ts"
-                              [class.is-invalid]="
-                                TareaSub_formulario.get('fecha_inicio_ts')?.touched &&
-                                TareaSub_formulario.get('fecha_inicio_ts')?.invalid
-                              "
-                            /><!--aqui-->
-                            <label for="fecha_inicio">Fecha inicio</label>
-                          </div>
-            
-                          <div class="form-floating mb-3 col-6">
+                          <div class="form-floating mb-3 ">
                             <input
                               class="form-control"
                               id="inputNombre"
@@ -306,40 +279,6 @@
                             <!--aqui-->
                             <label for="fecha_termino">Fecha termino</label>
                           </div>
-                        </div>
-
-                        <app-card-body [titulo]="'Asignar responsable'"></app-card-body>
-                          <h5 class="usuario_responsable text-center mt-3">{{nombre_usuario_crear_ts}}</h5>
-
-
-                        <div class="row">
-                          <br />
-                          <div class="col-12 text-start">
-                            <form class="form text-start mb-1">
-                              <button>
-                                <img src="../assets/img/search.svg" alt="" />
-                              </button>
-                              <input
-                                class="input"
-                                placeholder="Buscar..."
-                                required=""
-                                type="text"
-                                name="filtroTarea"
-                                [(ngModel)]="filtroUsuario"
-                              />
-                            </form>
-                          </div>
-
-                          <app-bar-usuario
-                          *ngFor="let usuario of ListarUsuario | filtroUsuario: filtroUsuario"
-                          [nombre]="usuario.nombre_u"
-                          [id]="usuario.id_u"
-                          (click)="id_usuario_crear_ts = usuario.id_u"
-                          (click)="nombre_usuario_crear_ts = usuario.nombre_u"
-                          [funciones]="3">
-                          </app-bar-usuario>
-                          <br />
-                        </div>
 
                         <button
                           type="submit"
@@ -350,9 +289,6 @@
                         </button>
 
                       </form>
-
-
-
 
                   </div>
                 </div>
@@ -377,7 +313,6 @@
             *ngFor="let tareasub of ListarTareaSub | filtroSubordinada: filtroSubordinada"
             [titulo]="tareasub.nombre_ts"
             [id]="tareasub.id_ts"
-            (click)="ngOnInit()"
           ></app-bar-subtarea>
         </div>
       </div>

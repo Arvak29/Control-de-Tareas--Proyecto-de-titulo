@@ -43,6 +43,7 @@ router.get('/api-tarea/getVista_Tareas', async (req, res) => {
 
         result.rows.map(vista_tarea => {
             let vistas_tareasSchema = {
+                "id_t": vista_tarea[0],
                 "nombre_t": vista_tarea[1],
                 "descripcion_t": vista_tarea[2],
                 "fecha_inicio_t": vista_tarea[3],

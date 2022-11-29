@@ -23,6 +23,11 @@ export class TareaSubordinadaService {
     return this.http.get('/api-tarea-sub/get_Tarea_Sub/' + id);
   }
 
+  getTareaSubordinada(id: string) {
+    return this.http.get('/api-tarea-sub/get_TareaSub/' + id);
+    console.log(this.http)
+  }
+
   //agregar una tarea sub
   addTareaSub(tarea: AgregarTareaSub) {
     return this.http.post('/api-tarea-sub/getTareas_Sub/', tarea);
@@ -35,7 +40,7 @@ export class TareaSubordinadaService {
 
   //modificar una tarea
   editTarea(id: string, tarea: TareaSub) {
-    return this.http.put(this.url + '/' + id, tarea);
+    return this.http.patch('/api-tarea-sub/UpdateTarea_Sub/' + id, tarea);
   }
 }
 
@@ -45,8 +50,10 @@ export interface TareaSub {
   descripcion_ts?: string;
   fecha_inicio_ts?: string;
   fecha_entrega_ts?: string;
-  porcentaje_avance_ts: number; //no se como cambiar un numero xD
+  fecha_entrega_efectiva_ts?: string;
+  porcentaje_avance_ts?: string; //no se como cambiar un numero xD
   estado_ts?: string;
+  indicador_ts?: string;
   id_t?: string;
   id_ft?: string;
 }
@@ -57,8 +64,10 @@ export interface VistaTareaSub {
   descripcion_ts?: string;
   fecha_inicio_ts?: string;
   fecha_entrega_ts?: string;
+  fecha_entrega_efectiva_ts?: string;
   porcentaje_avance_ts: number; //no se como cambiar un numero xD
   estado_ts?: string;
+  indicador_ts?: string;
   id_t?: string;
   id_ft?: string;
 }
@@ -66,10 +75,8 @@ export interface VistaTareaSub {
 export interface AgregarTareaSub {
   nombre_ts?: string;
   descripcion_ts?: string;
-  fecha_inicio_ts?: string;
   fecha_entrega_ts?: string;
   porcentaje_avance_ts: number; //no se como cambiar un numero xD
   estado_ts?: string;
   id_t?: string;
-  id_ft?: string;
 }

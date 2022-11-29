@@ -26,8 +26,10 @@ export class CrearTareaSubordinadaComponent implements OnInit {
     descripcion_ts: '',
     fecha_inicio_ts: '',
     fecha_entrega_ts: '',
-    porcentaje_avance_ts: 1, //no se como cambiar un numero xD
+    fecha_entrega_efectiva_ts: '',
+    porcentaje_avance_ts: '',
     estado_ts: '',
+    indicador_ts: '',
     id_t: '',
     id_ft: '',
   };
@@ -60,21 +62,19 @@ export class CrearTareaSubordinadaComponent implements OnInit {
     const TAREASUB: AgregarTareaSub = {
       nombre_ts: this.TareaSub_formulario.get('nombre_ts')?.value,
       descripcion_ts: this.TareaSub_formulario.get('descripcion_ts')?.value,
-      fecha_inicio_ts: this.TareaSub_formulario.get('fecha_inicio_ts')?.value,
       fecha_entrega_ts: this.TareaSub_formulario.get('fecha_entrega_ts')?.value,
       porcentaje_avance_ts: this.TareaSub_formulario.get('porcentaje_avance_ts')
         ?.value,
       estado_ts: this.TareaSub_formulario.get('estado_ts')?.value,
       id_t: this.TareaSub_formulario.get('id_t')?.value,
-      id_ft: this.TareaSub_formulario.get('id_ft')?.value,
     };
     this.TareaSubordinadaService.addTareaSub(TAREASUB).subscribe();
     this.router.navigate(['/tareas']);
   }
 
-  agregar() {
-    delete this.tareaSub.id_ft;
+  // agregar() {
+  //   delete this.tareaSub.id_ft;
 
-    this.TareaSubordinadaService.addTareaSub(this.tareaSub).subscribe();
-  }
+  //   this.TareaSubordinadaService.addTareaSub(this.tareaSub).subscribe();
+  // }
 }

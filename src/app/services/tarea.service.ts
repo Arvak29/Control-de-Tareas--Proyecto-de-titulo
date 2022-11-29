@@ -39,8 +39,8 @@ export class TareaService {
   }
 
   //modificar un tarea
-  editTarea(id: string, tarea: Tarea) {
-    return this.http.patch('/api-tarea/UpdateTarea/' + id, tarea);
+  editTarea(id: string, Tarea: Tarea) {
+    return this.http.patch('/api-tarea/UpdateTarea/' + id, Tarea);
   }
 }
 

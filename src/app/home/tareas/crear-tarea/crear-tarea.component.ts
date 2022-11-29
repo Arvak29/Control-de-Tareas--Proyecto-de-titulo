@@ -21,7 +21,6 @@ export class CrearTareaComponent implements OnInit {
     id_t: '',
     nombre_t: '',
     descripcion_t: '',
-    fecha_inicio_t: '',
     fecha_entrega_t: '',
     porcentaje_avance_t: '',
     estado_t: '',
@@ -36,7 +35,6 @@ export class CrearTareaComponent implements OnInit {
     this.Tarea_formulario = this.fb.group({
       nombre_tarea: ['', Validators.required],
       descripcion: ['', Validators.required],
-      fecha_inicio: ['', Validators.required],
       fecha_termino: ['', Validators.required],
     });
   }
@@ -61,6 +59,8 @@ export class CrearTareaComponent implements OnInit {
       fecha_inicio_t: this.Tarea_formulario.get('fecha_inicio')?.value,
       fecha_entrega_t: this.Tarea_formulario.get('fecha_termino')?.value,
     };
+        
+    console.log("ide: " + this.tarea.id_t)
     this.TareaService.addTarea(TAREA).subscribe();
     this.router.navigate(['/tareas']);
   }
