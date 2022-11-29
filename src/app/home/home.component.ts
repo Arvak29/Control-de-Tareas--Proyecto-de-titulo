@@ -16,27 +16,29 @@ export class HomeComponent implements OnInit {
   ListarPG: PorcGlobal[] = [];
   @Input() avance: string | undefined;
   @Input() id: string | undefined;
-  constructor(private router: Router, private TareaService: TareaService, private PorcGlobalService : PorcGlobalService) {}
+  percent = 10;  
 
+  constructor(private router: Router, private TareaService: TareaService, private PorcGlobalService : PorcGlobalService) {}
+  
+  
   ngOnInit(): void {
     this.listarPG();
     this.listarTarea();
   }
-
+  
   listarPG() {
-    this.PorcGlobalService.getPorcGlobal().subscribe(
-      (res) => {
-        console.log(res);
-        this.ListarPG[0] = <any>res;
+    this.PorcGlobalService.getPorcGlobales("1").subscribe({
+      next: (res: any) => {
+        this.ListarPG = <any>res;
+        this.percent = <any>this.ListarPG[0].avance_pg;
       },
-      (err) => console.log(err)
-    );
+      error: (err) => console.log(err),
+    });
   }
 
   listarTarea() {
     this.TareaService.getTareas().subscribe(
       (res) => {
-        console.log(res);
         this.ListarTarea = <any>res;
       },
       (err) => console.log(err)

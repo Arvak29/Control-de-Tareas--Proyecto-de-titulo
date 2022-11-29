@@ -50,3 +50,10 @@ img {
   box-shadow: none;
   border-radius: 8px;
 }
+
+
+.fecha_inicio{
+  background-color: #151821;
+  padding: 8px;
+  border-radius: 100px;
+}

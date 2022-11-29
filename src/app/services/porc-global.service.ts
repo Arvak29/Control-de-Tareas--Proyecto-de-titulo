@@ -8,11 +8,10 @@ export class PorcGlobalService {
   url = '/api-porc-global';
   constructor(private http: HttpClient) {}
 
-  //get rol
-  getPorcGlobal() {
-    return this.http.get('/api-porc-global/getPorc_Global');
+  //get de un porcentaje
+  getPorcGlobales(id: string) {
+    return this.http.get('/api-porc-global/getPorc_Globales/' + id);
   }
-
   
   //agregar un rol
   addPorcGlobal(porcentajeglobal: AgregarPorcentajeGlobal) {
@@ -20,6 +19,7 @@ export class PorcGlobalService {
   }
 }
   export interface PorcGlobal {
+    id_pg?: string;
     avance_pg?: string;
   }
 

@@ -1,12 +1,11 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div class="card text-white bg shadow-lg border-0 rounded-lg mt-5">
         <app-card-header [titulo]="'Global'"></app-card-header>
         <div class="card-body">
-          <h6>{{ListarPG}}</h6>
           <div align="center">
-            <circle-progress *ngIf="avance" [percent]="70" [title]="avance"></circle-progress>
+            <circle-progress [percent]="percent" [title]="'auto'"></circle-progress>
           </div>
         </div>
       </div>

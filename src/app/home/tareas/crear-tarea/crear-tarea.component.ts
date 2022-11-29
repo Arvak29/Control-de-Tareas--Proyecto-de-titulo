@@ -56,11 +56,12 @@ export class CrearTareaComponent implements OnInit {
     const TAREA: AgregarTarea = {
       nombre_t: this.Tarea_formulario.get('nombre_tarea')?.value,
       descripcion_t: this.Tarea_formulario.get('descripcion')?.value,
-      fecha_inicio_t: this.Tarea_formulario.get('fecha_inicio')?.value,
       fecha_entrega_t: this.Tarea_formulario.get('fecha_termino')?.value,
     };
-        
-    console.log("ide: " + this.tarea.id_t)
+    const año = TAREA.fecha_entrega_t?.substring(0,4);
+    const mes = TAREA.fecha_entrega_t?.substring(5,7);
+    const dia = TAREA.fecha_entrega_t?.substring(8,10);
+    TAREA.fecha_entrega_t = (dia +"-"+mes+"-"+ año)
     this.TareaService.addTarea(TAREA).subscribe();
     this.router.navigate(['/tareas']);
   }

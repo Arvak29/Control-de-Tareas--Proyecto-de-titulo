@@ -81,6 +81,12 @@ export class TareaComponent implements OnInit {
       estado_ts: "En curso",
       id_t: this.id_entrada,
     };
+
+    const año = TAREASUB.fecha_entrega_ts?.substring(0,4);
+    const mes = TAREASUB.fecha_entrega_ts?.substring(5,7);
+    const dia = TAREASUB.fecha_entrega_ts?.substring(8,10);
+    TAREASUB.fecha_entrega_ts = (dia +"-"+mes+"-"+ año)
+
       this.TareaSubordinadaService.addTareaSub(TAREASUB).subscribe();
       window.location.reload();
   }

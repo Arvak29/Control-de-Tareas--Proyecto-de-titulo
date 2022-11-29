@@ -2,17 +2,19 @@ const { Router } = require('express');
 const router = Router();
 const BD = require('../config/configbd');
 
-//Get 
-router.get('/api-porc-global/getPorc_Global', async (req, res) => {
 
+//Get especifico 
+router.get('/api-porc-global/getPorc_Globales/:id', async (req, res) => {
+  const { id } = req.params;
   try{
-      sql = "select * from porcentaje_global";
+      sql = "select * from porcentaje_global where id_pg=:id";
 
-      let result = await BD.Open(sql, [], false);
+      let result = await BD.Open(sql, [id], false);
       Porcentaje_Global = [];
 
       result.rows.map(porcentaje_global => {
           let porcentaje_globalSchema = {
+              "id_pg": porcentaje_global[0],
               "avance_pg": porcentaje_global[1]
           }
 

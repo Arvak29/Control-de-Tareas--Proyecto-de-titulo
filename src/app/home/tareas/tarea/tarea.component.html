@@ -43,9 +43,9 @@
                   [ngModel]="tarea.fecha_entrega_t | date:'yyyy-MM-dd'"
                   (ngModelChange)="tarea.fecha_entrega_t = $event"
                   type="date"
-                    class="form-control"
-                    id="inputNombre"
-                    name="fecha_termino"
+                  class="form-control"
+                  id="inputNombre"
+                  name="fecha_termino"
                   />
                   <label for="inputNombre">Fecha termino:</label>
                 </div>
@@ -149,9 +149,7 @@
                     <div class="card-body">
                       <app-bar-usuario
                         *ngFor="
-                          let usuario of ListarUsuario
-                            | filtroUsuario: filtroUsuario
-                        "
+                          let usuario of ListarUsuario | filtroUsuario: filtroUsuario"
                         [funciones]="2"
                         [nombre]="usuario.nombre_u"
                         [id]="usuario.id_u"
@@ -263,12 +261,12 @@
                             "
                           ></textarea>
                         </div>
-            
-                          <div class="form-floating mb-3 ">
+                        <div class="row justify-content-center">
+                          <div class="form-floating mb-3 col-6">
                             <input
                               class="form-control"
                               id="inputNombre"
-                              type="text"
+                              type="date"
                               formControlName="fecha_entrega_ts"
                               placeholder="fecha_entrega_ts"
                               [class.is-invalid]="
@@ -279,6 +277,7 @@
                             <!--aqui-->
                             <label for="fecha_termino">Fecha termino</label>
                           </div>
+                        </div>
 
                         <button
                           type="submit"
@@ -351,7 +350,7 @@
           </button>
         </div>
       </div>
-      <br />
     </div>
+    <br />
   </div>
 </div>

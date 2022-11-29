@@ -40,31 +40,26 @@
         <div class="card-body">
           <div class="row text-between">
             <div class="col">
-              <div class="form-floating mb-3">
-                <input
-                  [(ngModel)]="tareasub.fecha_inicio_ts"
-                  class="form-control"
-                  id="inputNombre"
-                  type="text"
-                  name="fecha_inicio"
-                />
-                <label for="inputNombre">Inicio:</label>
-              </div>
+              <h6 class="col text-center">Fecha de inicio</h6>
+              <br>
+              <h6 class="col text-center fecha_inicio">{{tareasub.fecha_entrega_ts | date}}</h6>
             </div>
             <div class="col text-end">
+              <h6 class="col text-center">Fecha de inicio</h6>
               <div class="form-floating mb-3">
                 <input
-                  [(ngModel)]="tareasub.fecha_entrega_ts"
+                  type="date"
+                  [ngModel]="tareasub.fecha_entrega_ts | date:'yyyy-MM-dd'"
+                  (ngModelChange)="tareasub.fecha_entrega_ts = $event"
+                  type="date"
                   class="form-control"
                   id="inputNombre"
-                  type="text"
                   name="fecha_termino"
                 />
-                <label for="inputNombre">fecha_termino:</label>
               </div>
             </div>
           </div>
-          <div class="progress">
+          <!-- <div class="progress">
             <div
               class="progress-bar progress-bar-striped progress-bar-animated"
               role="progressbar"
@@ -73,7 +68,7 @@
               aria-valuemax="100"
               style="width: 75%"
             ></div>
-          </div>
+          </div> -->
         </div>
       </div>
       <br />
