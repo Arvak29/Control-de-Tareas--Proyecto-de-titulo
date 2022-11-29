@@ -485,7 +485,7 @@ DECLARE
                         WHERE v_fila_at.id_t_at = id_t;
                     END IF;
                 END LOOP;
-                ELSIF V_ID = NULL THEN
+                ELSE
                     UPDATE tarea
                     SET INDICADOR_T = 'En espera'
                     WHERE V_FILA_AT.ID_T_AT = ID_T;
@@ -532,7 +532,7 @@ DECLARE
                                 WHERE v_fila_ats.id_ts_ats = id_ts;
                             END IF;
                         END LOOP;
-                    ELSIF V_ID = NULL THEN
+                    ELSE
                         UPDATE tarea_subordinada
                         SET INDICADOR_TS = 'En espera'
                         WHERE V_FILA_ATS.ID_TS_ATS = ID_TS;
@@ -579,7 +579,7 @@ DECLARE
                                 WHERE v_fila_eft.id_ft_eft = id_ft;
                             END IF;
                         END LOOP;
-                    ELSIF V_ID = NULL THEN
+                    ELSE
                         UPDATE flujo_tarea
                         SET INDICADOR_FT = 'En espera'
                         WHERE V_FILA_EFT.ID_FT_EFT = ID_FT;
