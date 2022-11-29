@@ -14,7 +14,7 @@ import decode from 'jwt-decode';
 export class HomeComponent implements OnInit {
   ListarTarea: Tareas[] = [];
   ListarPG: PorcGlobal[] = [];
-  @Input() avance_pg: string | undefined;
+  @Input() avance: string | undefined;
   constructor(private router: Router, private TareaService: TareaService, private PorcGlobalService : PorcGlobalService) {}
 
   ngOnInit(): void {

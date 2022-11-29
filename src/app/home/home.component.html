@@ -3,10 +3,12 @@
     <div class="col-md-3">
       <div class="card text-white bg shadow-lg border-0 rounded-lg mt-5">
         <app-card-header [titulo]="'Global'"></app-card-header>
+        <tr *ngFor="let porcentaje_global of ListarPG"
+        []="avance_pg"></tr>
         <div class="card-body">
-          <h6>asdasd{{avance_pg}}</h6>
+          <h6>{{avance}} asdas</h6>
           <div align="center">
-            <circle-progress *ngIf="avance_pg" [percent]="70" [title]="avance_pg"></circle-progress>
+            <circle-progress *ngIf="avance" [percent]="70" [title]="avance"></circle-progress>
           </div>
         </div>
       </div>
