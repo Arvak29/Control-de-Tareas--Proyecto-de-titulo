@@ -165,7 +165,7 @@ router.get('/getTarea_Sub/:id', async (req, res) => {
 })
 
 //Get de todo (Modificado)
-router.get('/getTareas_Sub', async (req, res) => {
+router.get('/api-tarea-sub/getTareas_Sub', async (req, res) => {
 
     try{
         sql = "select * from tarea_subordinada";

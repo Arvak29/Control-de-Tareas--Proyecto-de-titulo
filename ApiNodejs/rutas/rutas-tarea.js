@@ -96,7 +96,7 @@ router.get('/api-tarea/getTarea/:id', async (req, res) => {
 router.get('/api-tarea/getTareas', async (req, res) => {
     
     try{
-        sql = "select * from tarea";
+        sql = "select * from tarea where estado_t != 'Terminada'";
 
         let result = await BD.Open(sql, [], false);
         Tareas = [];
@@ -139,8 +139,8 @@ router.get('/api-tarea/getHistorialTareas', async (req, res) => {
                 "descripcion_t": tarea[2],
                 "fecha_inicio_t": tarea[3],
                 "fecha_entrega_t": tarea[4],
-                "porcentaje_avance_t": tarea[5],
-                "estado_t": tarea[6]
+                "porcentaje_avance_t": tarea[6],
+                "estado_t": tarea[7]
             }
 
             Tareas.push(tareasSchema);

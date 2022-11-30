@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Tareas } from '../models/tarea';
 import { TareaService } from '../services/tarea.service';
-import { PorcGlobal, PorcGlobalService } from '../services/porc-global.service';
+import { VUI, CargaTrabajo, PorcGlobal, PorcGlobalService } from '../services/porc-global.service';
 import decode from 'jwt-decode';
 
 @Component({
@@ -14,9 +14,11 @@ import decode from 'jwt-decode';
 export class HomeComponent implements OnInit {
   ListarTarea: Tareas[] = [];
   ListarPG: PorcGlobal[] = [];
+  ListarVUI: VUI[] = [];
+  ListarCargaTrabajo: CargaTrabajo[] = [];
   @Input() avance: string | undefined;
   @Input() id: string | undefined;
-  percent = 10;  
+  percent = 0;  
 
   constructor(private router: Router, private TareaService: TareaService, private PorcGlobalService : PorcGlobalService) {}
   
@@ -24,8 +26,28 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.listarPG();
     this.listarTarea();
+    this.listarVUI();
+    this.listarCargaTrabajo();
   }
   
+  listarVUI() {
+    this.PorcGlobalService.getVUI().subscribe(
+      (res) => {
+        this.ListarVUI = <any>res;
+      },
+      (err) => console.log(err)
+    );
+  }
+
+  listarCargaTrabajo() {
+    this.PorcGlobalService.getCargaTrabajo().subscribe(
+      (res) => {
+        this.ListarCargaTrabajo = <any>res;
+      },
+      (err) => console.log(err)
+    );
+  }
+
   listarPG() {
     this.PorcGlobalService.getPorcGlobales("1").subscribe({
       next: (res: any) => {

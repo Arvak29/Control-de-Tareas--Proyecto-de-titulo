@@ -6,36 +6,65 @@
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Reporte'"></app-card-header>
         <div class="card-body">
-          <div class="form-group">
+          <form [formGroup]="Reporte_Grupo" (ngSubmit)="crear_reporte()">
             <div class="form-floating mb-3">
               <input
                 class="form-control"
-                id="inputNombre"
                 type="text"
-                placeholder="Default input"
+                formControlName="descripcion_rp"
+                placeholder="descripcion_rp"
+                [class.is-invalid]="
+                Reporte_Grupo.get('descripcion_rp')?.touched &&
+                Reporte_Grupo.get('descripcion_rp')?.invalid
+                "
               />
-              <label for="name">Motivo del reporte</label>
+              <label for="inputMotivo">Motivo del reporte</label>
             </div>
-            <br />
-            <label for="exampleFormControlTextarea1">Mensaje</label>
-            <textarea
-              class="form-control"
-              id="exampleFormControlTextarea2"
-              rows="3"
-            ></textarea>
-            <br />
-          </div>
+
+            <h6 class="text-center">Tarea</h6>
+            <select class="form-select mb-3"                
+              placeholder="id_t"
+              formControlName="id_t"
+              [class.is-invalid]="
+              Reporte_Grupo.get('id_t')?.touched &&
+              Reporte_Grupo.get('id_t')?.invalid">
+              <option *ngFor="let tarea of ListarTarea" [value]="tarea.id_t" >{{tarea.nombre_t}}</option>
+            </select>
+
+            <h6 class="text-center">Tarea Subordinada</h6>
+            <select class="form-select mb-3"                
+              placeholder="id_ts"
+              formControlName="id_ts"
+              [class.is-invalid]="
+              Reporte_Grupo.get('id_ts')?.touched &&
+              Reporte_Grupo.get('id_ts')?.invalid">
+              <option *ngFor="let tareasub of ListarTareaSub" [value]="tareasub.id_ts" >{{tareasub.nombre_ts}}</option>
+            </select>
+
+            <h6 class="text-center">Tarea</h6>
+            <select class="form-select mb-3"                
+              placeholder="id_ft"
+              formControlName="id_ft"
+              [class.is-invalid]="
+              Reporte_Grupo.get('id_ft')?.touched &&
+              Reporte_Grupo.get('id_ft')?.invalid">
+              <option *ngFor="let flujo of ListarFlujo" [value]="flujo.id_ft" >{{flujo.nombre_ft}}</option>
+            </select>
+
+          </form>
         </div>
       </div>
       <br />
     </div>
     <div class="col-xs-12 col-sm-11 col-md-3 col-lf-2 col-xl-2 col-xxl-1">
-      <div class="container col-lg-12 col-6">
-        <div class="row text-center">
-          <button type="button" class="btn btn-primary">Enviar</button>
-        </div>
-        <br />
-      </div>
+      <form [formGroup]="Reporte_Grupo" (ngSubmit)="crear_reporte()">
+        <button
+          type="submit"
+          class="btn btn-primary col-12 p-3"
+          [disabled]="Reporte_Grupo.invalid">
+          Crear
+        </button>
+      </form>
     </div>
   </div>
 </div>
