@@ -82,8 +82,8 @@ router.get('/api-flujo-tarea/getFlujoTarea/:id', async (req, res) => {
                 "fecha_entrega_ft": flujo_tarea[4],
                 "FECHA_ENTREGA_EFECTIVA_FT": flujo_tarea[5],
                 "porcentaje_avance_ft": flujo_tarea[6],
-                "estado_ft": flujo_tarea[6],
-                "INDICADOR_FT": flujo_tarea[7]
+                "estado_ft": flujo_tarea[7],
+                "INDICADOR_FT": flujo_tarea[8]
             }
 
             Flujo_Tarea.push(flujo_tareaSchema);
@@ -113,8 +113,8 @@ router.get('/api-flujo-tarea/getFlujosTareas', async (req, res) => {
                 "fecha_entrega_ft": flujo_tarea[4],
                 "FECHA_ENTREGA_EFECTIVA_FT": flujo_tarea[5],
                 "porcentaje_avance_ft": flujo_tarea[6],
-                "estado_ft": flujo_tarea[6],
-                "INDICADOR_FT": flujo_tarea[7]
+                "estado_ft": flujo_tarea[7],
+                "INDICADOR_FT": flujo_tarea[8]
             }
 
             Flujos_Tareas.push(flujos_tareasSchema);

@@ -14,7 +14,7 @@ router.get('/api-reporte/getVista_Reporte_Tarea/:id', async (req, res) => {
 
         result.rows.map(vista_reporte_tarea => {
             let vista_reporte_tareaSchema = {
-                "nombre_t": vista_reporte_tarea[1],
+                "nombre_rp": vista_reporte_tarea[1],
                 "descripcion_rp": vista_reporte_tarea[2]
             }
 
@@ -38,7 +38,7 @@ router.get('/api-reporte/getVista_Reportes_Tareas', async (req, res) => {
 
         result.rows.map(vista_reporte_tarea => {
             let vista_reportes_tareasSchema = {
-                "nombre_t": vista_reporte_tarea[1],
+                "nombre_rp": vista_reporte_tarea[1],
                 "descripcion_rp": vista_reporte_tarea[2]
             }
 
