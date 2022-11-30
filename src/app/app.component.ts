@@ -3,18 +3,33 @@ import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { AuthService } from './services/auth.service';
 import decode from 'jwt-decode';
+import { UsuarioService, VistaUsuario } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  providers: [UsuarioService],
 })
 export class AppComponent {
   nombre = '';
   rol = '';
+  cargo = '';
+  ui = '';
+  empresa = '';
+  email = '';
+
   title = 'Control_de_tareas';
 
-  constructor(public authService: AuthService, private router: Router) {}
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    private UsuarioService: UsuarioService
+    ) {}
+
+  ngOnInit(): void {
+
+  }
 
   logOut() {
     localStorage.removeItem('token');
@@ -28,17 +43,21 @@ export class AppComponent {
 
   dataUser() {
     const token = localStorage.getItem('token');
-    let decodetoken: any = {};
+    let decodetoken: any = [];
     decodetoken = decode(token!);
-    this.nombre = decodetoken.nombre_usuario;
-    this.rol = decodetoken.rol;
+    this.nombre = decodetoken[1];
+    this.rol = decodetoken[4];
+    this.cargo = decodetoken[5];
+    this.ui = decodetoken[6];
+    this.empresa = decodetoken[7];
+    this.email = decodetoken[2];
   }
 
   permisosFuncionario(): boolean {
     const token = localStorage.getItem('token');
     let decodetoken: any = {};
     decodetoken = decode(token!);
-    if (decodetoken.rol !== 'Funcionario') {
+    if (decodetoken[4] !== 'Funcionario') {
       return false;
     }
     return true;
@@ -47,7 +66,7 @@ export class AppComponent {
     const token = localStorage.getItem('token');
     let decodetoken: any = {};
     decodetoken = decode(token!);
-    if (decodetoken.rol !== 'Administrador') {
+    if (decodetoken[4] !== 'Administrador') {
       return false;
     }
     return true;
@@ -56,7 +75,7 @@ export class AppComponent {
     const token = localStorage.getItem('token');
     let decodetoken: any = {};
     decodetoken = decode(token!);
-    if (decodetoken.rol === 'Administrador') {
+    if (decodetoken[4] === 'Administrador') {
       return true;
     }
     return false;
@@ -66,9 +85,9 @@ export class AppComponent {
     let decodetoken: any = {};
     decodetoken = decode(token!);
     if (
-      decodetoken.rol === 'Administrador' ||
-      decodetoken.rol === 'Funcionario' ||
-      decodetoken.rol === 'Diseñador de procesos'
+      decodetoken[4] === 'Administrador' ||
+      decodetoken[4] === 'Funcionario' ||
+      decodetoken[4] === 'Diseñador de procesos'
     ) {
       return true;
     }
@@ -78,7 +97,7 @@ export class AppComponent {
     const token = localStorage.getItem('token');
     let decodetoken: any = {};
     decodetoken = decode(token!);
-    if (decodetoken.rol === 'Administrador') {
+    if (decodetoken[4] === 'Administrador') {
       return true;
     }
     return false;
@@ -87,7 +106,7 @@ export class AppComponent {
     const token = localStorage.getItem('token');
     let decodetoken: any = {};
     decodetoken = decode(token!);
-    if (decodetoken.rol === 'Administrador') {
+    if (decodetoken[4] === 'Administrador') {
       return true;
     }
     return false;
@@ -97,20 +116,27 @@ export class AppComponent {
     let decodetoken: any = {};
     decodetoken = decode(token!);
     if (
-      decodetoken.rol === 'Administrador' ||
-      decodetoken.rol === 'Diseñador de procesos'
+      decodetoken[4] === 'Administrador' ||
+      decodetoken[4] === 'Diseñador de procesos'
     ) {
       return true;
     }
     return false;
   }
-  permisosUnidades(): boolean {
+  d(): boolean {
     const token = localStorage.getItem('token');
     let decodetoken: any = {};
     decodetoken = decode(token!);
-    if (decodetoken.rol === 'Administrador') {
+    if (decodetoken[4] === 'Administrador') {
       return true;
     }
     return false;
   }
+  permisosUnidades(): boolean {
+    console.log(this.cargo)
+      if (this.cargo = "Administrador") {
+        return true;
+      }
+      return false;
+    }
 }

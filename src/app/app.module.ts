@@ -54,6 +54,7 @@ import { ModalAddUsuarioComponent } from './home/usuarios/modal-add-usuario/moda
 import { BarNotificacionComponent } from './home/componentes-diseno/bar-notificacion/bar-notificacion.component';
 import { NotificacionesComponent } from './home/notificaciones/notificaciones.component';
 import { NotificacionComponent } from './home/notificaciones/notificacion/notificacion.component';
+import { TareahistoriaComponent } from './home/tareas/tareahistoria/tareahistoria.component';
 
 //pipes
 import { FiltroPipe } from './pipes/filtro-Tarea.pipe';
@@ -65,33 +66,35 @@ import { FiltroSubordinadaPipe } from './pipes/filtro-subordinada.pipe';
 
 import { AuthGuard } from './guard/auth.guard';
 import { RolGuard } from './guard/rol.guard';
+import { LoginGuard } from './guard/login.guard';
 
 const appRoutes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'usuarios', component: UsuariosComponent },
-  { path: 'usuario/:id', component: UsuarioComponent },
-  { path: 'crear_usuario', component: CrearUsuariosComponent },
-  { path: 'unidades_internas', component: UnidadesInternasComponent },
-  { path: 'crear_unidad_interna', component: CrearUnidadInternaComponent },
-  { path: 'unidad_interna/:id', component: EditarUnidadInternaComponent },
-  { path: 'cargos', component: CargosComponent },
-  { path: 'crear_cargo', component: CrearCargoComponent },
-  { path: 'cargo/:id', component: CargoComponent },
-  { path: 'flujo_de_tareas', component: FlujoDeTareasComponent },
-  { path: 'crear_flujo_de_tareas', component: CrearFlujoDeTareasComponent },
-  { path: 'flujo_de_tarea/:id', component: VerFlujoDeTareasComponent },
-  { path: 'tareas', component: TareasComponent },
-  { path: 'tarea/:id', component: TareaComponent },
-  { path: 'tarea_subordinada/:id', component: TareaSubordinadaComponent },
-  { path: 'historial', component: HistorialComponent },
-  { path: 'modal_usuario', component: ModalAddUsuarioComponent },
-  { path: 'crear_subordinada', component: CrearTareaSubordinadaComponent },
-  { path: 'reportar_tarea', component: ReportarTareaComponent },
-  { path: 'crear_tarea', component: CrearTareaComponent },
-  { path: 'nav_tarea', component: NavTareaComponent },
-  { path: 'notificaciones', component: NotificacionesComponent },
-  { path: 'notificacion', component: NotificacionComponent },
+  { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
+  { path: 'usuario/:id', component: UsuarioComponent, canActivate: [AuthGuard, RolGuard],data: { expectedRole: 'Administrador'}},
+  { path: 'crear_usuario', component: CrearUsuariosComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
+  { path: 'unidades_internas', component: UnidadesInternasComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
+  { path: 'crear_unidad_interna', component: CrearUnidadInternaComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
+  { path: 'unidad_interna/:id', component: EditarUnidadInternaComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
+  { path: 'cargos', component: CargosComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
+  { path: 'crear_cargo', component: CrearCargoComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
+  { path: 'cargo/:id', component: CargoComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
+  { path: 'flujo_de_tareas', component: FlujoDeTareasComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
+  { path: 'crear_flujo_de_tareas', component: CrearFlujoDeTareasComponent, canActivate: [AuthGuard] },
+  { path: 'flujo_de_tarea/:id', component: VerFlujoDeTareasComponent, canActivate: [AuthGuard] },
+  { path: 'tareas', component: TareasComponent, canActivate: [AuthGuard] },
+  { path: 'tarea/:id', component: TareaComponent, canActivate: [AuthGuard] },
+  { path: 'tarea_subordinada/:id', component: TareaSubordinadaComponent, canActivate: [AuthGuard] },
+  { path: 'historial', component: HistorialComponent, canActivate: [AuthGuard] },
+  { path: 'modal_usuario', component: ModalAddUsuarioComponent, canActivate: [AuthGuard] },
+  { path: 'crear_subordinada', component: CrearTareaSubordinadaComponent, canActivate: [AuthGuard] },
+  { path: 'reportar_tarea', component: ReportarTareaComponent, canActivate: [AuthGuard] },
+  { path: 'crear_tarea', component: CrearTareaComponent, canActivate: [AuthGuard] },
+  { path: 'nav_tarea', component: NavTareaComponent, canActivate: [AuthGuard] },
+  { path: 'notificaciones', component: NotificacionesComponent, canActivate: [AuthGuard] },
+  { path: 'notificacion', component: NotificacionComponent, canActivate: [AuthGuard] },
+  { path: 'historialtarea/:id', component: TareahistoriaComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
@@ -146,6 +149,7 @@ const appRoutes: Routes = [
     BarNotificacionComponent,
     NotificacionesComponent,
     NotificacionComponent,
+    TareahistoriaComponent,
   ],
   imports: [
     BrowserModule,

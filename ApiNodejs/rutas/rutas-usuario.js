@@ -183,7 +183,7 @@ const jwt = require("jsonwebtoken");
 
 router.post("/api-usuario/signin", async (req, res) => {
   const { email_u, password_u } = req.body;
-  sql = "select email_u, id_c from usuario where email_u=:email_u and password_u=:password_u";
+  sql = "select * from VISTA_USUARIO where email_u=:email_u and password_u=:password_u";
 
   let result = await BD.Open(sql, [email_u, password_u], false);
   try {

@@ -14,18 +14,12 @@ import decode from 'jwt-decode';
 @Injectable({
   providedIn: 'root',
 })
-export class RolGuard implements CanActivate {
+export class LoginGuard implements CanActivate {
   constructor(private authService: AuthService, public router: Router) {}
 
-  canActivate(router: ActivatedRouteSnapshot): boolean {
-    const expectedRole = router.data['expectedRole'];
-    const token = localStorage.getItem('token');
-    let decodetoken: any = {};
-    decodetoken = decode(token!);
-    console.log(decodetoken[4]);
-
-    if (decodetoken[4] !== expectedRole) {
-      console.log('Usuario no autorizado');
+  canActivate(): boolean {
+    if (this.authService.isAuth()) {
+      console.log('Token no es valido o ya expiró');
       this.router.navigate(['/home']);
       return false;
     }
