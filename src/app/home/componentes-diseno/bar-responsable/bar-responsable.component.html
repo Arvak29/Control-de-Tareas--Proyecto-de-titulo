@@ -17,4 +17,13 @@
       </button>
     </div>
   </div>
+  <div class="btn d-flex" href="/home" *ngSwitchCase="3">
+    <img class="circular" src="../assets/img/Perfil.png" alt="" />
+    <h6 class="text-start w-100">{{ nombre }}</h6>
+    <div class="">
+      <button class="flex btn btn-nav a" id="boton" (click)="eliminarResFlujo()">
+        <i><img src="../assets/img/x.svg" alt="" /></i>
+      </button>
+    </div>
+  </div>
 </div>

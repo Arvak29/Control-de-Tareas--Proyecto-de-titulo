@@ -62,3 +62,12 @@ img {
 .btn-close {
   color: #40ed9a;
 }
+.fecha_inicio{
+  background-color: #151821;
+  padding: 8px;
+  border-radius: 100px;
+}
+
+.alert{
+  display: inline-block;
+}

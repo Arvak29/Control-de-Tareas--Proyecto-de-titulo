@@ -3,7 +3,7 @@
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-11 col-md-7 col-lf-4 col-xl-4 col-xxl-5">
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
-        <app-card-header [titulo]="flujo.nombre_ft"></app-card-header>
+        <app-card-header [titulo]="'Nombre'"></app-card-header>
         <div class="card-body text-center">
           <div class="form-floating mb-3">
             <input
@@ -15,7 +15,36 @@
             />
           </div>
           <h5 class="color5">Estado</h5>
-          <h6>En curso</h6>
+          <h6>{{flujo.estado_ft}}</h6>
+        </div>
+      </div>
+      <br />
+      <div class="card text-white bg shadow-lg border-0 rounded-lg">
+        <app-card-header [titulo]="'Fechas'"></app-card-header>
+        <div class="card-body">
+          <div class="row text-between">
+            <div class="col">
+
+              <h6 class="col text-center">Fecha de inicio</h6>
+              <br>
+              <h6 class="col text-center fecha_inicio">{{flujo.fecha_inicio_ft | date}}</h6>
+              
+            </div>
+            <div class="col text-end">
+              <h6 class="col text-center">Fecha de inicio</h6>
+              <div class="form-floating mb-3">
+                <input
+                  type="date"
+                  [ngModel]="flujo.fecha_entrega_ft | date:'yyyy-MM-dd'"
+                  (ngModelChange)="flujo.fecha_entrega_ft = $event"
+                  type="date"
+                  class="form-control"
+                  id="inputNombre"
+                  name="fecha_termino"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <br />
@@ -33,130 +62,19 @@
       </div>
       <br />
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
-        <app-card-header [titulo]="'Fecha de termino'"></app-card-header>
-        <div class="card-body">
-          <div class="row text-between">
-            <div class="col">
-              <div class="form-floating mb-3">
-                <input
-                  [(ngModel)]="flujo.fecha_inicio_ft"
-                  class="form-control"
-                  id="inputNombre"
-                  type="date"
-                  name="fecha_inicio"
-                />
-                <label for="inputNombre">Fecha Inicio:</label>
-              </div>
-            </div>
-            <div class="col text-end">
-              <div class="form-floating mb-3">
-                <input
-                  [(ngModel)]="flujo.fecha_entrega_ft"
-                  class="form-control"
-                  id="inputNombre"
-                  type="date"
-                  name="fecha_termino"
-                />
-                <label for="inputNombre">fecha termino:</label>
-              </div>
-            </div>
-          </div>
-          <div class="progress">
-            <div
-              class="progress-bar progress-bar-striped progress-bar-animated"
-              role="progressbar"
-              aria-valuenow="20"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              style="width: 75%"
-            ></div>
-          </div>
-        </div>
-      </div>
-      <br />
-
-
-      <div class="card text-white bg shadow-lg border-0 rounded-lg">
-        <app-card-header [titulo]="'Tarea subordinada'"></app-card-header>
-        <br />
-        <div class="row justify-content-between px-3">
-          <div class="col-8 text-start">
-            <form class="form text-start mb-1">
-              <button>
-                <img src="../assets/img/search.svg" alt="" />
-              </button>
-              <input
-                class="input"
-                placeholder="Buscar..."
-                required=""
-                type="text"
-                name="filtroTarea"
-                [(ngModel)]="filtroSubordinada"
-              />
-            </form>
-          </div>
-
-          <div class="col text-end">
-            <button class="btn btn-nav a" routerLink="/crear_subordinada">
-              <i><img src="../assets/img/agregar.svg" alt="" /></i>
-            </button>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="progress">
-            <div
-              class="progress-bar progress-bar-striped progress-bar-animated"
-              role="progressbar"
-              aria-valuenow="20"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              style="width: 75%"
-            ></div>
-          </div>
-          <br />
-          <app-bar-subtarea
-            *ngFor="
-              let tareasub of ListarTareaSub
-                | filtroSubordinada: filtroSubordinada
-            "
-            [titulo]="tareasub.nombre_tarea_sub"
-            [id]="tareasub.id_tarea_sub"
-            (click)="ngOnInit()"
-          ></app-bar-subtarea>
-        </div>
-      </div>
-      <br />
-      <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Responsables'"></app-card-header>
-        <br />
         <div class="row justify-content-between px-3">
-          <div class="col-8 text-start">
-            <form class="form text-start mb-1">
-              <button>
-                <img src="../assets/img/search.svg" alt="" />
-              </button>
-              <input
-                class="input"
-                placeholder="Buscar..."
-                required=""
-                type="text"
-                name="filtroTarea"
-                [(ngModel)]="filtroUsuario"
-              />
-            </form>
-          </div>
-
-          <div class="col text-end">
+          <div class="col text-center">
             <!-- Button trigger modal -->
             <button
-              class="btn btn-nav a"
+              *ngIf="mostrar_add_responsable"
+              class="btn btn-nav mt-3 "
               type="button"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
             >
               <i><img src="../assets/img/agregar.svg" alt="" /></i>
             </button>
-
             <!-- Modal -->
             <div
               class="modal fade"
@@ -197,11 +115,10 @@
                     <div class="card-body">
                       <app-bar-usuario
                         *ngFor="
-                          let usuario of ListarUsuario
-                            | filtroUsuario: filtroUsuario
-                        "
-                        [nombre]="usuario.nombre_usuario"
-                        [id]="usuario.id_usuario"
+                          let usuario of ListarUsuario | filtroUsuario: filtroUsuario"
+                        [funciones]="5"
+                        [nombre]="usuario.nombre_u"
+                        [id]="usuario.id_u"
                       ></app-bar-usuario>
                     </div>
                   </div>
@@ -212,17 +129,166 @@
 
           <div class="card-body">
             <app-bar-responsable
-              *ngFor="
-                let usuario of ListarUsuario | filtroUsuario: filtroUsuario
-              "
+              *ngFor="let usuario of ejecFlujoTarea | filtroUsuario: filtroUsuario"
+              [funciones]="3"
               [nombre]="usuario.nombre_u"
-              [id]="usuario.id_u"
-            ></app-bar-responsable>
+              [id]="usuario.id_ft"
+            ></app-bar-responsable>            
           </div>
         </div>
+      </div>
+
+      <br />
+      <div class="card text-white bg shadow-lg border-0 rounded-lg">
+        <app-card-header [titulo]="'Tarea subordinada'"></app-card-header>
+        
         <br />
+        <div class="row justify-content-between px-3">
+          <div class="col-8 text-start">
+            <form class="form text-start mb-1">
+              <button>
+                <img src="../assets/img/search.svg" alt="" />
+              </button>
+              <input
+                class="input"
+                placeholder="Buscar..."
+                required=""
+                type="text"
+                name="filtroTarea"
+                [(ngModel)]="filtroSubordinada"
+              />
+            </form>
+          </div>
+
+          <div class="col text-end">
+            <!-- Button trigger modal -->
+            <button
+              class="btn btn-nav a"
+              type="button"
+              (click)="limpiarFormularioTareaSub()"
+              data-bs-toggle="modal"
+              data-bs-target="#Modal_Tarea_subordinada"
+            >
+              <i><img src="../assets/img/agregar.svg" alt="" /></i>
+            </button>
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="Modal_Tarea_subordinada"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div
+                class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+              >
+                <div class="modal-content">
+                  <div class="modal-header text-white bg">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      Crear tarea subordinada
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close btn-close-white"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body text-white bg">
+
+                      <form
+                        [formGroup]="TareaSub_formulario"
+                        (ngSubmit)="crear_tarea_sub()"
+                      >
+                        <!--aqui-->
+                        <div class="form-floating mb-3">
+                          <input
+                            class="form-control"
+                            id="inputNombre"
+                            type="text"
+                            formControlName="nombre_ts"
+                            placeholder="nombre_ts"
+                            [class.is-invalid]="
+                              TareaSub_formulario.get('nombre_ts')?.touched &&
+                              TareaSub_formulario.get('nombre_ts')?.invalid
+                            "
+                          /><!--aqui-->
+                          <label for="name">Nombre</label>
+                        </div>
+            
+                        <div class="form-group">
+                          <label for="descripcion">Descripción</label>
+                          <textarea
+                            class="form-control"
+                            id="inputDescripcion"
+                            rows="3"
+                            formControlName="descripcion_ts"
+                            [class.is-invalid]="
+                              TareaSub_formulario.get('descripcion_ts')?.touched &&
+                              TareaSub_formulario.get('descripcion_ts')?.invalid
+                            "
+                          ></textarea>
+                        </div>
+                        <div class="row justify-content-center">
+                          <div class="form-floating mb-3 col-6">
+                            <input
+                              class="form-control"
+                              id="inputNombre"
+                              type="date"
+                              formControlName="fecha_entrega_ts"
+                              placeholder="fecha_entrega_ts"
+                              [class.is-invalid]="
+                                TareaSub_formulario.get('fecha_entrega_ts')?.touched &&
+                                TareaSub_formulario.get('fecha_entrega_ts')?.invalid
+                              "
+                            />
+                            <!--aqui-->
+                            <label for="fecha_termino">Fecha termino</label>
+                          </div>
+                        </div>
+
+                        <button
+                          type="submit"
+                          class="btn btn-primary col-12 p-3"
+                          [disabled]="TareaSub_formulario.invalid"
+                        >
+                          Crear
+                        </button>
+
+                      </form>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+        </div>
+        <div class="card-body">
+          <div class="progress">
+            <div
+              class="progress-bar progress-bar-striped progress-bar-animated"
+              role="progressbar"
+              aria-valuenow="20"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style="width: 75%"
+            ></div>
+          </div>
+          <br />
+          <app-bar-subtarea
+            *ngFor="let tareasub of ListarTareaSub | filtroSubordinada: filtroSubordinada"
+            [titulo]="tareasub.nombre_ts"
+            [id]="tareasub.id_ts"
+          ></app-bar-subtarea>
+        </div>
+        <div class="alert alert-danger" *ngIf="warning" role="alert">
+          ¡Primero debes eliminar las tareas subordinadas!
+        </div>
       </div>
       <br />
+
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Tareas relacionadas'"></app-card-header>
         <br />
@@ -240,12 +306,9 @@
       </div>
       <br />
     </div>
+
     <div class="col-xs-12 col-sm-11 col-md-3 col-lf-2 col-xl-2 col-xxl-1">
       <div class="container col-lg-12 col-6">
-        <div class="row text-center">
-          <button type="button" class="btn btn-primary">Asignar</button>
-        </div>
-        <br />
         <div class="row text-center">
           <button (click)="modificar()" type="button" class="btn btn-primary">
             Guardar

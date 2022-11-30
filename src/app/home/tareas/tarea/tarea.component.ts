@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Tareas } from 'src/app/models/tarea';
 import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
 import { AgregarTareaSub, TareaSub, TareaSubordinadaService} from 'src/app/services/tarea-subordinada.service';
-import { AgregarTarea, Tarea, TareaService} from '../../../services/tarea.service';
+import { AgregarTarea, Tarea, TareaService, Terminada} from '../../../services/tarea.service';
 import { AsigTareaService, AsigTarea } from '../../../services/asig-tarea.service';
 import { AgregarAsigTareaSub, AsigTareaSub, AsigTareaSubService } from 'src/app/services/asig-tarea-sub.service';
 
@@ -33,6 +33,7 @@ export class TareaComponent implements OnInit {
     descripcion_t: '',
     fecha_inicio_t: '',
     fecha_entrega_t: ''.substring(0,10),
+    fecha_entrega_efectiva_t: '',
     porcentaje_avance_t: '',
     estado_t: '',
   };
@@ -55,20 +56,18 @@ export class TareaComponent implements OnInit {
 
   ngOnInit(): void {   
     this.id_entrada = this.activeRouter.snapshot.params['id'];
-    console.log(this.id_entrada);
-
-    this.listarTareaSub();
-    this.listarUsuario();
-
+    
+    
     if (this.id_entrada) {
       this.TareaService.getTarea(this.id_entrada).subscribe({
         next: (res: any) => {
           this.tarea = <any>res[0];
-          console.log(res);
         },
-        error: (err) => console.log(err),
       });
     }
+    this.btn_add_responsable();
+    this.listarTareaSub();
+    this.listarUsuario();
     this.listarAsigTarea();
   }
 
@@ -98,54 +97,28 @@ export class TareaComponent implements OnInit {
     this.nombre_usuario_crear_ts = undefined;
   }
 
-  // crear_asig_tarea_sub() {
-  //   const ASIGTAREASUB: AgregarAsigTareaSub = {
-  //     id_u_ats: this.id_usuario_crear_ts,
-  //     id_ts_ats: this.id_entrada,//cambiar
-  //     respuesta_ats: "Pendiente",
-  //     justificacion_ats: "",
-  //   };
-  //   this.AsigTareaSubService.addAsigTareaSub(ASIGTAREASUB).subscribe();
-
-  //   window.location.reload();
-  // }
-
-
-  prueba(){
-    console.log(
-    this.id_usuario_crear_ts
-    )
-  }
-
   listarUsuario() {
     this.UsuarioService.getUsuarios().subscribe(
       (res) => {
-        console.log(res);
           this.ListarUsuario = <any>res;
       },
-      (err) => console.log(err)
     );
   }
   
   listarAsigTarea() {
     this.AsigTareaService.getVistaAsigTarea(this.id_entrada).subscribe(
       (res) => {
-        console.log(res);
           this.ListarAsignTarea = <any>res;
           this.btn_add_responsable();
       },
-      (err) => console.log(err)
     );
   }
 
   listarTareaSub() {
     this.TareaSubordinadaService.getTareaSub(this.id_entrada).subscribe(
       (res) => {
-        console.log(res);
           this.ListarTareaSub = <any>res;
-          console.log("asd: ")
         },
-        (err) => console.log(err)
       );
   }
 
@@ -153,6 +126,8 @@ export class TareaComponent implements OnInit {
     if(this.ListarAsignTarea.length == 0)
     {
       this.mostrar_add_responsable = true;
+    }else{
+      this.mostrar_add_responsable = false;
     }
   }
 
@@ -164,10 +139,8 @@ export class TareaComponent implements OnInit {
     
     this.TareaService.deleteTarea(<any>this.tarea.id_t).subscribe(
       (res) => {
-        console.log('tarea eliminado');
         this.router.navigate(['/tareas']);
       },
-      (err) => console.log(err)
     );
   }
 
@@ -180,31 +153,34 @@ export class TareaComponent implements OnInit {
     );
   }
 
-  // Elimina todas las tareas ( por hacer )
-  eliminar_tarea_sub() {
-    this.TareaSubordinadaService.deleteTareasub(<any>this.ListarTareaSub[8].id_ts).subscribe(
-      (res) => {
-        console.log('Tarea subordinada eliminado');
-      },
-      (err) => console.log(err)
-    );
-  }
-
   modificar() {
-    console.log(this.tarea);
     const año = this.tarea.fecha_entrega_t?.substring(0,4)
     const mes = this.tarea.fecha_entrega_t?.substring(5,7)
     const dia = this.tarea.fecha_entrega_t?.substring(8,10)
     this.tarea.fecha_entrega_t = (dia +"-"+mes+"-"+ año)
+    if(this.tarea.fecha_entrega_t = this.tarea.fecha_entrega_t){
+
+    }
     this.TareaService.editTarea(<any>this.tarea.id_t, this.tarea).subscribe({
       next: (res: any) => {
-        console.log(res);
+        this.router.navigate(['/tareas']);
       },
-      error: (err) => console.log(err),
     });
     
   }
-  
 
+  terminar() {
+    const TERMINAR: Terminada = {
+      nombre_t: this.tarea.nombre_t,
+      descripcion_t: this.tarea.descripcion_t,
+      fecha_entrega_t: this.tarea.fecha_entrega_t,
+      estado_t: "Terminada",
+    };
+    this.TareaService.editTarea(<any>this.tarea.id_t, TERMINAR).subscribe({
+      next: (res: any) => {
+        this.router.navigate(['/historial']);
+      },
+    });
+  }
 }
 

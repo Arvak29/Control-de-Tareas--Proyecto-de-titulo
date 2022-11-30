@@ -69,6 +69,39 @@ router.get('/api-tarea-sub/get_Tarea_Sub/:id', async (req, res) => {
         return res.status(500).json({message: 'Hubo un error'})
     }
 })
+//Get especifico de vista por flujo de tareas (Modificado)
+router.get('/api-tarea-sub/get_Tarea_Sub_Por_FT/:id', async (req, res) => {
+
+    try{
+        const { id } = req.params;
+        sql = "select * from TAREA_SUBORDINADA where id_ft=:id";
+
+        let result = await BD.Open(sql, [id], false);
+        Vista_Tarea_Sub = [];
+
+        result.rows.map(tarea_subordinada => {
+            let vista_tarea_subSchema = {
+                "id_ts": tarea_subordinada[0],
+                "nombre_ts": tarea_subordinada[1],
+                "descripcion_ts": tarea_subordinada[2],
+                "fecha_inicio_ts": tarea_subordinada[3],
+                "fecha_entrega_ts": tarea_subordinada[4],
+                "fecha_entrega_efectiva_ts": tarea_subordinada[5],
+                "porcentaje_avance_ts": tarea_subordinada[6],
+                "estado_ts": tarea_subordinada[7],
+                "indicador_ts": tarea_subordinada[8],
+                "id_t": tarea_subordinada[9],
+                "id_ft": tarea_subordinada[10]
+            }
+
+            Vista_Tarea_Sub.push(vista_tarea_subSchema);
+        })
+        
+        res.json(Vista_Tarea_Sub);
+        } catch (error){
+        return res.status(500).json({message: 'Hubo un error'})
+    }
+})
 
 
 //Get de todo la vista

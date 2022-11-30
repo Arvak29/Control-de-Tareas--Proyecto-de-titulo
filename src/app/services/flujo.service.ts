@@ -11,22 +11,22 @@ export class FlujoService {
 
   //get flujo
   getFlujos() {
-    return this.http.get('/api-flujo/getFlujosTareas');
+    return this.http.get('/api-flujo-tarea/getFlujosTareas');
   }
 
   //get un flujo
   getFlujo(id: string) {
-    return this.http.get('/api-flujo/getFlujoTarea/' + id);
+    return this.http.get('/api-flujo-tarea/getFlujoTarea/' + id);
   }
 
   //agregar un flujo
-  addFlujo(flujo: AgregarFlujo) {
-    return this.http.post(this.url, flujo);
+  addFlujo(flujo: AddFlujo) {
+    return this.http.post('/api-flujo-tarea/addFlujo_Tarea', flujo);
   }
 
   //eliminar un flujo
   deleteFlujo(id: string) {
-    return this.http.delete(this.url + '/' + id);
+    return this.http.delete('/api-flujo-tarea/deleteFlujo_Tarea/' + id);
   }
 
   //modificar un flujo
@@ -52,4 +52,9 @@ export interface AgregarFlujo {
   fecha_entrega_ft?: string;
   porcentaje_avance_ft?: string;
   estado_ft: string;
+}
+
+export interface AddFlujo {
+  nombre_ft?: string;
+  descripcion_ft?: string;
 }

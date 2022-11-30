@@ -2,6 +2,7 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-11 col-md-7 col-lf-4 col-xl-4 col-xxl-5">
+      
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Nombre'"></app-card-header>
         <div class="card-body text-center">
@@ -16,9 +17,9 @@
           </div>
         </div>
       </div>
-      <br/>
 
-      
+      <br/>
+ 
       <div class="row m-0 justify-content-between">
         <div class="col card text-white bg shadow-lg border-0 rounded-lg p-0">
           <app-card-header [titulo]="'Estado'"></app-card-header>
@@ -50,16 +51,7 @@
                   <label for="inputNombre">Fecha termino:</label>
                 </div>
             </div>
-            <!-- <div class="progress">
-              <div
-                class="progress-bar progress-bar-striped progress-bar-animated"
-                role="progressbar"
-                aria-valuenow="20"
-                aria-valuemin="0"
-                aria-valuemax="100"
-                style="width: 75%"
-              ></div>
-            </div> -->
+
           </div>
         </div>
         <br />
@@ -79,7 +71,10 @@
           ></textarea>
         </div>
       </div>
+
       <br />
+      <!-- Responsables -->
+
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Responsables'"></app-card-header>
         <div class="row justify-content-between px-3">
@@ -171,7 +166,9 @@
           </div>
         </div>
       </div>
+
       <br />
+
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Tarea subordinada'"></app-card-header>
         <br />
@@ -315,13 +312,14 @@
           ></app-bar-subtarea>
         </div>
       </div>
+
       <br />
     </div>
     
     <div class="col-xs-12 col-sm-11 col-md-3 col-lf-2 col-xl-2 col-xxl-1">
       <div class="container col-lg-12 col-6">
         <div class="row text-center">
-          <button type="button" class="btn btn-primary">Terminar</button>
+          <button type="button" class="btn btn-primary" (click)="terminar()">Terminar</button>
         </div>
         <br />
         <div class="row text-center">

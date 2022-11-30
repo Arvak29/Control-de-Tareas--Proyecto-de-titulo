@@ -15,7 +15,7 @@ export class EjecFlujoTareaService {
 
   //agregar una ejecucion de flujo de tarea
   addEjecFlujoTarea(ejecflujotarea: AgregarEjecFlujoTarea) {
-    return this.http.post('/api-ejec-flujo-tarea/addEjec_Flujo_T/', ejecflujotarea);
+    return this.http.post('/api-ejec-flujo-tarea/addEjec_Flujo_T', ejecflujotarea);
   }
 
   //modificar una ejecucion de flujo de tarea
@@ -30,10 +30,11 @@ export class EjecFlujoTareaService {
 }
 
 export interface EjecFlujoTarea {
-    id_u_eft?: string;
-    id_ft_eft?: string;
-    respuesta_eft?: string;
-    justificacion_eft?: string;
+  id_ft?: string;
+  nombre_u?: string;
+  nombre_ft?: string;
+  respuesrespuesta_eftta_at?: string;
+  justificacion_eft?: string;
   }
   
 export interface VistaEjecFlujoTarea {
@@ -44,7 +45,7 @@ export interface VistaEjecFlujoTarea {
   }
 
   export interface AgregarEjecFlujoTarea {
-    id_u_eft?: string;
+    id_u_eft?: number;
     id_ft_eft?: string;
     respuesta_eft?: string;
     justificacion_eft?: string;

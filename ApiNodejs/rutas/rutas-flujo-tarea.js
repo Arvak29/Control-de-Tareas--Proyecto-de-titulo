@@ -80,8 +80,10 @@ router.get('/api-flujo-tarea/getFlujoTarea/:id', async (req, res) => {
                 "descripcion_ft": flujo_tarea[2],
                 "fecha_inicio_ft": flujo_tarea[3],
                 "fecha_entrega_ft": flujo_tarea[4],
-                "porcentaje_avance_ft": flujo_tarea[5],
-                "estado_ft": flujo_tarea[6]
+                "FECHA_ENTREGA_EFECTIVA_FT": flujo_tarea[5],
+                "porcentaje_avance_ft": flujo_tarea[6],
+                "estado_ft": flujo_tarea[6],
+                "INDICADOR_FT": flujo_tarea[7]
             }
 
             Flujo_Tarea.push(flujo_tareaSchema);
@@ -109,8 +111,10 @@ router.get('/api-flujo-tarea/getFlujosTareas', async (req, res) => {
                 "descripcion_ft": flujo_tarea[2],
                 "fecha_inicio_ft": flujo_tarea[3],
                 "fecha_entrega_ft": flujo_tarea[4],
-                "porcentaje_avance_ft": flujo_tarea[5],
-                "estado_ft": flujo_tarea[6]
+                "FECHA_ENTREGA_EFECTIVA_FT": flujo_tarea[5],
+                "porcentaje_avance_ft": flujo_tarea[6],
+                "estado_ft": flujo_tarea[6],
+                "INDICADOR_FT": flujo_tarea[7]
             }
 
             Flujos_Tareas.push(flujos_tareasSchema);
@@ -126,11 +130,11 @@ router.get('/api-flujo-tarea/getFlujosTareas', async (req, res) => {
 router.post('/api-flujo-tarea/addFlujo_Tarea', async (req, res) => {
 
     try{
-        const { id_ft, nombre_ft, descripcion_ft, fecha_inicio_ft, fecha_entrega_ft, porcentaje_avance_ft, estado_ft} = req.body;
+        const { id_ft, nombre_ft, descripcion_ft, fecha_inicio_ft, fecha_entrega_ft, FECHA_ENTREGA_EFECTIVA_FT, porcentaje_avance_ft, estado_ft, INDICADOR_FT} = req.body;
 
-        sql = "insert into flujo_tarea(id_ft, nombre_ft, descripcion_ft, fecha_inicio_ft, fecha_entrega_ft, porcentaje_avance_ft, estado_ft) values (:id_ft, :nombre_ft, :descripcion_ft, :fecha_inicio_ft, :fecha_entrega_ft, :porcentaje_avance_ft, :estado_ft)";
+        sql = "insert into flujo_tarea(id_ft, nombre_ft, descripcion_ft, fecha_inicio_ft, fecha_entrega_ft, FECHA_ENTREGA_EFECTIVA_FT, porcentaje_avance_ft, estado_ft, INDICADOR_FT) values (:id_ft, :nombre_ft, :descripcion_ft, :fecha_inicio_ft, :fecha_entrega_ft, :FECHA_ENTREGA_EFECTIVA_FT, :porcentaje_avance_ft, :estado_ft, :INDICADOR_FT)";
 
-        await BD.Open(sql, [id_ft, nombre_ft, descripcion_ft, fecha_inicio_ft, fecha_entrega_ft, porcentaje_avance_ft, estado_ft], true);
+        await BD.Open(sql, [id_ft, nombre_ft, descripcion_ft, fecha_inicio_ft, fecha_entrega_ft, FECHA_ENTREGA_EFECTIVA_FT, porcentaje_avance_ft, estado_ft, INDICADOR_FT], true);
 
         res.status(200).json({
             "id_ft": id_ft,
@@ -138,8 +142,10 @@ router.post('/api-flujo-tarea/addFlujo_Tarea', async (req, res) => {
             "descripcion_ft": descripcion_ft,
             "fecha_inicio_ft": fecha_inicio_ft,
             "fecha_entrega_ft": fecha_entrega_ft,
+            "FECHA_ENTREGA_EFECTIVA_FT": FECHA_ENTREGA_EFECTIVA_FT,
             "porcentaje_avance_ft": porcentaje_avance_ft,
-            "estado_ft": estado_ft
+            "estado_ft": estado_ft,
+            "INDICADOR_FT": INDICADOR_FT
         })
     } catch (error){
         return res.status(500).json({message: 'Hubo un error'})
@@ -151,11 +157,11 @@ router.patch("/api-flujo-tarea/UpdateFlujo_Tarea/:id", async (req, res) => {
 
     try{
         const { id } = req.params;
-        const { id_ft, nombre_ft, descripcion_ft, fecha_inicio_ft, fecha_entrega_ft, porcentaje_avance_ft, estado_ft} = req.body;
+        const { id_ft, nombre_ft, descripcion_ft, fecha_inicio_ft, fecha_entrega_ft, FECHA_ENTREGA_EFECTIVA_FT, porcentaje_avance_ft, estado_ft, INDICADOR_FT} = req.body;
         
-        sql = "update flujo_tarea set nombre_ft=:nombre_ft, descripcion_ft=:descripcion_ft, fecha_inicio_ft=:fecha_inicio_ft, fecha_entrega_ft=:fecha_entrega_ft, porcentaje_avance_ft=:porcentaje_avance_ft, estado_ft=:estado_ft where id_ft=:id";
+        sql = "update flujo_tarea set nombre_ft=:nombre_ft, descripcion_ft=:descripcion_ft, fecha_inicio_ft=:fecha_inicio_ft, fecha_entrega_ft=:fecha_entrega_ft, FECHA_ENTREGA_EFECTIVA_FT=:FECHA_ENTREGA_EFECTIVA_FT, porcentaje_avance_ft=:porcentaje_avance_ft, estado_ft=:estado_ft, INDICADOR_FT=:INDICADOR_FT where id_ft=:id";
 
-        await BD.Open(sql, [nombre_ft, descripcion_ft, fecha_inicio_ft, fecha_entrega_ft, porcentaje_avance_ft, estado_ft, id], true);
+        await BD.Open(sql, [nombre_ft, descripcion_ft, fecha_inicio_ft, fecha_entrega_ft, FECHA_ENTREGA_EFECTIVA_FT, porcentaje_avance_ft, estado_ft, INDICADOR_FT, id], true);
 
         res.status(200).json({
             "id_ft": id_ft,
@@ -163,8 +169,10 @@ router.patch("/api-flujo-tarea/UpdateFlujo_Tarea/:id", async (req, res) => {
             "descripcion_ft": descripcion_ft,
             "fecha_inicio_ft": fecha_inicio_ft,
             "fecha_entrega_ft": fecha_entrega_ft,
+            "FECHA_ENTREGA_EFECTIVA_FT": FECHA_ENTREGA_EFECTIVA_FT,
             "porcentaje_avance_ft": porcentaje_avance_ft,
-            "estado_ft": estado_ft
+            "estado_ft": estado_ft,
+            "INDICADOR_FT": INDICADOR_FT
             })
     } catch (error){
         return res.status(500).json({message: 'Hubo un error'})

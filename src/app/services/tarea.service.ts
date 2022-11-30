@@ -51,6 +51,7 @@ export interface Tarea {
   descripcion_t?: string;
   fecha_inicio_t?: string;
   fecha_entrega_t?: string;
+  fecha_entrega_efectiva_t?: string;
   porcentaje_avance_t?: string;
   estado_t?: string;
 }
@@ -72,3 +73,11 @@ export interface AgregarTarea {
   fecha_inicio_t?: string;
   fecha_entrega_t?: string;
 }
+
+export interface Terminada {
+  nombre_t?: string;
+  descripcion_t?: string;
+  fecha_entrega_t?: string;
+  estado_t?: string;
+}
+

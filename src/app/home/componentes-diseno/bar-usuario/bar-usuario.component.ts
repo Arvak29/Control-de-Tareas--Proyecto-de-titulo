@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AgregarAsigTareaSub, AsigTareaSubService } from 'src/app/services/asig-tarea-sub.service';
+import { AgregarEjecFlujoTarea, EjecFlujoTarea, EjecFlujoTareaService } from 'src/app/services/ejec-flujo-tarea.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AsigTareaService, AgregarAsigTarea } from '../../../services/asig-tarea.service';
 
@@ -8,7 +9,7 @@ import { AsigTareaService, AgregarAsigTarea } from '../../../services/asig-tarea
   selector: 'app-bar-usuario',
   templateUrl: './bar-usuario.component.html',
   styleUrls: ['./bar-usuario.component.css'],
-  providers: [UsuarioService, AsigTareaService, AsigTareaSubService],
+  providers: [UsuarioService, AsigTareaService, AsigTareaSubService, EjecFlujoTareaService],
 })
 export class BarUsuarioComponent implements OnInit {
   @Input() funciones: number | undefined;
@@ -19,6 +20,7 @@ export class BarUsuarioComponent implements OnInit {
     private activeRouter: ActivatedRoute,
     private UsuarioService: UsuarioService,
     private AsigTareaService: AsigTareaService,
+    private EjecFlujoTareaService: EjecFlujoTareaService,
     private AsigTareaSubService: AsigTareaSubService
     ) {}
 
@@ -46,6 +48,18 @@ export class BarUsuarioComponent implements OnInit {
     window.location.reload();
   }
 
+  crear_ejecucion_tarea() {
+    const EJECTAREA: AgregarEjecFlujoTarea = {
+      id_u_eft: this.id,
+      id_ft_eft: this.id_entrada,
+      respuesta_eft: "Pendiente",
+      justificacion_eft: "",
+    };
+    this.EjecFlujoTareaService.addEjecFlujoTarea(EJECTAREA).subscribe();
+
+    window.location.reload();
+  }
+
   crear_asig_tarea_sub() {
     const ASIGTAREA: AgregarAsigTareaSub = {
       id_u_ats: this.id,
@@ -58,5 +72,5 @@ export class BarUsuarioComponent implements OnInit {
     window.location.reload();
   }
 
-
+  
 }

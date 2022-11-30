@@ -7,13 +7,14 @@ router.get('/api-ejec-flujo-tarea/getVista_Ejec_Flujo_Tarea/:id', async (req, re
 
   try{
       const { id } = req.params;
-      sql = "select * from vista_ejecucion_flujo_tarea where id_ft =:id";
+      sql = "select * from vista_ejecucion_flujo_tarea where id_ft=:id";
 
       let result = await BD.Open(sql, [id], false);
       Vista_Ejecucion_Flujo_Tarea = [];
 
       result.rows.map(vista_ejecucion_flujo_tarea => {
           let vista_ejecucion_flujo_tareaSchema = {
+              "id_ft": vista_ejecucion_flujo_tarea[0],
               "nombre_u": vista_ejecucion_flujo_tarea[1],
               "nombre_ft": vista_ejecucion_flujo_tarea[2],
               "respuesta_eft": vista_ejecucion_flujo_tarea[3],
