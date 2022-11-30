@@ -311,6 +311,9 @@
             [id]="tareasub.id_ts"
           ></app-bar-subtarea>
         </div>
+        <div class="alert alert-danger" *ngIf="warning" role="alert">
+          ¡Primero debes eliminar las tareas subordinadas!
+        </div>
       </div>
 
       <br />

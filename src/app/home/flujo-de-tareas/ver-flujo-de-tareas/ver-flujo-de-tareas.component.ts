@@ -142,7 +142,7 @@ export class VerFlujoDeTareasComponent implements OnInit {
         (res) => {
           this.router.navigate(['/flujo_de_tareas']);
         },
-        );
+      );
       }else{
       console.log("Mensaje de error")
       this.warning = true;

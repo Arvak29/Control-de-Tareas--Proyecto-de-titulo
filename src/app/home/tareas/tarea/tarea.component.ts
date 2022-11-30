@@ -26,6 +26,8 @@ export class TareaComponent implements OnInit {
   filtroUsuario = '';
   ListarTareaSub: TareaSub[] = [];
   filtroSubordinada = '';
+  warning: boolean = false;
+
 
   tarea: Tarea = {
     id_t: '',
@@ -132,25 +134,27 @@ export class TareaComponent implements OnInit {
   }
 
   eliminar() {
-    if(this.ListarAsignTarea.length == 1)
-    {
+    console.log(this.ListarTareaSub.length)
+    if(this.ListarTareaSub.length < 1){
       this.eliminar_responsable();
-    }
-    
-    this.TareaService.deleteTarea(<any>this.tarea.id_t).subscribe(
-      (res) => {
+      this.TareaService.deleteTarea(<any>this.tarea.id_t).subscribe(
+        (res) => {
         this.router.navigate(['/tareas']);
-      },
-    );
+        },
+      );
+      }else{
+      this.warning = true;
+    }
   }
 
   eliminar_responsable() {
-    this.AsigTareaService.deleteAsigTarea(<any>this.ListarAsignTarea[0].id_t).subscribe(
-      (res) => {
-        console.log('Responsable eliminado');
-      },
-      (err) => console.log(err)
-    );
+    if(this.ListarAsignTarea.length > 0){
+      this.AsigTareaService.deleteAsigTarea(<any>this.ListarAsignTarea[0].id_t).subscribe(
+        (res) => {
+        },
+        (err) => console.log(err)
+      );
+    }
   }
 
   modificar() {
@@ -158,29 +162,51 @@ export class TareaComponent implements OnInit {
     const mes = this.tarea.fecha_entrega_t?.substring(5,7)
     const dia = this.tarea.fecha_entrega_t?.substring(8,10)
     this.tarea.fecha_entrega_t = (dia +"-"+mes+"-"+ año)
-    if(this.tarea.fecha_entrega_t = this.tarea.fecha_entrega_t){
 
-    }
-    this.TareaService.editTarea(<any>this.tarea.id_t, this.tarea).subscribe({
+    const EDITAR: Tarea = {
+      nombre_t: this.TareaSub_formulario.get('nombre_ts')?.value,
+      descripcion_t: this.TareaSub_formulario.get('descripcion_ts')?.value,
+      fecha_entrega_t: this.TareaSub_formulario.get('fecha_entrega_ts')?.value,
+      estado_t: this.tarea.estado_t
+      
+    };
+
+    this.TareaService.editTarea(<any>this.tarea.id_t, EDITAR).subscribe({
       next: (res: any) => {
         this.router.navigate(['/tareas']);
       },
     });
-    
   }
 
   terminar() {
-    const TERMINAR: Terminada = {
-      nombre_t: this.tarea.nombre_t,
-      descripcion_t: this.tarea.descripcion_t,
-      fecha_entrega_t: this.tarea.fecha_entrega_t,
-      estado_t: "Terminada",
-    };
-    this.TareaService.editTarea(<any>this.tarea.id_t, TERMINAR).subscribe({
-      next: (res: any) => {
-        this.router.navigate(['/historial']);
-      },
-    });
+    if(this.tarea.estado_t == "En curso"){
+
+      const año = this.tarea.fecha_entrega_t?.substring(0,4)
+      const mes = this.tarea.fecha_entrega_t?.substring(5,7)
+      const dia = this.tarea.fecha_entrega_t?.substring(8,10)
+      this.tarea.fecha_entrega_t = (dia +"-"+mes+"-"+ año)
+  
+      const añoi = this.tarea.fecha_inicio_t?.substring(0,4)
+      const mesi = this.tarea.fecha_inicio_t?.substring(5,7)
+      const diai = this.tarea.fecha_inicio_t?.substring(8,10)
+      this.tarea.fecha_inicio_t = (diai +"-"+mesi+"-"+ añoi)
+  
+      const TERMINAR: Tarea = {
+        id_t: this.tarea.id_t,
+        nombre_t: this.tarea.nombre_t,
+        descripcion_t: this.tarea.descripcion_t,
+        fecha_inicio_t: this.tarea.fecha_inicio_t,
+        fecha_entrega_t: this.tarea.fecha_entrega_t,
+        porcentaje_avance_t: this.tarea.porcentaje_avance_t,
+        estado_t: "Terminada",
+      };
+      console.log(TERMINAR)
+      this.TareaService.editTarea(<any>this.tarea.id_t, TERMINAR).subscribe({
+        next: (res: any) => {
+          this.router.navigate(['/historial']);
+        },
+      });
+    }
   }
 }
 
