@@ -17,6 +17,7 @@ export class CargosComponent implements OnInit {
   cargo: Cargo = {
     id_c: '',
     nombre_c: '',
+    supervisor_c: ''
   };
 
   constructor(

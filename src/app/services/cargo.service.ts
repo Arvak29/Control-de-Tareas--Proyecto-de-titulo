@@ -38,12 +38,14 @@ export class CargoService {
 export interface Cargo {
   id_c?: string;
   nombre_c?: string;
+  supervisor_c?: string;
   id_ui?: string;
   id_r?: string;
 }
 
 export interface AgregarCargo {
   nombre_c?: string;
+  supervisor_c?: string;
   id_ui?: string;
   id_r?: string;
 }

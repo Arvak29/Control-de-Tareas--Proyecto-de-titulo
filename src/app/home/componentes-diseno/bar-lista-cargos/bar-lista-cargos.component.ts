@@ -11,6 +11,7 @@ import { CargoService } from 'src/app/services/cargo.service';
 export class BarListaCargosComponent implements OnInit {
   @Input() id: string | undefined;
   @Input() nombre: string | undefined;
+  @Input() supervisor: string | undefined;
   @Input() id_ui: string | undefined;
   @Input() id_r: string | undefined;
 

@@ -21,7 +21,7 @@
             </div>
 
             <h6 class="text-center">Rol</h6>
-            <select class="form-select mb-3"               
+            <select class="form-select mb-3"                
               placeholder="id_r"
               formControlName="id_r"
               [class.is-invalid]="
@@ -38,6 +38,16 @@
               Cargo_Grupo.get('id_ui')?.touched &&
               Cargo_Grupo.get('id_ui')?.invalid">
               <option *ngFor="let unidad of ListarUnidad" [value]="unidad.id_ui" >{{unidad.nombre_ui}}</option>
+            </select>
+
+            <h6 class="text-center">Supervisor</h6>
+            <select class="form-select mb-3"               
+              placeholder="supervisor_c"
+              formControlName="supervisor_c"
+              [class.is-invalid]="
+              Cargo_Grupo.get('supervisor_c')?.touched &&
+              Cargo_Grupo.get('jsupervisor_c')?.invalid">
+              <option *ngFor="let cargo of ListarCargo" [value]="cargo.supervisor_c" >{{cargo.nombre_c}}</option>
             </select>
 
           </form>

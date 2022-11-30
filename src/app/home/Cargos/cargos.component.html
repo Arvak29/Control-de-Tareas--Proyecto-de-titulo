@@ -27,6 +27,7 @@
               *ngFor="let cargo of ListarCargo | filtro:filtroCargo"
               [nombre]="cargo.nombre_c"
               [id]="cargo.id_c"
+              [supervisor]="cargo.supervisor_c"
             ></app-bar-lista-Cargos>
           </div>
         </div>

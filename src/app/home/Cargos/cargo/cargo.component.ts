@@ -13,6 +13,7 @@ import { Unidad, UnidadInternaService } from '../../../services/unidad-interna.s
 export class CargoComponent implements OnInit {
   ListarRol: rol[] = [];
   ListarUnidad: Unidad[] = [];
+  ListarCargo: Cargo[] = [];
   cargo: Cargo = {
     id_c: '',
     nombre_c: '',
@@ -27,9 +28,10 @@ export class CargoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.listarCargo();
     this.listarRol();
-    this.listarUniadad();
-
+    this.listarUnidad();
+  
     const id_entrada = this.activeRouter.snapshot.params['id'];
     console.log(id_entrada);
 
@@ -44,6 +46,15 @@ export class CargoComponent implements OnInit {
     }
   }
 
+  listarCargo() {
+    this.CargoService.getCargo().subscribe({
+    next: (res: any) => {
+      this.ListarCargo = <any>res;
+    },
+    error: (err) => console.log(err),
+  });
+  }
+
   listarRol() {
     this.RolService.getRol().subscribe({
       next: (res: any) => {
@@ -52,7 +63,7 @@ export class CargoComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
-  listarUniadad() {
+  listarUnidad() {
     this.UnidadInternaService.getUnidades().subscribe({
       next: (res: any) => {
         this.ListarUnidad = <any>res;

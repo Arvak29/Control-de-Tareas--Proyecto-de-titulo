@@ -19,16 +19,22 @@
           <select class="form-select mb-3"
           [(ngModel)]="cargo.id_r"
           >
-          <option *ngFor="let rol of ListarRol" [value]="rol.id_r">{{rol.nombre_r}}</option>
+          <option *ngFor="let rol of ListarRol" [value]="cargo.id_r">{{rol.nombre_r}}</option>
         </select>
 
         <h6 class="text-center">Unidad interna</h6>
         <select class="form-select mb-3"
         [(ngModel)]="cargo.id_ui"
         >
-          <option *ngFor="let unidad of ListarUnidad" [value]="unidad.id_ui" >{{unidad.nombre_ui}}</option>
+          <option *ngFor="let unidad of ListarUnidad" [value]="cargo.id_ui" >{{unidad.nombre_ui}}</option>
         </select>
-
+        
+        <h6 class="text-center">Supervisor</h6>
+        <select class="form-select mb-3"
+        [(ngModel)]="cargo.supervisor_c"
+        >
+        <option *ngFor="let cargo of ListarCargo" [value]="cargo.supervisor_c" >{{cargo.nombre_c}}</option>
+        </select>
         </div>
       </div>
       <br />

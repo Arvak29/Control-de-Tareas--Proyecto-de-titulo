@@ -21,6 +21,7 @@ export class CrearCargoComponent implements OnInit {
   cargo: Cargo = {
     id_c: '',
     nombre_c: '',
+    supervisor_c: ''
   };
 
   constructor(
@@ -32,6 +33,7 @@ export class CrearCargoComponent implements OnInit {
   ) {
     this.Cargo_Grupo = this.fb.group({
       nombre_c: ['', Validators.required],
+      supervisor_c: ['', Validators.required],
       id_ui: ['', Validators.required],
       id_r: ['', Validators.required],
     });
@@ -40,7 +42,7 @@ export class CrearCargoComponent implements OnInit {
   ngOnInit(): void {
     this.listarCargo();
     this.listarRol();
-    this.listarUniadad();
+    this.listarUnidad();
   }
 
   listarCargo() {
@@ -60,7 +62,7 @@ export class CrearCargoComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
-  listarUniadad() {
+  listarUnidad() {
     this.UnidadInternaService.getUnidades().subscribe({
       next: (res: any) => {
         this.ListarUnidad = <any>res;
@@ -72,6 +74,7 @@ export class CrearCargoComponent implements OnInit {
   crear_cargo() {
     const CARGO: AgregarCargo = {
       nombre_c: this.Cargo_Grupo.get('nombre_c')?.value,
+      supervisor_c: this.Cargo_Grupo.get('supervisor_c')?.value,
       id_ui: this.Cargo_Grupo.get('id_ui')?.value,
       id_r: this.Cargo_Grupo.get('id_r')?.value,
     };

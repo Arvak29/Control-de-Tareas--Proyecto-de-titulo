@@ -122,6 +122,8 @@ router.get('/api-tarea/getTareas', async (req, res) => {
     }
 })
 
+
+//Get de historial de tarea
 router.get('/api-tarea/getHistorialTareas', async (req, res) => {
     
     try{
