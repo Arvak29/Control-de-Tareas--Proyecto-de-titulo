@@ -1,9 +1,9 @@
 _id: req_69a9b7c20fe64bbeb4199321836ae0f0
 type: Request
 parentId: fld_d855bbd111f74c729ec0f4a5dfd8cc9f
-modified: 1669059026952
+modified: 1669789857724
 created: 1668288998773
-url: http://localhost:3000/deleteTarea/6
+url: http://localhost:3000/api-tarea/deleteTarea/1
 name: Delete tarea
 description: ""
 method: DELETE

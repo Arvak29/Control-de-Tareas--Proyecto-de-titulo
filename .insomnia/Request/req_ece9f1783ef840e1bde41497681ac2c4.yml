@@ -1,9 +1,9 @@
 _id: req_ece9f1783ef840e1bde41497681ac2c4
 type: Request
 parentId: fld_bbb36ab293ab4c2681a20d75868cf3b8
-modified: 1668549362556
+modified: 1669416709441
 created: 1668290687014
-url: http://localhost:3000/deleteUsuario/4
+url: http://localhost:3000/api-usuario/deleteUsuario/1
 name: Delete usuario
 description: ""
 method: DELETE
