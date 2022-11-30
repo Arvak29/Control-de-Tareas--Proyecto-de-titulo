@@ -1,10 +1,13 @@
-<div class="bar-tarea">
-  <div class="btn d-flex" type="button">
+<div class="bar-tarea" [ngSwitch]="funciones">
+  <div class="btn d-flex" type="button" *ngSwitchCase="1">
     <h6 class="w-100 text-start " (click)="modificar()">{{ titulo }}</h6>
     <div class="">
       <button class="flex btn btn-nav a" id="boton" (click)="eliminar()">
         <i><img src="../assets/img/x.svg" alt="" /></i>
       </button>
     </div>
+  </div>
+  <div class="btn d-flex" type="button" *ngSwitchCase="2">
+    <h6 class="w-100 text-start ">{{ titulo }}</h6>
   </div>
 </div>

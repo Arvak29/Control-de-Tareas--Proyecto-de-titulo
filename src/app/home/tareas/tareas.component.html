@@ -30,6 +30,7 @@
       <div class="card-body">
         <app-bar-tarea
           *ngFor="let tarea of ListarTarea | filtroTarea: filtroTarea"
+          [funciones]="1"
           [titulo]="tarea.nombre_t"
           [id]="tarea.id_t"
           [porcentaje]="tarea.porcentaje_avance_t"

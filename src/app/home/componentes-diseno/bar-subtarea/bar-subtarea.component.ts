@@ -12,6 +12,7 @@ import {
   providers: [TareaSubordinadaService],
 })
 export class BarSubtareaComponent implements OnInit {
+  @Input() funciones: number | undefined;
   @Input() titulo: string | undefined;
   @Input() id: string | undefined;
 

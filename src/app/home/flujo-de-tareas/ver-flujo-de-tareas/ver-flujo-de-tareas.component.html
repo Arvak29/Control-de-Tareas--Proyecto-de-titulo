@@ -279,6 +279,7 @@
           <br />
           <app-bar-subtarea
             *ngFor="let tareasub of ListarTareaSub | filtroSubordinada: filtroSubordinada"
+            [funciones]="1"
             [titulo]="tareasub.nombre_ts"
             [id]="tareasub.id_ts"
           ></app-bar-subtarea>
@@ -325,3 +326,22 @@
     </div>
   </div>
 </div>
+<!-- 
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tareasub of ListarUsuario">
+      <th scope="row">1</th>
+      <td>{{tareasub.nombre_u}}</td>
+      <td>{{tareasub.id_u}}</td>
+      <td>{{tareasub.nombre_u}}</td>
+    </tr>
+  </tbody>
+</table> -->

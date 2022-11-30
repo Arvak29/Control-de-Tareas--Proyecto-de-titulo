@@ -307,6 +307,7 @@
           <br />
           <app-bar-subtarea
             *ngFor="let tareasub of ListarTareaSub | filtroSubordinada: filtroSubordinada"
+            [funciones]="1"
             [titulo]="tareasub.nombre_ts"
             [id]="tareasub.id_ts"
           ></app-bar-subtarea>
@@ -351,7 +352,7 @@
           </button>
         </div>
       </div>
+      <br />
     </div>
-    <br />
   </div>
 </div>

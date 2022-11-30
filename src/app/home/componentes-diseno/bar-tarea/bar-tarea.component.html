@@ -1,25 +1,52 @@
-<div class="bar-tarea my-1">
-  <div type="button" class="btn" (click)="modificar()">
-    <h6 class="text-start">
-      {{ titulo }}
-    </h6>
-    <div class="col text-end">
-      <h6>{{ cantidadResponsables }}</h6>
-      <img src="../assets/img/usuario.svg" alt="" />
-      <h6>{{ cantidadSubordinada }}</h6>
-      <img src="../assets/img/files.svg" alt="" />
-      <circle-progress *ngIf="porcentaje"
-        class="barra-circular"
-        [percent]="70"
-        [radius]="16"
-        [title]="porcentaje"
-        [titleFontSize]="'12'"
-        [unitsFontSize]="'12'"
-        [outerStrokeWidth]="3"
-        [innerStrokeWidth]="-3"
-        [space]="-3">
-      </circle-progress>
+<div class="" [ngSwitch]="funciones">
+  <div class="bar-tarea my-1" *ngSwitchCase="1">
+    <div type="button" class="btn" (click)="modificar()">
+      <h6 class="text-start">
+        {{ titulo }}
+      </h6>
+      <div class="col text-end">
+        <h6>{{ cantidadResponsables }}</h6>
+        <img src="../assets/img/usuario.svg" alt="" />
+        <h6>{{ cantidadSubordinada }}</h6>
+        <img src="../assets/img/files.svg" alt="" />
+        <circle-progress *ngIf="porcentaje"
+          class="barra-circular"
+          [percent]="70"
+          [radius]="16"
+          [title]="porcentaje"
+          [titleFontSize]="'12'"
+          [unitsFontSize]="'12'"
+          [outerStrokeWidth]="3"
+          [innerStrokeWidth]="-3"
+          [space]="-3">
+        </circle-progress>
+      </div>
     </div>
+    <span class="borde"></span>
   </div>
-  <span class="borde"></span>
+  <div class="bar-tarea my-1" *ngSwitchCase="2">
+    <div type="button" class="btn" (click)="MostrarTareas()">
+      <h6 class="text-start">
+        {{ titulo }}
+      </h6>
+      <div class="col text-end">
+        <h6>{{ cantidadResponsables }}</h6>
+        <img src="../assets/img/usuario.svg" alt="" />
+        <h6>{{ cantidadSubordinada }}</h6>
+        <img src="../assets/img/files.svg" alt="" />
+        <circle-progress *ngIf="porcentaje"
+          class="barra-circular"
+          [percent]="70"
+          [radius]="16"
+          [title]="porcentaje"
+          [titleFontSize]="'12'"
+          [unitsFontSize]="'12'"
+          [outerStrokeWidth]="3"
+          [innerStrokeWidth]="-3"
+          [space]="-3">
+        </circle-progress>
+      </div>
+    </div>
+    <span class="borde"></span>
+  </div>
 </div>

@@ -9,6 +9,7 @@ import { TareaService } from 'src/app/services/tarea.service';
   providers: [TareaService],
 })
 export class BarTareaComponent implements OnInit {
+  @Input() funciones: number | undefined;
   @Input() titulo: string | undefined;
   @Input() cantidadResponsables: string | undefined;
   @Input() cantidadSubordinada: string | undefined;
@@ -21,5 +22,8 @@ export class BarTareaComponent implements OnInit {
 
   modificar(id = this.id) {
     this.router.navigate(['/tarea/' + id]);
+  }
+  MostrarTareas(id = this.id) {
+    this.router.navigate(['/historialtarea/' + id]);
   }
 }
