@@ -1,27 +1,24 @@
-_id: req_46e90d866df54b309fef3c70dfe2183f
+_id: req_ee3e5cbc13e24a6db3fe667bfc7271c8
 type: Request
-parentId: fld_de5ab832eaaa4e4295ebdaa13c9aaa7d
-modified: 1669766617834
-created: 1668289027426
-url: http://localhost:3000/api-cargo/addCargo
-name: Add cargo
+parentId: fld_d855bbd111f74c729ec0f4a5dfd8cc9f
+modified: 1669766623961
+created: 1669338696696
+url: http://localhost:3000/terminartarea/2
+name: Add tareaasdasd
 description: ""
 method: POST
 body:
   mimeType: application/json
-  text: |
-    	{
-    		"id_c": 7,
-    		"nombre_c": "Ingeniero Comercial",
-    		"id_ui": 1,
-    		"id_r": 3
-    	}
+  text: |-
+    {
+
+    }
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
 authentication: {}
-metaSortKey: -1667932175921.5
+metaSortKey: -1667932175959
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

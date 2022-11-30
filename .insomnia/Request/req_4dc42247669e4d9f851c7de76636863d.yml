@@ -1,17 +1,17 @@
-_id: req_3e1effa0a1b64b9fb4f79c8395ca8b4d
+_id: req_4dc42247669e4d9f851c7de76636863d
 type: Request
-parentId: fld_bbb36ab293ab4c2681a20d75868cf3b8
-modified: 1669416640589
-created: 1668285996711
-url: http://localhost:3000/api-usuario/getUsuario/4
-name: Get usuario
+parentId: fld_ab9b396b470747b0b76a9e6be3e8100f
+modified: 1669750657731
+created: 1669750601072
+url: http://localhost:3000/api-porc-global/getPorc_Global
+name: Get Porcentaje Global
 description: ""
 method: GET
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1667932175852.75
+metaSortKey: -1669750601072
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
