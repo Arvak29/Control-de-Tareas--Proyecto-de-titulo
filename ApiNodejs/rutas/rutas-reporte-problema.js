@@ -179,7 +179,7 @@ router.get('/getReporteProblema/:id', async (req, res) => {
 })
 
 //Get de todo
-router.get('/getReportesProblemas', async (req, res) => {
+router.get('/api-reporte/getReportesProblemas', async (req, res) => {
 
     try{
         sql = "select * from reporte_problema";
@@ -206,7 +206,7 @@ router.get('/getReportesProblemas', async (req, res) => {
 })
 
 //Agregar
-router.post('/addReporteProblema', async (req, res) => {
+router.post('/api-reporte/addReporteProblema', async (req, res) => {
 
     try{
         const { id_rp, descripcion_rp, id_t, id_ts, id_ft} = req.body;
@@ -228,7 +228,7 @@ router.post('/addReporteProblema', async (req, res) => {
 })
 
 //Actualizar
-router.patch("/UpdateReporteProblema/:id", async (req, res) => {
+router.patch("/api-reporte/UpdateReporteProblema/:id", async (req, res) => {
 
     try{
         const { id } = req.params;

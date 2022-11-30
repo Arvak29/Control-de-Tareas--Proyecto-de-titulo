@@ -15,7 +15,7 @@ export class TareaSubordinadaService {
 
   //get tareas sub 
   getTareasSub() {
-    return this.http.get(this.url);
+    return this.http.get('/api-tarea-sub/gettareas_sub/');
   }
 
   //get una tarea sub (listar)
