@@ -80,7 +80,7 @@ const appRoutes: Routes = [
   { path: 'cargos', component: CargosComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
   { path: 'crear_cargo', component: CrearCargoComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
   { path: 'cargo/:id', component: CargoComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
-  { path: 'flujo_de_tareas', component: FlujoDeTareasComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
+  { path: 'flujo_de_tareas', component: FlujoDeTareasComponent, canActivate: [AuthGuard]},
   { path: 'crear_flujo_de_tareas', component: CrearFlujoDeTareasComponent, canActivate: [AuthGuard] },
   { path: 'flujo_de_tarea/:id', component: VerFlujoDeTareasComponent, canActivate: [AuthGuard] },
   { path: 'tareas', component: TareasComponent, canActivate: [AuthGuard] },
