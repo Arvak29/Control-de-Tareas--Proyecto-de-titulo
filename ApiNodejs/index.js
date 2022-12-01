@@ -18,6 +18,7 @@ const RutasAsignacionTareaSub = require("./rutas/rutas-asignacion-tarea-subordin
 const RutasEjecucionFlujoTarea = require("./rutas/rutas-ejecucion-flujo-tarea");
 const RutasReporteProblema = require("./rutas/rutas-reporte-problema");
 const RutasPorcGlobal = require("./rutas/rutas-porcentaje-global");
+const RutasNotificacion = require("./rutas/rutas-notificacion");
 
 
 //settings
@@ -42,7 +43,8 @@ app.use(
   RutasAsignacionTareaSub,
   RutasEjecucionFlujoTarea,
   RutasReporteProblema,
-  RutasPorcGlobal
+  RutasPorcGlobal,
+  RutasNotificacion 
 );
 
 //run
