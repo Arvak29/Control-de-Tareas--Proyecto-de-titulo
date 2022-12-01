@@ -39,10 +39,10 @@ export class PorcGlobalService {
 
   export interface VUI {
     nombre_ui?: string;
-    contador_de_tareas?: string;
+    Contador_de_tareas?: string;
   }
 
   export interface CargaTrabajo {
-    supervisor_c?: string;
-    carga_trabajo?: string;
+    nombre_r?: string;
+    carga?: string;
   }

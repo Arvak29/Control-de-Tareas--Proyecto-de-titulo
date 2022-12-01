@@ -21,10 +21,8 @@
       </div>
 
       <div class="card-body">
-        <app-bar-notificacion></app-bar-notificacion>
-        <app-bar-notificacion></app-bar-notificacion>
-        <app-bar-notificacion></app-bar-notificacion>
-        <app-bar-notificacion></app-bar-notificacion>
+        <app-bar-notificacion>*ngFor="let notificacion of ListarNotificacion"
+          [asunto]="notificacion.asunto_n"</app-bar-notificacion>
       </div>
     </div>
   </div>

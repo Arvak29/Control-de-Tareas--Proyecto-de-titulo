@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import decode from 'jwt-decode';
 
 @Component({
   selector: 'app-nav',
@@ -11,5 +12,13 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  permisosAdministrador(): boolean {
+    const token = localStorage.getItem('token');
+    let decodetoken: any = {};
+    decodetoken = decode(token!);
+    if (decodetoken[4] !== 'Administrador') {
+      return false;
+    }
+    return true;
+  }
 }

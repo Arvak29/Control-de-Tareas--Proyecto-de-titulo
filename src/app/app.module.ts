@@ -71,8 +71,8 @@ import { LoginGuard } from './guard/login.guard';
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
-  { path: 'usuario/:id', component: UsuarioComponent, canActivate: [AuthGuard, RolGuard],data: { expectedRole: 'Administrador'}},
+  { path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard]},
+  { path: 'usuario/:id', component: UsuarioComponent, canActivate: [AuthGuard]},
   { path: 'crear_usuario', component: CrearUsuariosComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
   { path: 'unidades_internas', component: UnidadesInternasComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
   { path: 'crear_unidad_interna', component: CrearUnidadInternaComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
