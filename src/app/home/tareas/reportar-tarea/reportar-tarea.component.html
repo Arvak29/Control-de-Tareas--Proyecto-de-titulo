@@ -11,6 +11,20 @@
               <input
                 class="form-control"
                 type="text"
+                formControlName="asunto_rp"
+                placeholder="asunto_rp"
+                [class.is-invalid]="
+                Reporte_Grupo.get('asunto_rp')?.touched &&
+                Reporte_Grupo.get('asunto_rp')?.invalid
+                "
+              />
+              <label for="inputMotivo">Asunto</label>
+            </div>
+            <br>
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                type="text"
                 formControlName="descripcion_rp"
                 placeholder="descripcion_rp"
                 [class.is-invalid]="
@@ -20,36 +34,6 @@
               />
               <label for="inputMotivo">Motivo del reporte</label>
             </div>
-
-            <h6 class="text-center">Tarea</h6>
-            <select class="form-select mb-3"                
-              placeholder="id_t"
-              formControlName="id_t"
-              [class.is-invalid]="
-              Reporte_Grupo.get('id_t')?.touched &&
-              Reporte_Grupo.get('id_t')?.invalid">
-              <option *ngFor="let tarea of ListarTarea" [value]="tarea.id_t" >{{tarea.nombre_t}}</option>
-            </select>
-
-            <h6 class="text-center">Tarea Subordinada</h6>
-            <select class="form-select mb-3"                
-              placeholder="id_ts"
-              formControlName="id_ts"
-              [class.is-invalid]="
-              Reporte_Grupo.get('id_ts')?.touched &&
-              Reporte_Grupo.get('id_ts')?.invalid">
-              <option *ngFor="let tareasub of ListarTareaSub" [value]="tareasub.id_ts" >{{tareasub.nombre_ts}}</option>
-            </select>
-
-            <h6 class="text-center">Tarea</h6>
-            <select class="form-select mb-3"                
-              placeholder="id_ft"
-              formControlName="id_ft"
-              [class.is-invalid]="
-              Reporte_Grupo.get('id_ft')?.touched &&
-              Reporte_Grupo.get('id_ft')?.invalid">
-              <option *ngFor="let flujo of ListarFlujo" [value]="flujo.id_ft" >{{flujo.nombre_ft}}</option>
-            </select>
 
           </form>
         </div>

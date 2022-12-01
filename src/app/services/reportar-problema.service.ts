@@ -18,8 +18,8 @@ export class ReporteService {
     return this.http.get('/api-reporte/getVista_Reporte_Tarea' + id);
   }
 
-  //agregar un rol
-  addRol(reporte: AgregarReporte) {
+  //agregar un reporte
+  addReporte(reporte: AgregarReporte) {
     return this.http.post('/api-reporte/addReporteProblema', reporte);
   }
 
@@ -27,17 +27,13 @@ export class ReporteService {
 
 export interface Reporte {
   id_rp?: string;
+  asunto_rp?: string;
   descripcion_rp?: string;
-  id_t?: string;
-  id_ts?: string;
-  id_ft?: string;
 }
 
 export interface AgregarReporte {
     id_rp?: string;
+    asunto_rp?: string;
     descripcion_rp?: string;
-    id_t?: string;
-    id_ts?: string;
-    id_ft?: string;
 
 }

@@ -1263,6 +1263,15 @@ DECLARE
                 END IF;
         END LOOP;
 END TGR_ALERTA_FLUJO_TAREA;
+
+/* TRIGGER REPORTE PROBLEMA*/
+
+CREATE OR REPLACE TRIGGER TGR_REPORTE_PROBLEMA
+AFTER INSERT ON REPORTE_PROBLEMA FOR EACH ROW
+DECLARE 
+        BEGIN
+                INSERT INTO NOTIFICACION VALUES ('', 'Se ha ingresado un reporte','Tienes un reporte de tarea','1');
+END TGR_REPORTE_PROBLEMA;
 -----------------------------------------------------------------------------------------------------------------------------------
 /*/// Insertar de tabla tareas ///*/
 
@@ -1332,6 +1341,13 @@ UPDATE TAREA
 SET ESTADO_T = 'Terminada'
 WHERE ID_T = 3;
 
+UPDATE TAREA
+SET INDICADOR_T = 'Amarillo'
+WHERE ID_T = 3;
+
+UPDATE porcentaje_global
+SET avance_pg = 55
+WHERE ID_pg = 1;
 -----------------------------------------------------------------------------------------------------------------------------------
 /*/// Consultas ///*/
 
@@ -1342,5 +1358,6 @@ SELECT * FROM USUARIO;
 SELECT * FROM TAREA;
 SELECT * FROM TAREA_subordinada;
 select * from flujo_tarea;
+select * from notificacion;
+select * from porcentaje_global;
 select * from asignacion_tarea;
-SELECT * FROM PORCENTAJE_GLOBAL;

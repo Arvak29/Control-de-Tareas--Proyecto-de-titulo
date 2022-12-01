@@ -15,7 +15,8 @@ router.get('/api-reporte/getVista_Reporte_Tarea/:id', async (req, res) => {
         result.rows.map(vista_reporte_tarea => {
             let vista_reporte_tareaSchema = {
                 "nombre_rp": vista_reporte_tarea[1],
-                "descripcion_rp": vista_reporte_tarea[2]
+                "asunto_rp": vista_reporte_tarea[2],
+                "descripcion_rp": vista_reporte_tarea[3]
             }
 
             Vista_Reporte_Tarea.push(vista_reporte_tareaSchema);
@@ -39,7 +40,8 @@ router.get('/api-reporte/getVista_Reportes_Tareas', async (req, res) => {
         result.rows.map(vista_reporte_tarea => {
             let vista_reportes_tareasSchema = {
                 "nombre_rp": vista_reporte_tarea[1],
-                "descripcion_rp": vista_reporte_tarea[2]
+                "asunto_rp": vista_reporte_tarea[2],
+                "descripcion_rp": vista_reporte_tarea[3]
             }
 
             Vista_Reportes_Tareas.push(vista_reportes_tareasSchema);
@@ -150,7 +152,7 @@ router.get('/api-reporte/getVista_Reportes_Flujos_Tareas', async (req, res) => {
 })
 
 //Get especifico por id de problema
-router.get('/getReporteProblema/:id', async (req, res) => {
+router.get('/api-reporte/getReporteProblema/:id', async (req, res) => {
 
     try{
         const { id } = req.params;
@@ -162,13 +164,11 @@ router.get('/getReporteProblema/:id', async (req, res) => {
         result.rows.map(reporte_problema => {
             let reporte_problemaSchema = {
                 "id_rp": reporte_problema[0],
-                "descripcion_rp": reporte_problema[1],
-                "id_t": reporte_problema[2],
-                "id_ts": reporte_problema[3],
-                "id_ft": reporte_problema[4]
+                "asunto_rp": reporte_problema[1],
+                "descripcion_rp": reporte_problema[2]
             }
 
-            reporte_problema.push(reporte_problemaSchema);
+            Reporte_Problema.push(reporte_problemaSchema);
             Reporte_Problema = [reporte_problemaSchema];
         })
         
@@ -190,10 +190,11 @@ router.get('/api-reporte/getReportesProblemas', async (req, res) => {
         result.rows.map(reporte_problema => {
             let reportes_problemasSchema = {
                 "id_rp": reporte_problema[0],
-                "descripcion_rp": reporte_problema[1],
-                "id_t": reporte_problema[2],
-                "id_ts": reporte_problema[3],
-                "id_ft": reporte_problema[4]
+                "asunto_rp": reporte_problema[1],
+                "descripcion_rp": reporte_problema[2],
+                "id_t": reporte_problema[3],
+                "id_ts": reporte_problema[4],
+                "id_ft": reporte_problema[5]
             }
 
             reportes_problemas.push(reportes_problemasSchema);
@@ -209,14 +210,15 @@ router.get('/api-reporte/getReportesProblemas', async (req, res) => {
 router.post('/api-reporte/addReporteProblema', async (req, res) => {
 
     try{
-        const { id_rp, descripcion_rp, id_t, id_ts, id_ft} = req.body;
+        const { id_rp, asunto_rp, descripcion_rp, id_t, id_ts, id_ft} = req.body;
 
-        sql = "insert into reporte_problema(id_rp, descripcion_rp, id_t, id_ts, id_ft) values (:id_rp, :descripcion_rp, :id_t, :id_ts, :id_ft)";
+        sql = "insert into reporte_problema(id_rp, asunto_rp, descripcion_rp, id_t, id_ts, id_ft) values (:id_rp, :descripcion_rp, :id_t, :id_ts, :id_ft)";
 
         await BD.Open(sql, [id_rp, descripcion_rp, id_t, id_ts, id_ft], true);
 
         res.status(200).json({
             "id_rp": id_rp,
+            "asunto_rp": asunto_rp,
             "descrpcion_rp": descripcion_rp,
             "id_t": id_t,
             "id_ts": id_ts,
@@ -232,11 +234,11 @@ router.patch("/api-reporte/UpdateReporteProblema/:id", async (req, res) => {
 
     try{
         const { id } = req.params;
-        const {id_rp, descripcion_rp, id_t, id_ts, id_ft} = req.body;
+        const {id_rp, asunto_rp, descripcion_rp, id_t, id_ts, id_ft} = req.body;
         
         sql = "update reporte_problema set descripcion_rp=:descripcion_rp, id_t=:id_t, id_ts=:id_ts, id_ft=:id_ft where id_rp=:id";
 
-        await BD.Open(sql, [id, descripcion_rp, id_t, id_ts, id_ft], true);
+        await BD.Open(sql, [id, asunto_rp, descripcion_rp, id_t, id_ts, id_ft], true);
 
         res.status(200).json({
             "id_rp": id_rp,
@@ -254,7 +256,7 @@ router.patch("/api-reporte/UpdateReporteProblema/:id", async (req, res) => {
 router.delete("/deleteReporteProblema/:id", async (req, res) => {
 
     try{
-        const {id_rp, descripcion_rp, id_t, id_ts, id_ft} = req.params;
+        const {id_rp, asunto_rp, descripcion_rp, id_t, id_ts, id_ft} = req.params;
 
         sql = "delete reporte_problema where id_rp=:id";
 

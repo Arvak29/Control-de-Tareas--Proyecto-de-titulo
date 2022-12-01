@@ -1,23 +1,20 @@
 export class Reporte_problema {
     id_rp: number;
-    nombre_rp: string;
-    id_t: number;
-    id_ts: number;
-    id_ft: number;
+    asunto_rp: string;
+    descripcion_rp: string;
+
   
     constructor(
       id_rp: number, 
-      nombre_rp: string,
-      id_t: number, 
-      id_ts: number,
-      id_ft: number
+      asunto_rp: string,
+      descripcion_rp: string,
+
     )
     {
       this.id_rp = id_rp;
-      this.nombre_rp = nombre_rp;
-      this.id_t = id_t;
-      this.id_ts = id_ts;
-      this.id_ft = id_ft;
+      this.asunto_rp = asunto_rp;
+      this.descripcion_rp = descripcion_rp;
+
     }
   }
   

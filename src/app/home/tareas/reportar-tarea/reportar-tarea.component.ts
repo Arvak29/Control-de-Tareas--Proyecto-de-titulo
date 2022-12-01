@@ -22,25 +22,22 @@ export class ReportarTareaComponent implements OnInit {
 
   reporte: Reporte = {
     id_rp: '',
+    asunto_rp: '',
     descripcion_rp: '',
-    id_t: '',
-    id_ts: '',
-    id_ft: ''
   };
-  ReporteService: any;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private FlujoService: FlujoService,
     private TareaService: TareaService,
+    private ReporteService: ReporteService,
     private TareaSubordinadaService: TareaSubordinadaService
   ) {
     this.Reporte_Grupo = this.fb.group({
+      asunto_rp: ['', Validators.required],
       descripcion_rp: ['', Validators.required],
-      id_t: ['', Validators.required],
-      id_ts: ['', Validators.required],
-      id_ft: ['', Validators.required],
+
    });
   }
   ngOnInit(): void {
@@ -77,7 +74,7 @@ export class ReportarTareaComponent implements OnInit {
         }
 
       listarReporte() {
-        this.ReporteService.getReporte().subscribe({
+        this.ReporteService.getReportes().subscribe({
           next: (res: any) => {
             this.ListarReporte = <any>res;
           },
@@ -87,10 +84,8 @@ export class ReportarTareaComponent implements OnInit {
 
       crear_reporte(){
         const REPORTE: AgregarReporte = {
+          asunto_rp: this.Reporte_Grupo.get('asunto_rp')?.value,
           descripcion_rp: this.Reporte_Grupo.get('descripcion_rp')?.value,
-          id_t: this.Reporte_Grupo.get('id_t')?.value,
-          id_ts: this.Reporte_Grupo.get('id_ts')?.value,
-          id_ft: this.Reporte_Grupo.get('id_ft')?.value,
         };
         this.ReporteService.addReporte(REPORTE).subscribe();
         this.router.navigate(['/reportes'])
