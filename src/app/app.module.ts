@@ -55,6 +55,13 @@ import { BarNotificacionComponent } from './home/componentes-diseno/bar-notifica
 import { NotificacionesComponent } from './home/notificaciones/notificaciones.component';
 import { NotificacionComponent } from './home/notificaciones/notificacion/notificacion.component';
 import { TareahistoriaComponent } from './home/tareas/tareahistoria/tareahistoria.component';
+import { AuthGuard } from './guard/auth.guard';
+import { RolGuard } from './guard/rol.guard';
+import { LoginGuard } from './guard/login.guard';
+import { RolesComponent } from './home/roles/roles.component';
+import { NavRolComponent } from './home/roles/nav-rol/nav-rol.component';
+import { CrearRolComponent } from './home/roles/crear-rol/crear-rol.component';
+import { RolComponent } from './home/roles/rol/rol.component';
 
 //pipes
 import { FiltroPipe } from './pipes/filtro-Tarea.pipe';
@@ -63,10 +70,7 @@ import { FiltroCargoPipe } from './pipes/filtro-Cargo.pipe';
 import { FiltroUnidadPipe } from './pipes/filtro-unidad.pipe';
 import { FiltroFlujoPipe } from './pipes/filtro-flujo.pipe';
 import { FiltroSubordinadaPipe } from './pipes/filtro-subordinada.pipe';
-
-import { AuthGuard } from './guard/auth.guard';
-import { RolGuard } from './guard/rol.guard';
-import { LoginGuard } from './guard/login.guard';
+import { FiltroRolPipe } from './pipes/filtro-rol.pipe';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
@@ -80,6 +84,9 @@ const appRoutes: Routes = [
   { path: 'cargos', component: CargosComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
   { path: 'crear_cargo', component: CrearCargoComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
   { path: 'cargo/:id', component: CargoComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
+  { path: 'roles', component: RolesComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
+  { path: 'crear_roles', component: CrearRolComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
+  { path: 'rol/:id', component: RolComponent, canActivate: [AuthGuard, RolGuard], data: { expectedRole: 'Administrador'}},
   { path: 'flujo_de_tareas', component: FlujoDeTareasComponent, canActivate: [AuthGuard]},
   { path: 'crear_flujo_de_tareas', component: CrearFlujoDeTareasComponent, canActivate: [AuthGuard] },
   { path: 'flujo_de_tarea/:id', component: VerFlujoDeTareasComponent, canActivate: [AuthGuard] },
@@ -150,6 +157,11 @@ const appRoutes: Routes = [
     NotificacionesComponent,
     NotificacionComponent,
     TareahistoriaComponent,
+    RolesComponent,
+    NavRolComponent,
+    CrearRolComponent,
+    FiltroRolPipe,
+    RolComponent,
   ],
   imports: [
     BrowserModule,

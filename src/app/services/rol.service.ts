@@ -15,22 +15,22 @@ export class RolService {
 
   //get un rol
   getUnRol(id: string) {
-    return this.http.get('/api-rol/getRoles' + id);
+    return this.http.get('/api-rol/getRoles/' + id);
   }
 
   //agregar un rol
   addRol(rol: AgregarRol) {
-    return this.http.post(this.url, rol);
+    return this.http.post('/api-rol/addRol/', rol);
   }
 
   //eliminar un rol
   deleteRol(id: number) {
-    return this.http.delete(this.url + '/' + id);
+    return this.http.delete('/api-rol/deleteRol/' + id);
   }
 
   //modificar un rol
   editRol(id: string, rol: rol) {
-    return this.http.put(this.url + '/' + id, rol);
+    return this.http.patch('/api-rol/UpdateRol/' + id, rol);
   }
 }
 

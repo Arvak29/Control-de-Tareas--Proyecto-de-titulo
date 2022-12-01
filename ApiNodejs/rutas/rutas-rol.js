@@ -4,7 +4,7 @@ const BD = require('../config/configbd');
 
 
 //Get especifico
-router.get('/getRol/:id', async (req, res) => {
+router.get('/api-rol/getRoles/:id', async (req, res) => {
 
     try{
         const { id } = req.params;
@@ -53,7 +53,7 @@ router.get('/api-rol/getRoles', async (req, res) => {
 })
 
 //Agregar
-router.post('/addRol', async (req, res) => {
+router.post('/api-rol/addRol/', async (req, res) => {
 
     try{
         const { id_r, nombre_r} = req.body;
@@ -72,7 +72,7 @@ router.post('/addRol', async (req, res) => {
 })
 
 //Actualizar
-router.patch("/UpdateRol/:id", async (req, res) => {
+router.patch("/api-rol/UpdateRol/:id", async (req, res) => {
 
     try{
         const { id } = req.params;
@@ -92,7 +92,7 @@ router.patch("/UpdateRol/:id", async (req, res) => {
 })
 
 //Borrar
-router.delete("/deleteRol/:id", async (req, res) => {
+router.delete("/api-rol/deleteRol/:id", async (req, res) => {
 
     try{
         const { id } = req.params;

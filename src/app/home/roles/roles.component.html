@@ -1,0 +1,34 @@
+<app-nav-rol></app-nav-rol>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 border-0 rounded-lg">
+      <div class="card text-white bg shadow-lg border-0 rounded-lg">
+        <app-card-header [titulo]="'Lista de roles'"></app-card-header>
+        <div class="card-body">
+            <div class="col-12 text-start">
+                <form class="form text-start">
+                  <button>
+                    <img src="../assets/img/search.svg" alt="" />
+                  </button>
+                  <input
+                    class="input"
+                    placeholder="Buscar..."
+                    required=""
+                    type="text"
+                    name="filtroRol"
+                    [(ngModel)]="filtroRol"
+                  />
+                </form>
+              </div>
+            <div class="card-body">
+                <app-bar-rol
+                *ngFor="let rol of ListarRol | filtro:filtroRol"
+                [nombre]="rol.nombre_r"
+                [id]="rol.id_r" >
+                </app-bar-rol>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

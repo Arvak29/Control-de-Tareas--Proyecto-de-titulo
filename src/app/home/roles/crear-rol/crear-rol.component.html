@@ -1,0 +1,40 @@
+<app-nav-rol></app-nav-rol>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-xs-12 col-sm-11 col-md-7 col-lf-4 col-xl-4 col-xxl-5">
+        <div class="card text-white bg shadow-lg border-0 rounded-lg">
+          <app-card-header [titulo]="'Crear cargo'"></app-card-header>
+          <div class="card-body">
+            <form [formGroup]="Rol_Grupo" (ngSubmit)="crear_cargo()">
+              <div class="form-floating mb-3">
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="nombre_r"
+                  placeholder="nombre_r"
+                  [class.is-invalid]="
+                    Rol_Grupo.get('nombre_c')?.touched &&
+                    Rol_Grupo.get('nombre_c')?.invalid
+                  "
+                />
+                <label for="inputNombre">Nombre</label>
+              </div>
+            </form>
+          </div>
+        </div>
+        <br />
+      </div>
+  
+      <div class="col-xs-12 col-sm-11 col-md-3 col-lf-2 col-xl-2 col-xxl-1">
+        <form [formGroup]="Rol_Grupo" (ngSubmit)="crear_cargo()">
+          <button
+            type="submit"
+            class="btn btn-primary col-12 p-3"
+            [disabled]="Rol_Grupo.invalid">
+            Crear
+          </button>
+        </form>
+        <br />
+      </div>
+    </div>
+  </div>
