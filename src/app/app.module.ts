@@ -93,7 +93,7 @@ const appRoutes: Routes = [
   { path: 'crear_tarea', component: CrearTareaComponent, canActivate: [AuthGuard] },
   { path: 'nav_tarea', component: NavTareaComponent, canActivate: [AuthGuard] },
   { path: 'notificaciones', component: NotificacionesComponent, canActivate: [AuthGuard] },
-  { path: 'notificacion', component: NotificacionComponent, canActivate: [AuthGuard] },
+  { path: 'notificacion/:id', component: NotificacionComponent, canActivate: [AuthGuard] },
   { path: 'historialtarea/:id', component: TareahistoriaComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];

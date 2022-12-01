@@ -2,29 +2,16 @@
   <div class="col-12 my-1">
     <div class="card text-white bg shadow-lg border-0 rounded-lg">
       <app-card-header [titulo]="'Notificaciones'"></app-card-header>
-      <br />
-      <div *ngIf="true">
       <div class="card-body">
-        
-          <h5 class="text-center">nombre de la notificacion</h5>
-          <h6>{{notificacion.asunto_n}}</h6>
+          <h5 class="text-center">Nombre de la notificacion</h5>
           <dir class="col-12 caja">
-            <h6>nombre de la notificacion</h6>
+            <h6>{{notificacion.asunto_n}}</h6>
           </dir>
           <h5 class="text-center">Descripcion de la notificacion</h5>
           <dir class="col-12 caja">
-            <h6>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis modi
-              veritatis ex exercitationem voluptate dicta aliquam ducimus
-              asperiores voluptates suscipit totam enim, tempora doloremque
-              quibusdam incidunt. Libero hic nemo vel!
-            </h6>
+            <h6>{{notificacion.descripcion_n}}</h6>
           </dir>
-          <dir class="col-4 caja">
-            <h6>Fecha: 10-10-2022</h6>
-          </dir>
-        </div>
       </div>
     </div>
-  </div>
+</div>
 </div>

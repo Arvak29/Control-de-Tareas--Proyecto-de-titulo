@@ -4,6 +4,7 @@ import { map, Observable } from 'rxjs';
 import { AuthService } from './services/auth.service';
 import decode from 'jwt-decode';
 import { UsuarioService, VistaUsuario } from 'src/app/services/usuario.service';
+import { Notificacion, NotificacionService } from 'src/app/services/notificacion.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import { UsuarioService, VistaUsuario } from 'src/app/services/usuario.service';
   providers: [UsuarioService],
 })
 export class AppComponent {
+  ListarNotificacion: Notificacion[] = [];
   nombre = '';
   rol = '';
   cargo = '';
@@ -24,16 +26,27 @@ export class AppComponent {
   constructor(
     public authService: AuthService,
     private router: Router,
-    private UsuarioService: UsuarioService
+    private UsuarioService: UsuarioService,
+    private NotificacionService: NotificacionService
     ) {}
 
   ngOnInit(): void {
-
+    this.listarNotificacion();
   }
 
   logOut() {
     localStorage.removeItem('token');
     window.location.reload();
+  }
+
+  listarNotificacion() {
+    this.NotificacionService.getNotificaciones().subscribe({
+      next: (res: any) => {
+        this.ListarNotificacion = <any>res;
+        console.log(this.ListarNotificacion);
+      },
+      error: (err) => console.log(err),
+    });
   }
 
   sidebar() {

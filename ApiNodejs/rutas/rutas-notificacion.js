@@ -7,7 +7,7 @@ router.get('/api-notificacion/getNotificacion/:id', async (req, res) => {
 
     try{
         const { id } = req.params;
-        sql = "select * from notificacion where id_n =:id";
+        sql = "select * from notificacion where id_n=:id";
 
         let result = await BD.Open(sql, [id], false);
         Notificacion = [];

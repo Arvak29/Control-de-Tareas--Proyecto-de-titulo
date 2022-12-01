@@ -9,15 +9,14 @@ export class NotificacionService {
   constructor(private http: HttpClient) {}
 
   //get notificaciones
-  getNotificacion(id:number) {
-    return this.http.get('/api-notificacion/getNotificacion' + id);
+  getNotificacion(id:string) {
+    return this.http.get('/api-notificacion/getNotificacion/' + id);
   }
 
   //get notificaciones
   getNotificaciones() {
     return this.http.get('/api-notificacion/getNotificaciones');
   }
-
 }
 
 export interface Notificacion {

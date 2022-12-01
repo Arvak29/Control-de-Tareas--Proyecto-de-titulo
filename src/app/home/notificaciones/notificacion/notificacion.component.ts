@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Notificacion, NotificacionService } from 'src/app/services/notificacion.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { TareaService } from 'src/app/services/tarea.service';
 
 @Component({
   selector: 'app-notificacion',
@@ -9,7 +10,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   providers: [NotificacionService],
 })
 export class NotificacionComponent implements OnInit {
-  ListarNotificacion: Notificacion[] = [];
+  id_entrada: string = "";
+
   notificacion: Notificacion = {
     id_n: '',
     asunto_n: '',
@@ -18,19 +20,21 @@ export class NotificacionComponent implements OnInit {
   };
   constructor(
     private router: Router,
-    private NotificacionService: NotificacionService
+    private NotificacionService: NotificacionService,
+    private activeRouter: ActivatedRoute,
+
   ) { }
 
   ngOnInit(): void {
-    this.listarNotificacion();
-  }
+    this.id_entrada = this.activeRouter.snapshot.params['id'];
+    console.log(this.id_entrada)
 
-  listarNotificacion() {
-    this.NotificacionService.getNotificaciones().subscribe({
-      next: (res: any) => {
-        this.ListarNotificacion = <any>res;
-      },
-      error: (err) => console.log(err),
-    });
+    if (this.id_entrada) {
+      this.NotificacionService.getNotificacion(this.id_entrada).subscribe({
+        next: (res: any) => {
+          this.notificacion = <any>res[0];
+        },
+      });
+    }
   }
 }
