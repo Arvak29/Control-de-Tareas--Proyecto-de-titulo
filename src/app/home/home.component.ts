@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
     }else if(this.percent >= 72){
       this.outerStrokeColor ="#ffca28"
     }else{
-      this.outerStrokeColor ="#1dd300"
+      this.outerStrokeColor ="#40ed9a"
     }
     this.PorcGlobalService.getPorcGlobales("1").subscribe({
       next: (res: any) => {
