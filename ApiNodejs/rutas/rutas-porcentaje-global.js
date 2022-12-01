@@ -74,15 +74,15 @@ router.get('/api-porc-global/getVista_Tareas_UI', async (req, res) => {
 router.get('/api-porc-global/getVista_Carga_trabajo', async (req, res) => {
   try{
     
-      sql = "select supervisor_c, count(id_t) as Carga_trabajo_subordinados from vista_carga_trabajo group by supervisor_c";
+      sql = "select nombre_r, count(id_t) as Carga_trabajo_subordinados from vista_carga_trabajo group by nombre_r";
 
       let result = await BD.Open(sql, [], false);
       Vista_Carga = [];
 
       result.rows.map(vista_carga_trabajo => {
           let vista_carga_trabajoSchema = {
-              "supervisor_c": vista_carga_trabajo[0],
-              "Carga_de_trabajo": vista_carga_trabajo[1]
+              "nombre_r": vista_carga_trabajo[0],
+              "carga": vista_carga_trabajo[1]
           }
 
           Vista_Carga.push(vista_carga_trabajoSchema );

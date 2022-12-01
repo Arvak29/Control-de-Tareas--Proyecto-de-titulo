@@ -9,11 +9,12 @@
         <img src="../assets/img/usuario.svg" alt="" />
         <h6>{{ cantidadSubordinada }}</h6>
         <img src="../assets/img/files.svg" alt="" />
-        <circle-progress *ngIf="porcentaje"
+        <circle-progress
           class="barra-circular"
-          [percent]="70"
+          [outerStrokeColor]="outerStrokeColor"
+          [percent]="percent"
           [radius]="16"
-          [title]="porcentaje"
+          [title]="'auto'"
           [titleFontSize]="'12'"
           [unitsFontSize]="'12'"
           [outerStrokeWidth]="3"
@@ -34,11 +35,11 @@
         <img src="../assets/img/usuario.svg" alt="" />
         <h6>{{ cantidadSubordinada }}</h6>
         <img src="../assets/img/files.svg" alt="" />
-        <circle-progress *ngIf="porcentaje"
+        <circle-progress
           class="barra-circular"
           [percent]="70"
           [radius]="16"
-          [title]="porcentaje"
+          [title]="'10'"
           [titleFontSize]="'12'"
           [unitsFontSize]="'12'"
           [outerStrokeWidth]="3"

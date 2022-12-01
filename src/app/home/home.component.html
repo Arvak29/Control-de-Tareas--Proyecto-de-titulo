@@ -5,25 +5,78 @@
         <app-card-header [titulo]="'Global'"></app-card-header>
         <div class="card-body">
           <div align="center">
-            <circle-progress [percent]="percent" [title]="'auto'"></circle-progress>
+            <circle-progress [percent]="percent" [outerStrokeColor]="outerStrokeColor" [title]="'auto'"></circle-progress>
           </div>
         </div>
       </div>
     </div>
     <rb></rb>
-    <div class="col-lg-8">
-      <div class="card text-white bg shadow-lg border-0 rounded-lg mt-3">
-        <app-card-header [titulo]="'Resumen de tareas'"></app-card-header>
-        <div class="card-body">
-          <app-bar-tarea
-            *ngFor="let tarea of ListarTarea"
-            [funciones]="1"
-            [titulo]="tarea.nombre_t"
-            [id]="tarea.id_t"
-            [porcentaje]="tarea.porcentaje_avance_t"
-          ></app-bar-tarea>
+    
+    <div class="row p-0 justify-content-center">
+      
+      <div class="col-lg-4">
+        <div class="card text-white bg shadow-lg border-0 rounded-lg mt-3">
+          <app-card-header [titulo]="'Carga de trabajo'"></app-card-header>
+          <div class="card-body">
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">supervisor</th>
+                <th scope="col">Carga de trabajo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cargaTrabajo of ListarCargaTrabajo">
+                <th scope="row">1</th>
+                <td>{{cargaTrabajo.nombre_r}}</td>
+                <td>{{cargaTrabajo.carga}}</td>
+              </tr>
+            <tbody>
+          </table>
+          </div>
+        </div>
+        <div class="card text-white bg shadow-lg border-0 rounded-lg mt-3">
+          <app-card-header [titulo]="'Resumen de tarea por unidad interna'"></app-card-header>
+          <div class="card-body">
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">supervisor</th>
+                <th scope="col">Carga de trabajo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let vui of ListarVUI">
+                <th scope="row">1</th>
+                <td>{{vui.nombre_ui}}</td>
+                <td>{{vui.Contador_de_tareas}}</td>
+              </tr>
+            <tbody>
+          </table>
+          </div>
         </div>
       </div>
+      
+      <div class="col-lg-6">
+        <div class="card text-white bg shadow-lg border-0 rounded-lg mt-3">
+          <app-card-header [titulo]="'Resumen de tareas'"></app-card-header>
+          <div class="card-body">
+            <app-bar-tarea
+              *ngFor="let tarea of ListarTarea"
+              [funciones]="1"
+              [titulo]="tarea.nombre_t"
+              [id]="tarea.id_t"
+              [porcentaje]="tarea.porcentaje_avance_t"
+            ></app-bar-tarea>
+          </div>
+        </div>
+      </div>
+  
+
+    
     </div>
+    
   </div>
 </div>
