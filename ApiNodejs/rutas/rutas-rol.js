@@ -4,7 +4,7 @@ const BD = require('../config/configbd');
 
 
 //Get especifico
-router.get('/api-rol/getRol/:id', async (req, res) => {
+router.get('/api-rol/getRoles/:id', async (req, res) => {
 
     try{
         const { id } = req.params;
@@ -53,7 +53,7 @@ router.get('/api-rol/getRoles', async (req, res) => {
 })
 
 //Agregar
-router.post('/api-rol/addRol', async (req, res) => {
+router.post('/api-rol/addRol/', async (req, res) => {
 
     try{
         const { id_r, nombre_r} = req.body;

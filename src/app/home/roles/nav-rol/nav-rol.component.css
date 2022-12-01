@@ -1,0 +1,34 @@
+a {
+    position: relative;
+    text-decoration: none;
+    color: #7b7b7b;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
+  a:after {
+    content: "";
+    position: absolute;
+    background-color: #febd01;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+  }
+  
+  a:hover {
+    color: #febd01;
+  }
+  
+  a:hover:after {
+    width: 100%;
+  }
+  
+  a:focus {
+    color: #febd01;
+  }
+  
+  .active {
+    color: #febd01;
+  }
+  

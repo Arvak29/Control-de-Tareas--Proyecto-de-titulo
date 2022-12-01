@@ -1,0 +1,53 @@
+/* Boton imprimir */
+.btn-nav {
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+    color: #0d6efd;
+    border: transparent;
+  }
+  .btn-nav::before {
+    content: "";
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #0d6efd;
+    transition: 0.5s ease;
+    display: block;
+  }
+  .btn-nav:hover::before {
+    width: 125%;
+  }
+  img {
+    position: relative;
+    z-index: 2;
+  }
+  /* Formulario */
+  .form-floating {
+    overflow: hidden;
+    text-align: center;
+  }
+  .form-control#inputNombre {
+    background-color: transparent;
+    border-color: #febd01;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: 1px solid #febd01;
+    border-radius: 0%;
+    color: #ffffff;
+  }
+  .form-group {
+    text-align: center;
+  }
+  .form-control {
+    background-color: transparent;
+    border-color: #febd01;
+    color: #ffffff;
+    box-shadow: none;
+    border-radius: 8px;
+  }
+  
