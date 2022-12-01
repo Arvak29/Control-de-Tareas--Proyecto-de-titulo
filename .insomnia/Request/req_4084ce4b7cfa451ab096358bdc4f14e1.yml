@@ -1,0 +1,21 @@
+_id: req_4084ce4b7cfa451ab096358bdc4f14e1
+type: Request
+parentId: fld_7c816ff0b84c4d27900f6284e97a4f17
+modified: 1669857434140
+created: 1669857430679
+url: http://localhost:3000/api-notificacion/getNotificacion/1
+name: Get notificacion
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1669802740977.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
