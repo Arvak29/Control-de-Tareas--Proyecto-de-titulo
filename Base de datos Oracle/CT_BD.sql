@@ -1298,12 +1298,12 @@ INSERT INTO FLUJO_TAREA VALUES ('', 'Programación de portafolio', 'Proceso de p
 INSERT INTO TAREA_SUBORDINADA VALUES ('', 'Programación de modulo de mantención', 'Proceso de programación de la vista de la página web del modulo de manteción en base al caso N°5', '02-08-2022', '03-09-2022', '', '0', 'En curso', '', 1, '');
 INSERT INTO TAREA_SUBORDINADA VALUES ('', 'Programación de modulo de mantención', 'Proceso de programación de la vista de la página web del modulo de manteción en base al caso N°5', '02-08-2022', '03-09-2022', '', '0', 'En curso', '', '', 1);
 
-INSERT INTO REPORTE_PROBLEMA VALUES ('1', 'No puedo solucionar este problema', '1', '', '');
-INSERT INTO REPORTE_PROBLEMA VALUES ('2', 'No puedo solucionar este problema', '1', '', '');
-INSERT INTO REPORTE_PROBLEMA VALUES ('3', 'No puedo solucionar este problema', '', '1', '');
-INSERT INTO REPORTE_PROBLEMA VALUES ('4', 'No puedo solucionar este problema', '', '1', '');
-INSERT INTO REPORTE_PROBLEMA VALUES ('5', 'No puedo solucionar este problema', '', '', '1');
-INSERT INTO REPORTE_PROBLEMA VALUES ('6', 'No puedo solucionar este problema', '', '', '1');
+INSERT INTO REPORTE_PROBLEMA VALUES ('', 'No puedo solucionar este problema', '' ,'1', '', '');
+INSERT INTO REPORTE_PROBLEMA VALUES ('', 'No puedo solucionar este problema', '' ,'1', '', '');
+INSERT INTO REPORTE_PROBLEMA VALUES ('', 'No puedo solucionar este problema', '', '', '1', '');
+INSERT INTO REPORTE_PROBLEMA VALUES ('', 'No puedo solucionar este problema', '', '', '1', '');
+INSERT INTO REPORTE_PROBLEMA VALUES ('', 'No puedo solucionar este problema', '', '', '', '1');
+INSERT INTO REPORTE_PROBLEMA VALUES ('', 'No puedo solucionar este problema', '', '', '', '1');
 
 INSERT INTO NOTIFICACION VALUES ('', 'Se te ha asignado una tarea!', 'Se asigno una tarea', '1');
 

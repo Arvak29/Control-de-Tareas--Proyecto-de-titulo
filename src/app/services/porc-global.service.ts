@@ -45,4 +45,5 @@ export class PorcGlobalService {
   export interface CargaTrabajo {
     nombre_r?: string;
     carga?: string;
+    supervisor_c?: string;
   }

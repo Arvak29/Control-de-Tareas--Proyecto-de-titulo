@@ -22,15 +22,19 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">supervisor</th>
+                <th scope="col">Supervisor</th>
+                <th scope="col">Rol</th>
                 <th scope="col">Carga de trabajo</th>
+                
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let cargaTrabajo of ListarCargaTrabajo">
                 <th scope="row">1</th>
+                <td>{{cargaTrabajo.supervisor_c}}</td>
                 <td>{{cargaTrabajo.nombre_r}}</td>
                 <td>{{cargaTrabajo.carga}}</td>
+                
               </tr>
             <tbody>
           </table>
@@ -43,8 +47,8 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">supervisor</th>
-                <th scope="col">Carga de trabajo</th>
+                <th scope="col">Unidad interna</th>
+                <th scope="col">N° Tareas</th>
               </tr>
             </thead>
             <tbody>

@@ -96,7 +96,7 @@ router.get('/api-tarea/getTarea/:id', async (req, res) => {
 router.get('/api-tarea/getTareas', async (req, res) => {
     
     try{
-        sql = "select * from tarea where estado_t != 'Terminada'";
+        sql = "select * from tarea where estado_t = 'En curso' OR estado_t IS NULL";
 
         let result = await BD.Open(sql, [], false);
         Tareas = [];
