@@ -97,7 +97,9 @@ export class AppComponent {
     const token = localStorage.getItem('token');
     let decodetoken: any = {};
     decodetoken = decode(token!);
-    if (decodetoken[4] === 'Administrador') {
+    if (decodetoken[4] === 'Administrador'  ||
+        decodetoken[4] === 'Funcionario'
+    ) {
       return true;
     }
     return false;

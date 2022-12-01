@@ -12,13 +12,13 @@
             />
           </div>
 
-          <div class="form-floating mt-3">
+          <div *ngIf="permisosAdministrador()" class="form-floating mt-3">
             <button type="button" class="btn btn-primary">Subir imagen</button>
           </div>
         </div>
       </div>
       <br />
-      <div>
+      <div *ngIf="permisosAdministrador()">
         <button
           type="submit"
           class="btn btn-primary col-12"
@@ -28,7 +28,7 @@
         </button>
       </div>
       <br />
-      <div>
+      <div *ngIf="permisosAdministrador()">
         <button
           (click)="eliminar()"
           type="button"
@@ -44,54 +44,57 @@
       <div class="card text-white bg shadow-lg border-0 rounded-lg">
         <app-card-header [titulo]="'Detalle'"></app-card-header>
         <div class="card-body">
-          <div class="form-floating mb-3">
-            <input
-              [(ngModel)]="usuario.nombre_u"
-              class="form-control"
-              id="inputNombre"
-              type="text"
-              name="nombre_usuario"
-            />
-            <label for="inputNombre">Nombre</label>
-          </div>
-
-          <div class="form-floating mb-3">
-            <input
-              [(ngModel)]="usuario.email_u"
-              class="form-control"
-              id="inputNombre"
-              type="text"
-              name="email_usuario"
-            />
-            <label for="inputEmail">Email</label>
-          </div>
-
-          <div class="form-floating mb-3">
-            <input
-              [(ngModel)]="usuario.password_u"
-              class="form-control"
-              id="inputNombre"
-              type="text"
-              name="password_usuario"
-            />
-            <label for="inputPassword">Password</label>
-          </div>
-
+          <div *ngIf="permisosAdministrador()">
+            <div class="form-floating mb-3">
+              <input
+                [(ngModel)]="usuario.nombre_u"
+                class="form-control"
+                id="inputNombre"
+                type="text"
+                name="nombre_usuario"
+              />
+              <label for="inputNombre">Nombre</label>
+            </div>
+  
+            <div class="form-floating mb-3">
+              <input
+                [(ngModel)]="usuario.email_u"
+                class="form-control"
+                id="inputNombre"
+                type="text"
+                name="email_usuario"
+              />
+              <label for="inputEmail">Email</label>
+            </div>
+  
+            <div class="form-floating mb-3">
+              <input
+                [(ngModel)]="usuario.password_u"
+                class="form-control"
+                id="inputNombre"
+                type="text"
+                name="password_usuario"
+              />
+              <label for="inputPassword">Password</label>
+            </div>
+  
             <h6 class="text-center">Cargo</h6>
             <select class="form-select mb-3"
-            [(ngModel)]="usuario.id_c"
+              [(ngModel)]="usuario.id_c"
+              >
+              <option *ngFor="let cargo of ListarCargo" [value]="cargo.id_c">{{cargo.nombre_c}}</option>
+            </select>
+  
+            <h6 class="text-center">Empresa</h6>
+            <select class="form-select mb-3"
+            [(ngModel)]="usuario.id_e"
             >
-            <option *ngFor="let cargo of ListarCargo" [value]="cargo.id_c">{{cargo.nombre_c}}</option>
-          </select>
+              <option *ngFor="let empresa of ListarEmpresa" [value]="empresa.id_e" >{{empresa.nombre_e}}</option>
+            </select>
+          </div>
+          
 
-          <h6 class="text-center">Empresa</h6>
-          <select class="form-select mb-3"
-          [(ngModel)]="usuario.id_e"
-          >
-            <option *ngFor="let empresa of ListarEmpresa" [value]="empresa.id_e" >{{empresa.nombre_e}}</option>
-          </select>
-
-          <div *ngIf="true">
+          <div *ngIf="permisosUsuario()">
             <h6 class="text-center">Nombre</h6>
             <h6 class="caja_usuario">{{vistaUsuario.nombre_u}}</h6>
   

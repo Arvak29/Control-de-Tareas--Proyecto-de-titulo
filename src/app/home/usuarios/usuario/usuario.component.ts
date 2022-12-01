@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService, VistaUsuario, Usuario } from 'src/app/services/usuario.service';
 import { Cargo, CargoService} from 'src/app/services/cargo.service';
 import { Empresa, EmpresaService } from 'src/app/services/empresa.service';
+import decode from 'jwt-decode';
 
 @Component({
   selector: 'app-usuario',
@@ -67,7 +68,25 @@ export class UsuarioComponent implements OnInit {
         error: (err) => console.log(err),
       });
     }
+  }
 
+  permisosAdministrador(): boolean {
+    const token = localStorage.getItem('token');
+    let decodetoken: any = {};
+    decodetoken = decode(token!);
+    if (decodetoken[4] !== 'Administrador') {
+      return false;
+    }
+    return true;
+  }
+  permisosUsuario(): boolean {
+    const token = localStorage.getItem('token');
+    let decodetoken: any = {};
+    decodetoken = decode(token!);
+    if (decodetoken[4] === 'Administrador') {
+      return false;
+    }
+    return true;
   }
 
 
