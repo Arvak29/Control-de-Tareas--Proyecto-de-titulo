@@ -117,8 +117,7 @@ CREATE TABLE ASIGNACION_TAREA (
     respuesta_at             VARCHAR2(30) NOT NULL,
     justificacion_at        VARCHAR2(300),
     CONSTRAINT ASIG_T_USUARIO FOREIGN KEY (id_u_at) REFERENCES USUARIO (id_u),
-    CONSTRAINT ASIG_T_TAREA FOREIGN KEY (id_t_at) REFERENCES TAREA (id_t),
-    CONSTRAINT asig_t_pk PRIMARY KEY (id_t_at) /* para que funcione el trigger de asignacion se borra id_u_at como PK */
+    CONSTRAINT ASIG_T_TAREA FOREIGN KEY (id_t_at) REFERENCES TAREA (id_t)
 );
 
 CREATE TABLE ASIGNACION_TAREA_SUBORDINADA (
@@ -127,8 +126,7 @@ CREATE TABLE ASIGNACION_TAREA_SUBORDINADA (
     respuesta_ats             VARCHAR2(30) NOT NULL,
     justificacion_ats         VARCHAR2(300),
     CONSTRAINT ASIG_TS_USUARIO FOREIGN KEY (id_u_ats) REFERENCES USUARIO (id_u),
-    CONSTRAINT ASIG_TS_TAREA FOREIGN KEY (id_ts_ats) REFERENCES TAREA_SUBORDINADA (id_ts),
-    CONSTRAINT asig_ts_pk PRIMARY KEY (id_ts_ats)
+    CONSTRAINT ASIG_TS_TAREA FOREIGN KEY (id_ts_ats) REFERENCES TAREA_SUBORDINADA (id_ts)
 );
 
 CREATE TABLE EJECUCION_FLUJO_TAREA(
@@ -137,8 +135,7 @@ CREATE TABLE EJECUCION_FLUJO_TAREA(
     respuesta_eft            VARCHAR2(30) NOT NULL,
     justificacion_eft        VARCHAR2(300),
     CONSTRAINT EJEC_FT_USUARIO FOREIGN KEY (id_u_eft) REFERENCES USUARIO (id_u),
-    CONSTRAINT EJEC_FT_TAREA FOREIGN KEY (id_ft_eft) REFERENCES FLUJO_TAREA (id_ft),
-    CONSTRAINT ejec_ft_pk PRIMARY KEY (id_ft_eft)
+    CONSTRAINT EJEC_FT_TAREA FOREIGN KEY (id_ft_eft) REFERENCES FLUJO_TAREA (id_ft)
 );
 
 -----------------------------------------------------------------------------------------------------------------------------------
